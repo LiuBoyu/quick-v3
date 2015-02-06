@@ -32,6 +32,7 @@ THE SOFTWARE.
 #include "renderer/CCRenderer.h"
 #include "platform/CCImage.h"
 #include "platform/CCFileUtils.h"
+#include "cocostudio/CCArmature.h"
 
 NS_CC_BEGIN
 
@@ -196,6 +197,12 @@ Rect getCascadeBoundingBox(Node *node)
 {
     Rect cbb;
     Size contentSize = node->getContentSize();
+    
+    // Bugfixed "getCascadeBoundingBox对cocostudio::Armature的计算错误" modified by LiuBoyu
+    if (dynamic_cast<cocostudio::Armature*>(node))
+    {
+        return RectApplyAffineTransform(node->getBoundingBox(), node->getNodeToWorldAffineTransform());
+    }
     
     // check all childrens bounding box, get maximize box
     Node* child = nullptr;
