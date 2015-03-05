@@ -201,7 +201,14 @@ Rect getCascadeBoundingBox(Node *node)
     // Bugfixed "getCascadeBoundingBox对cocostudio::Armature的计算错误" modified by LiuBoyu
     if (dynamic_cast<cocostudio::Armature*>(node))
     {
-        return RectApplyAffineTransform(node->getBoundingBox(), node->getNodeToWorldAffineTransform());
+        if (node->getParent())
+        {
+            return RectApplyAffineTransform(node->getBoundingBox(), node->getParent()->getNodeToWorldAffineTransform());
+        }
+        else
+        {
+            return node->getBoundingBox();
+        }
     }
     
     // check all childrens bounding box, get maximize box
