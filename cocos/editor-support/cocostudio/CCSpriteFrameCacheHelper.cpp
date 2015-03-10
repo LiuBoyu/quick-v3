@@ -90,13 +90,13 @@ void SpriteFrameCacheHelper::releaseSpriteFrames(const std::string &plistPath)
 void SpriteFrameCacheHelper::removeSpriteFrameFromFile(const std::string &plistPath)
 {
     SpriteFrameCache::getInstance()->removeSpriteFramesFromFile(plistPath);
-    releaseSpriteFrames(plistPath);
+    //releaseSpriteFrames(plistPath);
 }
 
 void SpriteFrameCacheHelper::addSpriteFrameFromFile(const std::string& plistPath, const std::string& imagePath)
 {
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile(plistPath, imagePath);
-    retainSpriteFrames(plistPath);
+    //retainSpriteFrames(plistPath);
 }
 
 SpriteFrameCacheHelper::SpriteFrameCacheHelper()
