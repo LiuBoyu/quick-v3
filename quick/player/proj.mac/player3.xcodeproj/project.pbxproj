@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0FB8B0DD1AAD9BCD0037DB67 /* bit.c in Sources */ = {isa = PBXBuildFile; fileRef = 0FB8B0DB1AAD9BCD0037DB67 /* bit.c */; };
 		15427CEC198F24A600DC375D /* libluacocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15427CC2198F220600DC375D /* libluacocos2d Mac.a */; };
 		15427CEE198F24AF00DC375D /* libcocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A8A4171834BDA200142BE0 /* libcocos2d Mac.a */; };
 		15A8A4881834C90F00142BE0 /* libcurl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A8A4871834C90E00142BE0 /* libcurl.dylib */; };
@@ -156,6 +157,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0FB8B0DB1AAD9BCD0037DB67 /* bit.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = bit.c; sourceTree = "<group>"; };
+		0FB8B0DC1AAD9BCD0037DB67 /* bit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bit.h; sourceTree = "<group>"; };
 		15427CE2198F237300DC375D /* lua_module_register.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lua_module_register.h; path = ../Classes/lua_module_register.h; sourceTree = "<group>"; };
 		15A8A4031834BDA200142BE0 /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_libs.xcodeproj; path = ../../../build/cocos2d_libs.xcodeproj; sourceTree = "<group>"; };
 		15A8A4871834C90E00142BE0 /* libcurl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcurl.dylib; path = usr/lib/libcurl.dylib; sourceTree = SDKROOT; };
@@ -441,6 +444,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0FB8B0DA1AAD9BCD0037DB67 /* bitop */ = {
+			isa = PBXGroup;
+			children = (
+				0FB8B0DB1AAD9BCD0037DB67 /* bit.c */,
+				0FB8B0DC1AAD9BCD0037DB67 /* bit.h */,
+			);
+			path = bitop;
+			sourceTree = "<group>";
+		};
 		15A8A4041834BDA200142BE0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -790,6 +802,7 @@
 			isa = PBXGroup;
 			children = (
 				9F7288F71A24957700EE0234 /* Android.mk */,
+				0FB8B0DA1AAD9BCD0037DB67 /* bitop */,
 				9F7288F81A24957700EE0234 /* cjson */,
 				9F7289031A24957700EE0234 /* filesystem */,
 				9F7289061A24957700EE0234 /* lpack */,
@@ -1186,6 +1199,7 @@
 				9F7289671A24957700EE0234 /* CCNetwork.cpp in Sources */,
 				9F7289331A24957700EE0234 /* CCCustomFilter.cpp in Sources */,
 				9FD01B2619F8C6A3005E0C49 /* PlayerFileDialogServiceMac.mm in Sources */,
+				0FB8B0DD1AAD9BCD0037DB67 /* bit.c in Sources */,
 				9F7289891A24957700EE0234 /* fpconv.c in Sources */,
 				9F72898F1A24957700EE0234 /* lpack.c in Sources */,
 				4940478A1A31C0EF004CECA6 /* NVGNode.cpp in Sources */,
