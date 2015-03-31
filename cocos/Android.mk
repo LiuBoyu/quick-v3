@@ -203,6 +203,7 @@ LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH) \
 LOCAL_C_INCLUDES := $(LOCAL_PATH) \
                     $(LOCAL_PATH)/. \
                     $(LOCAL_PATH)/platform \
+                    $(LOCAL_PATH)/editor-support \
                     $(LOCAL_PATH)/../external \
                     $(LOCAL_PATH)/../external/tinyxml2 \
                     $(LOCAL_PATH)/../external/unzip \
