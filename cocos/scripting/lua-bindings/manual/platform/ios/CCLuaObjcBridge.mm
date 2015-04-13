@@ -134,6 +134,12 @@ int LuaObjcBridge::callObjcStaticMethod(lua_State *L)
                 [invocation getReturnValue:&ret];
                 lua_pushboolean(L, ret);
             }
+            else if (strcmp(returnType, "B") == 0) // BOOL Modified By LiuBoyu 2015.04.13
+            {
+                bool ret;
+                [invocation getReturnValue:&ret];
+                lua_pushboolean(L, ret);
+            }
             else if (strcmp(returnType, "i") == 0) // int
             {
                 int ret;
