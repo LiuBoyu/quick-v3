@@ -478,7 +478,7 @@ Image::~Image()
         CC_SAFE_FREE(_data);
 }
 
-#define USE_XXTEA_IMAGE 1
+#define USE_XXTEA_IMAGE 0
 
 #if (USE_XXTEA_IMAGE > 0)
 extern Data xxtea_file_get_data(const std::string& filename);
