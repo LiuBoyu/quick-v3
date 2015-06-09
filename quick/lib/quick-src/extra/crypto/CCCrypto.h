@@ -126,7 +126,7 @@ public:
     }
     
     /** @brief Calculate MD5, return MD5 string */
-    static LUA_STRING MD5Lua(const char* input, bool isRawOutput);
+    static LUA_STRING MD5Lua(const char* input, int inputLength, bool isRawOutput);
 
     static LUA_STRING MD5FileLua(const char* path);
 

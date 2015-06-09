@@ -218,11 +218,11 @@ LUA_STRING Crypto::encodingBase64Lua(bool isDecoding,
     return 1;
 }
 
-LUA_STRING Crypto::MD5Lua(const char* inputStr, bool isRawOutput)
+LUA_STRING Crypto::MD5Lua(const char* inputStr, int inputStrLength, bool isRawOutput)
 {
     unsigned char buffer[MD5_BUFFER_LENGTH];
     char* input = (char*)inputStr;
-    MD5(static_cast<void*>(input), (int)strlen(input), buffer);
+    MD5(static_cast<void*>(input), inputStrLength, buffer);
     
     LuaStack* stack = LuaEngine::getInstance()->getLuaStack();
     stack->clean();

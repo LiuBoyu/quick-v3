@@ -280,17 +280,19 @@ static int tolua_cocos2dx_extra_luabinding_Crypto_MD500(lua_State* tolua_S)
  if (
      !tolua_isusertable(tolua_S,1,"Crypto",0,&tolua_err) ||
      !tolua_isstring(tolua_S,2,0,&tolua_err) ||
-     !tolua_isboolean(tolua_S,3,0,&tolua_err) ||
-     !tolua_isnoobj(tolua_S,4,&tolua_err)
+     !tolua_isnumber(tolua_S,3,0,&tolua_err) ||
+     !tolua_isboolean(tolua_S,4,0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,5,&tolua_err)
  )
   goto tolua_lerror;
  else
 #endif
  {
   char* input = ((char*)  tolua_tostring(tolua_S,2,0));
-  bool isRawOutput = ((bool)  tolua_toboolean(tolua_S,3,0));
+  int inputLength = ((int)  tolua_tonumber(tolua_S,3,0));
+  bool isRawOutput = ((bool)  tolua_toboolean(tolua_S,4,0));
   {
-     Crypto::MD5Lua(input,isRawOutput);
+     Crypto::MD5Lua(input,inputLength,isRawOutput);
 
   }
  }
