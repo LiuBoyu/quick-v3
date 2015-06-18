@@ -70,7 +70,19 @@ bool HTTPRequest::initWithUrl(const char *url, int method)
         curl_easy_setopt(m_curl, CURLOPT_POST, 1L);
         curl_easy_setopt(m_curl, CURLOPT_COPYPOSTFIELDS, "");
     }
-    
+
+    if (method == kCCHTTPRequestMethodPUT)
+    {
+        curl_easy_setopt(m_curl, CURLOPT_CUSTOMREQUEST, "PUT");
+        curl_easy_setopt(m_curl, CURLOPT_COPYPOSTFIELDS, "");
+    }
+
+    if (method == kCCHTTPRequestMethodDELETE)
+    {
+        curl_easy_setopt(m_curl, CURLOPT_CUSTOMREQUEST, "DELETE");
+        curl_easy_setopt(m_curl, CURLOPT_COPYPOSTFIELDS, "");
+    }
+
     ++s_id;
     // CCLOG("HTTPRequest[0x%04x] - create request with url: %s", s_id, url);
     return true;
@@ -137,7 +149,7 @@ void HTTPRequest::setPOSTData(const char *data, size_t len)
     }
     memcpy(m_postData, data, len);
     m_postDataLen = len;
-    curl_easy_setopt(m_curl, CURLOPT_POST, 1L);
+    //curl_easy_setopt(m_curl, CURLOPT_POST, 1L);
     //curl_easy_setopt(m_curl, CURLOPT_COPYPOSTFIELDS, data);
     curl_easy_setopt(m_curl, CURLOPT_POSTFIELDS, m_postData);
     curl_easy_setopt(m_curl, CURLOPT_POSTFIELDSIZE, m_postDataLen);
@@ -429,7 +441,7 @@ void HTTPRequest::onRequest(void)
 {
     if (m_postFields.size() > 0)
     {
-        curl_easy_setopt(m_curl, CURLOPT_POST, 1L);
+        //curl_easy_setopt(m_curl, CURLOPT_POST, 1L);
         stringbuf buf;
         for (Fields::iterator it = m_postFields.begin(); it != m_postFields.end(); ++it)
         {
