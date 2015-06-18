@@ -12,7 +12,7 @@ LOCAL_SRC_FILES := \
     $(LOCAL_PATH)/crypto/CCCrypto.cpp \
     $(LOCAL_PATH)/crypto/base64/libbase64.c \
     $(LOCAL_PATH)/network/CCNetwork.cpp \
-    $(LOCAL_PATH)/platform/android/CCHTTPRequestAndroid.cpp \
+    $(LOCAL_PATH)/network/CCHTTPRequest.cpp \
     $(LOCAL_PATH)/platform/android/CCCryptoAndroid.cpp \
     $(LOCAL_PATH)/platform/android/CCNativeAndroid.cpp \
     $(LOCAL_PATH)/platform/android/CCNetworkAndroid.cpp
@@ -63,8 +63,8 @@ LOCAL_C_INCLUDES := $(LOCAL_EXPORT_C_INCLUDES) \
 #filters
 LOCAL_C_INCLUDES += $(COCOS2DX_ROOT)/extensions
 
-
-
+#curl
+LOCAL_STATIC_LIBRARIES := cocos_curl_static
 
 
 include $(BUILD_STATIC_LIBRARY)
