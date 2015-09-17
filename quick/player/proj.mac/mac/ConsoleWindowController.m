@@ -40,7 +40,7 @@
 {
     if (traceCount >= SKIP_LINES_COUNT && [msg length] > MAX_LINE_LEN)
     {
-        msg = [NSString stringWithFormat:@"%@ ...", [msg substringToIndex:MAX_LINE_LEN - 4]];
+        // msg = [NSString stringWithFormat:@"%@ ...", [msg substringToIndex:MAX_LINE_LEN - 4]];
     }
     traceCount++;
     NSFont *font = [NSFont fontWithName:@"Monaco" size:12.0];
