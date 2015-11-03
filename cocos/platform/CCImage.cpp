@@ -2316,7 +2316,7 @@ bool Image::saveImageToJPG(const std::string& filePath)
         cinfo.in_color_space = JCS_RGB;       /* colorspace of input image */
 
         jpeg_set_defaults(&cinfo);
-        jpeg_set_quality(&cinfo, 75, TRUE);
+        jpeg_set_quality(&cinfo, 80, TRUE);
 
         jpeg_start_compress(&cinfo, TRUE);
 

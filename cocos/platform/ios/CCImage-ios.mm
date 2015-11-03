@@ -108,7 +108,7 @@ bool cocos2d::Image::saveToFile(const std::string& filename, bool isToRGB)
     }
     else
     {
-        data = UIImageJPEGRepresentation(image, 0.75f);
+        data = UIImageJPEGRepresentation(image, 0.8f);
     }
 
     [data writeToFile:[NSString stringWithUTF8String:filename.c_str()] atomically:YES];
