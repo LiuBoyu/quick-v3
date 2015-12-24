@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F47A90B1C2B9DA400D094D8 /* lsproto.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F47A9071C2B9DA400D094D8 /* lsproto.c */; };
+		0F47A90C1C2B9DA400D094D8 /* sproto.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F47A9091C2B9DA400D094D8 /* sproto.c */; };
+		0F47A91C1C2BA50800D094D8 /* lpcap.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F47A9111C2BA50800D094D8 /* lpcap.c */; };
+		0F47A91D1C2BA50800D094D8 /* lpcode.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F47A9131C2BA50800D094D8 /* lpcode.c */; };
+		0F47A91E1C2BA50800D094D8 /* lpprint.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F47A9151C2BA50800D094D8 /* lpprint.c */; };
+		0F47A91F1C2BA50800D094D8 /* lptree.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F47A9171C2BA50800D094D8 /* lptree.c */; };
+		0F47A9201C2BA50800D094D8 /* lpvm.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F47A91A1C2BA50800D094D8 /* lpvm.c */; };
+		0F47A9251C2BBE0100D094D8 /* bit.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F47A9231C2BBE0100D094D8 /* bit.c */; };
 		0FD4A8741BAB4C930007AB29 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FD4A8731BAB4C930007AB29 /* libz.tbd */; };
 		0FD4A8761BAB4CA10007AB29 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FD4A8751BAB4CA10007AB29 /* libsqlite3.tbd */; };
 		0FD4A87E1BAB556B0007AB29 /* libcurl.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FD4A87D1BAB556B0007AB29 /* libcurl.tbd */; };
@@ -158,6 +166,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F47A9071C2B9DA400D094D8 /* lsproto.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lsproto.c; sourceTree = "<group>"; };
+		0F47A9081C2B9DA400D094D8 /* msvcint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = msvcint.h; sourceTree = "<group>"; };
+		0F47A9091C2B9DA400D094D8 /* sproto.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sproto.c; sourceTree = "<group>"; };
+		0F47A90A1C2B9DA400D094D8 /* sproto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sproto.h; sourceTree = "<group>"; };
+		0F47A90F1C2B9E1500D094D8 /* lsproto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lsproto.h; sourceTree = "<group>"; };
+		0F47A9111C2BA50800D094D8 /* lpcap.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lpcap.c; sourceTree = "<group>"; };
+		0F47A9121C2BA50800D094D8 /* lpcap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lpcap.h; sourceTree = "<group>"; };
+		0F47A9131C2BA50800D094D8 /* lpcode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lpcode.c; sourceTree = "<group>"; };
+		0F47A9141C2BA50800D094D8 /* lpcode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lpcode.h; sourceTree = "<group>"; };
+		0F47A9151C2BA50800D094D8 /* lpprint.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lpprint.c; sourceTree = "<group>"; };
+		0F47A9161C2BA50800D094D8 /* lpprint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lpprint.h; sourceTree = "<group>"; };
+		0F47A9171C2BA50800D094D8 /* lptree.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lptree.c; sourceTree = "<group>"; };
+		0F47A9181C2BA50800D094D8 /* lptree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lptree.h; sourceTree = "<group>"; };
+		0F47A9191C2BA50800D094D8 /* lptypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lptypes.h; sourceTree = "<group>"; };
+		0F47A91A1C2BA50800D094D8 /* lpvm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lpvm.c; sourceTree = "<group>"; };
+		0F47A91B1C2BA50800D094D8 /* lpvm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lpvm.h; sourceTree = "<group>"; };
+		0F47A9211C2BA63C00D094D8 /* lpeg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lpeg.h; sourceTree = "<group>"; };
+		0F47A9231C2BBE0100D094D8 /* bit.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = bit.c; sourceTree = "<group>"; };
+		0F47A9241C2BBE0100D094D8 /* bit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bit.h; sourceTree = "<group>"; };
 		0FD4A8731BAB4C930007AB29 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		0FD4A8751BAB4CA10007AB29 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		0FD4A87D1BAB556B0007AB29 /* libcurl.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcurl.tbd; path = usr/lib/libcurl.tbd; sourceTree = SDKROOT; };
@@ -438,6 +465,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F47A9061C2B9DA400D094D8 /* sproto */ = {
+			isa = PBXGroup;
+			children = (
+				0F47A90F1C2B9E1500D094D8 /* lsproto.h */,
+				0F47A9071C2B9DA400D094D8 /* lsproto.c */,
+				0F47A9081C2B9DA400D094D8 /* msvcint.h */,
+				0F47A9091C2B9DA400D094D8 /* sproto.c */,
+				0F47A90A1C2B9DA400D094D8 /* sproto.h */,
+			);
+			path = sproto;
+			sourceTree = "<group>";
+		};
+		0F47A9101C2BA50800D094D8 /* lpeg */ = {
+			isa = PBXGroup;
+			children = (
+				0F47A9211C2BA63C00D094D8 /* lpeg.h */,
+				0F47A9111C2BA50800D094D8 /* lpcap.c */,
+				0F47A9121C2BA50800D094D8 /* lpcap.h */,
+				0F47A9131C2BA50800D094D8 /* lpcode.c */,
+				0F47A9141C2BA50800D094D8 /* lpcode.h */,
+				0F47A9151C2BA50800D094D8 /* lpprint.c */,
+				0F47A9161C2BA50800D094D8 /* lpprint.h */,
+				0F47A9171C2BA50800D094D8 /* lptree.c */,
+				0F47A9181C2BA50800D094D8 /* lptree.h */,
+				0F47A9191C2BA50800D094D8 /* lptypes.h */,
+				0F47A91A1C2BA50800D094D8 /* lpvm.c */,
+				0F47A91B1C2BA50800D094D8 /* lpvm.h */,
+			);
+			path = lpeg;
+			sourceTree = "<group>";
+		};
+		0F47A9221C2BBE0100D094D8 /* bitop */ = {
+			isa = PBXGroup;
+			children = (
+				0F47A9231C2BBE0100D094D8 /* bit.c */,
+				0F47A9241C2BBE0100D094D8 /* bit.h */,
+			);
+			path = bitop;
+			sourceTree = "<group>";
+		};
 		15A8A4041834BDA200142BE0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -787,6 +854,9 @@
 		9F7288F61A24957700EE0234 /* lua_extensions */ = {
 			isa = PBXGroup;
 			children = (
+				0F47A9221C2BBE0100D094D8 /* bitop */,
+				0F47A9101C2BA50800D094D8 /* lpeg */,
+				0F47A9061C2B9DA400D094D8 /* sproto */,
 				9F7288F71A24957700EE0234 /* Android.mk */,
 				9F7288F81A24957700EE0234 /* cjson */,
 				9F7289031A24957700EE0234 /* filesystem */,
@@ -1120,10 +1190,12 @@
 				9FD01B2919F8C6A3005E0C49 /* PlayerMessageBoxServiceMac.mm in Sources */,
 				9FD01B2D19F8C6BA005E0C49 /* AppController.mm in Sources */,
 				9F7289351A24957700EE0234 /* CCExposureFilter.cpp in Sources */,
+				0F47A90C1C2B9DA400D094D8 /* sproto.c in Sources */,
 				9F7289341A24957700EE0234 /* CCDropShadowFilter.cpp in Sources */,
 				9F7289301A24957700EE0234 /* CCBlurFilter.cpp in Sources */,
 				9F72893B1A24957700EE0234 /* CCMaskFilter.cpp in Sources */,
 				9F7289921A24957700EE0234 /* lua_extensions_more.c in Sources */,
+				0F47A91F1C2BA50800D094D8 /* lptree.c in Sources */,
 				9F7289781A24957700EE0234 /* CCNetworkIOSMac.mm in Sources */,
 				9FD0193219F8C4D4005E0C49 /* PlayerServiceProtocol.cpp in Sources */,
 				9FD0192E19F8C4D4005E0C49 /* PlayerLuaCore.cpp in Sources */,
@@ -1136,6 +1208,7 @@
 				9F72893A1A24957700EE0234 /* CCHueFilter.cpp in Sources */,
 				9F7289311A24957700EE0234 /* CCBrightnessFilter.cpp in Sources */,
 				C00FD49D1938512100C6382D /* Shine_png.cpp in Sources */,
+				0F47A9201C2BA50800D094D8 /* lpvm.c in Sources */,
 				15AA9649199B6D4600725633 /* lua_debugger.c in Sources */,
 				9FD0193019F8C4D4005E0C49 /* PlayerMenuServiceProtocol.cpp in Sources */,
 				C00FD4991938512100C6382D /* Portrait_png.cpp in Sources */,
@@ -1151,7 +1224,9 @@
 				9FD0193519F8C4D4005E0C49 /* PlayerUtils.cpp in Sources */,
 				9F72898A1A24957700EE0234 /* lua_cjson.c in Sources */,
 				49C655D01A3692EF00603AF5 /* lua_cocos2dx_extension_nanovg_auto.cpp in Sources */,
+				0F47A91C1C2BA50800D094D8 /* lpcap.c in Sources */,
 				9F72893F1A24957700EE0234 /* CCSharpenFilter.cpp in Sources */,
+				0F47A91D1C2BA50800D094D8 /* lpcode.c in Sources */,
 				C00FD49B1938512100C6382D /* Runtime.cpp in Sources */,
 				9F7289631A24957700EE0234 /* HelperFunc_luabinding.cpp in Sources */,
 				9F72892C1A24957700EE0234 /* libbase64.c in Sources */,
@@ -1168,8 +1243,10 @@
 				9F7289931A24957700EE0234 /* lua_zlib.c in Sources */,
 				9F72892E1A24957700EE0234 /* md5.c in Sources */,
 				3EB5152D19528284006966AA /* Protos.pb.cc in Sources */,
+				0F47A9251C2BBE0100D094D8 /* bit.c in Sources */,
 				C00FD4931938512100C6382D /* Landscape_png.cpp in Sources */,
 				9FD0192F19F8C4D4005E0C49 /* PlayerLuaCoreManual.cpp in Sources */,
+				0F47A91E1C2BA50800D094D8 /* lpprint.c in Sources */,
 				9F72897C1A24957700EE0234 /* CCNativeMac.mm in Sources */,
 				9F7289411A24957700EE0234 /* CCFilteredSprite.cpp in Sources */,
 				9FD01B2719F8C6A3005E0C49 /* PlayerMac.mm in Sources */,
@@ -1181,6 +1258,7 @@
 				9F7289891A24957700EE0234 /* fpconv.c in Sources */,
 				9F72898F1A24957700EE0234 /* lpack.c in Sources */,
 				4940478A1A31C0EF004CECA6 /* NVGNode.cpp in Sources */,
+				0F47A90B1C2B9DA400D094D8 /* lsproto.c in Sources */,
 				87FD37D31A469FB700DFFB6F /* ConnectWaitLayer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
