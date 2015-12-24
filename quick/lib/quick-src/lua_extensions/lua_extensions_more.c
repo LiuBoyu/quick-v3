@@ -14,6 +14,9 @@ extern "C" {
 // lpack
 #include "lpack/lpack.h"
 
+// lsproto
+#include "sproto/lsproto.h"
+
 // bitop
 #include "bitop/bit.h"
 
@@ -30,6 +33,7 @@ static luaL_Reg luax_exts[] = {
     {"cjson", luaopen_cjson_safe},
     {"zlib", luaopen_zlib},
     {"pack", luaopen_pack},
+    {"sproto.core", luaopen_sproto_core},
     {"bit", luaopen_bit},
 #ifndef WP8
     {"lfs", luaopen_lfs},
