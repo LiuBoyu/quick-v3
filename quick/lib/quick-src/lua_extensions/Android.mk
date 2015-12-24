@@ -11,6 +11,11 @@ LOCAL_SRC_FILES := $(LOCAL_PATH)/lua_extensions_more.c \
                     $(LOCAL_PATH)/lpack/lpack.c \
                     $(LOCAL_PATH)/sproto/lsproto.c \
                     $(LOCAL_PATH)/sproto/sproto.c \
+                    $(LOCAL_PATH)/lpeg/lpcap.c \
+                    $(LOCAL_PATH)/lpeg/lpcode.c \
+                    $(LOCAL_PATH)/lpeg/lpprint.c \
+                    $(LOCAL_PATH)/lpeg/lptree.c \
+                    $(LOCAL_PATH)/lpeg/lpvm.c \
                     $(LOCAL_PATH)/bitop/bit.c
 
 LOCAL_SRC_FILES += \
@@ -31,6 +36,7 @@ LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/ \
                            $(LOCAL_PATH)/filesystem \
                            $(LOCAL_PATH)/lpack \
                            $(LOCAL_PATH)/sproto \
+                           $(LOCAL_PATH)/lpeg \
                            $(LOCAL_PATH)/bitop \
                            $(LOCAL_PATH)/lsqlite3
 
@@ -41,6 +47,7 @@ LOCAL_C_INCLUDES := $(LOCAL_PATH)/ \
                     $(LOCAL_PATH)/filesystem \
                     $(LOCAL_PATH)/lpack \
                     $(LOCAL_PATH)/sproto \
+                    $(LOCAL_PATH)/lpeg \
                     $(LOCAL_PATH)/bitop \
                     $(LOCAL_PATH)/lsqlite3 \
                     $(COCOS2DX_ROOT)/cocos \
