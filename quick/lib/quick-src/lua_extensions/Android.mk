@@ -8,7 +8,8 @@ LOCAL_MODULE_FILENAME := libluaextensions
 LOCAL_SRC_FILES := $(LOCAL_PATH)/lua_extensions_more.c \
                     $(LOCAL_PATH)/zlib/lua_zlib.c \
                     $(LOCAL_PATH)/filesystem/lfs.c \
-                    $(LOCAL_PATH)/lpack/lpack.c
+                    $(LOCAL_PATH)/lpack/lpack.c \
+                    $(LOCAL_PATH)/bitop/bit.c
 
 LOCAL_SRC_FILES += \
                         $(LOCAL_PATH)/cjson/fpconv.c \
@@ -27,6 +28,7 @@ LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/ \
                            $(LOCAL_PATH)/debugger \
                            $(LOCAL_PATH)/filesystem \
                            $(LOCAL_PATH)/lpack \
+                           $(LOCAL_PATH)/bitop \
                            $(LOCAL_PATH)/lsqlite3
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/ \
@@ -35,6 +37,7 @@ LOCAL_C_INCLUDES := $(LOCAL_PATH)/ \
                     $(LOCAL_PATH)/debugger \
                     $(LOCAL_PATH)/filesystem \
                     $(LOCAL_PATH)/lpack \
+                    $(LOCAL_PATH)/bitop \
                     $(LOCAL_PATH)/lsqlite3 \
                     $(COCOS2DX_ROOT)/cocos \
                     $(COCOS2DX_ROOT)/external/lua/luajit/include
