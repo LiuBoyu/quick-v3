@@ -70,7 +70,7 @@ SpriteBatchNode* SpriteBatchNode::create(const std::string& fileImage, ssize_t c
 bool SpriteBatchNode::initWithTexture(Texture2D *tex, ssize_t capacity)
 {
     CCASSERT(capacity>=0, "Capacity must be >= 0");
-    
+
     _blendFunc = BlendFunc::ALPHA_PREMULTIPLIED;
     if(!tex->hasPremultipliedAlpha())
     {
@@ -82,7 +82,7 @@ bool SpriteBatchNode::initWithTexture(Texture2D *tex, ssize_t capacity)
     {
         capacity = DEFAULT_CAPACITY;
     }
-    
+
     _textureAtlas->initWithTexture(tex, capacity);
 
     updateBlendFunc();
@@ -90,7 +90,7 @@ bool SpriteBatchNode::initWithTexture(Texture2D *tex, ssize_t capacity)
     _children.reserve(capacity);
 
     _descendants.reserve(capacity);
-    
+
     setGLProgramState(GLProgramState::getOrCreateWithGLProgramName(GLProgram::SHADER_NAME_POSITION_TEXTURE_COLOR));
     return true;
 }
@@ -180,9 +180,9 @@ void SpriteBatchNode::addChild(Node * child, int zOrder, const std::string &name
     Sprite *sprite = static_cast<Sprite*>(child);
     // check Sprite is using the same texture id
     CCASSERT(sprite->getTexture()->getName() == _textureAtlas->getTexture()->getName(), "CCSprite is not using the same texture id");
-    
+
     Node::addChild(child, zOrder, name);
-    
+
     appendChild(sprite);
 }
 
@@ -273,7 +273,7 @@ void SpriteBatchNode::updateAtlasIndex(Sprite* sprite, ssize_t* curIndex)
 {
     auto& array = sprite->getChildren();
     auto count = array.size();
-    
+
     ssize_t oldIndex = 0;
 
     if( count == 0 )
@@ -318,7 +318,7 @@ void SpriteBatchNode::updateAtlasIndex(Sprite* sprite, ssize_t* curIndex)
                 (*curIndex)++;
                 needNewIndex = false;
             }
-            
+
             updateAtlasIndex(sp, curIndex);
         }
 
@@ -385,9 +385,9 @@ void SpriteBatchNode::increaseAtlasCapacity()
     // this is likely computationally expensive
     ssize_t quantity = (_textureAtlas->getCapacity() + 1) * 4 / 3;
 
-    CCLOG("cocos2d: SpriteBatchNode: resizing TextureAtlas capacity from [%d] to [%d].",
-        static_cast<int>(_textureAtlas->getCapacity()),
-        static_cast<int>(quantity));
+    // CCLOG("cocos2d: SpriteBatchNode: resizing TextureAtlas capacity from [%d] to [%d].",
+    //     static_cast<int>(_textureAtlas->getCapacity()),
+    //     static_cast<int>(quantity));
 
     if (! _textureAtlas->resizeCapacity(quantity))
     {
@@ -643,21 +643,21 @@ void SpriteBatchNode::updateQuadFromSprite(Sprite *sprite, ssize_t index)
 {
     CCASSERT(sprite != nullptr, "Argument must be non-nil");
     CCASSERT(dynamic_cast<Sprite*>(sprite) != nullptr, "CCSpriteBatchNode only supports Sprites as children");
-    
+
 	// make needed room
 	while (index >= _textureAtlas->getCapacity() || _textureAtlas->getCapacity() == _textureAtlas->getTotalQuads())
     {
 		this->increaseAtlasCapacity();
     }
-    
+
 	//
 	// update the quad directly. Don't add the sprite to the scene graph
 	//
 	sprite->setBatchNode(this);
     sprite->setAtlasIndex(index);
-    
+
 	sprite->setDirty(true);
-	
+
 	// UpdateTransform updates the textureAtlas quad
 	sprite->updateTransform();
 }
