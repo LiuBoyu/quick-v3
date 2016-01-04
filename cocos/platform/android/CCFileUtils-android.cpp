@@ -329,7 +329,7 @@ unsigned char* FileUtilsAndroid::getFileData(const std::string& filename, const 
         } else {
             relativePath += fullPath;
         }
-        LOGD("relative path = %s", relativePath.c_str());
+        // LOGD("relative path = %s", relativePath.c_str());
 
         if (nullptr == FileUtilsAndroid::assetmanager) {
             LOGD("... FileUtilsAndroid::assetmanager is nullptr");
