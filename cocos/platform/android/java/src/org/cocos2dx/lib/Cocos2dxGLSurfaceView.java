@@ -352,7 +352,8 @@ public class Cocos2dxGLSurfaceView extends GLSurfaceView {
         });
     }
 
-    private static void dumpMotionEvent(final MotionEvent event) {
+    @SuppressWarnings("unused")
+	private static void dumpMotionEvent(final MotionEvent event) {
         final String names[] = { "DOWN", "UP", "MOVE", "CANCEL", "OUTSIDE", "POINTER_DOWN", "POINTER_UP", "7?", "8?", "9?" };
         final StringBuilder sb = new StringBuilder();
         final int action = event.getAction();

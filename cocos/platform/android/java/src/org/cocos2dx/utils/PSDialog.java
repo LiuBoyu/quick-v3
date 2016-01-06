@@ -123,6 +123,7 @@ public class PSDialog {
 		mDialog = null;
 	}
 
+	@SuppressWarnings("deprecation")
 	public void show() {
 		if (mDialog != null && isShowing()) {
 			mDialog.dismiss();

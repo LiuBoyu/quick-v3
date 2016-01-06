@@ -37,7 +37,8 @@ public class Cocos2dxTextInputWraper implements TextWatcher, OnEditorActionListe
     // Constants
     // ===========================================================
 
-    private static final String TAG = Cocos2dxTextInputWraper.class.getSimpleName();
+    @SuppressWarnings("unused")
+	private static final String TAG = Cocos2dxTextInputWraper.class.getSimpleName();
 
     // ===========================================================
     // Fields

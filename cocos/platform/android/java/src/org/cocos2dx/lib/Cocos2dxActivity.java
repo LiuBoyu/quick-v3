@@ -45,7 +45,6 @@ import android.preference.PreferenceManager.OnActivityResultListener;
 import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.opengl.GLSurfaceView;
 
 public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelperListener {
     // ===========================================================
@@ -231,7 +230,9 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
         
         class cocos2dEGLConfigChooser implements GLSurfaceView.EGLConfigChooser
         {
-        	protected int[] configAttribs;
+            protected int[] configAttribs;
+            
+            @SuppressWarnings("unused")
         	public cocos2dEGLConfigChooser(int redSize, int greenSize, int blueSize, int alphaSize, int depthSize, int stencilSize)
         	{
         		configAttribs = new int[] {redSize, greenSize, blueSize, alphaSize, depthSize, stencilSize};
@@ -240,7 +241,7 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
         	{
         		configAttribs = attribs;
         	}
-        	
+            
             public EGLConfig selectConfig(EGL10 egl, EGLDisplay display, EGLConfig[] configs, int[] attribs)
             {
                 for (EGLConfig config : configs) {
