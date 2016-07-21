@@ -28,7 +28,7 @@ THE SOFTWARE.
 #include "CCMaskFilter.h"
 #include "filters/nodes/CCFilteredSprite.h"
 
-NS_CC_EXT_BEGIN
+NS_CC_BEGIN
 
 //================== MaskFilter
 
@@ -105,4 +105,4 @@ void MaskFilter::setParameter(std::string* $maskImage)
 	_param = $maskImage;
 }
 
-NS_CC_EXT_END
+NS_CC_END

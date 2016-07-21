@@ -27,7 +27,7 @@ THE SOFTWARE.
 
 #include "CCGrayFilter.h"
 
-NS_CC_EXT_BEGIN
+NS_CC_BEGIN
 
 //================== GrayFilter
 
@@ -94,4 +94,4 @@ void GrayFilter::setUniforms(GLProgram* $cgp)
     _pProgramState->setUniformVec4("u_grayParam", Vec4(_param.r, _param.g, _param.b, _param.a));
 }
 
-NS_CC_EXT_END
+NS_CC_END

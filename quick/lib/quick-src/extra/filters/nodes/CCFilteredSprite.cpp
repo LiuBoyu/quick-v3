@@ -27,7 +27,7 @@ THE SOFTWARE.
 
 #include "CCFilteredSprite.h"
 
-NS_CC_EXT_BEGIN
+NS_CC_BEGIN
 
 //================== FilteredSprite
 
@@ -46,7 +46,7 @@ void FilteredSprite::draw(Renderer *renderer, const Mat4 &transform, uint32_t fl
 {
     // Don't do calculate the culling if the transform was not updated
     _insideBounds = (flags & FLAGS_TRANSFORM_DIRTY) ? renderer->checkVisibility(transform, _contentSize) : _insideBounds;
-    
+
     if(_insideBounds)
     {
         // normal effect: order == 0
@@ -256,7 +256,7 @@ FilteredSpriteWithMulti* FilteredSpriteWithMulti::create()
         pSprite->_filterIdxCompound = -1;
         pSprite->_pFilterSpiteCompound = nullptr;
         pSprite->_pRenderTextureCompound = nullptr;
-        
+
         pSprite->scheduleUpdate();
 		pSprite->autorelease();
 		return pSprite;
@@ -424,7 +424,7 @@ void FilteredSpriteWithMulti::update(float delta) {
     if (_filterIdxCompound >= _pFilters.size()) {
         //finish
         _filterIdxCompound = -1;
-        
+
         Texture2D *texture = nullptr;
         texture = new Texture2D();
         texture->autorelease();
@@ -458,7 +458,7 @@ void FilteredSpriteWithMulti::update(float delta) {
         Image * pNewImage = _pRenderTextureCompound->newImage(true);
         texture->initWithImage(pNewImage);
         delete pNewImage;
-        
+
         _pFilterSpiteCompound = FilteredSpriteWithOne::createWithTexture(texture);
     }
     _pFilterSpiteCompound->retain();
@@ -470,4 +470,4 @@ void FilteredSpriteWithMulti::update(float delta) {
     _filterIdxCompound++;
 }
 
-NS_CC_EXT_END
+NS_CC_END

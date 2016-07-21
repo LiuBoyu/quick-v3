@@ -28,7 +28,7 @@ THE SOFTWARE.
 #include "CCRGBFilter.h"
 #include "filters/nodes/CCFilteredSprite.h"
 
-NS_CC_EXT_BEGIN
+NS_CC_BEGIN
 
 //================== RGBFilter
 
@@ -57,7 +57,7 @@ RGBFilter::RGBFilter()
 GLProgram* RGBFilter::loadShader()
 {
     GLProgram* __p = GLProgram::createWithByteArrays(ccPositionTextureColor_noMVP_vert, ccFilterShader_rgb_frag);
-    
+
 //	GLProgram* __p = new GLProgram();
 //	__p->initWithByteArrays(ccPositionTexture_vert, ccFilterShader_rgb_frag);
 	return __p;
@@ -86,10 +86,10 @@ void RGBFilter::setUniforms(GLProgram* $cgp)
 //	$cgp->setUniformLocationWith1f(__redAdj, _redAdj);
 //	$cgp->setUniformLocationWith1f(__greenAdj, _greenAdj);
 //	$cgp->setUniformLocationWith1f(__blueAdj, _blueAdj);
-    
+
     _pProgramState->setUniformFloat("u_redAdj", _redAdj);
     _pProgramState->setUniformFloat("u_greenAdj", _greenAdj);
     _pProgramState->setUniformFloat("u_blueAdj", _blueAdj);
 }
 
-NS_CC_EXT_END
+NS_CC_END

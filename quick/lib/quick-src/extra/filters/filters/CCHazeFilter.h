@@ -4,7 +4,7 @@
 
 #include "CCFilter.h"
 
-NS_CC_EXT_BEGIN
+NS_CC_BEGIN
 
 //================== HazeFilter
 
@@ -26,6 +26,6 @@ protected:
 	float _slope;
 };
 
-NS_CC_EXT_END
+NS_CC_END
 
 #endif //__CCHAZE_FILTER__

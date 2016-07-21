@@ -1,6 +1,6 @@
 #include "CCHazeFilter.h"
 
-NS_CC_EXT_BEGIN
+NS_CC_BEGIN
 
 //================== HazeFilter
 
@@ -28,7 +28,7 @@ HazeFilter::HazeFilter()
 GLProgram* HazeFilter::loadShader()
 {
     GLProgram* __p = GLProgram::createWithByteArrays(ccPositionTextureColor_noMVP_vert, ccFilterShader_haze_frag);
-    
+
 //	GLProgram* __p = new GLProgram();
 //	__p->initWithByteArrays(ccPositionTexture_vert, ccFilterShader_haze_frag);
 	return __p;
@@ -54,8 +54,8 @@ void HazeFilter::setUniforms(GLProgram* $cgp)
 //	int __slope = $cgp->getUniformLocationForName("u_slope");
 //	$cgp->setUniformLocationWith1f(__hazeDistance, _hazeDistance);
 //	$cgp->setUniformLocationWith1f(__slope, _slope);
-    
+
     _pProgramState->setUniformFloat("u_hazeDistance", _hazeDistance);
     _pProgramState->setUniformFloat("u_slope", _slope);
 }
-NS_CC_EXT_END
+NS_CC_END

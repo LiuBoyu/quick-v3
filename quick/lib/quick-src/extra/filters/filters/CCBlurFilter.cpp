@@ -28,7 +28,7 @@ THE SOFTWARE.
 #include "CCBlurFilter.h"
 #include "filters/nodes/CCFilteredSprite.h"
 
-NS_CC_EXT_BEGIN
+NS_CC_BEGIN
 
 //================== BlurBaseFilter
 
@@ -49,7 +49,7 @@ void BlurBaseFilter::setUniforms(GLProgram* $cgp)
 {
 //	int __radius = $cgp->getUniformLocationForName("u_radius");
 //	$cgp->setUniformLocationWith1f(__radius, _param);
-    
+
     _pProgramState->setUniformFloat("u_radius", _param);
 }
 
@@ -157,7 +157,7 @@ void GaussianHBlurFilter::setUniforms(GLProgram* $cgp)
 
 //	int u_resolution = $cgp->getUniformLocationForName("u_resolution");
 //	$cgp->setUniformLocationWith1f(u_resolution, _resolation);
-    
+
     _pProgramState->setUniformFloat("u_resolution", _resolation);
 }
 
@@ -206,7 +206,7 @@ void GaussianVBlurFilter::setUniforms(GLProgram* $cgp)
 
 //	int u_resolution = $cgp->getUniformLocationForName("u_resolution");
 //	$cgp->setUniformLocationWith1f(u_resolution, _resolation);
-    
+
     _pProgramState->setUniformFloat("u_resolution", _resolation);
 }
 
@@ -245,7 +245,7 @@ ZoomBlurFilter::ZoomBlurFilter()
 GLProgram* ZoomBlurFilter::loadShader()
 {
     GLProgram* __p = GLProgram::createWithByteArrays(ccPositionTextureColor_noMVP_vert, ccFilterShader_zoom_blur_frag);
-    
+
 //	GLProgram* __p = new GLProgram();
 //	__p->initWithByteArrays(ccPositionTexture_vert, ccFilterShader_zoom_blur_frag);
 	return __p;
@@ -276,7 +276,7 @@ void ZoomBlurFilter::setUniforms(GLProgram* $cgp)
 //	int __blurCenter = $cgp->getUniformLocationForName("u_blurCenter");
 //	$cgp->setUniformLocationWith1f(__blurSize, _blurSize);
 //	$cgp->setUniformLocationWith2f(__blurCenter, _centerX, _centerY);
-    
+
     _pProgramState->setUniformFloat("u_blurSize", _blurSize);
     _pProgramState->setUniformVec2("u_blurCenter", Vec2(_centerX, _centerY));
 }
@@ -309,7 +309,7 @@ MotionBlurFilter::MotionBlurFilter()
 GLProgram* MotionBlurFilter::loadShader()
 {
     GLProgram* __p = GLProgram::createWithByteArrays(ccFilterShader_motion_blur_vert, ccFilterShader_motion_blur_frag);
-    
+
 //	GLProgram* __p = new GLProgram();
 //	__p->initWithByteArrays(ccFilterShader_motion_blur_vert, ccFilterShader_motion_blur_frag);
 	return __p;
@@ -330,7 +330,7 @@ void MotionBlurFilter::initSprite(FilteredSprite* $sprite)
 	_texelOffsetX = _blurSize*cos(_blurAngle*M_PI / 180.0f) / __size.width;
 	_texelOffsetY = _blurSize*sin(_blurAngle*M_PI / 180.0f) / __size.width;
 	initProgram();
-    
+
     Filter::initSprite(nullptr);
 }
 
@@ -345,8 +345,8 @@ void MotionBlurFilter::setUniforms(GLProgram* $cgp)
 {
 //	int __directionalTexelStep = $cgp->getUniformLocationForName("u_directionalTexelStep");
 //	$cgp->setUniformLocationWith2f(__directionalTexelStep, _texelOffsetX, _texelOffsetY);
-    
+
     _pProgramState->setUniformVec2("u_directionalTexelStep", Vec2(_texelOffsetX, _texelOffsetY));
 }
 
-NS_CC_EXT_END
+NS_CC_END

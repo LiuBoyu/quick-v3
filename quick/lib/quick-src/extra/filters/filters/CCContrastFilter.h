@@ -3,7 +3,7 @@
 
 #include "CCFilter.h"
 
-NS_CC_EXT_BEGIN
+NS_CC_BEGIN
 
 //================== ContrastFilter
 
@@ -23,6 +23,6 @@ protected:
 	virtual void setUniforms(GLProgram* $glp);
 };
 
-NS_CC_EXT_END
+NS_CC_END
 
 #endif //__CCCONTRAST_FILTER__

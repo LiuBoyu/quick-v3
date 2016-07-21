@@ -28,7 +28,7 @@ THE SOFTWARE.
 #include "CCDropShadowFilter.h"
 #include "filters/nodes/CCFilteredSprite.h"
 
-NS_CC_EXT_BEGIN
+NS_CC_BEGIN
 
 //================== DropShadowFilter
 
@@ -54,9 +54,9 @@ DropShadowFilter::DropShadowFilter()
 GLProgram* DropShadowFilter::loadShader()
 {
     GLProgram* __p = GLProgram::createWithByteArrays(ccFilterShader_drop_shadow_vert, ccFilterShader_drop_shadow_frag);
-    
+
 //	GLProgram* __p = new GLProgram();
-//	__p->initWithByteArrays(ccFilterShader_drop_shadow_vert, 
+//	__p->initWithByteArrays(ccFilterShader_drop_shadow_vert,
 //		ccFilterShader_drop_shadow_frag);
 	return __p;
 }
@@ -89,8 +89,8 @@ void DropShadowFilter::setUniforms(GLProgram* $cgp)
 {
 //	int u_resolution = $cgp->getUniformLocationForName("u_resolution");
 //	$cgp->setUniformLocationWith2f(u_resolution, _textureWidth, _textureHeight);
-    
+
     _pProgramState->setUniformVec2("u_resolution", Vec2(_textureWidth, _textureHeight));
 }
 
-NS_CC_EXT_END
+NS_CC_END

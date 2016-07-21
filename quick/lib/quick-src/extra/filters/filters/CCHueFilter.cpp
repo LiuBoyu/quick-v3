@@ -28,7 +28,7 @@ THE SOFTWARE.
 #include "CCHueFilter.h"
 #include "filters/nodes/CCFilteredSprite.h"
 
-NS_CC_EXT_BEGIN
+NS_CC_BEGIN
 
 //================== HueFilter
 
@@ -55,7 +55,7 @@ HueFilter::HueFilter()
 GLProgram* HueFilter::loadShader()
 {
     GLProgram* __p = GLProgram::createWithByteArrays(ccPositionTextureColor_noMVP_vert, ccFilterShader_hue_frag);
-    
+
 //	GLProgram* __p = new GLProgram();
 //	__p->initWithByteArrays(ccPositionTexture_vert, ccFilterShader_hue_frag);
 	return __p;
@@ -78,8 +78,8 @@ void HueFilter::setUniforms(GLProgram* $cgp)
 {
 //	int u_hueAdjust = $cgp->getUniformLocationForName("u_hueAdjust");
 //	$cgp->setUniformLocationWith1f(u_hueAdjust, _param);
-    
+
     _pProgramState->setUniformFloat("u_hueAdjust", _param);
 }
 
-NS_CC_EXT_END
+NS_CC_END

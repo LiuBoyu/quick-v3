@@ -3,7 +3,7 @@
 
 #include "CCFilter.h"
 
-NS_CC_EXT_BEGIN
+NS_CC_BEGIN
 
 
 //================== SaturationFilter
@@ -25,6 +25,6 @@ protected:
 };
 
 
-NS_CC_EXT_END
+NS_CC_END
 
 #endif //__CCSATURATION_FILTER__

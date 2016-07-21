@@ -31,9 +31,7 @@ THE SOFTWARE.
 #include "cocos2d.h"
 #include "filters/filters/CCFilter.h"
 
-USING_NS_CC;
-
-NS_CC_EXT_BEGIN
+NS_CC_BEGIN
 
 class FilteredSprite : public Sprite
 {
@@ -108,7 +106,7 @@ public:
 
 	Rect getTSRect();
 	void setTSRect(const Rect& $rect);
-    
+
     virtual void update(float delta) override;
 
 protected:
@@ -118,13 +116,13 @@ private:
 	Texture2D* _pTexture;
 	SpriteFrame* _pFrame;
 	Rect _rect;
-    
+
     FilteredSprite* _pFilterSpiteCompound;
     RenderTexture* _pRenderTextureCompound;
     Texture2D* _pTextureCompound;
     int _filterIdxCompound;
 };
 
-NS_CC_EXT_END
+NS_CC_END
 
 #endif /* __CCFILTERED_SPRITE_H__ */

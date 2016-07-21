@@ -2,13 +2,10 @@
 #define __CCSHADER_FILTER_H__
 
 #include "cocos2d.h"
-#include "ExtensionMacros.h"
 #include "platform/CCGL.h"
 #include "filters/shaders/ccFilterShaders.h"
 
-USING_NS_CC;
-
-NS_CC_EXT_BEGIN
+NS_CC_BEGIN
 
 class FilteredSprite;
 
@@ -46,6 +43,6 @@ protected:
 
 
 
-NS_CC_EXT_END
+NS_CC_END
 
 #endif /* __CCSHADER_FILTER_H__ */

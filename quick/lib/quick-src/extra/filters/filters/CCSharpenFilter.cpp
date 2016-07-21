@@ -28,7 +28,7 @@ THE SOFTWARE.
 #include "CCSharpenFilter.h"
 #include "filters/nodes/CCFilteredSprite.h"
 
-NS_CC_EXT_BEGIN
+NS_CC_BEGIN
 
 //================== SharpenFilter
 
@@ -65,7 +65,7 @@ SharpenFilter::SharpenFilter()
 GLProgram* SharpenFilter::loadShader()
 {
     GLProgram* __p = GLProgram::createWithByteArrays(ccFilterShader_sharpen_vert, ccFilterShader_sharpen_frag);
-    
+
 //	GLProgram* __p = new GLProgram();
 //	__p->initWithByteArrays(ccFilterShader_sharpen_vert, ccFilterShader_sharpen_frag);
 	return __p;
@@ -96,7 +96,7 @@ void SharpenFilter::initSprite(FilteredSprite* $sprite)
 		_heightFactor = 1.0f / __size.height * _amount;
 	}
 	initProgram();
-    
+
     Filter::initSprite(nullptr);
 }
 
@@ -116,10 +116,10 @@ void SharpenFilter::setUniforms(GLProgram* $cgp)
 //	$cgp->setUniformLocationWith1f(u_sharpness, _sharpness);
 //	$cgp->setUniformLocationWith1f(u_widthFactor, _widthFactor);
 //	$cgp->setUniformLocationWith1f(u_heightFactor, _heightFactor);
-    
+
     _pProgramState->setUniformFloat("u_sharpness", _sharpness);
     _pProgramState->setUniformFloat("u_widthFactor", _widthFactor);
     _pProgramState->setUniformFloat("u_heightFactor", _heightFactor);
 }
 
-NS_CC_EXT_END
+NS_CC_END

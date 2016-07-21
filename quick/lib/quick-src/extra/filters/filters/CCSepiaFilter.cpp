@@ -28,7 +28,7 @@ THE SOFTWARE.
 #include "CCSepiaFilter.h"
 #include "filters/nodes/CCFilteredSprite.h"
 
-NS_CC_EXT_BEGIN
+NS_CC_BEGIN
 //================== SepiaFilter
 
 SepiaFilter* SepiaFilter::create()
@@ -53,7 +53,7 @@ SepiaFilter::SepiaFilter()
 GLProgram* SepiaFilter::loadShader()
 {
     GLProgram* __p = GLProgram::createWithByteArrays(ccPositionTextureColor_vert, ccFilterShader_sepia_frag);
-    
+
 //	GLProgram* __p = new GLProgram();
 //	__p->initWithByteArrays(ccPositionTextureColor_vert,
 //		ccFilterShader_sepia_frag);
@@ -78,4 +78,4 @@ void SepiaFilter::setUniforms(GLProgram* $cgp)
 
 }
 
-NS_CC_EXT_END
+NS_CC_END

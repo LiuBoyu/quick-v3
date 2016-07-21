@@ -1,7 +1,7 @@
 #include "CCCustomFilter.h"
 #include "filters/nodes/CCFilteredSprite.h"
 
-NS_CC_EXT_BEGIN
+NS_CC_BEGIN
 
 
 //================== CustomFilter
@@ -38,11 +38,11 @@ GLProgram* CustomFilter::loadShader()
         auto vertSource = fileUtiles->getStringFromFile(vertFullPath);
         vertShader = vertSource.c_str();
     }
-    
+
     auto fragmentFullPath = fileUtiles->fullPathForFilename(m_fragFile);
     auto fragSource = fileUtiles->getStringFromFile(fragmentFullPath);
     fragShader = fragSource.c_str();
-    
+
     GLProgram* __p = GLProgram::createWithByteArrays(vertShader, fragShader);
 
 	return __p;
@@ -62,7 +62,7 @@ void CustomFilter::setParameter(const char* paramsStr)
 //        CCLOG("CustomFilter - setParameter param is not json format:%s", m_json.GetParseError());
 //        return;
 //    }
-    
+
     for (rapidjson::Value::ConstMemberIterator it = m_json.MemberonBegin();
          it != m_json.MemberonEnd(); ++it) {
         std::string name = it->name.GetString();
@@ -75,7 +75,7 @@ void CustomFilter::setParameter(const char* paramsStr)
             shaderName = it->value.GetString();
         }
     }
-    
+
     initProgram();
 }
 
@@ -121,4 +121,4 @@ void CustomFilter::setUniforms(GLProgram* $cgp)
     }
 }
 
-NS_CC_EXT_END
+NS_CC_END

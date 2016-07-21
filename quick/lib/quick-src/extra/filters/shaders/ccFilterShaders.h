@@ -2,11 +2,8 @@
 #define __CC_FILTER_SHADER_H__
 
 #include "cocos2dx_extra.h"
-//#include "CCGL.h"
-//#include "platform/CCPlatformMacros.h"
-#include "ExtensionMacros.h"
 
-NS_CC_EXT_BEGIN
+NS_CC_BEGIN
 
 #define kCCFilterShader_gray	"ccFilterShader_gray"
 #define kCCFilterShader_hblur	"ccFilterShader_hblur"
@@ -80,6 +77,6 @@ extern CC_DLL const GLchar * ccFilterShader_embossmov_frag;
 extern CC_DLL const GLchar * ccFilterShader_grass_frag;
 
 
-NS_CC_EXT_END
+NS_CC_END
 
 #endif /* __CC_FILTER_SHADER_H__ */

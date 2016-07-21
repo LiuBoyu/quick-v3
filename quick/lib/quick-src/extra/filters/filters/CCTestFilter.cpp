@@ -1,7 +1,7 @@
 #include "CCTestFilter.h"
 #include "filters/nodes/CCFilteredSprite.h"
 
-NS_CC_EXT_BEGIN
+NS_CC_BEGIN
 
 
 //================== TestFilter
@@ -83,4 +83,4 @@ void TestFilter::setUniforms(GLProgram* $cgp)
 		_textureWidth, _textureHeight);
 }
 
-NS_CC_EXT_END
+NS_CC_END

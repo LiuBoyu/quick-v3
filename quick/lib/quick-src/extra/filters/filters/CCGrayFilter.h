@@ -3,7 +3,7 @@
 
 #include "CCFilter.h"
 
-NS_CC_EXT_BEGIN
+NS_CC_BEGIN
 
 //================== GrayFilter
 
@@ -27,6 +27,6 @@ private:
 	Color4F _param;
 };
 
-NS_CC_EXT_END
+NS_CC_END
 
 #endif //__CCFILTER_GRAY_H__

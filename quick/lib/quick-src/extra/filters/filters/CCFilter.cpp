@@ -28,7 +28,7 @@ THE SOFTWARE.
 #include "CCFilter.h"
 #include "filters/nodes/CCFilteredSprite.h"
 
-NS_CC_EXT_BEGIN
+NS_CC_BEGIN
 
 //================== Filter
 
@@ -58,7 +58,7 @@ void Filter::initProgram()
     if (nullptr != _pProgramState) {
         return;
     }
-    
+
     GLProgram* __pProgram = nullptr;
     if (nullptr != shaderName) {
         __pProgram = GLProgramCache::getInstance()->getGLProgram(shaderName);
@@ -115,4 +115,4 @@ void SingleFloatParamFilter::setParameter(float $param)
 	initProgram();
 }
 
-NS_CC_EXT_END
+NS_CC_END

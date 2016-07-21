@@ -28,7 +28,7 @@ THE SOFTWARE.
 #include "CCBrightnessFilter.h"
 #include "filters/nodes/CCFilteredSprite.h"
 
-NS_CC_EXT_BEGIN
+NS_CC_BEGIN
 //================== BrightnessFilter
 
 BrightnessFilter* BrightnessFilter::create()
@@ -54,7 +54,7 @@ BrightnessFilter::BrightnessFilter()
 GLProgram* BrightnessFilter::loadShader()
 {
     GLProgram* __p = GLProgram::createWithByteArrays(ccPositionTextureColor_noMVP_vert, ccFilterShader_brightness_frag);
-    
+
 //	GLProgram* __p = new GLProgram();
 //	__p->initWithByteArrays(ccPositionTexture_vert, ccFilterShader_brightness_frag);
 	return __p;
@@ -77,7 +77,7 @@ void BrightnessFilter::setUniforms(GLProgram* $cgp)
 {
 //	int u_brightness = $cgp->getUniformLocationForName("u_brightness");
 //	$cgp->setUniformLocationWith1f(u_brightness, _param);
-    
+
     _pProgramState->setUniformFloat("u_brightness", _param);
 }
-NS_CC_EXT_END
+NS_CC_END

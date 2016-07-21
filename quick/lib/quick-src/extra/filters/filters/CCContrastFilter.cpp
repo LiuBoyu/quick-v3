@@ -27,7 +27,7 @@ THE SOFTWARE.
 
 #include "CCContrastFilter.h"
 
-NS_CC_EXT_BEGIN
+NS_CC_BEGIN
 //================== ContrastFilter
 
 ContrastFilter* ContrastFilter::create()
@@ -53,7 +53,7 @@ ContrastFilter::ContrastFilter()
 GLProgram* ContrastFilter::loadShader()
 {
     GLProgram* __p = GLProgram::createWithByteArrays(ccPositionTextureColor_noMVP_vert, ccFilterShader_contrast_frag);
-    
+
 //	GLProgram* __p = new GLProgram();
 //	__p->initWithByteArrays(ccPositionTexture_vert, ccFilterShader_contrast_frag);
 	return __p;
@@ -76,8 +76,8 @@ void ContrastFilter::setUniforms(GLProgram* $cgp)
 {
 //	int u_contrast = $cgp->getUniformLocationForName("u_contrast");
 //	$cgp->setUniformLocationWith1f(u_contrast, _param);
-    
+
     _pProgramState->setUniformFloat("u_contrast", _param);
 }
 
-NS_CC_EXT_END
+NS_CC_END
