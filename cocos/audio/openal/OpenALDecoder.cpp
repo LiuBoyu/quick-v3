@@ -3,15 +3,6 @@
 #include <sys/stat.h>
 #include <AL/alut.h>
 
-#if CC_TARGET_PLATFORM == CC_PLATFORM_TIZEN
-#include <FBase.h>
-#include <FBaseCol.h>
-#include <FMedia.h>
-using namespace Tizen::Base;
-using namespace Tizen::Base::Collection;
-using namespace Tizen::Media;
-#endif
-
 #ifndef DISABLE_VORBIS
 #include <vorbis/vorbisfile.h>
 #endif
@@ -228,152 +219,15 @@ public:
 };
 #endif
 
-#if CC_TARGET_PLATFORM == CC_PLATFORM_TIZEN
-class TizenDecoder : public OpenALDecoder
-{
-public:
-    static TizenDecoder *create(Format format)
-    {
-        TizenDecoder *decoder = new TizenDecoder(format);
-        if (decoder && !decoder->init()) {
-            delete decoder;
-            decoder = NULL;
-        }
-        return decoder;
-    }
-
-    bool decode(OpenALFile &file, ALuint &result)
-    {
-        if (!file.mapToMemory())
-            return false;
-        ByteBuffer inputBuffer;
-        inputBuffer.Construct(/*capacity*/ file.fileSize);
-        inputBuffer.SetArray((const byte*)file.mappedFile, 0, file.fileSize);
-        inputBuffer.Flip();
-        ByteBuffer pcm;
-        pcm.Construct(/*capacity*/ 2 * file.fileSize);
-
-        AudioSampleType sampleType = AUDIO_TYPE_NONE;
-        AudioChannelType channelType = AUDIO_CHANNEL_TYPE_NONE;
-        int sampleRate = 0;
-        if (E_SUCCESS != _decoder.Probe(inputBuffer, sampleType, channelType, sampleRate))
-            return false;
-        while (inputBuffer.GetRemaining()) {
-            auto ret = _decoder.Decode(inputBuffer, pcm);
-        	if (ret == E_OUT_OF_MEMORY) {
-        		pcm.ExpandCapacity(2 * pcm.GetCapacity());
-        	} else if (IsFailed(ret)) {
-                AppLogTag("CocosDenshion(TizenDecoder)", "failed to decode file '%s', supported format is %s.", file.debugName.c_str(), getCodecName());
-                return false;
-            }
-        }
-
-        return initALBuffer(result, getALFormat(sampleType, channelType),
-                            pcm.GetPointer(), pcm.GetPosition(), sampleRate);
-    }
-
-    bool acceptsFormat(Format format) const
-    {
-        return _format == format;
-    }
-
-private:
-    TizenDecoder(Format format)
-        : _format(format)
-    {
-    }
-
-    bool init()
-    {
-        HashMap option;
-        option.Construct();
-        option.Add(*(new Integer(MEDIA_PROPERTY_AUDIO_CHANNEL_TYPE)), *(new Integer(AUDIO_CHANNEL_TYPE_NONE)));
-        option.Add(*(new Integer(MEDIA_PROPERTY_AUDIO_SAMPLE_RATE)), *(new Integer(44100)));
-
-        result r = _decoder.Construct(getCodecType());
-        if (IsFailed(r))
-            return false;
-        else
-            AppLogTag("CocosDenshion", "Tizen device supports audio format %s.", getCodecName());
-        return true;
-    }
-
-    ALenum getALFormat(AudioSampleType sampleType, AudioChannelType channelType)
-    {
-        if (sampleType == AUDIO_TYPE_PCM_U8) {
-            if (channelType == AUDIO_CHANNEL_TYPE_MONO)
-                return AL_FORMAT_MONO8;
-            return AL_FORMAT_STEREO8;
-        }
-        if (sampleType == AUDIO_TYPE_PCM_S16_LE) {
-            if (channelType == AUDIO_CHANNEL_TYPE_MONO)
-                return AL_FORMAT_MONO16;
-            return AL_FORMAT_STEREO16;
-        }
-        AppLogTag("CocosDenshion(TizenDecoder)", "unsuppored sampleType=%d.", sampleType, channelType);
-        return AL_NONE;
-    }
-
-    CodecType getCodecType() const
-    {
-        switch (_format) {
-        case Mp3:
-            return CODEC_MP3;
-        case Vorbis:
-            return CODEC_VORBIS;
-        case Flac:
-            return CODEC_FLAC;
-        case Midi:
-            return CODEC_MIDI;
-        case Aac:
-            return CODEC_AAC;
-        default:
-        	break;
-        }
-        return CODEC_UNKNOWN;
-    }
-
-    const char *getCodecName() const
-    {
-        switch (_format) {
-        case Mp3:
-            return "mp3";
-        case Vorbis:
-            return "vorbis";
-        case Flac:
-            return "flac";
-        case Midi:
-            return "midi";
-        case Aac:
-            return "aac";
-        default:
-        	break;
-        }
-        return "unknown";
-    }
-
-    Format _format;
-    AudioDecoder _decoder;
-};
-#endif
-
 std::vector<OpenALDecoder *> OpenALDecoder::_decoders;
 
 void OpenALDecoder::installDecoders()
 {
-#if CC_TARGET_PLATFORM == CC_PLATFORM_TIZEN
-    addDecoder(TizenDecoder::create(Mp3));
-    addDecoder(TizenDecoder::create(Vorbis));
-    addDecoder(TizenDecoder::create(Flac));
-    addDecoder(TizenDecoder::create(Midi));
-    addDecoder(TizenDecoder::create(Aac));
-#else
 #if !defined(DISABLE_VORBIS)
     addDecoder(new VorbisDecoder());
 #endif
 #if defined(ENABLE_MPG123)
     addDecoder(new Mpg123Decoder());
-#endif
 #endif
     addDecoder(new AlutDecoder());
 }
