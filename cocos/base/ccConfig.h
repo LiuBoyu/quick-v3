@@ -39,9 +39,9 @@ THE SOFTWARE.
  If enabled, actions that alter the position property (eg: MoveBy, JumpBy, BezierBy, etc..) will be stacked.
  If you run 2 or more 'position' actions at the same time on a node, then end position will be the sum of all the positions.
  If disabled, only the last run action will take effect.
- 
+
  Enabled by default. Disable to be compatible with v2.0 and older versions.
- 
+
  @since v2.1
  */
 #ifndef CC_ENABLE_STACKABLE_ACTIONS
@@ -59,9 +59,9 @@ THE SOFTWARE.
 
  It is recommended to enable whenever possible to improve speed.
  If you are migrating your code from GL ES 1.1, then keep it disabled. Once all your code works as expected, turn it on.
- 
+
  Default value: Enabled by default
- 
+
  @since v2.0.0
  */
 #ifndef CC_ENABLE_GL_STATE_CACHE
@@ -96,7 +96,7 @@ To enabled set it to 1. Disabled by default.
  Seconds between FPS updates.
  0.5 seconds, means that the FPS number will be updated every 0.5 seconds.
  Having a bigger number means a more reliable FPS
- 
+
  Default value: 0.1f
  */
 #ifndef CC_DIRECTOR_STATS_INTERVAL
@@ -117,9 +117,9 @@ To enabled set it to 1. Disabled by default.
  dispatch all the events, even if there are not events to dispatch.
  If your game uses lot's of events (eg: touches) it might be a good idea to enable this feature.
  Otherwise, it is safe to leave it disabled.
- 
+
  To enable set it to 1. Disabled by default.
- 
+
  @warning This feature is experimental
  */
 #ifndef CC_DIRECTOR_DISPATCH_FAST_EVENTS
@@ -144,7 +144,7 @@ Only valid for cocos2d-mac. Not supported on cocos2d-ios.
 /** @def CC_NODE_RENDER_SUBPIXEL
  If enabled, the Node objects (Sprite, Label,etc) will be able to render in subpixels.
  If disabled, integer pixels will be used.
- 
+
  To enable set it to 1. Enabled by default.
  */
 #ifndef CC_NODE_RENDER_SUBPIXEL
@@ -154,7 +154,7 @@ Only valid for cocos2d-mac. Not supported on cocos2d-ios.
 /** @def CC_SPRITEBATCHNODE_RENDER_SUBPIXEL
  If enabled, the Sprite objects rendered with SpriteBatchNode will be able to render in subpixels.
  If disabled, integer pixels will be used.
- 
+
  To enable set it to 1. Enabled by default.
  */
 #ifndef CC_SPRITEBATCHNODE_RENDER_SUBPIXEL
@@ -165,9 +165,9 @@ Only valid for cocos2d-mac. Not supported on cocos2d-ios.
  By default, TextureAtlas (used by many cocos2d classes) will use VAO (Vertex Array Objects).
  Apple recommends its usage but they might consume a lot of memory, specially if you use many of them.
  So for certain cases, where you might need hundreds of VAO objects, it might be a good idea to disable it.
- 
+
  To disable it set it to 0. Enabled by default.
- 
+
  */
 #ifndef CC_TEXTURE_ATLAS_USE_VAO
     #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
@@ -197,7 +197,7 @@ Only valid for cocos2d-mac. Not supported on cocos2d-ios.
 /** @def CC_SPRITE_DEBUG_DRAW
  If enabled, all subclasses of Sprite will draw a bounding box
  Useful for debugging purposes only. It is recommended to leave it disabled.
- 
+
  To enable set it to a value different than 0. Disabled by default:
  0 -- disabled
  1 -- draw bounding box
@@ -230,7 +230,7 @@ To enable set it to a value different than 0. Disabled by default.
 /** @def CC_LABELATLAS_DEBUG_DRAW
  If enabled, all subclasses of LabeltAtlas will draw a bounding box
  Useful for debugging purposes only. It is recommended to leave it disabled.
- 
+
  To enable set it to a value different than 0. Disabled by default.
  */
 #ifndef CC_LABELATLAS_DEBUG_DRAW
@@ -239,9 +239,9 @@ To enable set it to a value different than 0. Disabled by default.
 
 /** @def CC_NODE_DEBUG_VERIFY_EVENT_LISTENERS
  If enabled (in conjunction with assertion macros) will verify on Node destruction that the node being destroyed has no event
- listeners still associated with it in the event dispatcher. This can be used to track down problems where the event dispatch 
+ listeners still associated with it in the event dispatcher. This can be used to track down problems where the event dispatch
  system has dangling pointers to destroyed nodes.
- 
+
  Note: event listener verification will always be disabled in builds where assertions are disabled regardless of this setting.
  */
 #ifndef CC_NODE_DEBUG_VERIFY_EVENT_LISTENERS
@@ -252,7 +252,7 @@ To enable set it to a value different than 0. Disabled by default.
  If enabled, will activate various profilers within cocos2d. This statistical data will be output to the console
  once per second showing average time (in milliseconds) required to execute the specific routine(s).
  Useful for debugging purposes only. It is recommended to leave it disabled.
- 
+
  To enable set it to a value different than 0. Disabled by default.
  */
 #ifndef CC_ENABLE_PROFILERS
@@ -266,7 +266,12 @@ To enable set it to a value different than 0. Disabled by default.
 
 /** Use physics integration API */
 #ifndef CC_USE_PHYSICS
-#define CC_USE_PHYSICS 1
+#define CC_USE_PHYSICS 0
+#endif
+
+/** Use tile map integration API */
+#ifndef CC_USE_TMX
+#define CC_USE_TMX 0
 #endif
 
 /** Support JPEG or not. If your application don't use jpeg format picture, you can undefine this macro to save package size.
@@ -278,13 +283,13 @@ To enable set it to a value different than 0. Disabled by default.
 /** Support TIFF or not. If your application don't use TIFF format picture, you can undefine this macro to save package size.
  */
 #ifndef CC_USE_TIFF
-#define CC_USE_TIFF  1
+#define CC_USE_TIFF  0
 #endif // CC_USE_TIFF
 
 /** Support webp or not. If your application don't use webp format picture, you can undefine this macro to save package size.
  */
 #ifndef CC_USE_WEBP
-#define CC_USE_WEBP  1
+#define CC_USE_WEBP  0
 #endif // CC_USE_WEBP
 
 /** Use curl or not. If your application don't use curl, you can undefine this macro to save package size.
@@ -296,26 +301,14 @@ To enable set it to a value different than 0. Disabled by default.
 /** Use cocos studio or not. If your application don't use ccs, you can undefine this macro to save package size.
  */
 #ifndef CC_USE_CCSTUDIO
-#define CC_USE_CCSTUDIO  1
+#define CC_USE_CCSTUDIO  0
 #endif // CC_USE_CCSTUDIO
-
-/** Use cocosBuilder or not. If your application don't use ccb, you can undefine this macro to save package size.
- */
-#ifndef CC_USE_CCBUILDER
-#define CC_USE_CCBUILDER  1
-#endif // CC_USE_CCBUILDER
 
 /** Use spine or not. If your application don't use spine, you can undefine this macro to save package size.
  */
 #ifndef CC_USE_SPINE
-#define CC_USE_SPINE  1
+#define CC_USE_SPINE  0
 #endif // CC_USE_SPINE
-
-/** Use 3d sprites or not. If your application don't use 3d, you can undefine this macro to save package size.
- */
-#ifndef CC_USE_3D
-#define CC_USE_3D  1
-#endif // CC_USE_3D
 
 /** Enable Script binding */
 #ifndef CC_ENABLE_SCRIPT_BINDING
@@ -323,13 +316,13 @@ To enable set it to a value different than 0. Disabled by default.
 #endif
 
 /** @def CC_CONSTRUCTOR_ACCESS
- Indicate the init functions access modifier. If value equals to protected, then these functions are protected. 
+ Indicate the init functions access modifier. If value equals to protected, then these functions are protected.
  If value equals to public, these functions are public
- 
+
  protected by default.
  */
 #ifndef CC_CONSTRUCTOR_ACCESS
 #define CC_CONSTRUCTOR_ACCESS protected
 #endif
- 
+
 #endif // __CCCONFIG_H__
