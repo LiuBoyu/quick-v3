@@ -9,7 +9,7 @@
 #include "NVGNode.h"
 #include "../nanovg/nanovg_gl.h"
 
-NS_CC_EXT_BEGIN
+NS_CC_BEGIN
 
 NVGcontext* gNVGCtx = nullptr;
 
@@ -40,4 +40,4 @@ void NVGNode::draw(Renderer *renderer, const Mat4 &transform, uint32_t flags) {
     return;
 }
 
-NS_CC_EXT_END
+NS_CC_END

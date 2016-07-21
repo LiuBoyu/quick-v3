@@ -8,7 +8,7 @@
 
 #include "NVGDrawNode.h"
 
-NS_CC_EXT_BEGIN
+NS_CC_BEGIN
 
 NVGDrawNode::NVGDrawNode()
 : _radius(0)
@@ -22,7 +22,7 @@ NVGDrawNode::NVGDrawNode()
 }
 
 NVGDrawNode::~NVGDrawNode() {
-    
+
 }
 
 NVGDrawNode* NVGDrawNode::create() {
@@ -35,7 +35,7 @@ NVGDrawNode* NVGDrawNode::create() {
     {
         CC_SAFE_DELETE(ret);
     }
-    
+
     return ret;
 }
 
@@ -49,7 +49,7 @@ void NVGDrawNode::onDraw(const Mat4 &transform, uint32_t flags) {
         return;
     }
     nvgBeginFrame(nvg, visibleSize.width, visibleSize.height, 1);
-    
+
     //   [a c e]
     //   [b d f]
     //   [0 0 1]
@@ -127,7 +127,7 @@ void NVGDrawNode::onDraw(const Mat4 &transform, uint32_t flags) {
         nvgFillColor(nvg, _colorFill);
         nvgFill(nvg);
     }
-    
+
     if (_borderWidth > 0 ) {
         nvgStrokeWidth(nvg, _borderWidth);
         bStroke = true;
@@ -141,7 +141,7 @@ void NVGDrawNode::onDraw(const Mat4 &transform, uint32_t flags) {
     }
 
     nvgEndFrame(getNVGCtx());
-    
+
     GL::bindTexture2D(0);
     GL::enableVertexAttribs(GL::VERTEX_ATTRIB_FLAG_NONE);
     GL::useProgram(0);
@@ -364,9 +364,9 @@ NVGcolor NVGDrawNode::clr4f2NVGClr(Color4F clr) {
     nvgClr.r = clr.r;
     nvgClr.g = clr.g;
     nvgClr.b = clr.b;
-    
+
     return nvgClr;
 }
 
-NS_CC_EXT_END
+NS_CC_END
 

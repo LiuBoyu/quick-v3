@@ -10,7 +10,6 @@
 #define __NVGNode__
 
 #include "cocos2d.h"
-#include "ExtensionMacros.h"
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID) || (CC_TARGET_PLATFORM == CC_PLATFORM_IOS) || (CC_TARGET_PLATFORM == CC_PLATFORM_WP8)
 #define NANOVG_GLES2_IMPLEMENTATION
@@ -20,9 +19,7 @@
 
 #include "../nanovg/nanovg.h"
 
-USING_NS_CC;
-
-NS_CC_EXT_BEGIN
+NS_CC_BEGIN
 
 class NVGNode : public Node {
 
@@ -35,11 +32,11 @@ CC_CONSTRUCTOR_ACCESS:
     ~NVGNode();
 
 protected:
-    
+
     NVGcontext* getNVGCtx();
 
 };
 
-NS_CC_EXT_END
+NS_CC_END
 
 #endif /* defined(__NVGNode__) */
