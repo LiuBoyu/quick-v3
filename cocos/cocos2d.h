@@ -195,13 +195,6 @@ THE SOFTWARE.
     #include "platform/android/CCStdC-android.h"
 #endif // CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
 
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_BLACKBERRY)
-    #include "platform/blackberry/CCApplication.h"
-    #include "platform/blackberry/CCGLViewImpl.h"
-    #include "platform/blackberry/CCGL.h"
-    #include "platform/blackberry/CCStdC.h"
-#endif // CC_TARGET_PLATFORM == CC_PLATFORM_BLACKBERRY
-
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
     #include "platform/win32/CCApplication-win32.h"
     #include "platform/desktop/CCGLViewImpl-desktop.h"
@@ -215,28 +208,6 @@ THE SOFTWARE.
     #include "platform/mac/CCGL-mac.h"
     #include "platform/mac/CCStdC-mac.h"
 #endif // CC_TARGET_PLATFORM == CC_PLATFORM_MAC
-
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
-    #include "platform/linux/CCApplication-linux.h"
-    #include "platform/desktop/CCGLViewImpl-desktop.h"
-    #include "platform/linux/CCGL-linux.h"
-    #include "platform/linux/CCStdC-linux.h"
-#endif // CC_TARGET_PLATFORM == CC_PLATFORM_LINUX
-
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)
-	#include "platform/winrt/CCApplication.h"
-	#include "platform/winrt/CCGLViewImpl-winrt.h"
-	#include "platform/winrt/CCGL.h"
-	#include "platform/winrt/CCStdC.h"
-#endif // CC_TARGET_PLATFORM == CC_PLATFORM_WINRT
-
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_WP8)
-	#include "platform/winrt/CCApplication.h"
-	#include "platform/wp8/CCGLViewImpl-wp8.h"
-	#include "platform/winrt/CCGL.h"
-	#include "platform/winrt/CCStdC.h"
-	#include "platform/winrt/CCPrecompiledShaders.h"
-#endif // CC_TARGET_PLATFORM == CC_PLATFORM_WP8
 
 // script_support
 #include "base/CCScriptSupport.h"
@@ -268,21 +239,6 @@ THE SOFTWARE.
 // component
 #include "2d/CCComponent.h"
 #include "2d/CCComponentContainer.h"
-
-//3d
-#include "3d/CCAABB.h"
-#include "3d/CCOBB.h"
-#include "3d/CCRay.h"
-#include "3d/CCSprite3D.h"
-#include "3d/CCMesh.h"
-#include "3d/CCMeshSkin.h"
-#include "3d/CCAnimate3D.h"
-#include "3d/CCAnimation3D.h"
-#include "3d/CCSprite3DMaterial.h"
-#include "3d/CCAttachNode.h"
-#include "3d/CCMeshVertexIndexData.h"
-#include "3d/CCSkeleton3D.h"
-#include "3d/CCBillBoard.h"
 
 // Deprecated include
 #include "deprecated/CCDictionary.h"
