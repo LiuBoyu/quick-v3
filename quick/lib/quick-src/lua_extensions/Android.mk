@@ -9,7 +9,7 @@ LOCAL_SRC_FILES := lua_extensions_more.c
 
 LOCAL_SRC_FILES += cjson/lua_cjson.c \
                    cjson/fpconv.c \
-                   cjson/strbuf.c
+                   cjson/strbuf.c \
                    zlib/lua_zlib.c \
                    filesystem/lfs.c \
                    bitop/bit.c
