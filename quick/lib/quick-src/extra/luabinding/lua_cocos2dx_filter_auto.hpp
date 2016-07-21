@@ -1,6 +1,6 @@
 #include "base/ccConfig.h"
-#ifndef __cocos2dx_extension_filter_h__
-#define __cocos2dx_extension_filter_h__
+#ifndef __cocos2dx_filter_h__
+#define __cocos2dx_filter_h__
 
 #ifdef __cplusplus
 extern "C" {
@@ -10,7 +10,7 @@ extern "C" {
 }
 #endif
 
-int register_all_cocos2dx_extension_filter(lua_State* tolua_S);
+int register_all_cocos2dx_filter(lua_State* tolua_S);
 
 
 
@@ -139,4 +139,4 @@ int register_all_cocos2dx_extension_filter(lua_State* tolua_S);
 
 
 
-#endif // __cocos2dx_extension_filter_h__
+#endif // __cocos2dx_filter_h__

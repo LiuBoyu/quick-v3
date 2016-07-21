@@ -1,4 +1,4 @@
-#include "lua_cocos2dx_extension_filter_auto.hpp"
+#include "lua_cocos2dx_filter_auto.hpp"
 #include "filters/cocos2dFilters.h"
 #include "tolua_fix.h"
 #include "LuaBasicConversions.h"
