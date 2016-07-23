@@ -6,13 +6,15 @@ extern "C" {
 #endif
 
 #include "cjson/lua_cjson.h"
-#include "zlib/lua_zlib.h"
 #include "filesystem/lfs.h"
-#include "bitop/bit.h"
+#include "zlib/lua_zlib.h"
 
+#if CC_USE_WEBSOCKET
 #include "sproto/lsproto.h"
-#include "lpack/lpack.h"
 #include "lpeg/lpeg.h"
+#include "lpack/lpack.h"
+#include "bitop/bit.h"
+#endif
 
 #if CC_USE_SQLITE
 #include "lsqlite3/lsqlite3.h"
@@ -20,12 +22,14 @@ extern "C" {
 
 static luaL_Reg luax_exts[] = {
     {"cjson", luaopen_cjson_safe},
-    {"zlib", luaopen_zlib},
     {"lfs", luaopen_lfs},
-    {"bit", luaopen_bit},
+    {"zlib", luaopen_zlib},
+#if CC_USE_WEBSOCKET
     {"sproto.core", luaopen_sproto_core},
-    {"pack", luaopen_pack},
     {"lpeg", luaopen_lpeg},
+    {"pack", luaopen_pack},
+    {"bit", luaopen_bit},
+#endif
 #if CC_USE_SQLITE
     {"lsqlite3", luaopen_lsqlite3},
 #endif
