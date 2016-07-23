@@ -14,6 +14,11 @@ using namespace cocos2d;
 #include "crypto/CCCrypto.h"
 #include "native/CCNative.h"
 #include "network/CCNetwork.h"
+
+#if CC_USE_CURL
+#include "network/CCHTTPRequest.h"
+#endif // CC_USE_CURL
+
 using namespace std;
 using namespace cocos2d;
 using namespace cocos2d::extra;
@@ -31,10 +36,10 @@ static void tolua_reg_types (lua_State* tolua_S)
  tolua_usertype(tolua_S,"cc.Ref");
  tolua_usertype(tolua_S,"Network");
  tolua_usertype(tolua_S,"Crypto");
-
  tolua_usertype(tolua_S,"Native");
+ #if CC_USE_CURL
  tolua_usertype(tolua_S,"HTTPRequest");
-
+ #endif // CC_USE_CURL
 }
 
 /* method: getAES256KeyLength of class  Crypto */
@@ -654,6 +659,7 @@ static int tolua_cocos2dx_extra_luabinding_Native_vibrate00(lua_State* tolua_S)
 }
 #endif //#ifndef TOLUA_DISABLE
 
+#if CC_USE_CURL
 /* method: createWithUrlLua of class  HTTPRequest */
 #ifndef TOLUA_DISABLE_tolua_cocos2dx_extra_luabinding_HTTPRequest_createWithUrl00
 static int tolua_cocos2dx_extra_luabinding_HTTPRequest_createWithUrl00(lua_State* tolua_S)
@@ -1411,6 +1417,7 @@ static int tolua_cocos2dx_extra_luabinding_HTTPRequest_getErrorMessage00(lua_Sta
 #endif
 }
 #endif //#ifndef TOLUA_DISABLE
+#endif // CC_USE_CURL
 
 /* method: isLocalWiFiAvailable of class  Network */
 #ifndef TOLUA_DISABLE_tolua_cocos2dx_extra_luabinding_Network_isLocalWiFiAvailable00
@@ -1526,40 +1533,6 @@ static int tolua_cocos2dx_extra_luabinding_Network_getInternetConnectionStatus00
 }
 #endif //#ifndef TOLUA_DISABLE
 
-/* method: createHTTPRequestLua of class  Network */
-#ifndef TOLUA_DISABLE_tolua_cocos2dx_extra_luabinding_Network_createHTTPRequest00
-static int tolua_cocos2dx_extra_luabinding_Network_createHTTPRequest00(lua_State* tolua_S)
-{
-#if COCOS2D_DEBUG >= 1
- tolua_Error tolua_err;
- if (
-     !tolua_isusertable(tolua_S,1,"Network",0,&tolua_err) ||
-     (tolua_isvaluenil(tolua_S,2,&tolua_err) || !toluafix_isfunction(tolua_S,2,"LUA_FUNCTION",0,&tolua_err)) ||
-     !tolua_isstring(tolua_S,3,0,&tolua_err) ||
-     !tolua_isnumber(tolua_S,4,1,&tolua_err) ||
-     !tolua_isnoobj(tolua_S,5,&tolua_err)
- )
-  goto tolua_lerror;
- else
-#endif
- {
-  LUA_FUNCTION listener = (  toluafix_ref_function(tolua_S,2,0));
-  const char* url = ((const char*)  tolua_tostring(tolua_S,3,0));
-  int method = ((int)  tolua_tonumber(tolua_S,4,kCCHTTPRequestMethodGET));
-  {
-   HTTPRequest* tolua_ret = (HTTPRequest*)  Network::createHTTPRequestLua(listener,url,method);
-    tolua_pushusertype(tolua_S,(void*)tolua_ret,"HTTPRequest");
-  }
- }
- return 1;
-#if COCOS2D_DEBUG >= 1
- tolua_lerror:
- tolua_error(tolua_S,"#ferror in function 'createHTTPRequest'.",&tolua_err);
- return 0;
-#endif
-}
-#endif //#ifndef TOLUA_DISABLE
-
 /* Open function */
 TOLUA_API int tolua_cocos2dx_extra_luabinding_open (lua_State* tolua_S)
 {
@@ -1593,6 +1566,7 @@ TOLUA_API int tolua_cocos2dx_extra_luabinding_open (lua_State* tolua_S)
    tolua_function(tolua_S,"getDeviceName",tolua_cocos2dx_extra_luabinding_Native_getDeviceName00);
    tolua_function(tolua_S,"vibrate",tolua_cocos2dx_extra_luabinding_Native_vibrate00);
   tolua_endmodule(tolua_S);
+#if CC_USE_CURL
   tolua_constant(tolua_S,"kCCHTTPRequestMethodGET",kCCHTTPRequestMethodGET);
   tolua_constant(tolua_S,"kCCHTTPRequestMethodPOST",kCCHTTPRequestMethodPOST);
   tolua_constant(tolua_S,"kCCHTTPRequestMethodPUT",kCCHTTPRequestMethodPUT);
@@ -1606,7 +1580,6 @@ TOLUA_API int tolua_cocos2dx_extra_luabinding_open (lua_State* tolua_S)
   tolua_constant(tolua_S,"kCCHTTPRequestStateCompleted",kCCHTTPRequestStateCompleted);
   tolua_constant(tolua_S,"kCCHTTPRequestStateCancelled",kCCHTTPRequestStateCancelled);
   tolua_constant(tolua_S,"kCCHTTPRequestStateFailed",kCCHTTPRequestStateFailed);
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_USE_CURL)
   tolua_cclass(tolua_S,"HTTPRequest","HTTPRequest","cc.Ref",NULL);
   tolua_beginmodule(tolua_S,"HTTPRequest");
    tolua_function(tolua_S,"createWithUrl",tolua_cocos2dx_extra_luabinding_HTTPRequest_createWithUrl00);
@@ -1633,7 +1606,7 @@ TOLUA_API int tolua_cocos2dx_extra_luabinding_open (lua_State* tolua_S)
    tolua_function(tolua_S,"getErrorCode",tolua_cocos2dx_extra_luabinding_HTTPRequest_getErrorCode00);
    tolua_function(tolua_S,"getErrorMessage",tolua_cocos2dx_extra_luabinding_HTTPRequest_getErrorMessage00);
   tolua_endmodule(tolua_S);
-#endif // (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_USE_CURL)
+#endif // CC_USE_CURL
   tolua_constant(tolua_S,"kCCNetworkStatusNotReachable",kCCNetworkStatusNotReachable);
   tolua_constant(tolua_S,"kCCNetworkStatusReachableViaWiFi",kCCNetworkStatusReachableViaWiFi);
   tolua_constant(tolua_S,"kCCNetworkStatusReachableViaWWAN",kCCNetworkStatusReachableViaWWAN);
@@ -1643,7 +1616,6 @@ TOLUA_API int tolua_cocos2dx_extra_luabinding_open (lua_State* tolua_S)
    tolua_function(tolua_S,"isInternetConnectionAvailable",tolua_cocos2dx_extra_luabinding_Network_isInternetConnectionAvailable00);
    tolua_function(tolua_S,"isHostNameReachable",tolua_cocos2dx_extra_luabinding_Network_isHostNameReachable00);
    tolua_function(tolua_S,"getInternetConnectionStatus",tolua_cocos2dx_extra_luabinding_Network_getInternetConnectionStatus00);
-   tolua_function(tolua_S,"createHTTPRequest",tolua_cocos2dx_extra_luabinding_Network_createHTTPRequest00);
   tolua_endmodule(tolua_S);
  tolua_endmodule(tolua_S);
  return 1;

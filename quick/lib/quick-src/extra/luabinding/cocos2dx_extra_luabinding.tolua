@@ -122,8 +122,4 @@ class Network
     static bool isInternetConnectionAvailable(void);
     static bool isHostNameReachable(const char* hostName);
     static int getInternetConnectionStatus(void);
-
-    static HTTPRequest* createHTTPRequestLua @ createHTTPRequest (LUA_FUNCTION listener,
-                                               const char* url,
-                                               int method = kCCHTTPRequestMethodGET);
 };

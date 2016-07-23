@@ -10,11 +10,30 @@ LOCAL_SRC_FILES := luabinding/cocos2dx_extra_luabinding.cpp \
                    apptools/HelperFunc.cpp \
                    crypto/CCCrypto.cpp \
                    crypto/base64/libbase64.c \
-                   network/CCNetwork.cpp \
-                   network/CCHTTPRequest.cpp \
                    platform/android/CCCryptoAndroid.cpp \
                    platform/android/CCNativeAndroid.cpp \
                    platform/android/CCNetworkAndroid.cpp
+
+LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/luabinding \
+                           $(LOCAL_PATH)
+
+LOCAL_C_INCLUDES        := $(LOCAL_PATH)/luabinding \
+                           $(LOCAL_PATH) \
+                           $(COCOS2DX_ROOT)/cocos/scripting/lua-bindings/manual \
+                           $(COCOS2DX_ROOT)/cocos \
+                           $(COCOS2DX_ROOT)/external/lua/luajit/include \
+                           $(COCOS2DX_ROOT)/external/lua/tolua \
+                           $(COCOS2DX_ROOT)/external
+
+LOCAL_STATIC_LIBRARIES :=
+
+ifeq ($(CC_USE_CURL), 1)
+LOCAL_SRC_FILES += network/CCHTTPRequest.cpp
+
+LOCAL_STATIC_LIBRARIES += cocos_curl_static
+endif
+
+ifeq ($(CC_USE_FILTER), 1)
 LOCAL_SRC_FILES += luabinding/lua_cocos2dx_filter_auto.cpp \
                    filters/filters/CCFilter.cpp \
                    filters/filters/CCBlurFilter.cpp \
@@ -35,23 +54,14 @@ LOCAL_SRC_FILES += luabinding/lua_cocos2dx_filter_auto.cpp \
                    filters/filters/CCCustomFilter.cpp \
                    filters/nodes/CCFilteredSprite.cpp \
                    filters/shaders/ccFilterShaders.cpp
+endif
+
+ifeq ($(CC_USE_NANOVG), 1)
 LOCAL_SRC_FILES += luabinding/lua_cocos2dx_nanovg_manual.cpp \
                    luabinding/lua_cocos2dx_nanovg_auto.cpp \
                    nanovg/nanonode/NVGDrawNode.cpp \
                    nanovg/nanonode/NVGNode.cpp \
                    nanovg/nanovg/nanovg.c
-
-LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH) \
-                           $(LOCAL_PATH)/luabinding
-
-LOCAL_C_INCLUDES := $(LOCAL_PATH) \
-                    $(LOCAL_PATH)/luabinding \
-                    $(COCOS2DX_ROOT)/cocos/scripting/lua-bindings/manual \
-                    $(COCOS2DX_ROOT)/cocos \
-                    $(COCOS2DX_ROOT)/external/lua/luajit/include \
-                    $(COCOS2DX_ROOT)/external/lua/tolua \
-                    $(COCOS2DX_ROOT)/external
-
-LOCAL_STATIC_LIBRARIES := cocos_curl_static
+endif
 
 include $(BUILD_STATIC_LIBRARY)
