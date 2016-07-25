@@ -32,7 +32,10 @@ THE SOFTWARE.
 #include "renderer/CCRenderer.h"
 #include "platform/CCImage.h"
 #include "platform/CCFileUtils.h"
+
+#if CC_USE_CCSTUDIO
 #include "cocostudio/CCArmature.h"
+#endif
 
 NS_CC_BEGIN
 
@@ -59,13 +62,13 @@ void onCaptureScreen(const std::function<void(bool, const std::string&)>& afterC
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) || (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
     frameSize = frameSize * glView->getFrameZoomFactor() * glView->getRetinaFactor();
 #endif
-    
+
     int width = static_cast<int>(frameSize.width);
     int height = static_cast<int>(frameSize.height);
-    
+
     bool succeed = false;
     std::string outputFile = "";
-    
+
     do
     {
         std::shared_ptr<GLubyte> buffer(new GLubyte[width * height * 4], [](GLubyte* p){ CC_SAFE_DELETE_ARRAY(p); });
@@ -73,19 +76,19 @@ void onCaptureScreen(const std::function<void(bool, const std::string&)>& afterC
         {
             break;
         }
-        
+
         glPixelStorei(GL_PACK_ALIGNMENT, 1);
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WP8)
-        // The frame buffer is always created with portrait orientation on WP8. 
-        // So if the current device orientation is landscape, we need to rotate the frame buffer.  
+        // The frame buffer is always created with portrait orientation on WP8.
+        // So if the current device orientation is landscape, we need to rotate the frame buffer.
         auto renderTargetSize = glView->getRenerTargetSize();
         CCASSERT(width * height == static_cast<int>(renderTargetSize.width * renderTargetSize.height), "The frame size is not matched");
         glReadPixels(0, 0, (int)renderTargetSize.width, (int)renderTargetSize.height, GL_RGBA, GL_UNSIGNED_BYTE, buffer.get());
 #else
         glReadPixels(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, buffer.get());
 #endif
-        
+
         std::shared_ptr<GLubyte> flippedBuffer(new GLubyte[width * height * 4], [](GLubyte* p) { CC_SAFE_DELETE_ARRAY(p); });
         if (!flippedBuffer)
         {
@@ -110,7 +113,7 @@ void onCaptureScreen(const std::function<void(bool, const std::string&)>& afterC
                 {
                     *(int*)(flippedBuffer.get() + (height - col - 1) * width * 4 + row * 4) = *(int*)(buffer.get() + row * height * 4 + col * 4);
                 }
-            }     
+            }
         }
 #else
         for (int row = 0; row < height; ++row)
@@ -135,7 +138,7 @@ void onCaptureScreen(const std::function<void(bool, const std::string&)>& afterC
             succeed = image->saveToFile(outputFile);
         }
     }while(0);
-    
+
     if (afterCaptured)
     {
         afterCaptured(succeed, outputFile);
@@ -151,11 +154,11 @@ void captureScreen(const std::function<void(bool, const std::string&)>& afterCap
     captureScreenCommand.func = std::bind(onCaptureScreen, afterCaptured, filename);
     Director::getInstance()->getRenderer()->addCommand(&captureScreenCommand);
 }
-    
+
 std::vector<Node*> findChildren(const Node &node, const std::string &name)
 {
     std::vector<Node*> vec;
-    
+
     node.enumerateChildren(name, [&vec](Node* nodeFound) -> bool {
         vec.push_back(nodeFound);
         return false;
@@ -171,17 +174,17 @@ double atof(const char* str)
     {
         return 0.0;
     }
-    
+
     char buf[MAX_ITOA_BUFFER_SIZE];
     strncpy(buf, str, MAX_ITOA_BUFFER_SIZE);
-    
+
     // strip string, only remain 7 numbers after '.'
     char* dot = strchr(buf, '.');
     if (dot != nullptr && dot - buf + 8 <  MAX_ITOA_BUFFER_SIZE)
     {
         dot[8] = '\0';
     }
-    
+
     return ::atof(buf);
 }
 
@@ -197,7 +200,8 @@ Rect getCascadeBoundingBox(Node *node)
 {
     Rect cbb;
     Size contentSize = node->getContentSize();
-    
+
+#if CC_USE_CCSTUDIO
     // Bugfixed "getCascadeBoundingBox对cocostudio::Armature的计算错误" modified by LiuBoyu
     if (dynamic_cast<cocostudio::Armature*>(node))
     {
@@ -210,7 +214,8 @@ Rect getCascadeBoundingBox(Node *node)
             return node->getBoundingBox();
         }
     }
-    
+#endif
+
     // check all childrens bounding box, get maximize box
     Node* child = nullptr;
     bool merge = false;
@@ -218,10 +223,10 @@ Rect getCascadeBoundingBox(Node *node)
     {
         child = dynamic_cast<Node*>(object);
         if (!child->isVisible()) continue;
-        
+
         const Rect box = getCascadeBoundingBox(child);
         if (box.size.width <= 0 || box.size.height <= 0) continue;
-        
+
         if (!merge)
         {
             cbb = box;
@@ -232,7 +237,7 @@ Rect getCascadeBoundingBox(Node *node)
             cbb.merge(box);
         }
     }
-    
+
     // merge content size
     if (contentSize.width > 0 && contentSize.height > 0)
     {
@@ -246,10 +251,10 @@ Rect getCascadeBoundingBox(Node *node)
             cbb.merge(box);
         }
     }
-    
+
     return cbb;
 }
-    
+
 }
 
 NS_CC_END

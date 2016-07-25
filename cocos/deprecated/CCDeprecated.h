@@ -553,7 +553,6 @@ CC_DEPRECATED_ATTRIBUTE typedef __NotificationCenter NotificationCenter;
 //CC_DEPRECATED_ATTRIBUTE typedef StandardTouchDelegate CCStandardTouchDelegate;
 //CC_DEPRECATED_ATTRIBUTE typedef TouchDelegate CCTouchDelegate;
 CC_DEPRECATED_ATTRIBUTE typedef Image CCImage;
-CC_DEPRECATED_ATTRIBUTE typedef UserDefault CCUserDefault;
 
 CC_DEPRECATED_ATTRIBUTE typedef Action CCAction;
 CC_DEPRECATED_ATTRIBUTE typedef FiniteTimeAction CCFiniteTimeAction;
@@ -723,14 +722,6 @@ CC_DEPRECATED_ATTRIBUTE typedef TransitionProgressHorizontal CCTransitionProgres
 CC_DEPRECATED_ATTRIBUTE typedef TransitionProgressVertical CCTransitionProgressVertical;
 CC_DEPRECATED_ATTRIBUTE typedef TransitionProgressInOut CCTransitionProgressInOut;
 CC_DEPRECATED_ATTRIBUTE typedef TransitionProgressOutIn CCTransitionProgressOutIn;
-CC_DEPRECATED_ATTRIBUTE typedef MenuItem CCMenuItem;
-CC_DEPRECATED_ATTRIBUTE typedef MenuItemLabel CCMenuItemLabel;
-CC_DEPRECATED_ATTRIBUTE typedef MenuItemAtlasFont CCMenuItemAtlasFont;
-CC_DEPRECATED_ATTRIBUTE typedef MenuItemFont CCMenuItemFont;
-CC_DEPRECATED_ATTRIBUTE typedef MenuItemSprite CCMenuItemSprite;
-CC_DEPRECATED_ATTRIBUTE typedef MenuItemImage CCMenuItemImage;
-CC_DEPRECATED_ATTRIBUTE typedef MenuItemToggle CCMenuItemToggle;
-CC_DEPRECATED_ATTRIBUTE typedef Menu CCMenu;
 CC_DEPRECATED_ATTRIBUTE typedef ClippingNode CCClippingNode;
 CC_DEPRECATED_ATTRIBUTE typedef MotionStreak CCMotionStreak;
 CC_DEPRECATED_ATTRIBUTE typedef ProgressTimer CCProgressTimer;
@@ -903,11 +894,6 @@ CC_DEPRECATED_ATTRIBUTE typedef ParticleSystem::PositionType tPositionType;
 
 #define kCCLabelAutomaticWidth  kLabelAutomaticWidth
 
-
-CC_DEPRECATED_ATTRIBUTE const Menu::State kCCMenuStateWaiting = Menu::State::WAITING;
-CC_DEPRECATED_ATTRIBUTE const Menu::State kCCMenuStateTrackingTouch = Menu::State::TRACKING_TOUCH;
-
-CC_DEPRECATED_ATTRIBUTE typedef Menu::State tMenuState;
 
 CC_DEPRECATED_ATTRIBUTE const Touch::DispatchMode kCCTouchesOneByOne = Touch::DispatchMode::ONE_BY_ONE;
 CC_DEPRECATED_ATTRIBUTE const Touch::DispatchMode kCCTouchesAllAtOnce = Touch::DispatchMode::ALL_AT_ONCE;

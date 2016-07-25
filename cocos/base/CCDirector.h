@@ -59,22 +59,20 @@ class TextureCache;
 class Renderer;
 class Camera;
 
-class Console;
-
 /**
 @brief Class that creates and handles the main Window and manages how
 and when to execute the Scenes.
- 
+
  The Director is also responsible for:
   - initializing the OpenGL context
   - setting the OpenGL pixel format (default on is RGB565)
   - setting the OpenGL buffer depth (default one is 0-bit)
   - setting the projection (default one is 3D)
   - setting the orientation (default one is Portrait)
- 
+
  Since the Director is a singleton, the standard way to use it is by calling:
   _ Director::getInstance()->methodName();
- 
+
  The Director also sets the default OpenGL context:
   - GL_TEXTURE_2D is enabled
   - GL_VERTEX_ARRAY is enabled
@@ -103,17 +101,17 @@ public:
     {
         /// sets a 2D projection (orthogonal projection)
         _2D,
-        
+
         /// sets a 3D projection with a fovy=60, znear=0.5f and zfar=1500.
         _3D,
-        
+
         /// it calls "updateProjection" on the projection delegate.
         CUSTOM,
-        
+
         /// Default projection is 3D projection
         DEFAULT = _3D,
     };
-    
+
     /** returns a shared instance of the director */
     static Director* getInstance();
 
@@ -144,7 +142,7 @@ public:
     inline bool isDisplayStats() { return _displayStats; }
     /** Display the FPS on the bottom-left corner */
     inline void setDisplayStats(bool displayStats) { _displayStats = displayStats; }
-    
+
     /** seconds per frame */
     inline float getSecondsPerFrame() { return _secondsPerFrame; }
 
@@ -165,7 +163,7 @@ public:
 
     /** How many frames were called since the director started */
     inline unsigned int getTotalFrames() { return _totalFrames; }
-    
+
     /** Sets an OpenGL projection
      @since v0.8.2
      * @js NA
@@ -173,13 +171,13 @@ public:
      */
     inline Projection getProjection() { return _projection; }
     void setProjection(Projection projection);
-    
+
     /** Sets the glViewport*/
     void setViewport();
 
     /** How many frames were called since the director started */
-    
-    
+
+
     /** Whether or not the replaced scene will receive the cleanup message.
      If the new scene is pushed, then the old scene won't receive the "cleanup" message.
      If the new scene replaces the old one, the it will receive the "cleanup" message.
@@ -194,7 +192,7 @@ public:
      */
     Node* getNotificationNode() const { return _notificationNode; }
     void setNotificationNode(Node *node);
-    
+
     // window size
 
     /** returns the size of the OpenGL view in points.
@@ -204,13 +202,13 @@ public:
     /** returns the size of the OpenGL view in pixels.
     */
     Size getWinSizeInPixels() const;
-    
+
     /** returns visible size of the OpenGL view in points.
      *  the value is equal to getWinSize if don't invoke
      *  GLView::setDesignResolutionSize()
      */
     Size getVisibleSize() const;
-    
+
     /** returns visible origin of the OpenGL view in points.
      */
     Vec2 getVisibleOrigin() const;
@@ -225,7 +223,7 @@ public:
      */
     Vec2 convertToUI(const Vec2& point);
 
-    /// FIXME: missing description 
+    /// FIXME: missing description
     float getZEye() const;
 
     // Scene Management
@@ -240,7 +238,7 @@ public:
 
     /** Suspends the execution of the running scene, pushing it on the stack of suspended scenes.
      * The new scene will be executed.
-     * Try to avoid big stacks of pushed scenes to reduce memory allocation. 
+     * Try to avoid big stacks of pushed scenes to reduce memory allocation.
      * ONLY call it if there is a running scene.
      */
     void pushScene(Scene *scene);
@@ -340,7 +338,7 @@ public:
      @since v2.0
      */
     Scheduler* getScheduler() const { return _scheduler; }
-    
+
     /** Sets the Scheduler associated with this director
      @since v2.0
      */
@@ -350,18 +348,18 @@ public:
      @since v2.0
      */
     ActionManager* getActionManager() const { return _actionManager; }
-    
+
     /** Sets the ActionManager associated with this director
      @since v2.0
      */
     void setActionManager(ActionManager* actionManager);
-    
-    /** Gets the EventDispatcher associated with this director 
+
+    /** Gets the EventDispatcher associated with this director
      @since v3.0
      */
     EventDispatcher* getEventDispatcher() const { return _eventDispatcher; }
-    
-    /** Sets the EventDispatcher associated with this director 
+
+    /** Sets the EventDispatcher associated with this director
      @since v3.0
      */
     void setEventDispatcher(EventDispatcher* dispatcher);
@@ -371,14 +369,9 @@ public:
      */
     Renderer* getRenderer() const { return _renderer; }
 
-    /** Returns the Console 
-     @since v3.0
-     */
-    Console* getConsole() const { return _console; }
-
     /* Gets delta time since last tick to main loop */
 	float getDeltaTime() const;
-    
+
     /**
      *  get Frame Rate
      */
@@ -395,15 +388,15 @@ public:
 protected:
     void purgeDirector();
     bool _purgeDirectorInNextLoop; // this flag will be set to true in end()
-    
+
     void setNextScene();
-    
+
     void showStats();
     void createStatsLabel();
     void calculateMPF();
     void getFPSImageData(unsigned char** datapointer, ssize_t* length);
-    
-    /** calculates delta time since last time it was called */    
+
+    /** calculates delta time since last time it was called */
     void calculateDeltaTime();
 
     //textureCache creation or release
@@ -420,21 +413,21 @@ protected:
      @since v2.0
      */
     Scheduler *_scheduler;
-    
+
     /** ActionManager associated with this director
      @since v2.0
      */
     ActionManager *_actionManager;
-    
+
     /** EventDispatcher associated with this director
      @since v3.0
      */
     EventDispatcher* _eventDispatcher;
     EventCustom *_eventProjectionChanged, *_eventAfterDraw, *_eventAfterVisit, *_eventAfterUpdate;
-        
+
     /* delta time since last tick to main loop */
 	float _deltaTime;
-    
+
     /* The _openGLView, where everything is rendered, GLView is a abstract class,cocos2d-x provide GLViewImpl
      which inherit from it as default renderer context,you can have your own by inherit from it*/
     GLView *_openGLView;
@@ -447,47 +440,47 @@ protected:
 
     /* landscape mode ? */
     bool _landscape;
-    
+
     bool _displayStats;
     float _accumDt;
     float _frameRate;
-    
+
     LabelAtlas *_FPSLabel;
     LabelAtlas *_drawnBatchesLabel;
     LabelAtlas *_drawnVerticesLabel;
-    
+
     /** Whether or not the Director is paused */
     bool _paused;
 
     /* How many frames were called since the director started */
     unsigned int _totalFrames;
     float _secondsPerFrame;
-    
+
     /* The running scene */
     Scene *_runningScene;
-    
+
     /* will be the next 'runningScene' in the next frame
      nextScene is a weak reference. */
     Scene *_nextScene;
-    
+
     /* If true, then "old" scene will receive the cleanup message */
     bool _sendCleanupToScene;
 
     /* scheduled scenes */
     Vector<Scene*> _scenesStack;
-    
+
     /* last time the main loop was updated */
     struct timeval *_lastUpdate;
 
     /* whether or not the next delta time will be zero */
     bool _nextDeltaTimeZero;
-    
+
     /* projection used */
     Projection _projection;
 
     /* window size in points */
     Size _winSizeInPoints;
-    
+
     /* content scale factor */
     float _contentScaleFactor;
 
@@ -497,26 +490,23 @@ protected:
     /* Renderer for the Director */
     Renderer *_renderer;
 
-    /* Console for the director */
-    Console *_console;
-
     // GLView will recreate stats labels to fit visible rect
     friend class GLView;
 };
 
-/** 
+/**
  @brief DisplayLinkDirector is a Director that synchronizes timers with the refresh rate of the display.
- 
+
  Features and Limitations:
   - Scheduled timers & drawing are synchronizes with the refresh rate of the display
   - Only supports animation intervals of 1/60 1/30 & 1/15
- 
+
  @since v0.8.2
  */
 class DisplayLinkDirector : public Director
 {
 public:
-    DisplayLinkDirector() 
+    DisplayLinkDirector()
         : _invalid(false)
     {}
     virtual ~DisplayLinkDirector(){}

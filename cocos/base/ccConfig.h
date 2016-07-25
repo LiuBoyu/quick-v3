@@ -274,6 +274,16 @@ To enable set it to a value different than 0. Disabled by default.
 #define CC_USE_TMX 0
 #endif
 
+/** Use lua integration API */
+#ifndef CC_USE_FILTER
+#define CC_USE_FILTER 0
+#endif
+
+/** Use lua integration API */
+#ifndef CC_USE_NANOVG
+#define CC_USE_NANOVG 0
+#endif
+
 /** Support JPEG or not. If your application don't use jpeg format picture, you can undefine this macro to save package size.
  */
 #ifndef CC_USE_JPEG
@@ -295,8 +305,20 @@ To enable set it to a value different than 0. Disabled by default.
 /** Use curl or not. If your application don't use curl, you can undefine this macro to save package size.
  */
 #ifndef CC_USE_CURL
-#define CC_USE_CURL  1
+#define CC_USE_CURL  0
 #endif // CC_USE_CURL
+
+/** Use websocket or not. If your application don't use websocket, you can undefine this macro to save package size.
+ */
+#ifndef CC_USE_WEBSOCKET
+#define CC_USE_WEBSOCKET  0
+#endif // CC_USE_WEBSOCKET
+
+/** Use sqlite or not. If your application don't use sqlite, you can undefine this macro to save package size.
+ */
+#ifndef CC_USE_SQLITE
+#define CC_USE_SQLITE  0
+#endif // CC_USE_SQLITE
 
 /** Use cocos studio or not. If your application don't use ccs, you can undefine this macro to save package size.
  */
