@@ -48,11 +48,16 @@ extern "C" {
 #include "lua_cocos2dx_auto.hpp"
 #include "lua_cocos2dx_manual.hpp"
 #include "LuaBasicConversions.h"
-#include "lua_cocos2dx_deprecated.h"
+
+#if CC_USE_PHYSICS
 #include "lua_cocos2dx_physics_auto.hpp"
 #include "lua_cocos2dx_physics_manual.hpp"
+#endif
+
+#if CC_USE_TMX
 #include "lua_cocos2dx_experimental_auto.hpp"
 #include "lua_cocos2dx_experimental_manual.hpp"
+#endif
 
 
 namespace {
@@ -182,18 +187,25 @@ bool LuaStack::init(void)
     luaL_register(_state, "_G", global_functions);
 
     g_luaType.clear();
+
     register_all_cocos2dx(_state);
+
     tolua_opengl_open(_state);
+
     register_all_cocos2dx_manual(_state);
     register_all_cocos2dx_module_manual(_state);
     register_all_cocos2dx_math_manual(_state);
-    register_all_cocos2dx_experimental(_state);
-    register_all_cocos2dx_experimental_manual(_state);
 
     register_glnode_manual(_state);
+
 #if CC_USE_PHYSICS
     register_all_cocos2dx_physics(_state);
     register_all_cocos2dx_physics_manual(_state);
+#endif
+
+#if CC_USE_TMX
+    register_all_cocos2dx_experimental(_state);
+    register_all_cocos2dx_experimental_manual(_state);
 #endif
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
@@ -203,8 +215,6 @@ bool LuaStack::init(void)
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     LuaJavaBridge::luaopen_luaj(_state);
 #endif
-    register_all_cocos2dx_deprecated(_state);
-    register_all_cocos2dx_manual_deprecated(_state);
 
     tolua_script_handler_mgr_open(_state);
 
@@ -254,7 +264,6 @@ void LuaStack::addLuaLoader(lua_CFunction func)
 
     lua_pop(_state, 1);
 }
-
 
 void LuaStack::removeScriptObjectByObject(Ref* pObj)
 {
@@ -526,7 +535,6 @@ int LuaStack::reallocateScriptHandler(int nHandler)
     lua_settop(_state, 0);
 */
     return nNewHandle;
-
 }
 
 int LuaStack::executeFunctionReturnArray(int handler,int numArgs,int numResults,__Array& resultArray)

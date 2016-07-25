@@ -24,7 +24,7 @@ int lua_cocos2dx_Ref_release(lua_State* tolua_S)
     cobj = (cocos2d::Ref*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Ref_release'", nullptr);
         return 0;
@@ -32,7 +32,7 @@ int lua_cocos2dx_Ref_release(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -71,7 +71,7 @@ int lua_cocos2dx_Ref_retain(lua_State* tolua_S)
     cobj = (cocos2d::Ref*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Ref_retain'", nullptr);
         return 0;
@@ -79,7 +79,7 @@ int lua_cocos2dx_Ref_retain(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -118,7 +118,7 @@ int lua_cocos2dx_Ref_getReferenceCount(lua_State* tolua_S)
     cobj = (cocos2d::Ref*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Ref_getReferenceCount'", nullptr);
         return 0;
@@ -126,7 +126,7 @@ int lua_cocos2dx_Ref_getReferenceCount(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -169,226 +169,6 @@ int lua_register_cocos2dx_Ref(lua_State* tolua_S)
     return 1;
 }
 
-int lua_cocos2dx_Console_stop(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::Console* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.Console",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::Console*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Console_stop'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_Console_stop'", nullptr);
-            return 0;
-        }
-        cobj->stop();
-        lua_settop(tolua_S, 1);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.Console:stop",argc, 0);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Console_stop'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_Console_listenOnTCP(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::Console* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.Console",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::Console*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Console_listenOnTCP'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        int arg0;
-
-        ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0, "cc.Console:listenOnTCP");
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_Console_listenOnTCP'", nullptr);
-            return 0;
-        }
-        bool ret = cobj->listenOnTCP(arg0);
-        tolua_pushboolean(tolua_S,(bool)ret);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.Console:listenOnTCP",argc, 1);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Console_listenOnTCP'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_Console_listenOnFileDescriptor(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::Console* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.Console",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::Console*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Console_listenOnFileDescriptor'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        int arg0;
-
-        ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0, "cc.Console:listenOnFileDescriptor");
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_Console_listenOnFileDescriptor'", nullptr);
-            return 0;
-        }
-        bool ret = cobj->listenOnFileDescriptor(arg0);
-        tolua_pushboolean(tolua_S,(bool)ret);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.Console:listenOnFileDescriptor",argc, 1);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Console_listenOnFileDescriptor'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_Console_log(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::Console* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.Console",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::Console*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Console_log'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        const char* arg0;
-
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp, "cc.Console:log"); arg0 = arg0_tmp.c_str();
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_Console_log'", nullptr);
-            return 0;
-        }
-        cobj->log(arg0);
-        lua_settop(tolua_S, 1);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.Console:log",argc, 1);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Console_log'.",&tolua_err);
-#endif
-
-    return 0;
-}
-static int lua_cocos2dx_Console_finalize(lua_State* tolua_S)
-{
-    printf("luabindings: finalizing LUA object (Console)");
-    return 0;
-}
-
-int lua_register_cocos2dx_Console(lua_State* tolua_S)
-{
-    tolua_usertype(tolua_S,"cc.Console");
-    tolua_cclass(tolua_S,"Console","cc.Console","cc.Ref",nullptr);
-
-    tolua_beginmodule(tolua_S,"Console");
-        tolua_function(tolua_S,"stop",lua_cocos2dx_Console_stop);
-        tolua_function(tolua_S,"listenOnTCP",lua_cocos2dx_Console_listenOnTCP);
-        tolua_function(tolua_S,"listenOnFileDescriptor",lua_cocos2dx_Console_listenOnFileDescriptor);
-        tolua_function(tolua_S,"log",lua_cocos2dx_Console_log);
-    tolua_endmodule(tolua_S);
-    std::string typeName = typeid(cocos2d::Console).name();
-    g_luaType[typeName] = "cc.Console";
-    g_typeCast["Console"] = "cc.Console";
-    return 1;
-}
-
 int lua_cocos2dx_Texture2D_getMaxT(lua_State* tolua_S)
 {
     int argc = 0;
@@ -407,7 +187,7 @@ int lua_cocos2dx_Texture2D_getMaxT(lua_State* tolua_S)
     cobj = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Texture2D_getMaxT'", nullptr);
         return 0;
@@ -415,7 +195,7 @@ int lua_cocos2dx_Texture2D_getMaxT(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -454,7 +234,7 @@ int lua_cocos2dx_Texture2D_getStringForFormat(lua_State* tolua_S)
     cobj = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Texture2D_getStringForFormat'", nullptr);
         return 0;
@@ -462,7 +242,7 @@ int lua_cocos2dx_Texture2D_getStringForFormat(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -560,7 +340,7 @@ int lua_cocos2dx_Texture2D_getMaxS(lua_State* tolua_S)
     cobj = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Texture2D_getMaxS'", nullptr);
         return 0;
@@ -568,7 +348,7 @@ int lua_cocos2dx_Texture2D_getMaxS(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -607,7 +387,7 @@ int lua_cocos2dx_Texture2D_releaseGLTexture(lua_State* tolua_S)
     cobj = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Texture2D_releaseGLTexture'", nullptr);
         return 0;
@@ -615,7 +395,7 @@ int lua_cocos2dx_Texture2D_releaseGLTexture(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -654,7 +434,7 @@ int lua_cocos2dx_Texture2D_hasPremultipliedAlpha(lua_State* tolua_S)
     cobj = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Texture2D_hasPremultipliedAlpha'", nullptr);
         return 0;
@@ -662,7 +442,7 @@ int lua_cocos2dx_Texture2D_hasPremultipliedAlpha(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -701,7 +481,7 @@ int lua_cocos2dx_Texture2D_getPixelsHigh(lua_State* tolua_S)
     cobj = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Texture2D_getPixelsHigh'", nullptr);
         return 0;
@@ -709,7 +489,7 @@ int lua_cocos2dx_Texture2D_getPixelsHigh(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -799,7 +579,7 @@ int lua_cocos2dx_Texture2D_getName(lua_State* tolua_S)
     cobj = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Texture2D_getName'", nullptr);
         return 0;
@@ -807,7 +587,7 @@ int lua_cocos2dx_Texture2D_getName(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -997,7 +777,7 @@ int lua_cocos2dx_Texture2D_setMaxT(lua_State* tolua_S)
     cobj = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Texture2D_setMaxT'", nullptr);
         return 0;
@@ -1005,7 +785,7 @@ int lua_cocos2dx_Texture2D_setMaxT(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -1047,7 +827,7 @@ int lua_cocos2dx_Texture2D_drawInRect(lua_State* tolua_S)
     cobj = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Texture2D_drawInRect'", nullptr);
         return 0;
@@ -1055,7 +835,7 @@ int lua_cocos2dx_Texture2D_drawInRect(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Rect arg0;
 
@@ -1097,7 +877,7 @@ int lua_cocos2dx_Texture2D_getContentSize(lua_State* tolua_S)
     cobj = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Texture2D_getContentSize'", nullptr);
         return 0;
@@ -1105,7 +885,7 @@ int lua_cocos2dx_Texture2D_getContentSize(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -1144,7 +924,7 @@ int lua_cocos2dx_Texture2D_setAliasTexParameters(lua_State* tolua_S)
     cobj = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Texture2D_setAliasTexParameters'", nullptr);
         return 0;
@@ -1152,7 +932,7 @@ int lua_cocos2dx_Texture2D_setAliasTexParameters(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -1191,7 +971,7 @@ int lua_cocos2dx_Texture2D_setAntiAliasTexParameters(lua_State* tolua_S)
     cobj = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Texture2D_setAntiAliasTexParameters'", nullptr);
         return 0;
@@ -1199,7 +979,7 @@ int lua_cocos2dx_Texture2D_setAntiAliasTexParameters(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -1238,7 +1018,7 @@ int lua_cocos2dx_Texture2D_generateMipmap(lua_State* tolua_S)
     cobj = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Texture2D_generateMipmap'", nullptr);
         return 0;
@@ -1246,7 +1026,7 @@ int lua_cocos2dx_Texture2D_generateMipmap(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -1285,7 +1065,7 @@ int lua_cocos2dx_Texture2D_getDescription(lua_State* tolua_S)
     cobj = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Texture2D_getDescription'", nullptr);
         return 0;
@@ -1293,7 +1073,7 @@ int lua_cocos2dx_Texture2D_getDescription(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -1332,7 +1112,7 @@ int lua_cocos2dx_Texture2D_getPixelFormat(lua_State* tolua_S)
     cobj = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Texture2D_getPixelFormat'", nullptr);
         return 0;
@@ -1340,7 +1120,7 @@ int lua_cocos2dx_Texture2D_getPixelFormat(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -1379,7 +1159,7 @@ int lua_cocos2dx_Texture2D_setGLProgram(lua_State* tolua_S)
     cobj = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Texture2D_setGLProgram'", nullptr);
         return 0;
@@ -1387,7 +1167,7 @@ int lua_cocos2dx_Texture2D_setGLProgram(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::GLProgram* arg0;
 
@@ -1429,7 +1209,7 @@ int lua_cocos2dx_Texture2D_getContentSizeInPixels(lua_State* tolua_S)
     cobj = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Texture2D_getContentSizeInPixels'", nullptr);
         return 0;
@@ -1437,7 +1217,7 @@ int lua_cocos2dx_Texture2D_getContentSizeInPixels(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -1476,7 +1256,7 @@ int lua_cocos2dx_Texture2D_getPixelsWide(lua_State* tolua_S)
     cobj = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Texture2D_getPixelsWide'", nullptr);
         return 0;
@@ -1484,7 +1264,7 @@ int lua_cocos2dx_Texture2D_getPixelsWide(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -1523,7 +1303,7 @@ int lua_cocos2dx_Texture2D_drawAtPoint(lua_State* tolua_S)
     cobj = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Texture2D_drawAtPoint'", nullptr);
         return 0;
@@ -1531,7 +1311,7 @@ int lua_cocos2dx_Texture2D_drawAtPoint(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Vec2 arg0;
 
@@ -1573,7 +1353,7 @@ int lua_cocos2dx_Texture2D_getGLProgram(lua_State* tolua_S)
     cobj = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Texture2D_getGLProgram'", nullptr);
         return 0;
@@ -1581,7 +1361,7 @@ int lua_cocos2dx_Texture2D_getGLProgram(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -1620,7 +1400,7 @@ int lua_cocos2dx_Texture2D_hasMipmaps(lua_State* tolua_S)
     cobj = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Texture2D_hasMipmaps'", nullptr);
         return 0;
@@ -1628,7 +1408,7 @@ int lua_cocos2dx_Texture2D_hasMipmaps(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -1667,7 +1447,7 @@ int lua_cocos2dx_Texture2D_setMaxS(lua_State* tolua_S)
     cobj = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Texture2D_setMaxS'", nullptr);
         return 0;
@@ -1675,7 +1455,7 @@ int lua_cocos2dx_Texture2D_setMaxS(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -1782,7 +1562,7 @@ int lua_cocos2dx_Texture2D_constructor(lua_State* tolua_S)
 
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -1871,7 +1651,7 @@ int lua_cocos2dx_Touch_getPreviousLocationInView(lua_State* tolua_S)
     cobj = (cocos2d::Touch*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Touch_getPreviousLocationInView'", nullptr);
         return 0;
@@ -1879,7 +1659,7 @@ int lua_cocos2dx_Touch_getPreviousLocationInView(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -1918,7 +1698,7 @@ int lua_cocos2dx_Touch_getLocation(lua_State* tolua_S)
     cobj = (cocos2d::Touch*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Touch_getLocation'", nullptr);
         return 0;
@@ -1926,7 +1706,7 @@ int lua_cocos2dx_Touch_getLocation(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -1965,7 +1745,7 @@ int lua_cocos2dx_Touch_getDelta(lua_State* tolua_S)
     cobj = (cocos2d::Touch*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Touch_getDelta'", nullptr);
         return 0;
@@ -1973,7 +1753,7 @@ int lua_cocos2dx_Touch_getDelta(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -2012,7 +1792,7 @@ int lua_cocos2dx_Touch_getStartLocationInView(lua_State* tolua_S)
     cobj = (cocos2d::Touch*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Touch_getStartLocationInView'", nullptr);
         return 0;
@@ -2020,7 +1800,7 @@ int lua_cocos2dx_Touch_getStartLocationInView(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -2059,7 +1839,7 @@ int lua_cocos2dx_Touch_getStartLocation(lua_State* tolua_S)
     cobj = (cocos2d::Touch*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Touch_getStartLocation'", nullptr);
         return 0;
@@ -2067,7 +1847,7 @@ int lua_cocos2dx_Touch_getStartLocation(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -2106,7 +1886,7 @@ int lua_cocos2dx_Touch_getID(lua_State* tolua_S)
     cobj = (cocos2d::Touch*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Touch_getID'", nullptr);
         return 0;
@@ -2114,7 +1894,7 @@ int lua_cocos2dx_Touch_getID(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -2153,7 +1933,7 @@ int lua_cocos2dx_Touch_setTouchInfo(lua_State* tolua_S)
     cobj = (cocos2d::Touch*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Touch_setTouchInfo'", nullptr);
         return 0;
@@ -2161,7 +1941,7 @@ int lua_cocos2dx_Touch_setTouchInfo(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 3) 
+    if (argc == 3)
     {
         int arg0;
         double arg1;
@@ -2209,7 +1989,7 @@ int lua_cocos2dx_Touch_getLocationInView(lua_State* tolua_S)
     cobj = (cocos2d::Touch*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Touch_getLocationInView'", nullptr);
         return 0;
@@ -2217,7 +1997,7 @@ int lua_cocos2dx_Touch_getLocationInView(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -2256,7 +2036,7 @@ int lua_cocos2dx_Touch_getPreviousLocation(lua_State* tolua_S)
     cobj = (cocos2d::Touch*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Touch_getPreviousLocation'", nullptr);
         return 0;
@@ -2264,7 +2044,7 @@ int lua_cocos2dx_Touch_getPreviousLocation(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -2298,7 +2078,7 @@ int lua_cocos2dx_Touch_constructor(lua_State* tolua_S)
 
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -2369,7 +2149,7 @@ int lua_cocos2dx_Event_getCurrentTarget(lua_State* tolua_S)
     cobj = (cocos2d::Event*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Event_getCurrentTarget'", nullptr);
         return 0;
@@ -2377,7 +2157,7 @@ int lua_cocos2dx_Event_getCurrentTarget(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -2416,7 +2196,7 @@ int lua_cocos2dx_Event_getType(lua_State* tolua_S)
     cobj = (cocos2d::Event*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Event_getType'", nullptr);
         return 0;
@@ -2424,7 +2204,7 @@ int lua_cocos2dx_Event_getType(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -2463,7 +2243,7 @@ int lua_cocos2dx_Event_getResult(lua_State* tolua_S)
     cobj = (cocos2d::Event*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Event_getResult'", nullptr);
         return 0;
@@ -2471,7 +2251,7 @@ int lua_cocos2dx_Event_getResult(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -2510,7 +2290,7 @@ int lua_cocos2dx_Event_isStopped(lua_State* tolua_S)
     cobj = (cocos2d::Event*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Event_isStopped'", nullptr);
         return 0;
@@ -2518,7 +2298,7 @@ int lua_cocos2dx_Event_isStopped(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -2557,7 +2337,7 @@ int lua_cocos2dx_Event_setResult(lua_State* tolua_S)
     cobj = (cocos2d::Event*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Event_setResult'", nullptr);
         return 0;
@@ -2565,7 +2345,7 @@ int lua_cocos2dx_Event_setResult(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -2607,7 +2387,7 @@ int lua_cocos2dx_Event_stopPropagation(lua_State* tolua_S)
     cobj = (cocos2d::Event*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Event_stopPropagation'", nullptr);
         return 0;
@@ -2615,7 +2395,7 @@ int lua_cocos2dx_Event_stopPropagation(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -2679,7 +2459,7 @@ int lua_cocos2dx_EventTouch_getEventCode(lua_State* tolua_S)
     cobj = (cocos2d::EventTouch*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EventTouch_getEventCode'", nullptr);
         return 0;
@@ -2687,7 +2467,7 @@ int lua_cocos2dx_EventTouch_getEventCode(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -2726,7 +2506,7 @@ int lua_cocos2dx_EventTouch_setEventCode(lua_State* tolua_S)
     cobj = (cocos2d::EventTouch*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EventTouch_setEventCode'", nullptr);
         return 0;
@@ -2734,7 +2514,7 @@ int lua_cocos2dx_EventTouch_setEventCode(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::EventTouch::EventCode arg0;
 
@@ -2771,7 +2551,7 @@ int lua_cocos2dx_EventTouch_constructor(lua_State* tolua_S)
 
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -2830,7 +2610,7 @@ int lua_cocos2dx_EventKeyboard_constructor(lua_State* tolua_S)
 
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         cocos2d::EventKeyboard::KeyCode arg0;
         bool arg1;
@@ -3052,7 +2832,7 @@ int lua_cocos2dx_Node_getDescription(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getDescription'", nullptr);
         return 0;
@@ -3060,7 +2840,7 @@ int lua_cocos2dx_Node_getDescription(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -3099,7 +2879,7 @@ int lua_cocos2dx_Node_setRotationSkewY(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_setRotationSkewY'", nullptr);
         return 0;
@@ -3107,7 +2887,7 @@ int lua_cocos2dx_Node_setRotationSkewY(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -3149,7 +2929,7 @@ int lua_cocos2dx_Node_setOpacityModifyRGB(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_setOpacityModifyRGB'", nullptr);
         return 0;
@@ -3157,7 +2937,7 @@ int lua_cocos2dx_Node_setOpacityModifyRGB(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -3199,7 +2979,7 @@ int lua_cocos2dx_Node_setCascadeOpacityEnabled(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_setCascadeOpacityEnabled'", nullptr);
         return 0;
@@ -3207,7 +2987,7 @@ int lua_cocos2dx_Node_setCascadeOpacityEnabled(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -3296,7 +3076,7 @@ int lua_cocos2dx_Node_setOnExitCallback(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_setOnExitCallback'", nullptr);
         return 0;
@@ -3304,7 +3084,7 @@ int lua_cocos2dx_Node_setOnExitCallback(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::function<void ()> arg0;
 
@@ -3350,7 +3130,7 @@ int lua_cocos2dx_Node_pause(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_pause'", nullptr);
         return 0;
@@ -3358,7 +3138,7 @@ int lua_cocos2dx_Node_pause(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -3397,7 +3177,7 @@ int lua_cocos2dx_Node_convertToWorldSpaceAR(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_convertToWorldSpaceAR'", nullptr);
         return 0;
@@ -3405,7 +3185,7 @@ int lua_cocos2dx_Node_convertToWorldSpaceAR(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Vec2 arg0;
 
@@ -3447,7 +3227,7 @@ int lua_cocos2dx_Node_isIgnoreAnchorPointForPosition(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_isIgnoreAnchorPointForPosition'", nullptr);
         return 0;
@@ -3455,7 +3235,7 @@ int lua_cocos2dx_Node_isIgnoreAnchorPointForPosition(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -3494,7 +3274,7 @@ int lua_cocos2dx_Node_getChildByName(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getChildByName'", nullptr);
         return 0;
@@ -3502,7 +3282,7 @@ int lua_cocos2dx_Node_getChildByName(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -3544,7 +3324,7 @@ int lua_cocos2dx_Node_updateDisplayedOpacity(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_updateDisplayedOpacity'", nullptr);
         return 0;
@@ -3552,7 +3332,7 @@ int lua_cocos2dx_Node_updateDisplayedOpacity(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         uint16_t arg0;
 
@@ -3594,7 +3374,7 @@ int lua_cocos2dx_Node_getCameraMask(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getCameraMask'", nullptr);
         return 0;
@@ -3602,7 +3382,7 @@ int lua_cocos2dx_Node_getCameraMask(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -3641,7 +3421,7 @@ int lua_cocos2dx_Node_setRotation(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_setRotation'", nullptr);
         return 0;
@@ -3649,7 +3429,7 @@ int lua_cocos2dx_Node_setRotation(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -3691,7 +3471,7 @@ int lua_cocos2dx_Node_setScaleZ(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_setScaleZ'", nullptr);
         return 0;
@@ -3699,7 +3479,7 @@ int lua_cocos2dx_Node_setScaleZ(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -3741,7 +3521,7 @@ int lua_cocos2dx_Node_setScaleY(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_setScaleY'", nullptr);
         return 0;
@@ -3749,7 +3529,7 @@ int lua_cocos2dx_Node_setScaleY(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -3791,7 +3571,7 @@ int lua_cocos2dx_Node_setScaleX(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_setScaleX'", nullptr);
         return 0;
@@ -3799,7 +3579,7 @@ int lua_cocos2dx_Node_setScaleX(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -3841,7 +3621,7 @@ int lua_cocos2dx_Node_setRotationSkewX(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_setRotationSkewX'", nullptr);
         return 0;
@@ -3849,7 +3629,7 @@ int lua_cocos2dx_Node_setRotationSkewX(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -3891,7 +3671,7 @@ int lua_cocos2dx_Node_setonEnterTransitionDidFinishCallback(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_setonEnterTransitionDidFinishCallback'", nullptr);
         return 0;
@@ -3899,7 +3679,7 @@ int lua_cocos2dx_Node_setonEnterTransitionDidFinishCallback(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::function<void ()> arg0;
 
@@ -3945,7 +3725,7 @@ int lua_cocos2dx_Node_removeAllComponents(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_removeAllComponents'", nullptr);
         return 0;
@@ -3953,7 +3733,7 @@ int lua_cocos2dx_Node_removeAllComponents(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -3992,7 +3772,7 @@ int lua_cocos2dx_Node_getOpacity(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getOpacity'", nullptr);
         return 0;
@@ -4000,7 +3780,7 @@ int lua_cocos2dx_Node_getOpacity(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -4039,7 +3819,7 @@ int lua_cocos2dx_Node_setCameraMask(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_setCameraMask'", nullptr);
         return 0;
@@ -4047,7 +3827,7 @@ int lua_cocos2dx_Node_setCameraMask(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         unsigned short arg0;
 
@@ -4061,7 +3841,7 @@ int lua_cocos2dx_Node_setCameraMask(lua_State* tolua_S)
         lua_settop(tolua_S, 1);
         return 1;
     }
-    if (argc == 2) 
+    if (argc == 2)
     {
         unsigned short arg0;
         bool arg1;
@@ -4106,7 +3886,7 @@ int lua_cocos2dx_Node_getTag(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getTag'", nullptr);
         return 0;
@@ -4114,7 +3894,7 @@ int lua_cocos2dx_Node_getTag(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -4153,7 +3933,7 @@ int lua_cocos2dx_Node_getGLProgram(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getGLProgram'", nullptr);
         return 0;
@@ -4161,7 +3941,7 @@ int lua_cocos2dx_Node_getGLProgram(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -4200,7 +3980,7 @@ int lua_cocos2dx_Node_getNodeToWorldTransform(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getNodeToWorldTransform'", nullptr);
         return 0;
@@ -4208,7 +3988,7 @@ int lua_cocos2dx_Node_getNodeToWorldTransform(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -4247,7 +4027,7 @@ int lua_cocos2dx_Node_getPosition3D(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getPosition3D'", nullptr);
         return 0;
@@ -4255,7 +4035,7 @@ int lua_cocos2dx_Node_getPosition3D(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -4294,7 +4074,7 @@ int lua_cocos2dx_Node_removeChild(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_removeChild'", nullptr);
         return 0;
@@ -4302,7 +4082,7 @@ int lua_cocos2dx_Node_removeChild(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Node* arg0;
 
@@ -4316,7 +4096,7 @@ int lua_cocos2dx_Node_removeChild(lua_State* tolua_S)
         lua_settop(tolua_S, 1);
         return 1;
     }
-    if (argc == 2) 
+    if (argc == 2)
     {
         cocos2d::Node* arg0;
         bool arg1;
@@ -4361,7 +4141,7 @@ int lua_cocos2dx_Node_convertToWorldSpace(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_convertToWorldSpace'", nullptr);
         return 0;
@@ -4369,7 +4149,7 @@ int lua_cocos2dx_Node_convertToWorldSpace(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Vec2 arg0;
 
@@ -4411,7 +4191,7 @@ int lua_cocos2dx_Node_getScene(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getScene'", nullptr);
         return 0;
@@ -4419,7 +4199,7 @@ int lua_cocos2dx_Node_getScene(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -4458,7 +4238,7 @@ int lua_cocos2dx_Node_getEventDispatcher(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getEventDispatcher'", nullptr);
         return 0;
@@ -4466,7 +4246,7 @@ int lua_cocos2dx_Node_getEventDispatcher(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -4505,7 +4285,7 @@ int lua_cocos2dx_Node_setSkewX(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_setSkewX'", nullptr);
         return 0;
@@ -4513,7 +4293,7 @@ int lua_cocos2dx_Node_setSkewX(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -4555,7 +4335,7 @@ int lua_cocos2dx_Node_setGLProgramState(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_setGLProgramState'", nullptr);
         return 0;
@@ -4563,7 +4343,7 @@ int lua_cocos2dx_Node_setGLProgramState(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::GLProgramState* arg0;
 
@@ -4605,7 +4385,7 @@ int lua_cocos2dx_Node_setOnEnterCallback(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_setOnEnterCallback'", nullptr);
         return 0;
@@ -4613,7 +4393,7 @@ int lua_cocos2dx_Node_setOnEnterCallback(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::function<void ()> arg0;
 
@@ -4659,7 +4439,7 @@ int lua_cocos2dx_Node_setNormalizedPosition(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_setNormalizedPosition'", nullptr);
         return 0;
@@ -4667,7 +4447,7 @@ int lua_cocos2dx_Node_setNormalizedPosition(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Vec2 arg0;
 
@@ -4709,7 +4489,7 @@ int lua_cocos2dx_Node_setonExitTransitionDidStartCallback(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_setonExitTransitionDidStartCallback'", nullptr);
         return 0;
@@ -4717,7 +4497,7 @@ int lua_cocos2dx_Node_setonExitTransitionDidStartCallback(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::function<void ()> arg0;
 
@@ -4763,7 +4543,7 @@ int lua_cocos2dx_Node_convertTouchToNodeSpace(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_convertTouchToNodeSpace'", nullptr);
         return 0;
@@ -4771,7 +4551,7 @@ int lua_cocos2dx_Node_convertTouchToNodeSpace(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Touch* arg0;
 
@@ -4864,7 +4644,7 @@ int lua_cocos2dx_Node_getNodeToParentAffineTransform(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getNodeToParentAffineTransform'", nullptr);
         return 0;
@@ -4872,7 +4652,7 @@ int lua_cocos2dx_Node_getNodeToParentAffineTransform(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -4911,7 +4691,7 @@ int lua_cocos2dx_Node_isCascadeOpacityEnabled(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_isCascadeOpacityEnabled'", nullptr);
         return 0;
@@ -4919,7 +4699,7 @@ int lua_cocos2dx_Node_isCascadeOpacityEnabled(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -4958,7 +4738,7 @@ int lua_cocos2dx_Node_setParent(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_setParent'", nullptr);
         return 0;
@@ -4966,7 +4746,7 @@ int lua_cocos2dx_Node_setParent(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Node* arg0;
 
@@ -5008,7 +4788,7 @@ int lua_cocos2dx_Node_getName(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getName'", nullptr);
         return 0;
@@ -5016,7 +4796,7 @@ int lua_cocos2dx_Node_getName(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -5055,7 +4835,7 @@ int lua_cocos2dx_Node_resume(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_resume'", nullptr);
         return 0;
@@ -5063,7 +4843,7 @@ int lua_cocos2dx_Node_resume(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -5102,7 +4882,7 @@ int lua_cocos2dx_Node_getRotation3D(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getRotation3D'", nullptr);
         return 0;
@@ -5110,7 +4890,7 @@ int lua_cocos2dx_Node_getRotation3D(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -5149,7 +4929,7 @@ int lua_cocos2dx_Node_getNodeToParentTransform(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getNodeToParentTransform'", nullptr);
         return 0;
@@ -5157,7 +4937,7 @@ int lua_cocos2dx_Node_getNodeToParentTransform(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -5196,7 +4976,7 @@ int lua_cocos2dx_Node_convertTouchToNodeSpaceAR(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_convertTouchToNodeSpaceAR'", nullptr);
         return 0;
@@ -5204,7 +4984,7 @@ int lua_cocos2dx_Node_convertTouchToNodeSpaceAR(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Touch* arg0;
 
@@ -5246,7 +5026,7 @@ int lua_cocos2dx_Node_convertToNodeSpace(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_convertToNodeSpace'", nullptr);
         return 0;
@@ -5254,7 +5034,7 @@ int lua_cocos2dx_Node_convertToNodeSpace(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Vec2 arg0;
 
@@ -5355,7 +5135,7 @@ int lua_cocos2dx_Node_stopActionByTag(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_stopActionByTag'", nullptr);
         return 0;
@@ -5363,7 +5143,7 @@ int lua_cocos2dx_Node_stopActionByTag(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         int arg0;
 
@@ -5405,7 +5185,7 @@ int lua_cocos2dx_Node_reorderChild(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_reorderChild'", nullptr);
         return 0;
@@ -5413,7 +5193,7 @@ int lua_cocos2dx_Node_reorderChild(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         cocos2d::Node* arg0;
         int arg1;
@@ -5458,7 +5238,7 @@ int lua_cocos2dx_Node_ignoreAnchorPointForPosition(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_ignoreAnchorPointForPosition'", nullptr);
         return 0;
@@ -5466,7 +5246,7 @@ int lua_cocos2dx_Node_ignoreAnchorPointForPosition(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -5508,7 +5288,7 @@ int lua_cocos2dx_Node_setSkewY(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_setSkewY'", nullptr);
         return 0;
@@ -5516,7 +5296,7 @@ int lua_cocos2dx_Node_setSkewY(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -5558,7 +5338,7 @@ int lua_cocos2dx_Node_setPositionZ(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_setPositionZ'", nullptr);
         return 0;
@@ -5566,7 +5346,7 @@ int lua_cocos2dx_Node_setPositionZ(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -5608,7 +5388,7 @@ int lua_cocos2dx_Node_setRotation3D(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_setRotation3D'", nullptr);
         return 0;
@@ -5616,7 +5396,7 @@ int lua_cocos2dx_Node_setRotation3D(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Vec3 arg0;
 
@@ -5658,7 +5438,7 @@ int lua_cocos2dx_Node_setPositionX(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_setPositionX'", nullptr);
         return 0;
@@ -5666,7 +5446,7 @@ int lua_cocos2dx_Node_setPositionX(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -5708,7 +5488,7 @@ int lua_cocos2dx_Node_setNodeToParentTransform(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_setNodeToParentTransform'", nullptr);
         return 0;
@@ -5716,7 +5496,7 @@ int lua_cocos2dx_Node_setNodeToParentTransform(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Mat4 arg0;
 
@@ -5758,7 +5538,7 @@ int lua_cocos2dx_Node_getAnchorPoint(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getAnchorPoint'", nullptr);
         return 0;
@@ -5766,7 +5546,7 @@ int lua_cocos2dx_Node_getAnchorPoint(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -5805,7 +5585,7 @@ int lua_cocos2dx_Node_getNumberOfRunningActions(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getNumberOfRunningActions'", nullptr);
         return 0;
@@ -5813,7 +5593,7 @@ int lua_cocos2dx_Node_getNumberOfRunningActions(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -5852,7 +5632,7 @@ int lua_cocos2dx_Node_updateTransform(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_updateTransform'", nullptr);
         return 0;
@@ -5860,7 +5640,7 @@ int lua_cocos2dx_Node_updateTransform(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -5899,7 +5679,7 @@ int lua_cocos2dx_Node_isVisible(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_isVisible'", nullptr);
         return 0;
@@ -5907,7 +5687,7 @@ int lua_cocos2dx_Node_isVisible(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -5946,7 +5726,7 @@ int lua_cocos2dx_Node_getChildrenCount(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getChildrenCount'", nullptr);
         return 0;
@@ -5954,7 +5734,7 @@ int lua_cocos2dx_Node_getChildrenCount(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -5993,7 +5773,7 @@ int lua_cocos2dx_Node_convertToNodeSpaceAR(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_convertToNodeSpaceAR'", nullptr);
         return 0;
@@ -6001,7 +5781,7 @@ int lua_cocos2dx_Node_convertToNodeSpaceAR(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Vec2 arg0;
 
@@ -6043,7 +5823,7 @@ int lua_cocos2dx_Node_addComponent(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_addComponent'", nullptr);
         return 0;
@@ -6051,7 +5831,7 @@ int lua_cocos2dx_Node_addComponent(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Component* arg0;
 
@@ -6093,7 +5873,7 @@ int lua_cocos2dx_Node_runAction(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_runAction'", nullptr);
         return 0;
@@ -6101,7 +5881,7 @@ int lua_cocos2dx_Node_runAction(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Action* arg0;
 
@@ -6143,7 +5923,7 @@ int lua_cocos2dx_Node_isOpacityModifyRGB(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_isOpacityModifyRGB'", nullptr);
         return 0;
@@ -6151,7 +5931,7 @@ int lua_cocos2dx_Node_isOpacityModifyRGB(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -6190,7 +5970,7 @@ int lua_cocos2dx_Node_getRotation(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getRotation'", nullptr);
         return 0;
@@ -6198,7 +5978,7 @@ int lua_cocos2dx_Node_getRotation(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -6237,7 +6017,7 @@ int lua_cocos2dx_Node_getAnchorPointInPoints(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getAnchorPointInPoints'", nullptr);
         return 0;
@@ -6245,7 +6025,7 @@ int lua_cocos2dx_Node_getAnchorPointInPoints(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -6343,7 +6123,7 @@ int lua_cocos2dx_Node_removeChildByName(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_removeChildByName'", nullptr);
         return 0;
@@ -6351,7 +6131,7 @@ int lua_cocos2dx_Node_removeChildByName(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -6365,7 +6145,7 @@ int lua_cocos2dx_Node_removeChildByName(lua_State* tolua_S)
         lua_settop(tolua_S, 1);
         return 1;
     }
-    if (argc == 2) 
+    if (argc == 2)
     {
         std::string arg0;
         bool arg1;
@@ -6410,7 +6190,7 @@ int lua_cocos2dx_Node_getGLProgramState(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getGLProgramState'", nullptr);
         return 0;
@@ -6418,7 +6198,7 @@ int lua_cocos2dx_Node_getGLProgramState(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -6457,7 +6237,7 @@ int lua_cocos2dx_Node_setScheduler(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_setScheduler'", nullptr);
         return 0;
@@ -6465,7 +6245,7 @@ int lua_cocos2dx_Node_setScheduler(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Scheduler* arg0;
 
@@ -6507,7 +6287,7 @@ int lua_cocos2dx_Node_stopAllActions(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_stopAllActions'", nullptr);
         return 0;
@@ -6515,7 +6295,7 @@ int lua_cocos2dx_Node_stopAllActions(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -6554,7 +6334,7 @@ int lua_cocos2dx_Node_getSkewX(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getSkewX'", nullptr);
         return 0;
@@ -6562,7 +6342,7 @@ int lua_cocos2dx_Node_getSkewX(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -6601,7 +6381,7 @@ int lua_cocos2dx_Node_getSkewY(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getSkewY'", nullptr);
         return 0;
@@ -6609,7 +6389,7 @@ int lua_cocos2dx_Node_getSkewY(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -6648,7 +6428,7 @@ int lua_cocos2dx_Node_getDisplayedColor(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getDisplayedColor'", nullptr);
         return 0;
@@ -6656,7 +6436,7 @@ int lua_cocos2dx_Node_getDisplayedColor(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -6695,7 +6475,7 @@ int lua_cocos2dx_Node_getActionByTag(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getActionByTag'", nullptr);
         return 0;
@@ -6703,7 +6483,7 @@ int lua_cocos2dx_Node_getActionByTag(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         int arg0;
 
@@ -6745,7 +6525,7 @@ int lua_cocos2dx_Node_setName(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_setName'", nullptr);
         return 0;
@@ -6753,7 +6533,7 @@ int lua_cocos2dx_Node_setName(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -6795,7 +6575,7 @@ int lua_cocos2dx_Node_getDisplayedOpacity(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getDisplayedOpacity'", nullptr);
         return 0;
@@ -6803,7 +6583,7 @@ int lua_cocos2dx_Node_getDisplayedOpacity(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -6842,7 +6622,7 @@ int lua_cocos2dx_Node_getLocalZOrder(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getLocalZOrder'", nullptr);
         return 0;
@@ -6850,7 +6630,7 @@ int lua_cocos2dx_Node_getLocalZOrder(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -6936,7 +6716,7 @@ int lua_cocos2dx_Node_getParentToNodeAffineTransform(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getParentToNodeAffineTransform'", nullptr);
         return 0;
@@ -6944,7 +6724,7 @@ int lua_cocos2dx_Node_getParentToNodeAffineTransform(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -6983,7 +6763,7 @@ int lua_cocos2dx_Node_getOrderOfArrival(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getOrderOfArrival'", nullptr);
         return 0;
@@ -6991,7 +6771,7 @@ int lua_cocos2dx_Node_getOrderOfArrival(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -7030,7 +6810,7 @@ int lua_cocos2dx_Node_setActionManager(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_setActionManager'", nullptr);
         return 0;
@@ -7038,7 +6818,7 @@ int lua_cocos2dx_Node_setActionManager(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::ActionManager* arg0;
 
@@ -7080,7 +6860,7 @@ int lua_cocos2dx_Node_setColor(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_setColor'", nullptr);
         return 0;
@@ -7088,7 +6868,7 @@ int lua_cocos2dx_Node_setColor(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Color3B arg0;
 
@@ -7130,7 +6910,7 @@ int lua_cocos2dx_Node_isRunning(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_isRunning'", nullptr);
         return 0;
@@ -7138,7 +6918,7 @@ int lua_cocos2dx_Node_isRunning(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -7224,7 +7004,7 @@ int lua_cocos2dx_Node_getPositionZ(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getPositionZ'", nullptr);
         return 0;
@@ -7232,7 +7012,7 @@ int lua_cocos2dx_Node_getPositionZ(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -7271,7 +7051,7 @@ int lua_cocos2dx_Node_getPositionY(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getPositionY'", nullptr);
         return 0;
@@ -7279,7 +7059,7 @@ int lua_cocos2dx_Node_getPositionY(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -7318,7 +7098,7 @@ int lua_cocos2dx_Node_getPositionX(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getPositionX'", nullptr);
         return 0;
@@ -7326,7 +7106,7 @@ int lua_cocos2dx_Node_getPositionX(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -7365,7 +7145,7 @@ int lua_cocos2dx_Node_removeChildByTag(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_removeChildByTag'", nullptr);
         return 0;
@@ -7373,7 +7153,7 @@ int lua_cocos2dx_Node_removeChildByTag(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         int arg0;
 
@@ -7387,7 +7167,7 @@ int lua_cocos2dx_Node_removeChildByTag(lua_State* tolua_S)
         lua_settop(tolua_S, 1);
         return 1;
     }
-    if (argc == 2) 
+    if (argc == 2)
     {
         int arg0;
         bool arg1;
@@ -7432,7 +7212,7 @@ int lua_cocos2dx_Node_setPositionY(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_setPositionY'", nullptr);
         return 0;
@@ -7440,7 +7220,7 @@ int lua_cocos2dx_Node_setPositionY(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -7482,7 +7262,7 @@ int lua_cocos2dx_Node_getNodeToWorldAffineTransform(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getNodeToWorldAffineTransform'", nullptr);
         return 0;
@@ -7490,7 +7270,7 @@ int lua_cocos2dx_Node_getNodeToWorldAffineTransform(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -7529,7 +7309,7 @@ int lua_cocos2dx_Node_updateDisplayedColor(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_updateDisplayedColor'", nullptr);
         return 0;
@@ -7537,7 +7317,7 @@ int lua_cocos2dx_Node_updateDisplayedColor(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Color3B arg0;
 
@@ -7579,7 +7359,7 @@ int lua_cocos2dx_Node_setVisible(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_setVisible'", nullptr);
         return 0;
@@ -7587,7 +7367,7 @@ int lua_cocos2dx_Node_setVisible(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -7629,7 +7409,7 @@ int lua_cocos2dx_Node_getParentToNodeTransform(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getParentToNodeTransform'", nullptr);
         return 0;
@@ -7637,7 +7417,7 @@ int lua_cocos2dx_Node_getParentToNodeTransform(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -7676,7 +7456,7 @@ int lua_cocos2dx_Node_isScheduled(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_isScheduled'", nullptr);
         return 0;
@@ -7684,7 +7464,7 @@ int lua_cocos2dx_Node_isScheduled(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -7726,7 +7506,7 @@ int lua_cocos2dx_Node_setGlobalZOrder(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_setGlobalZOrder'", nullptr);
         return 0;
@@ -7734,7 +7514,7 @@ int lua_cocos2dx_Node_setGlobalZOrder(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -7835,7 +7615,7 @@ int lua_cocos2dx_Node_getChildByTag(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getChildByTag'", nullptr);
         return 0;
@@ -7843,7 +7623,7 @@ int lua_cocos2dx_Node_getChildByTag(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         int arg0;
 
@@ -7885,7 +7665,7 @@ int lua_cocos2dx_Node_setOrderOfArrival(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_setOrderOfArrival'", nullptr);
         return 0;
@@ -7893,7 +7673,7 @@ int lua_cocos2dx_Node_setOrderOfArrival(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         int arg0;
 
@@ -7935,7 +7715,7 @@ int lua_cocos2dx_Node_getScaleZ(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getScaleZ'", nullptr);
         return 0;
@@ -7943,7 +7723,7 @@ int lua_cocos2dx_Node_getScaleZ(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -7982,7 +7762,7 @@ int lua_cocos2dx_Node_getScaleY(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getScaleY'", nullptr);
         return 0;
@@ -7990,7 +7770,7 @@ int lua_cocos2dx_Node_getScaleY(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -8029,7 +7809,7 @@ int lua_cocos2dx_Node_getScaleX(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getScaleX'", nullptr);
         return 0;
@@ -8037,7 +7817,7 @@ int lua_cocos2dx_Node_getScaleX(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -8076,7 +7856,7 @@ int lua_cocos2dx_Node_setLocalZOrder(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_setLocalZOrder'", nullptr);
         return 0;
@@ -8084,7 +7864,7 @@ int lua_cocos2dx_Node_setLocalZOrder(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         int arg0;
 
@@ -8126,7 +7906,7 @@ int lua_cocos2dx_Node_getWorldToNodeAffineTransform(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getWorldToNodeAffineTransform'", nullptr);
         return 0;
@@ -8134,7 +7914,7 @@ int lua_cocos2dx_Node_getWorldToNodeAffineTransform(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -8173,7 +7953,7 @@ int lua_cocos2dx_Node_setCascadeColorEnabled(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_setCascadeColorEnabled'", nullptr);
         return 0;
@@ -8181,7 +7961,7 @@ int lua_cocos2dx_Node_setCascadeColorEnabled(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -8223,7 +8003,7 @@ int lua_cocos2dx_Node_setOpacity(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_setOpacity'", nullptr);
         return 0;
@@ -8231,7 +8011,7 @@ int lua_cocos2dx_Node_setOpacity(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         uint16_t arg0;
 
@@ -8273,7 +8053,7 @@ int lua_cocos2dx_Node_cleanup(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_cleanup'", nullptr);
         return 0;
@@ -8281,7 +8061,7 @@ int lua_cocos2dx_Node_cleanup(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -8320,7 +8100,7 @@ int lua_cocos2dx_Node_getComponent(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getComponent'", nullptr);
         return 0;
@@ -8328,7 +8108,7 @@ int lua_cocos2dx_Node_getComponent(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -8370,7 +8150,7 @@ int lua_cocos2dx_Node_getContentSize(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getContentSize'", nullptr);
         return 0;
@@ -8378,7 +8158,7 @@ int lua_cocos2dx_Node_getContentSize(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -8417,7 +8197,7 @@ int lua_cocos2dx_Node_stopAllActionsByTag(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_stopAllActionsByTag'", nullptr);
         return 0;
@@ -8425,7 +8205,7 @@ int lua_cocos2dx_Node_stopAllActionsByTag(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         int arg0;
 
@@ -8467,7 +8247,7 @@ int lua_cocos2dx_Node_getColor(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getColor'", nullptr);
         return 0;
@@ -8475,7 +8255,7 @@ int lua_cocos2dx_Node_getColor(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -8514,7 +8294,7 @@ int lua_cocos2dx_Node_getBoundingBox(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getBoundingBox'", nullptr);
         return 0;
@@ -8522,7 +8302,7 @@ int lua_cocos2dx_Node_getBoundingBox(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -8561,7 +8341,7 @@ int lua_cocos2dx_Node_setEventDispatcher(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_setEventDispatcher'", nullptr);
         return 0;
@@ -8569,7 +8349,7 @@ int lua_cocos2dx_Node_setEventDispatcher(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::EventDispatcher* arg0;
 
@@ -8611,7 +8391,7 @@ int lua_cocos2dx_Node_getGlobalZOrder(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getGlobalZOrder'", nullptr);
         return 0;
@@ -8619,7 +8399,7 @@ int lua_cocos2dx_Node_getGlobalZOrder(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -8717,7 +8497,7 @@ int lua_cocos2dx_Node_setUserObject(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_setUserObject'", nullptr);
         return 0;
@@ -8725,7 +8505,7 @@ int lua_cocos2dx_Node_setUserObject(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Ref* arg0;
 
@@ -8818,7 +8598,7 @@ int lua_cocos2dx_Node_setPosition3D(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_setPosition3D'", nullptr);
         return 0;
@@ -8826,7 +8606,7 @@ int lua_cocos2dx_Node_setPosition3D(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Vec3 arg0;
 
@@ -8868,7 +8648,7 @@ int lua_cocos2dx_Node_update(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_update'", nullptr);
         return 0;
@@ -8876,7 +8656,7 @@ int lua_cocos2dx_Node_update(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -8918,7 +8698,7 @@ int lua_cocos2dx_Node_sortAllChildren(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_sortAllChildren'", nullptr);
         return 0;
@@ -8926,7 +8706,7 @@ int lua_cocos2dx_Node_sortAllChildren(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -8965,7 +8745,7 @@ int lua_cocos2dx_Node_getWorldToNodeTransform(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getWorldToNodeTransform'", nullptr);
         return 0;
@@ -8973,7 +8753,7 @@ int lua_cocos2dx_Node_getWorldToNodeTransform(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -9012,7 +8792,7 @@ int lua_cocos2dx_Node_setGLProgram(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_setGLProgram'", nullptr);
         return 0;
@@ -9020,7 +8800,7 @@ int lua_cocos2dx_Node_setGLProgram(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::GLProgram* arg0;
 
@@ -9062,7 +8842,7 @@ int lua_cocos2dx_Node_getScale(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getScale'", nullptr);
         return 0;
@@ -9070,7 +8850,7 @@ int lua_cocos2dx_Node_getScale(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -9109,7 +8889,7 @@ int lua_cocos2dx_Node_getNormalizedPosition(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getNormalizedPosition'", nullptr);
         return 0;
@@ -9117,7 +8897,7 @@ int lua_cocos2dx_Node_getNormalizedPosition(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -9156,7 +8936,7 @@ int lua_cocos2dx_Node_getRotationSkewX(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getRotationSkewX'", nullptr);
         return 0;
@@ -9164,7 +8944,7 @@ int lua_cocos2dx_Node_getRotationSkewX(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -9203,7 +8983,7 @@ int lua_cocos2dx_Node_getRotationSkewY(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getRotationSkewY'", nullptr);
         return 0;
@@ -9211,7 +8991,7 @@ int lua_cocos2dx_Node_getRotationSkewY(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -9250,7 +9030,7 @@ int lua_cocos2dx_Node_setTag(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_setTag'", nullptr);
         return 0;
@@ -9258,7 +9038,7 @@ int lua_cocos2dx_Node_setTag(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         int arg0;
 
@@ -9300,7 +9080,7 @@ int lua_cocos2dx_Node_isCascadeColorEnabled(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_isCascadeColorEnabled'", nullptr);
         return 0;
@@ -9308,7 +9088,7 @@ int lua_cocos2dx_Node_isCascadeColorEnabled(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -9347,7 +9127,7 @@ int lua_cocos2dx_Node_stopAction(lua_State* tolua_S)
     cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_stopAction'", nullptr);
         return 0;
@@ -9355,7 +9135,7 @@ int lua_cocos2dx_Node_stopAction(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Action* arg0;
 
@@ -9629,7 +9409,7 @@ int lua_cocos2dx_Scene_render(lua_State* tolua_S)
     cobj = (cocos2d::Scene*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Scene_render'", nullptr);
         return 0;
@@ -9637,7 +9417,7 @@ int lua_cocos2dx_Scene_render(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Renderer* arg0;
 
@@ -9771,7 +9551,7 @@ int lua_cocos2dx_GLView_setFrameSize(lua_State* tolua_S)
     cobj = (cocos2d::GLView*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLView_setFrameSize'", nullptr);
         return 0;
@@ -9779,7 +9559,7 @@ int lua_cocos2dx_GLView_setFrameSize(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         double arg0;
         double arg1;
@@ -9824,7 +9604,7 @@ int lua_cocos2dx_GLView_getViewPortRect(lua_State* tolua_S)
     cobj = (cocos2d::GLView*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLView_getViewPortRect'", nullptr);
         return 0;
@@ -9832,7 +9612,7 @@ int lua_cocos2dx_GLView_getViewPortRect(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -9871,7 +9651,7 @@ int lua_cocos2dx_GLView_setContentScaleFactor(lua_State* tolua_S)
     cobj = (cocos2d::GLView*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLView_setContentScaleFactor'", nullptr);
         return 0;
@@ -9879,7 +9659,7 @@ int lua_cocos2dx_GLView_setContentScaleFactor(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -9921,7 +9701,7 @@ int lua_cocos2dx_GLView_getContentScaleFactor(lua_State* tolua_S)
     cobj = (cocos2d::GLView*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLView_getContentScaleFactor'", nullptr);
         return 0;
@@ -9929,7 +9709,7 @@ int lua_cocos2dx_GLView_getContentScaleFactor(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -9968,7 +9748,7 @@ int lua_cocos2dx_GLView_setIMEKeyboardState(lua_State* tolua_S)
     cobj = (cocos2d::GLView*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLView_setIMEKeyboardState'", nullptr);
         return 0;
@@ -9976,7 +9756,7 @@ int lua_cocos2dx_GLView_setIMEKeyboardState(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -10018,7 +9798,7 @@ int lua_cocos2dx_GLView_setScissorInPoints(lua_State* tolua_S)
     cobj = (cocos2d::GLView*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLView_setScissorInPoints'", nullptr);
         return 0;
@@ -10026,7 +9806,7 @@ int lua_cocos2dx_GLView_setScissorInPoints(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 4) 
+    if (argc == 4)
     {
         double arg0;
         double arg1;
@@ -10077,7 +9857,7 @@ int lua_cocos2dx_GLView_getViewName(lua_State* tolua_S)
     cobj = (cocos2d::GLView*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLView_getViewName'", nullptr);
         return 0;
@@ -10085,7 +9865,7 @@ int lua_cocos2dx_GLView_getViewName(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -10124,7 +9904,7 @@ int lua_cocos2dx_GLView_isOpenGLReady(lua_State* tolua_S)
     cobj = (cocos2d::GLView*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLView_isOpenGLReady'", nullptr);
         return 0;
@@ -10132,7 +9912,7 @@ int lua_cocos2dx_GLView_isOpenGLReady(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -10171,7 +9951,7 @@ int lua_cocos2dx_GLView_end(lua_State* tolua_S)
     cobj = (cocos2d::GLView*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLView_end'", nullptr);
         return 0;
@@ -10179,7 +9959,7 @@ int lua_cocos2dx_GLView_end(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -10218,7 +9998,7 @@ int lua_cocos2dx_GLView_getScaleY(lua_State* tolua_S)
     cobj = (cocos2d::GLView*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLView_getScaleY'", nullptr);
         return 0;
@@ -10226,7 +10006,7 @@ int lua_cocos2dx_GLView_getScaleY(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -10265,7 +10045,7 @@ int lua_cocos2dx_GLView_getScaleX(lua_State* tolua_S)
     cobj = (cocos2d::GLView*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLView_getScaleX'", nullptr);
         return 0;
@@ -10273,7 +10053,7 @@ int lua_cocos2dx_GLView_getScaleX(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -10312,7 +10092,7 @@ int lua_cocos2dx_GLView_getVisibleOrigin(lua_State* tolua_S)
     cobj = (cocos2d::GLView*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLView_getVisibleOrigin'", nullptr);
         return 0;
@@ -10320,7 +10100,7 @@ int lua_cocos2dx_GLView_getVisibleOrigin(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -10359,7 +10139,7 @@ int lua_cocos2dx_GLView_getFrameSize(lua_State* tolua_S)
     cobj = (cocos2d::GLView*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLView_getFrameSize'", nullptr);
         return 0;
@@ -10367,7 +10147,7 @@ int lua_cocos2dx_GLView_getFrameSize(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -10406,7 +10186,7 @@ int lua_cocos2dx_GLView_setFrameZoomFactor(lua_State* tolua_S)
     cobj = (cocos2d::GLView*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLView_setFrameZoomFactor'", nullptr);
         return 0;
@@ -10414,7 +10194,7 @@ int lua_cocos2dx_GLView_setFrameZoomFactor(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -10456,7 +10236,7 @@ int lua_cocos2dx_GLView_getFrameZoomFactor(lua_State* tolua_S)
     cobj = (cocos2d::GLView*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLView_getFrameZoomFactor'", nullptr);
         return 0;
@@ -10464,7 +10244,7 @@ int lua_cocos2dx_GLView_getFrameZoomFactor(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -10503,7 +10283,7 @@ int lua_cocos2dx_GLView_getDesignResolutionSize(lua_State* tolua_S)
     cobj = (cocos2d::GLView*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLView_getDesignResolutionSize'", nullptr);
         return 0;
@@ -10511,7 +10291,7 @@ int lua_cocos2dx_GLView_getDesignResolutionSize(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -10550,7 +10330,7 @@ int lua_cocos2dx_GLView_windowShouldClose(lua_State* tolua_S)
     cobj = (cocos2d::GLView*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLView_windowShouldClose'", nullptr);
         return 0;
@@ -10558,7 +10338,7 @@ int lua_cocos2dx_GLView_windowShouldClose(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -10597,7 +10377,7 @@ int lua_cocos2dx_GLView_swapBuffers(lua_State* tolua_S)
     cobj = (cocos2d::GLView*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLView_swapBuffers'", nullptr);
         return 0;
@@ -10605,7 +10385,7 @@ int lua_cocos2dx_GLView_swapBuffers(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -10644,7 +10424,7 @@ int lua_cocos2dx_GLView_setDesignResolutionSize(lua_State* tolua_S)
     cobj = (cocos2d::GLView*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLView_setDesignResolutionSize'", nullptr);
         return 0;
@@ -10652,7 +10432,7 @@ int lua_cocos2dx_GLView_setDesignResolutionSize(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 3) 
+    if (argc == 3)
     {
         double arg0;
         double arg1;
@@ -10700,7 +10480,7 @@ int lua_cocos2dx_GLView_getResolutionPolicy(lua_State* tolua_S)
     cobj = (cocos2d::GLView*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLView_getResolutionPolicy'", nullptr);
         return 0;
@@ -10708,7 +10488,7 @@ int lua_cocos2dx_GLView_getResolutionPolicy(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -10747,7 +10527,7 @@ int lua_cocos2dx_GLView_isRetinaDisplay(lua_State* tolua_S)
     cobj = (cocos2d::GLView*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLView_isRetinaDisplay'", nullptr);
         return 0;
@@ -10755,7 +10535,7 @@ int lua_cocos2dx_GLView_isRetinaDisplay(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -10794,7 +10574,7 @@ int lua_cocos2dx_GLView_setViewPortInPoints(lua_State* tolua_S)
     cobj = (cocos2d::GLView*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLView_setViewPortInPoints'", nullptr);
         return 0;
@@ -10802,7 +10582,7 @@ int lua_cocos2dx_GLView_setViewPortInPoints(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 4) 
+    if (argc == 4)
     {
         double arg0;
         double arg1;
@@ -10853,7 +10633,7 @@ int lua_cocos2dx_GLView_getScissorRect(lua_State* tolua_S)
     cobj = (cocos2d::GLView*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLView_getScissorRect'", nullptr);
         return 0;
@@ -10861,7 +10641,7 @@ int lua_cocos2dx_GLView_getScissorRect(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -10900,7 +10680,7 @@ int lua_cocos2dx_GLView_getRetinaFactor(lua_State* tolua_S)
     cobj = (cocos2d::GLView*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLView_getRetinaFactor'", nullptr);
         return 0;
@@ -10908,7 +10688,7 @@ int lua_cocos2dx_GLView_getRetinaFactor(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -10947,7 +10727,7 @@ int lua_cocos2dx_GLView_setViewName(lua_State* tolua_S)
     cobj = (cocos2d::GLView*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLView_setViewName'", nullptr);
         return 0;
@@ -10955,7 +10735,7 @@ int lua_cocos2dx_GLView_setViewName(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -10997,7 +10777,7 @@ int lua_cocos2dx_GLView_getVisibleRect(lua_State* tolua_S)
     cobj = (cocos2d::GLView*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLView_getVisibleRect'", nullptr);
         return 0;
@@ -11005,7 +10785,7 @@ int lua_cocos2dx_GLView_getVisibleRect(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -11044,7 +10824,7 @@ int lua_cocos2dx_GLView_getVisibleSize(lua_State* tolua_S)
     cobj = (cocos2d::GLView*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLView_getVisibleSize'", nullptr);
         return 0;
@@ -11052,7 +10832,7 @@ int lua_cocos2dx_GLView_getVisibleSize(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -11091,7 +10871,7 @@ int lua_cocos2dx_GLView_isScissorEnabled(lua_State* tolua_S)
     cobj = (cocos2d::GLView*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLView_isScissorEnabled'", nullptr);
         return 0;
@@ -11099,7 +10879,7 @@ int lua_cocos2dx_GLView_isScissorEnabled(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -11138,7 +10918,7 @@ int lua_cocos2dx_GLView_pollEvents(lua_State* tolua_S)
     cobj = (cocos2d::GLView*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLView_pollEvents'", nullptr);
         return 0;
@@ -11146,7 +10926,7 @@ int lua_cocos2dx_GLView_pollEvents(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -11306,7 +11086,7 @@ int lua_cocos2dx_Director_pause(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_pause'", nullptr);
         return 0;
@@ -11314,7 +11094,7 @@ int lua_cocos2dx_Director_pause(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -11353,7 +11133,7 @@ int lua_cocos2dx_Director_setEventDispatcher(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_setEventDispatcher'", nullptr);
         return 0;
@@ -11361,7 +11141,7 @@ int lua_cocos2dx_Director_setEventDispatcher(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::EventDispatcher* arg0;
 
@@ -11403,7 +11183,7 @@ int lua_cocos2dx_Director_setContentScaleFactor(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_setContentScaleFactor'", nullptr);
         return 0;
@@ -11411,7 +11191,7 @@ int lua_cocos2dx_Director_setContentScaleFactor(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -11453,7 +11233,7 @@ int lua_cocos2dx_Director_getContentScaleFactor(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_getContentScaleFactor'", nullptr);
         return 0;
@@ -11461,7 +11241,7 @@ int lua_cocos2dx_Director_getContentScaleFactor(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -11500,7 +11280,7 @@ int lua_cocos2dx_Director_getWinSizeInPixels(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_getWinSizeInPixels'", nullptr);
         return 0;
@@ -11508,7 +11288,7 @@ int lua_cocos2dx_Director_getWinSizeInPixels(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -11547,7 +11327,7 @@ int lua_cocos2dx_Director_getDeltaTime(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_getDeltaTime'", nullptr);
         return 0;
@@ -11555,7 +11335,7 @@ int lua_cocos2dx_Director_getDeltaTime(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -11594,7 +11374,7 @@ int lua_cocos2dx_Director_setGLDefaultValues(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_setGLDefaultValues'", nullptr);
         return 0;
@@ -11602,7 +11382,7 @@ int lua_cocos2dx_Director_setGLDefaultValues(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -11641,7 +11421,7 @@ int lua_cocos2dx_Director_setActionManager(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_setActionManager'", nullptr);
         return 0;
@@ -11649,7 +11429,7 @@ int lua_cocos2dx_Director_setActionManager(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::ActionManager* arg0;
 
@@ -11691,7 +11471,7 @@ int lua_cocos2dx_Director_setAlphaBlending(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_setAlphaBlending'", nullptr);
         return 0;
@@ -11699,7 +11479,7 @@ int lua_cocos2dx_Director_setAlphaBlending(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -11741,7 +11521,7 @@ int lua_cocos2dx_Director_popToRootScene(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_popToRootScene'", nullptr);
         return 0;
@@ -11749,7 +11529,7 @@ int lua_cocos2dx_Director_popToRootScene(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -11788,7 +11568,7 @@ int lua_cocos2dx_Director_loadMatrix(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_loadMatrix'", nullptr);
         return 0;
@@ -11796,7 +11576,7 @@ int lua_cocos2dx_Director_loadMatrix(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         cocos2d::MATRIX_STACK_TYPE arg0;
         cocos2d::Mat4 arg1;
@@ -11841,7 +11621,7 @@ int lua_cocos2dx_Director_getNotificationNode(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_getNotificationNode'", nullptr);
         return 0;
@@ -11849,7 +11629,7 @@ int lua_cocos2dx_Director_getNotificationNode(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -11888,7 +11668,7 @@ int lua_cocos2dx_Director_getWinSize(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_getWinSize'", nullptr);
         return 0;
@@ -11896,7 +11676,7 @@ int lua_cocos2dx_Director_getWinSize(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -11935,7 +11715,7 @@ int lua_cocos2dx_Director_getTextureCache(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_getTextureCache'", nullptr);
         return 0;
@@ -11943,7 +11723,7 @@ int lua_cocos2dx_Director_getTextureCache(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -11982,7 +11762,7 @@ int lua_cocos2dx_Director_isSendCleanupToScene(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_isSendCleanupToScene'", nullptr);
         return 0;
@@ -11990,7 +11770,7 @@ int lua_cocos2dx_Director_isSendCleanupToScene(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -12029,7 +11809,7 @@ int lua_cocos2dx_Director_getVisibleOrigin(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_getVisibleOrigin'", nullptr);
         return 0;
@@ -12037,7 +11817,7 @@ int lua_cocos2dx_Director_getVisibleOrigin(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -12076,7 +11856,7 @@ int lua_cocos2dx_Director_mainLoop(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_mainLoop'", nullptr);
         return 0;
@@ -12084,7 +11864,7 @@ int lua_cocos2dx_Director_mainLoop(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -12123,7 +11903,7 @@ int lua_cocos2dx_Director_setDepthTest(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_setDepthTest'", nullptr);
         return 0;
@@ -12131,7 +11911,7 @@ int lua_cocos2dx_Director_setDepthTest(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -12173,7 +11953,7 @@ int lua_cocos2dx_Director_getFrameRate(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_getFrameRate'", nullptr);
         return 0;
@@ -12181,7 +11961,7 @@ int lua_cocos2dx_Director_getFrameRate(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -12220,7 +12000,7 @@ int lua_cocos2dx_Director_getSecondsPerFrame(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_getSecondsPerFrame'", nullptr);
         return 0;
@@ -12228,7 +12008,7 @@ int lua_cocos2dx_Director_getSecondsPerFrame(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -12267,7 +12047,7 @@ int lua_cocos2dx_Director_resetMatrixStack(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_resetMatrixStack'", nullptr);
         return 0;
@@ -12275,7 +12055,7 @@ int lua_cocos2dx_Director_resetMatrixStack(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -12314,7 +12094,7 @@ int lua_cocos2dx_Director_convertToUI(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_convertToUI'", nullptr);
         return 0;
@@ -12322,7 +12102,7 @@ int lua_cocos2dx_Director_convertToUI(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Vec2 arg0;
 
@@ -12364,7 +12144,7 @@ int lua_cocos2dx_Director_pushMatrix(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_pushMatrix'", nullptr);
         return 0;
@@ -12372,7 +12152,7 @@ int lua_cocos2dx_Director_pushMatrix(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::MATRIX_STACK_TYPE arg0;
 
@@ -12414,7 +12194,7 @@ int lua_cocos2dx_Director_setDefaultValues(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_setDefaultValues'", nullptr);
         return 0;
@@ -12422,7 +12202,7 @@ int lua_cocos2dx_Director_setDefaultValues(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -12461,7 +12241,7 @@ int lua_cocos2dx_Director_init(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_init'", nullptr);
         return 0;
@@ -12469,7 +12249,7 @@ int lua_cocos2dx_Director_init(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -12508,7 +12288,7 @@ int lua_cocos2dx_Director_setScheduler(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_setScheduler'", nullptr);
         return 0;
@@ -12516,7 +12296,7 @@ int lua_cocos2dx_Director_setScheduler(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Scheduler* arg0;
 
@@ -12558,7 +12338,7 @@ int lua_cocos2dx_Director_startAnimation(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_startAnimation'", nullptr);
         return 0;
@@ -12566,7 +12346,7 @@ int lua_cocos2dx_Director_startAnimation(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -12605,7 +12385,7 @@ int lua_cocos2dx_Director_getOpenGLView(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_getOpenGLView'", nullptr);
         return 0;
@@ -12613,7 +12393,7 @@ int lua_cocos2dx_Director_getOpenGLView(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -12652,7 +12432,7 @@ int lua_cocos2dx_Director_getRunningScene(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_getRunningScene'", nullptr);
         return 0;
@@ -12660,7 +12440,7 @@ int lua_cocos2dx_Director_getRunningScene(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -12699,7 +12479,7 @@ int lua_cocos2dx_Director_setViewport(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_setViewport'", nullptr);
         return 0;
@@ -12707,7 +12487,7 @@ int lua_cocos2dx_Director_setViewport(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -12746,7 +12526,7 @@ int lua_cocos2dx_Director_stopAnimation(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_stopAnimation'", nullptr);
         return 0;
@@ -12754,7 +12534,7 @@ int lua_cocos2dx_Director_stopAnimation(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -12793,7 +12573,7 @@ int lua_cocos2dx_Director_popToSceneStackLevel(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_popToSceneStackLevel'", nullptr);
         return 0;
@@ -12801,7 +12581,7 @@ int lua_cocos2dx_Director_popToSceneStackLevel(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         int arg0;
 
@@ -12843,7 +12623,7 @@ int lua_cocos2dx_Director_resume(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_resume'", nullptr);
         return 0;
@@ -12851,7 +12631,7 @@ int lua_cocos2dx_Director_resume(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -12890,7 +12670,7 @@ int lua_cocos2dx_Director_isNextDeltaTimeZero(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_isNextDeltaTimeZero'", nullptr);
         return 0;
@@ -12898,7 +12678,7 @@ int lua_cocos2dx_Director_isNextDeltaTimeZero(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -12937,7 +12717,7 @@ int lua_cocos2dx_Director_end(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_end'", nullptr);
         return 0;
@@ -12945,7 +12725,7 @@ int lua_cocos2dx_Director_end(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -12984,7 +12764,7 @@ int lua_cocos2dx_Director_setOpenGLView(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_setOpenGLView'", nullptr);
         return 0;
@@ -12992,7 +12772,7 @@ int lua_cocos2dx_Director_setOpenGLView(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::GLView* arg0;
 
@@ -13034,7 +12814,7 @@ int lua_cocos2dx_Director_convertToGL(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_convertToGL'", nullptr);
         return 0;
@@ -13042,7 +12822,7 @@ int lua_cocos2dx_Director_convertToGL(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Vec2 arg0;
 
@@ -13084,7 +12864,7 @@ int lua_cocos2dx_Director_purgeCachedData(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_purgeCachedData'", nullptr);
         return 0;
@@ -13092,7 +12872,7 @@ int lua_cocos2dx_Director_purgeCachedData(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -13131,7 +12911,7 @@ int lua_cocos2dx_Director_getTotalFrames(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_getTotalFrames'", nullptr);
         return 0;
@@ -13139,7 +12919,7 @@ int lua_cocos2dx_Director_getTotalFrames(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -13178,7 +12958,7 @@ int lua_cocos2dx_Director_runWithScene(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_runWithScene'", nullptr);
         return 0;
@@ -13186,7 +12966,7 @@ int lua_cocos2dx_Director_runWithScene(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Scene* arg0;
 
@@ -13228,7 +13008,7 @@ int lua_cocos2dx_Director_setNotificationNode(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_setNotificationNode'", nullptr);
         return 0;
@@ -13236,7 +13016,7 @@ int lua_cocos2dx_Director_setNotificationNode(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Node* arg0;
 
@@ -13278,7 +13058,7 @@ int lua_cocos2dx_Director_drawScene(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_drawScene'", nullptr);
         return 0;
@@ -13286,7 +13066,7 @@ int lua_cocos2dx_Director_drawScene(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -13325,7 +13105,7 @@ int lua_cocos2dx_Director_getMatrix(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_getMatrix'", nullptr);
         return 0;
@@ -13333,7 +13113,7 @@ int lua_cocos2dx_Director_getMatrix(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::MATRIX_STACK_TYPE arg0;
 
@@ -13375,7 +13155,7 @@ int lua_cocos2dx_Director_popScene(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_popScene'", nullptr);
         return 0;
@@ -13383,7 +13163,7 @@ int lua_cocos2dx_Director_popScene(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -13422,7 +13202,7 @@ int lua_cocos2dx_Director_loadIdentityMatrix(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_loadIdentityMatrix'", nullptr);
         return 0;
@@ -13430,7 +13210,7 @@ int lua_cocos2dx_Director_loadIdentityMatrix(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::MATRIX_STACK_TYPE arg0;
 
@@ -13472,7 +13252,7 @@ int lua_cocos2dx_Director_isDisplayStats(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_isDisplayStats'", nullptr);
         return 0;
@@ -13480,7 +13260,7 @@ int lua_cocos2dx_Director_isDisplayStats(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -13519,7 +13299,7 @@ int lua_cocos2dx_Director_setProjection(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_setProjection'", nullptr);
         return 0;
@@ -13527,7 +13307,7 @@ int lua_cocos2dx_Director_setProjection(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Director::Projection arg0;
 
@@ -13551,53 +13331,6 @@ int lua_cocos2dx_Director_setProjection(lua_State* tolua_S)
 
     return 0;
 }
-int lua_cocos2dx_Director_getConsole(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::Director* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.Director",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_getConsole'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_Director_getConsole'", nullptr);
-            return 0;
-        }
-        cocos2d::Console* ret = cobj->getConsole();
-        object_to_luaval<cocos2d::Console>(tolua_S, "cc.Console",(cocos2d::Console*)ret);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.Director:getConsole",argc, 0);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Director_getConsole'.",&tolua_err);
-#endif
-
-    return 0;
-}
 int lua_cocos2dx_Director_multiplyMatrix(lua_State* tolua_S)
 {
     int argc = 0;
@@ -13616,7 +13349,7 @@ int lua_cocos2dx_Director_multiplyMatrix(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_multiplyMatrix'", nullptr);
         return 0;
@@ -13624,7 +13357,7 @@ int lua_cocos2dx_Director_multiplyMatrix(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         cocos2d::MATRIX_STACK_TYPE arg0;
         cocos2d::Mat4 arg1;
@@ -13669,7 +13402,7 @@ int lua_cocos2dx_Director_getZEye(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_getZEye'", nullptr);
         return 0;
@@ -13677,7 +13410,7 @@ int lua_cocos2dx_Director_getZEye(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -13716,7 +13449,7 @@ int lua_cocos2dx_Director_setNextDeltaTimeZero(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_setNextDeltaTimeZero'", nullptr);
         return 0;
@@ -13724,7 +13457,7 @@ int lua_cocos2dx_Director_setNextDeltaTimeZero(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -13766,7 +13499,7 @@ int lua_cocos2dx_Director_popMatrix(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_popMatrix'", nullptr);
         return 0;
@@ -13774,7 +13507,7 @@ int lua_cocos2dx_Director_popMatrix(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::MATRIX_STACK_TYPE arg0;
 
@@ -13816,7 +13549,7 @@ int lua_cocos2dx_Director_getVisibleSize(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_getVisibleSize'", nullptr);
         return 0;
@@ -13824,7 +13557,7 @@ int lua_cocos2dx_Director_getVisibleSize(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -13863,7 +13596,7 @@ int lua_cocos2dx_Director_getScheduler(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_getScheduler'", nullptr);
         return 0;
@@ -13871,7 +13604,7 @@ int lua_cocos2dx_Director_getScheduler(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -13910,7 +13643,7 @@ int lua_cocos2dx_Director_pushScene(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_pushScene'", nullptr);
         return 0;
@@ -13918,7 +13651,7 @@ int lua_cocos2dx_Director_pushScene(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Scene* arg0;
 
@@ -13960,7 +13693,7 @@ int lua_cocos2dx_Director_getAnimationInterval(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_getAnimationInterval'", nullptr);
         return 0;
@@ -13968,7 +13701,7 @@ int lua_cocos2dx_Director_getAnimationInterval(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -14007,7 +13740,7 @@ int lua_cocos2dx_Director_isPaused(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_isPaused'", nullptr);
         return 0;
@@ -14015,7 +13748,7 @@ int lua_cocos2dx_Director_isPaused(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -14054,7 +13787,7 @@ int lua_cocos2dx_Director_setDisplayStats(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_setDisplayStats'", nullptr);
         return 0;
@@ -14062,7 +13795,7 @@ int lua_cocos2dx_Director_setDisplayStats(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -14104,7 +13837,7 @@ int lua_cocos2dx_Director_getEventDispatcher(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_getEventDispatcher'", nullptr);
         return 0;
@@ -14112,7 +13845,7 @@ int lua_cocos2dx_Director_getEventDispatcher(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -14151,7 +13884,7 @@ int lua_cocos2dx_Director_replaceScene(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_replaceScene'", nullptr);
         return 0;
@@ -14159,7 +13892,7 @@ int lua_cocos2dx_Director_replaceScene(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Scene* arg0;
 
@@ -14201,7 +13934,7 @@ int lua_cocos2dx_Director_setAnimationInterval(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_setAnimationInterval'", nullptr);
         return 0;
@@ -14209,7 +13942,7 @@ int lua_cocos2dx_Director_setAnimationInterval(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -14251,7 +13984,7 @@ int lua_cocos2dx_Director_getActionManager(lua_State* tolua_S)
     cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_getActionManager'", nullptr);
         return 0;
@@ -14259,7 +13992,7 @@ int lua_cocos2dx_Director_getActionManager(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -14373,7 +14106,6 @@ int lua_register_cocos2dx_Director(lua_State* tolua_S)
         tolua_function(tolua_S,"loadIdentityMatrix",lua_cocos2dx_Director_loadIdentityMatrix);
         tolua_function(tolua_S,"isDisplayStats",lua_cocos2dx_Director_isDisplayStats);
         tolua_function(tolua_S,"setProjection",lua_cocos2dx_Director_setProjection);
-        tolua_function(tolua_S,"getConsole",lua_cocos2dx_Director_getConsole);
         tolua_function(tolua_S,"multiplyMatrix",lua_cocos2dx_Director_multiplyMatrix);
         tolua_function(tolua_S,"getZEye",lua_cocos2dx_Director_getZEye);
         tolua_function(tolua_S,"setNextDeltaTimeZero",lua_cocos2dx_Director_setNextDeltaTimeZero);
@@ -14414,7 +14146,7 @@ int lua_cocos2dx_Timer_getInterval(lua_State* tolua_S)
     cobj = (cocos2d::Timer*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Timer_getInterval'", nullptr);
         return 0;
@@ -14422,7 +14154,7 @@ int lua_cocos2dx_Timer_getInterval(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -14461,7 +14193,7 @@ int lua_cocos2dx_Timer_setupTimerWithInterval(lua_State* tolua_S)
     cobj = (cocos2d::Timer*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Timer_setupTimerWithInterval'", nullptr);
         return 0;
@@ -14469,7 +14201,7 @@ int lua_cocos2dx_Timer_setupTimerWithInterval(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 3) 
+    if (argc == 3)
     {
         double arg0;
         unsigned int arg1;
@@ -14517,7 +14249,7 @@ int lua_cocos2dx_Timer_setInterval(lua_State* tolua_S)
     cobj = (cocos2d::Timer*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Timer_setInterval'", nullptr);
         return 0;
@@ -14525,7 +14257,7 @@ int lua_cocos2dx_Timer_setInterval(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -14567,7 +14299,7 @@ int lua_cocos2dx_Timer_update(lua_State* tolua_S)
     cobj = (cocos2d::Timer*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Timer_update'", nullptr);
         return 0;
@@ -14575,7 +14307,7 @@ int lua_cocos2dx_Timer_update(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -14617,7 +14349,7 @@ int lua_cocos2dx_Timer_trigger(lua_State* tolua_S)
     cobj = (cocos2d::Timer*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Timer_trigger'", nullptr);
         return 0;
@@ -14625,7 +14357,7 @@ int lua_cocos2dx_Timer_trigger(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -14664,7 +14396,7 @@ int lua_cocos2dx_Timer_cancel(lua_State* tolua_S)
     cobj = (cocos2d::Timer*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Timer_cancel'", nullptr);
         return 0;
@@ -14672,7 +14404,7 @@ int lua_cocos2dx_Timer_cancel(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -14736,7 +14468,7 @@ int lua_cocos2dx_Scheduler_setTimeScale(lua_State* tolua_S)
     cobj = (cocos2d::Scheduler*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Scheduler_setTimeScale'", nullptr);
         return 0;
@@ -14744,7 +14476,7 @@ int lua_cocos2dx_Scheduler_setTimeScale(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -14786,7 +14518,7 @@ int lua_cocos2dx_Scheduler_getTimeScale(lua_State* tolua_S)
     cobj = (cocos2d::Scheduler*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Scheduler_getTimeScale'", nullptr);
         return 0;
@@ -14794,7 +14526,7 @@ int lua_cocos2dx_Scheduler_getTimeScale(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -14828,7 +14560,7 @@ int lua_cocos2dx_Scheduler_constructor(lua_State* tolua_S)
 
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -14892,7 +14624,7 @@ int lua_cocos2dx_FileUtils_fullPathForFilename(lua_State* tolua_S)
     cobj = (cocos2d::FileUtils*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_FileUtils_fullPathForFilename'", nullptr);
         return 0;
@@ -14900,7 +14632,7 @@ int lua_cocos2dx_FileUtils_fullPathForFilename(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -14942,7 +14674,7 @@ int lua_cocos2dx_FileUtils_getStringFromFile(lua_State* tolua_S)
     cobj = (cocos2d::FileUtils*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_FileUtils_getStringFromFile'", nullptr);
         return 0;
@@ -14950,7 +14682,7 @@ int lua_cocos2dx_FileUtils_getStringFromFile(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -14992,7 +14724,7 @@ int lua_cocos2dx_FileUtils_setFilenameLookupDictionary(lua_State* tolua_S)
     cobj = (cocos2d::FileUtils*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_FileUtils_setFilenameLookupDictionary'", nullptr);
         return 0;
@@ -15000,7 +14732,7 @@ int lua_cocos2dx_FileUtils_setFilenameLookupDictionary(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::ValueMap arg0;
 
@@ -15042,7 +14774,7 @@ int lua_cocos2dx_FileUtils_removeFile(lua_State* tolua_S)
     cobj = (cocos2d::FileUtils*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_FileUtils_removeFile'", nullptr);
         return 0;
@@ -15050,7 +14782,7 @@ int lua_cocos2dx_FileUtils_removeFile(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -15092,7 +14824,7 @@ int lua_cocos2dx_FileUtils_isAbsolutePath(lua_State* tolua_S)
     cobj = (cocos2d::FileUtils*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_FileUtils_isAbsolutePath'", nullptr);
         return 0;
@@ -15100,7 +14832,7 @@ int lua_cocos2dx_FileUtils_isAbsolutePath(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -15142,7 +14874,7 @@ int lua_cocos2dx_FileUtils_renameFile(lua_State* tolua_S)
     cobj = (cocos2d::FileUtils*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_FileUtils_renameFile'", nullptr);
         return 0;
@@ -15150,7 +14882,7 @@ int lua_cocos2dx_FileUtils_renameFile(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 3) 
+    if (argc == 3)
     {
         std::string arg0;
         std::string arg1;
@@ -15198,7 +14930,7 @@ int lua_cocos2dx_FileUtils_setSearchRootPath(lua_State* tolua_S)
     cobj = (cocos2d::FileUtils*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_FileUtils_setSearchRootPath'", nullptr);
         return 0;
@@ -15206,7 +14938,7 @@ int lua_cocos2dx_FileUtils_setSearchRootPath(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         const char* arg0;
 
@@ -15248,7 +14980,7 @@ int lua_cocos2dx_FileUtils_loadFilenameLookupDictionaryFromFile(lua_State* tolua
     cobj = (cocos2d::FileUtils*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_FileUtils_loadFilenameLookupDictionaryFromFile'", nullptr);
         return 0;
@@ -15256,7 +14988,7 @@ int lua_cocos2dx_FileUtils_loadFilenameLookupDictionaryFromFile(lua_State* tolua
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -15298,7 +15030,7 @@ int lua_cocos2dx_FileUtils_isPopupNotify(lua_State* tolua_S)
     cobj = (cocos2d::FileUtils*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_FileUtils_isPopupNotify'", nullptr);
         return 0;
@@ -15306,7 +15038,7 @@ int lua_cocos2dx_FileUtils_isPopupNotify(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -15345,7 +15077,7 @@ int lua_cocos2dx_FileUtils_getValueVectorFromFile(lua_State* tolua_S)
     cobj = (cocos2d::FileUtils*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_FileUtils_getValueVectorFromFile'", nullptr);
         return 0;
@@ -15353,7 +15085,7 @@ int lua_cocos2dx_FileUtils_getValueVectorFromFile(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -15395,7 +15127,7 @@ int lua_cocos2dx_FileUtils_getSearchPaths(lua_State* tolua_S)
     cobj = (cocos2d::FileUtils*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_FileUtils_getSearchPaths'", nullptr);
         return 0;
@@ -15403,7 +15135,7 @@ int lua_cocos2dx_FileUtils_getSearchPaths(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -15442,7 +15174,7 @@ int lua_cocos2dx_FileUtils_writeToFile(lua_State* tolua_S)
     cobj = (cocos2d::FileUtils*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_FileUtils_writeToFile'", nullptr);
         return 0;
@@ -15450,7 +15182,7 @@ int lua_cocos2dx_FileUtils_writeToFile(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         cocos2d::ValueMap arg0;
         std::string arg1;
@@ -15495,7 +15227,7 @@ int lua_cocos2dx_FileUtils_getValueMapFromFile(lua_State* tolua_S)
     cobj = (cocos2d::FileUtils*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_FileUtils_getValueMapFromFile'", nullptr);
         return 0;
@@ -15503,7 +15235,7 @@ int lua_cocos2dx_FileUtils_getValueMapFromFile(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -15545,7 +15277,7 @@ int lua_cocos2dx_FileUtils_getValueMapFromData(lua_State* tolua_S)
     cobj = (cocos2d::FileUtils*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_FileUtils_getValueMapFromData'", nullptr);
         return 0;
@@ -15553,7 +15285,7 @@ int lua_cocos2dx_FileUtils_getValueMapFromData(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         const char* arg0;
         int arg1;
@@ -15598,7 +15330,7 @@ int lua_cocos2dx_FileUtils_removeDirectory(lua_State* tolua_S)
     cobj = (cocos2d::FileUtils*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_FileUtils_removeDirectory'", nullptr);
         return 0;
@@ -15606,7 +15338,7 @@ int lua_cocos2dx_FileUtils_removeDirectory(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -15648,7 +15380,7 @@ int lua_cocos2dx_FileUtils_setSearchPaths(lua_State* tolua_S)
     cobj = (cocos2d::FileUtils*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_FileUtils_setSearchPaths'", nullptr);
         return 0;
@@ -15656,7 +15388,7 @@ int lua_cocos2dx_FileUtils_setSearchPaths(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::vector<std::string> arg0;
 
@@ -15698,7 +15430,7 @@ int lua_cocos2dx_FileUtils_getFileSize(lua_State* tolua_S)
     cobj = (cocos2d::FileUtils*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_FileUtils_getFileSize'", nullptr);
         return 0;
@@ -15706,7 +15438,7 @@ int lua_cocos2dx_FileUtils_getFileSize(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -15748,7 +15480,7 @@ int lua_cocos2dx_FileUtils_setSearchResolutionsOrder(lua_State* tolua_S)
     cobj = (cocos2d::FileUtils*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_FileUtils_setSearchResolutionsOrder'", nullptr);
         return 0;
@@ -15756,7 +15488,7 @@ int lua_cocos2dx_FileUtils_setSearchResolutionsOrder(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::vector<std::string> arg0;
 
@@ -15798,7 +15530,7 @@ int lua_cocos2dx_FileUtils_addSearchResolutionsOrder(lua_State* tolua_S)
     cobj = (cocos2d::FileUtils*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_FileUtils_addSearchResolutionsOrder'", nullptr);
         return 0;
@@ -15806,7 +15538,7 @@ int lua_cocos2dx_FileUtils_addSearchResolutionsOrder(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -15820,7 +15552,7 @@ int lua_cocos2dx_FileUtils_addSearchResolutionsOrder(lua_State* tolua_S)
         lua_settop(tolua_S, 1);
         return 1;
     }
-    if (argc == 2) 
+    if (argc == 2)
     {
         std::string arg0;
         bool arg1;
@@ -15865,7 +15597,7 @@ int lua_cocos2dx_FileUtils_addSearchPath(lua_State* tolua_S)
     cobj = (cocos2d::FileUtils*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_FileUtils_addSearchPath'", nullptr);
         return 0;
@@ -15873,7 +15605,7 @@ int lua_cocos2dx_FileUtils_addSearchPath(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -15887,7 +15619,7 @@ int lua_cocos2dx_FileUtils_addSearchPath(lua_State* tolua_S)
         lua_settop(tolua_S, 1);
         return 1;
     }
-    if (argc == 2) 
+    if (argc == 2)
     {
         std::string arg0;
         bool arg1;
@@ -15932,7 +15664,7 @@ int lua_cocos2dx_FileUtils_isFileExist(lua_State* tolua_S)
     cobj = (cocos2d::FileUtils*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_FileUtils_isFileExist'", nullptr);
         return 0;
@@ -15940,7 +15672,7 @@ int lua_cocos2dx_FileUtils_isFileExist(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -15982,7 +15714,7 @@ int lua_cocos2dx_FileUtils_purgeCachedEntries(lua_State* tolua_S)
     cobj = (cocos2d::FileUtils*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_FileUtils_purgeCachedEntries'", nullptr);
         return 0;
@@ -15990,7 +15722,7 @@ int lua_cocos2dx_FileUtils_purgeCachedEntries(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -16029,7 +15761,7 @@ int lua_cocos2dx_FileUtils_fullPathFromRelativeFile(lua_State* tolua_S)
     cobj = (cocos2d::FileUtils*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_FileUtils_fullPathFromRelativeFile'", nullptr);
         return 0;
@@ -16037,7 +15769,7 @@ int lua_cocos2dx_FileUtils_fullPathFromRelativeFile(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         std::string arg0;
         std::string arg1;
@@ -16082,7 +15814,7 @@ int lua_cocos2dx_FileUtils_setWritablePath(lua_State* tolua_S)
     cobj = (cocos2d::FileUtils*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_FileUtils_setWritablePath'", nullptr);
         return 0;
@@ -16090,7 +15822,7 @@ int lua_cocos2dx_FileUtils_setWritablePath(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         const char* arg0;
 
@@ -16132,7 +15864,7 @@ int lua_cocos2dx_FileUtils_setPopupNotify(lua_State* tolua_S)
     cobj = (cocos2d::FileUtils*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_FileUtils_setPopupNotify'", nullptr);
         return 0;
@@ -16140,7 +15872,7 @@ int lua_cocos2dx_FileUtils_setPopupNotify(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -16182,7 +15914,7 @@ int lua_cocos2dx_FileUtils_isDirectoryExist(lua_State* tolua_S)
     cobj = (cocos2d::FileUtils*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_FileUtils_isDirectoryExist'", nullptr);
         return 0;
@@ -16190,7 +15922,7 @@ int lua_cocos2dx_FileUtils_isDirectoryExist(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -16232,7 +15964,7 @@ int lua_cocos2dx_FileUtils_getSearchResolutionsOrder(lua_State* tolua_S)
     cobj = (cocos2d::FileUtils*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_FileUtils_getSearchResolutionsOrder'", nullptr);
         return 0;
@@ -16240,7 +15972,7 @@ int lua_cocos2dx_FileUtils_getSearchResolutionsOrder(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -16279,7 +16011,7 @@ int lua_cocos2dx_FileUtils_createDirectory(lua_State* tolua_S)
     cobj = (cocos2d::FileUtils*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_FileUtils_createDirectory'", nullptr);
         return 0;
@@ -16287,7 +16019,7 @@ int lua_cocos2dx_FileUtils_createDirectory(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -16329,7 +16061,7 @@ int lua_cocos2dx_FileUtils_getWritablePath(lua_State* tolua_S)
     cobj = (cocos2d::FileUtils*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_FileUtils_getWritablePath'", nullptr);
         return 0;
@@ -16337,7 +16069,7 @@ int lua_cocos2dx_FileUtils_getWritablePath(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -16476,748 +16208,6 @@ int lua_register_cocos2dx_FileUtils(lua_State* tolua_S)
     return 1;
 }
 
-int lua_cocos2dx_UserDefault_setIntegerForKey(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::UserDefault* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.UserDefault",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::UserDefault*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_UserDefault_setIntegerForKey'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
-    {
-        const char* arg0;
-        int arg1;
-
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp, "cc.UserDefault:setIntegerForKey"); arg0 = arg0_tmp.c_str();
-
-        ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1, "cc.UserDefault:setIntegerForKey");
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_UserDefault_setIntegerForKey'", nullptr);
-            return 0;
-        }
-        cobj->setIntegerForKey(arg0, arg1);
-        lua_settop(tolua_S, 1);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.UserDefault:setIntegerForKey",argc, 2);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_UserDefault_setIntegerForKey'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_UserDefault_getFloatForKey(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::UserDefault* cobj = nullptr;
-    bool ok  = true;
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.UserDefault",0,&tolua_err)) goto tolua_lerror;
-#endif
-    cobj = (cocos2d::UserDefault*)tolua_tousertype(tolua_S,1,0);
-#if COCOS2D_DEBUG >= 1
-    if (!cobj)
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_UserDefault_getFloatForKey'", nullptr);
-        return 0;
-    }
-#endif
-    argc = lua_gettop(tolua_S)-1;
-    do{
-        if (argc == 2) {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp, "cc.UserDefault:getFloatForKey"); arg0 = arg0_tmp.c_str();
-
-            if (!ok) { break; }
-            double arg1;
-            ok &= luaval_to_number(tolua_S, 3,&arg1, "cc.UserDefault:getFloatForKey");
-
-            if (!ok) { break; }
-            double ret = cobj->getFloatForKey(arg0, arg1);
-            tolua_pushnumber(tolua_S,(lua_Number)ret);
-            return 1;
-        }
-    }while(0);
-    ok  = true;
-    do{
-        if (argc == 1) {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp, "cc.UserDefault:getFloatForKey"); arg0 = arg0_tmp.c_str();
-
-            if (!ok) { break; }
-            double ret = cobj->getFloatForKey(arg0);
-            tolua_pushnumber(tolua_S,(lua_Number)ret);
-            return 1;
-        }
-    }while(0);
-    ok  = true;
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n",  "cc.UserDefault:getFloatForKey",argc, 1);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_UserDefault_getFloatForKey'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_UserDefault_getBoolForKey(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::UserDefault* cobj = nullptr;
-    bool ok  = true;
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.UserDefault",0,&tolua_err)) goto tolua_lerror;
-#endif
-    cobj = (cocos2d::UserDefault*)tolua_tousertype(tolua_S,1,0);
-#if COCOS2D_DEBUG >= 1
-    if (!cobj)
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_UserDefault_getBoolForKey'", nullptr);
-        return 0;
-    }
-#endif
-    argc = lua_gettop(tolua_S)-1;
-    do{
-        if (argc == 2) {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp, "cc.UserDefault:getBoolForKey"); arg0 = arg0_tmp.c_str();
-
-            if (!ok) { break; }
-            bool arg1;
-            ok &= luaval_to_boolean(tolua_S, 3,&arg1, "cc.UserDefault:getBoolForKey");
-
-            if (!ok) { break; }
-            bool ret = cobj->getBoolForKey(arg0, arg1);
-            tolua_pushboolean(tolua_S,(bool)ret);
-            return 1;
-        }
-    }while(0);
-    ok  = true;
-    do{
-        if (argc == 1) {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp, "cc.UserDefault:getBoolForKey"); arg0 = arg0_tmp.c_str();
-
-            if (!ok) { break; }
-            bool ret = cobj->getBoolForKey(arg0);
-            tolua_pushboolean(tolua_S,(bool)ret);
-            return 1;
-        }
-    }while(0);
-    ok  = true;
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n",  "cc.UserDefault:getBoolForKey",argc, 1);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_UserDefault_getBoolForKey'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_UserDefault_setDoubleForKey(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::UserDefault* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.UserDefault",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::UserDefault*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_UserDefault_setDoubleForKey'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
-    {
-        const char* arg0;
-        double arg1;
-
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp, "cc.UserDefault:setDoubleForKey"); arg0 = arg0_tmp.c_str();
-
-        ok &= luaval_to_number(tolua_S, 3,&arg1, "cc.UserDefault:setDoubleForKey");
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_UserDefault_setDoubleForKey'", nullptr);
-            return 0;
-        }
-        cobj->setDoubleForKey(arg0, arg1);
-        lua_settop(tolua_S, 1);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.UserDefault:setDoubleForKey",argc, 2);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_UserDefault_setDoubleForKey'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_UserDefault_setFloatForKey(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::UserDefault* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.UserDefault",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::UserDefault*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_UserDefault_setFloatForKey'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
-    {
-        const char* arg0;
-        double arg1;
-
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp, "cc.UserDefault:setFloatForKey"); arg0 = arg0_tmp.c_str();
-
-        ok &= luaval_to_number(tolua_S, 3,&arg1, "cc.UserDefault:setFloatForKey");
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_UserDefault_setFloatForKey'", nullptr);
-            return 0;
-        }
-        cobj->setFloatForKey(arg0, arg1);
-        lua_settop(tolua_S, 1);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.UserDefault:setFloatForKey",argc, 2);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_UserDefault_setFloatForKey'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_UserDefault_getStringForKey(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::UserDefault* cobj = nullptr;
-    bool ok  = true;
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.UserDefault",0,&tolua_err)) goto tolua_lerror;
-#endif
-    cobj = (cocos2d::UserDefault*)tolua_tousertype(tolua_S,1,0);
-#if COCOS2D_DEBUG >= 1
-    if (!cobj)
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_UserDefault_getStringForKey'", nullptr);
-        return 0;
-    }
-#endif
-    argc = lua_gettop(tolua_S)-1;
-    do{
-        if (argc == 2) {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp, "cc.UserDefault:getStringForKey"); arg0 = arg0_tmp.c_str();
-
-            if (!ok) { break; }
-            std::string arg1;
-            ok &= luaval_to_std_string(tolua_S, 3,&arg1, "cc.UserDefault:getStringForKey");
-
-            if (!ok) { break; }
-            std::string ret = cobj->getStringForKey(arg0, arg1);
-            tolua_pushcppstring(tolua_S,ret);
-            return 1;
-        }
-    }while(0);
-    ok  = true;
-    do{
-        if (argc == 1) {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp, "cc.UserDefault:getStringForKey"); arg0 = arg0_tmp.c_str();
-
-            if (!ok) { break; }
-            std::string ret = cobj->getStringForKey(arg0);
-            tolua_pushcppstring(tolua_S,ret);
-            return 1;
-        }
-    }while(0);
-    ok  = true;
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n",  "cc.UserDefault:getStringForKey",argc, 1);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_UserDefault_getStringForKey'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_UserDefault_setStringForKey(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::UserDefault* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.UserDefault",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::UserDefault*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_UserDefault_setStringForKey'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
-    {
-        const char* arg0;
-        std::string arg1;
-
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp, "cc.UserDefault:setStringForKey"); arg0 = arg0_tmp.c_str();
-
-        ok &= luaval_to_std_string(tolua_S, 3,&arg1, "cc.UserDefault:setStringForKey");
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_UserDefault_setStringForKey'", nullptr);
-            return 0;
-        }
-        cobj->setStringForKey(arg0, arg1);
-        lua_settop(tolua_S, 1);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.UserDefault:setStringForKey",argc, 2);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_UserDefault_setStringForKey'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_UserDefault_flush(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::UserDefault* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.UserDefault",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::UserDefault*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_UserDefault_flush'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_UserDefault_flush'", nullptr);
-            return 0;
-        }
-        cobj->flush();
-        lua_settop(tolua_S, 1);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.UserDefault:flush",argc, 0);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_UserDefault_flush'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_UserDefault_getIntegerForKey(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::UserDefault* cobj = nullptr;
-    bool ok  = true;
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.UserDefault",0,&tolua_err)) goto tolua_lerror;
-#endif
-    cobj = (cocos2d::UserDefault*)tolua_tousertype(tolua_S,1,0);
-#if COCOS2D_DEBUG >= 1
-    if (!cobj)
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_UserDefault_getIntegerForKey'", nullptr);
-        return 0;
-    }
-#endif
-    argc = lua_gettop(tolua_S)-1;
-    do{
-        if (argc == 2) {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp, "cc.UserDefault:getIntegerForKey"); arg0 = arg0_tmp.c_str();
-
-            if (!ok) { break; }
-            int arg1;
-            ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1, "cc.UserDefault:getIntegerForKey");
-
-            if (!ok) { break; }
-            int ret = cobj->getIntegerForKey(arg0, arg1);
-            tolua_pushnumber(tolua_S,(lua_Number)ret);
-            return 1;
-        }
-    }while(0);
-    ok  = true;
-    do{
-        if (argc == 1) {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp, "cc.UserDefault:getIntegerForKey"); arg0 = arg0_tmp.c_str();
-
-            if (!ok) { break; }
-            int ret = cobj->getIntegerForKey(arg0);
-            tolua_pushnumber(tolua_S,(lua_Number)ret);
-            return 1;
-        }
-    }while(0);
-    ok  = true;
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n",  "cc.UserDefault:getIntegerForKey",argc, 1);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_UserDefault_getIntegerForKey'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_UserDefault_getDoubleForKey(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::UserDefault* cobj = nullptr;
-    bool ok  = true;
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.UserDefault",0,&tolua_err)) goto tolua_lerror;
-#endif
-    cobj = (cocos2d::UserDefault*)tolua_tousertype(tolua_S,1,0);
-#if COCOS2D_DEBUG >= 1
-    if (!cobj)
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_UserDefault_getDoubleForKey'", nullptr);
-        return 0;
-    }
-#endif
-    argc = lua_gettop(tolua_S)-1;
-    do{
-        if (argc == 2) {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp, "cc.UserDefault:getDoubleForKey"); arg0 = arg0_tmp.c_str();
-
-            if (!ok) { break; }
-            double arg1;
-            ok &= luaval_to_number(tolua_S, 3,&arg1, "cc.UserDefault:getDoubleForKey");
-
-            if (!ok) { break; }
-            double ret = cobj->getDoubleForKey(arg0, arg1);
-            tolua_pushnumber(tolua_S,(lua_Number)ret);
-            return 1;
-        }
-    }while(0);
-    ok  = true;
-    do{
-        if (argc == 1) {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp, "cc.UserDefault:getDoubleForKey"); arg0 = arg0_tmp.c_str();
-
-            if (!ok) { break; }
-            double ret = cobj->getDoubleForKey(arg0);
-            tolua_pushnumber(tolua_S,(lua_Number)ret);
-            return 1;
-        }
-    }while(0);
-    ok  = true;
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n",  "cc.UserDefault:getDoubleForKey",argc, 1);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_UserDefault_getDoubleForKey'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_UserDefault_setBoolForKey(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::UserDefault* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.UserDefault",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::UserDefault*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_UserDefault_setBoolForKey'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
-    {
-        const char* arg0;
-        bool arg1;
-
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp, "cc.UserDefault:setBoolForKey"); arg0 = arg0_tmp.c_str();
-
-        ok &= luaval_to_boolean(tolua_S, 3,&arg1, "cc.UserDefault:setBoolForKey");
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_UserDefault_setBoolForKey'", nullptr);
-            return 0;
-        }
-        cobj->setBoolForKey(arg0, arg1);
-        lua_settop(tolua_S, 1);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.UserDefault:setBoolForKey",argc, 2);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_UserDefault_setBoolForKey'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_UserDefault_destroyInstance(lua_State* tolua_S)
-{
-    int argc = 0;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"cc.UserDefault",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    argc = lua_gettop(tolua_S) - 1;
-
-    if (argc == 0)
-    {
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_UserDefault_destroyInstance'", nullptr);
-            return 0;
-        }
-        cocos2d::UserDefault::destroyInstance();
-        lua_settop(tolua_S, 1);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d\n ", "cc.UserDefault:destroyInstance",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_UserDefault_destroyInstance'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_UserDefault_getXMLFilePath(lua_State* tolua_S)
-{
-    int argc = 0;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"cc.UserDefault",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    argc = lua_gettop(tolua_S) - 1;
-
-    if (argc == 0)
-    {
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_UserDefault_getXMLFilePath'", nullptr);
-            return 0;
-        }
-        const std::string& ret = cocos2d::UserDefault::getXMLFilePath();
-        tolua_pushcppstring(tolua_S,ret);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d\n ", "cc.UserDefault:getXMLFilePath",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_UserDefault_getXMLFilePath'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_UserDefault_isXMLFileExist(lua_State* tolua_S)
-{
-    int argc = 0;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"cc.UserDefault",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    argc = lua_gettop(tolua_S) - 1;
-
-    if (argc == 0)
-    {
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_UserDefault_isXMLFileExist'", nullptr);
-            return 0;
-        }
-        bool ret = cocos2d::UserDefault::isXMLFileExist();
-        tolua_pushboolean(tolua_S,(bool)ret);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d\n ", "cc.UserDefault:isXMLFileExist",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_UserDefault_isXMLFileExist'.",&tolua_err);
-#endif
-    return 0;
-}
-static int lua_cocos2dx_UserDefault_finalize(lua_State* tolua_S)
-{
-    printf("luabindings: finalizing LUA object (UserDefault)");
-    return 0;
-}
-
-int lua_register_cocos2dx_UserDefault(lua_State* tolua_S)
-{
-    tolua_usertype(tolua_S,"cc.UserDefault");
-    tolua_cclass(tolua_S,"UserDefault","cc.UserDefault","",nullptr);
-
-    tolua_beginmodule(tolua_S,"UserDefault");
-        tolua_function(tolua_S,"setIntegerForKey",lua_cocos2dx_UserDefault_setIntegerForKey);
-        tolua_function(tolua_S,"getFloatForKey",lua_cocos2dx_UserDefault_getFloatForKey);
-        tolua_function(tolua_S,"getBoolForKey",lua_cocos2dx_UserDefault_getBoolForKey);
-        tolua_function(tolua_S,"setDoubleForKey",lua_cocos2dx_UserDefault_setDoubleForKey);
-        tolua_function(tolua_S,"setFloatForKey",lua_cocos2dx_UserDefault_setFloatForKey);
-        tolua_function(tolua_S,"getStringForKey",lua_cocos2dx_UserDefault_getStringForKey);
-        tolua_function(tolua_S,"setStringForKey",lua_cocos2dx_UserDefault_setStringForKey);
-        tolua_function(tolua_S,"flush",lua_cocos2dx_UserDefault_flush);
-        tolua_function(tolua_S,"getIntegerForKey",lua_cocos2dx_UserDefault_getIntegerForKey);
-        tolua_function(tolua_S,"getDoubleForKey",lua_cocos2dx_UserDefault_getDoubleForKey);
-        tolua_function(tolua_S,"setBoolForKey",lua_cocos2dx_UserDefault_setBoolForKey);
-        tolua_function(tolua_S,"destroyInstance", lua_cocos2dx_UserDefault_destroyInstance);
-        tolua_function(tolua_S,"getXMLFilePath", lua_cocos2dx_UserDefault_getXMLFilePath);
-        tolua_function(tolua_S,"isXMLFileExist", lua_cocos2dx_UserDefault_isXMLFileExist);
-    tolua_endmodule(tolua_S);
-    std::string typeName = typeid(cocos2d::UserDefault).name();
-    g_luaType[typeName] = "cc.UserDefault";
-    g_typeCast["UserDefault"] = "cc.UserDefault";
-    return 1;
-}
-
 int lua_cocos2dx_EventListener_setEnabled(lua_State* tolua_S)
 {
     int argc = 0;
@@ -17236,7 +16226,7 @@ int lua_cocos2dx_EventListener_setEnabled(lua_State* tolua_S)
     cobj = (cocos2d::EventListener*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EventListener_setEnabled'", nullptr);
         return 0;
@@ -17244,7 +16234,7 @@ int lua_cocos2dx_EventListener_setEnabled(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -17286,7 +16276,7 @@ int lua_cocos2dx_EventListener_clone(lua_State* tolua_S)
     cobj = (cocos2d::EventListener*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EventListener_clone'", nullptr);
         return 0;
@@ -17294,7 +16284,7 @@ int lua_cocos2dx_EventListener_clone(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -17333,7 +16323,7 @@ int lua_cocos2dx_EventListener_isEnabled(lua_State* tolua_S)
     cobj = (cocos2d::EventListener*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EventListener_isEnabled'", nullptr);
         return 0;
@@ -17341,7 +16331,7 @@ int lua_cocos2dx_EventListener_isEnabled(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -17380,7 +16370,7 @@ int lua_cocos2dx_EventListener_checkAvailable(lua_State* tolua_S)
     cobj = (cocos2d::EventListener*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EventListener_checkAvailable'", nullptr);
         return 0;
@@ -17388,7 +16378,7 @@ int lua_cocos2dx_EventListener_checkAvailable(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -17450,7 +16440,7 @@ int lua_cocos2dx_EventDispatcher_pauseEventListenersForTarget(lua_State* tolua_S
     cobj = (cocos2d::EventDispatcher*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EventDispatcher_pauseEventListenersForTarget'", nullptr);
         return 0;
@@ -17458,7 +16448,7 @@ int lua_cocos2dx_EventDispatcher_pauseEventListenersForTarget(lua_State* tolua_S
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Node* arg0;
 
@@ -17472,7 +16462,7 @@ int lua_cocos2dx_EventDispatcher_pauseEventListenersForTarget(lua_State* tolua_S
         lua_settop(tolua_S, 1);
         return 1;
     }
-    if (argc == 2) 
+    if (argc == 2)
     {
         cocos2d::Node* arg0;
         bool arg1;
@@ -17517,7 +16507,7 @@ int lua_cocos2dx_EventDispatcher_addEventListenerWithSceneGraphPriority(lua_Stat
     cobj = (cocos2d::EventDispatcher*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EventDispatcher_addEventListenerWithSceneGraphPriority'", nullptr);
         return 0;
@@ -17525,7 +16515,7 @@ int lua_cocos2dx_EventDispatcher_addEventListenerWithSceneGraphPriority(lua_Stat
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         cocos2d::EventListener* arg0;
         cocos2d::Node* arg1;
@@ -17570,7 +16560,7 @@ int lua_cocos2dx_EventDispatcher_setEnabled(lua_State* tolua_S)
     cobj = (cocos2d::EventDispatcher*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EventDispatcher_setEnabled'", nullptr);
         return 0;
@@ -17578,7 +16568,7 @@ int lua_cocos2dx_EventDispatcher_setEnabled(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -17620,7 +16610,7 @@ int lua_cocos2dx_EventDispatcher_addEventListenerWithFixedPriority(lua_State* to
     cobj = (cocos2d::EventDispatcher*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EventDispatcher_addEventListenerWithFixedPriority'", nullptr);
         return 0;
@@ -17628,7 +16618,7 @@ int lua_cocos2dx_EventDispatcher_addEventListenerWithFixedPriority(lua_State* to
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         cocos2d::EventListener* arg0;
         int arg1;
@@ -17673,7 +16663,7 @@ int lua_cocos2dx_EventDispatcher_removeEventListener(lua_State* tolua_S)
     cobj = (cocos2d::EventDispatcher*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EventDispatcher_removeEventListener'", nullptr);
         return 0;
@@ -17681,7 +16671,7 @@ int lua_cocos2dx_EventDispatcher_removeEventListener(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::EventListener* arg0;
 
@@ -17723,7 +16713,7 @@ int lua_cocos2dx_EventDispatcher_resumeEventListenersForTarget(lua_State* tolua_
     cobj = (cocos2d::EventDispatcher*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EventDispatcher_resumeEventListenersForTarget'", nullptr);
         return 0;
@@ -17731,7 +16721,7 @@ int lua_cocos2dx_EventDispatcher_resumeEventListenersForTarget(lua_State* tolua_
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Node* arg0;
 
@@ -17745,7 +16735,7 @@ int lua_cocos2dx_EventDispatcher_resumeEventListenersForTarget(lua_State* tolua_
         lua_settop(tolua_S, 1);
         return 1;
     }
-    if (argc == 2) 
+    if (argc == 2)
     {
         cocos2d::Node* arg0;
         bool arg1;
@@ -17790,7 +16780,7 @@ int lua_cocos2dx_EventDispatcher_removeEventListenersForTarget(lua_State* tolua_
     cobj = (cocos2d::EventDispatcher*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EventDispatcher_removeEventListenersForTarget'", nullptr);
         return 0;
@@ -17798,7 +16788,7 @@ int lua_cocos2dx_EventDispatcher_removeEventListenersForTarget(lua_State* tolua_
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Node* arg0;
 
@@ -17812,7 +16802,7 @@ int lua_cocos2dx_EventDispatcher_removeEventListenersForTarget(lua_State* tolua_
         lua_settop(tolua_S, 1);
         return 1;
     }
-    if (argc == 2) 
+    if (argc == 2)
     {
         cocos2d::Node* arg0;
         bool arg1;
@@ -17857,7 +16847,7 @@ int lua_cocos2dx_EventDispatcher_setPriority(lua_State* tolua_S)
     cobj = (cocos2d::EventDispatcher*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EventDispatcher_setPriority'", nullptr);
         return 0;
@@ -17865,7 +16855,7 @@ int lua_cocos2dx_EventDispatcher_setPriority(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         cocos2d::EventListener* arg0;
         int arg1;
@@ -17910,7 +16900,7 @@ int lua_cocos2dx_EventDispatcher_addCustomEventListener(lua_State* tolua_S)
     cobj = (cocos2d::EventDispatcher*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EventDispatcher_addCustomEventListener'", nullptr);
         return 0;
@@ -17918,7 +16908,7 @@ int lua_cocos2dx_EventDispatcher_addCustomEventListener(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         std::string arg0;
         std::function<void (cocos2d::EventCustom *)> arg1;
@@ -17967,7 +16957,7 @@ int lua_cocos2dx_EventDispatcher_dispatchEvent(lua_State* tolua_S)
     cobj = (cocos2d::EventDispatcher*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EventDispatcher_dispatchEvent'", nullptr);
         return 0;
@@ -17975,7 +16965,7 @@ int lua_cocos2dx_EventDispatcher_dispatchEvent(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Event* arg0;
 
@@ -18017,7 +17007,7 @@ int lua_cocos2dx_EventDispatcher_removeAllEventListeners(lua_State* tolua_S)
     cobj = (cocos2d::EventDispatcher*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EventDispatcher_removeAllEventListeners'", nullptr);
         return 0;
@@ -18025,7 +17015,7 @@ int lua_cocos2dx_EventDispatcher_removeAllEventListeners(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -18064,7 +17054,7 @@ int lua_cocos2dx_EventDispatcher_removeCustomEventListeners(lua_State* tolua_S)
     cobj = (cocos2d::EventDispatcher*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EventDispatcher_removeCustomEventListeners'", nullptr);
         return 0;
@@ -18072,7 +17062,7 @@ int lua_cocos2dx_EventDispatcher_removeCustomEventListeners(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -18114,7 +17104,7 @@ int lua_cocos2dx_EventDispatcher_isEnabled(lua_State* tolua_S)
     cobj = (cocos2d::EventDispatcher*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EventDispatcher_isEnabled'", nullptr);
         return 0;
@@ -18122,7 +17112,7 @@ int lua_cocos2dx_EventDispatcher_isEnabled(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -18161,7 +17151,7 @@ int lua_cocos2dx_EventDispatcher_removeEventListenersForType(lua_State* tolua_S)
     cobj = (cocos2d::EventDispatcher*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EventDispatcher_removeEventListenersForType'", nullptr);
         return 0;
@@ -18169,7 +17159,7 @@ int lua_cocos2dx_EventDispatcher_removeEventListenersForType(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::EventListener::Type arg0;
 
@@ -18206,7 +17196,7 @@ int lua_cocos2dx_EventDispatcher_constructor(lua_State* tolua_S)
 
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -18282,7 +17272,7 @@ int lua_cocos2dx_EventListenerTouchOneByOne_isSwallowTouches(lua_State* tolua_S)
     cobj = (cocos2d::EventListenerTouchOneByOne*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EventListenerTouchOneByOne_isSwallowTouches'", nullptr);
         return 0;
@@ -18290,7 +17280,7 @@ int lua_cocos2dx_EventListenerTouchOneByOne_isSwallowTouches(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -18329,7 +17319,7 @@ int lua_cocos2dx_EventListenerTouchOneByOne_setSwallowTouches(lua_State* tolua_S
     cobj = (cocos2d::EventListenerTouchOneByOne*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EventListenerTouchOneByOne_setSwallowTouches'", nullptr);
         return 0;
@@ -18337,7 +17327,7 @@ int lua_cocos2dx_EventListenerTouchOneByOne_setSwallowTouches(lua_State* tolua_S
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -18438,7 +17428,7 @@ int lua_cocos2dx_EventMouse_getPreviousLocationInView(lua_State* tolua_S)
     cobj = (cocos2d::EventMouse*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EventMouse_getPreviousLocationInView'", nullptr);
         return 0;
@@ -18446,7 +17436,7 @@ int lua_cocos2dx_EventMouse_getPreviousLocationInView(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -18485,7 +17475,7 @@ int lua_cocos2dx_EventMouse_getLocation(lua_State* tolua_S)
     cobj = (cocos2d::EventMouse*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EventMouse_getLocation'", nullptr);
         return 0;
@@ -18493,7 +17483,7 @@ int lua_cocos2dx_EventMouse_getLocation(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -18532,7 +17522,7 @@ int lua_cocos2dx_EventMouse_getMouseButton(lua_State* tolua_S)
     cobj = (cocos2d::EventMouse*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EventMouse_getMouseButton'", nullptr);
         return 0;
@@ -18540,7 +17530,7 @@ int lua_cocos2dx_EventMouse_getMouseButton(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -18579,7 +17569,7 @@ int lua_cocos2dx_EventMouse_getPreviousLocation(lua_State* tolua_S)
     cobj = (cocos2d::EventMouse*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EventMouse_getPreviousLocation'", nullptr);
         return 0;
@@ -18587,7 +17577,7 @@ int lua_cocos2dx_EventMouse_getPreviousLocation(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -18626,7 +17616,7 @@ int lua_cocos2dx_EventMouse_getDelta(lua_State* tolua_S)
     cobj = (cocos2d::EventMouse*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EventMouse_getDelta'", nullptr);
         return 0;
@@ -18634,7 +17624,7 @@ int lua_cocos2dx_EventMouse_getDelta(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -18673,7 +17663,7 @@ int lua_cocos2dx_EventMouse_setScrollData(lua_State* tolua_S)
     cobj = (cocos2d::EventMouse*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EventMouse_setScrollData'", nullptr);
         return 0;
@@ -18681,7 +17671,7 @@ int lua_cocos2dx_EventMouse_setScrollData(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         double arg0;
         double arg1;
@@ -18726,7 +17716,7 @@ int lua_cocos2dx_EventMouse_getStartLocationInView(lua_State* tolua_S)
     cobj = (cocos2d::EventMouse*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EventMouse_getStartLocationInView'", nullptr);
         return 0;
@@ -18734,7 +17724,7 @@ int lua_cocos2dx_EventMouse_getStartLocationInView(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -18773,7 +17763,7 @@ int lua_cocos2dx_EventMouse_getStartLocation(lua_State* tolua_S)
     cobj = (cocos2d::EventMouse*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EventMouse_getStartLocation'", nullptr);
         return 0;
@@ -18781,7 +17771,7 @@ int lua_cocos2dx_EventMouse_getStartLocation(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -18820,7 +17810,7 @@ int lua_cocos2dx_EventMouse_setMouseButton(lua_State* tolua_S)
     cobj = (cocos2d::EventMouse*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EventMouse_setMouseButton'", nullptr);
         return 0;
@@ -18828,7 +17818,7 @@ int lua_cocos2dx_EventMouse_setMouseButton(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         int arg0;
 
@@ -18870,7 +17860,7 @@ int lua_cocos2dx_EventMouse_getLocationInView(lua_State* tolua_S)
     cobj = (cocos2d::EventMouse*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EventMouse_getLocationInView'", nullptr);
         return 0;
@@ -18878,7 +17868,7 @@ int lua_cocos2dx_EventMouse_getLocationInView(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -18917,7 +17907,7 @@ int lua_cocos2dx_EventMouse_getScrollY(lua_State* tolua_S)
     cobj = (cocos2d::EventMouse*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EventMouse_getScrollY'", nullptr);
         return 0;
@@ -18925,7 +17915,7 @@ int lua_cocos2dx_EventMouse_getScrollY(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -18964,7 +17954,7 @@ int lua_cocos2dx_EventMouse_getScrollX(lua_State* tolua_S)
     cobj = (cocos2d::EventMouse*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EventMouse_getScrollX'", nullptr);
         return 0;
@@ -18972,7 +17962,7 @@ int lua_cocos2dx_EventMouse_getScrollX(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -19011,7 +18001,7 @@ int lua_cocos2dx_EventMouse_getCursorX(lua_State* tolua_S)
     cobj = (cocos2d::EventMouse*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EventMouse_getCursorX'", nullptr);
         return 0;
@@ -19019,7 +18009,7 @@ int lua_cocos2dx_EventMouse_getCursorX(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -19058,7 +18048,7 @@ int lua_cocos2dx_EventMouse_getCursorY(lua_State* tolua_S)
     cobj = (cocos2d::EventMouse*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EventMouse_getCursorY'", nullptr);
         return 0;
@@ -19066,7 +18056,7 @@ int lua_cocos2dx_EventMouse_getCursorY(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -19105,7 +18095,7 @@ int lua_cocos2dx_EventMouse_setCursorPosition(lua_State* tolua_S)
     cobj = (cocos2d::EventMouse*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EventMouse_setCursorPosition'", nullptr);
         return 0;
@@ -19113,7 +18103,7 @@ int lua_cocos2dx_EventMouse_setCursorPosition(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         double arg0;
         double arg1;
@@ -19153,7 +18143,7 @@ int lua_cocos2dx_EventMouse_constructor(lua_State* tolua_S)
 
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::EventMouse::MouseEventType arg0;
 
@@ -19290,7 +18280,7 @@ int lua_cocos2dx_EventCustom_getDataString(lua_State* tolua_S)
     cobj = (cocos2d::EventCustom*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EventCustom_getDataString'", nullptr);
         return 0;
@@ -19298,7 +18288,7 @@ int lua_cocos2dx_EventCustom_getDataString(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -19337,7 +18327,7 @@ int lua_cocos2dx_EventCustom_setDataString(lua_State* tolua_S)
     cobj = (cocos2d::EventCustom*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EventCustom_setDataString'", nullptr);
         return 0;
@@ -19345,7 +18335,7 @@ int lua_cocos2dx_EventCustom_setDataString(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -19387,7 +18377,7 @@ int lua_cocos2dx_EventCustom_getEventName(lua_State* tolua_S)
     cobj = (cocos2d::EventCustom*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EventCustom_getEventName'", nullptr);
         return 0;
@@ -19395,7 +18385,7 @@ int lua_cocos2dx_EventCustom_getEventName(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -19429,7 +18419,7 @@ int lua_cocos2dx_EventCustom_constructor(lua_State* tolua_S)
 
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -19511,7 +18501,7 @@ int lua_cocos2dx_EventFocus_constructor(lua_State* tolua_S)
 
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         cocos2d::ui::Widget* arg0;
         cocos2d::ui::Widget* arg1;
@@ -19598,7 +18588,7 @@ int lua_cocos2dx_Action_startWithTarget(lua_State* tolua_S)
     cobj = (cocos2d::Action*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Action_startWithTarget'", nullptr);
         return 0;
@@ -19606,7 +18596,7 @@ int lua_cocos2dx_Action_startWithTarget(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Node* arg0;
 
@@ -19648,7 +18638,7 @@ int lua_cocos2dx_Action_setOriginalTarget(lua_State* tolua_S)
     cobj = (cocos2d::Action*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Action_setOriginalTarget'", nullptr);
         return 0;
@@ -19656,7 +18646,7 @@ int lua_cocos2dx_Action_setOriginalTarget(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Node* arg0;
 
@@ -19698,7 +18688,7 @@ int lua_cocos2dx_Action_clone(lua_State* tolua_S)
     cobj = (cocos2d::Action*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Action_clone'", nullptr);
         return 0;
@@ -19706,7 +18696,7 @@ int lua_cocos2dx_Action_clone(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -19745,7 +18735,7 @@ int lua_cocos2dx_Action_getOriginalTarget(lua_State* tolua_S)
     cobj = (cocos2d::Action*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Action_getOriginalTarget'", nullptr);
         return 0;
@@ -19753,7 +18743,7 @@ int lua_cocos2dx_Action_getOriginalTarget(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -19792,7 +18782,7 @@ int lua_cocos2dx_Action_stop(lua_State* tolua_S)
     cobj = (cocos2d::Action*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Action_stop'", nullptr);
         return 0;
@@ -19800,7 +18790,7 @@ int lua_cocos2dx_Action_stop(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -19839,7 +18829,7 @@ int lua_cocos2dx_Action_update(lua_State* tolua_S)
     cobj = (cocos2d::Action*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Action_update'", nullptr);
         return 0;
@@ -19847,7 +18837,7 @@ int lua_cocos2dx_Action_update(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -19889,7 +18879,7 @@ int lua_cocos2dx_Action_getTarget(lua_State* tolua_S)
     cobj = (cocos2d::Action*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Action_getTarget'", nullptr);
         return 0;
@@ -19897,7 +18887,7 @@ int lua_cocos2dx_Action_getTarget(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -19936,7 +18926,7 @@ int lua_cocos2dx_Action_step(lua_State* tolua_S)
     cobj = (cocos2d::Action*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Action_step'", nullptr);
         return 0;
@@ -19944,7 +18934,7 @@ int lua_cocos2dx_Action_step(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -19986,7 +18976,7 @@ int lua_cocos2dx_Action_setTag(lua_State* tolua_S)
     cobj = (cocos2d::Action*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Action_setTag'", nullptr);
         return 0;
@@ -19994,7 +18984,7 @@ int lua_cocos2dx_Action_setTag(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         int arg0;
 
@@ -20036,7 +19026,7 @@ int lua_cocos2dx_Action_getTag(lua_State* tolua_S)
     cobj = (cocos2d::Action*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Action_getTag'", nullptr);
         return 0;
@@ -20044,7 +19034,7 @@ int lua_cocos2dx_Action_getTag(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -20083,7 +19073,7 @@ int lua_cocos2dx_Action_setTarget(lua_State* tolua_S)
     cobj = (cocos2d::Action*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Action_setTarget'", nullptr);
         return 0;
@@ -20091,7 +19081,7 @@ int lua_cocos2dx_Action_setTarget(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Node* arg0;
 
@@ -20133,7 +19123,7 @@ int lua_cocos2dx_Action_isDone(lua_State* tolua_S)
     cobj = (cocos2d::Action*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Action_isDone'", nullptr);
         return 0;
@@ -20141,7 +19131,7 @@ int lua_cocos2dx_Action_isDone(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -20180,7 +19170,7 @@ int lua_cocos2dx_Action_reverse(lua_State* tolua_S)
     cobj = (cocos2d::Action*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Action_reverse'", nullptr);
         return 0;
@@ -20188,7 +19178,7 @@ int lua_cocos2dx_Action_reverse(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -20259,7 +19249,7 @@ int lua_cocos2dx_FiniteTimeAction_setDuration(lua_State* tolua_S)
     cobj = (cocos2d::FiniteTimeAction*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_FiniteTimeAction_setDuration'", nullptr);
         return 0;
@@ -20267,7 +19257,7 @@ int lua_cocos2dx_FiniteTimeAction_setDuration(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -20309,7 +19299,7 @@ int lua_cocos2dx_FiniteTimeAction_getDuration(lua_State* tolua_S)
     cobj = (cocos2d::FiniteTimeAction*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_FiniteTimeAction_getDuration'", nullptr);
         return 0;
@@ -20317,7 +19307,7 @@ int lua_cocos2dx_FiniteTimeAction_getDuration(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -20377,7 +19367,7 @@ int lua_cocos2dx_Speed_setInnerAction(lua_State* tolua_S)
     cobj = (cocos2d::Speed*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Speed_setInnerAction'", nullptr);
         return 0;
@@ -20385,7 +19375,7 @@ int lua_cocos2dx_Speed_setInnerAction(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::ActionInterval* arg0;
 
@@ -20427,7 +19417,7 @@ int lua_cocos2dx_Speed_setSpeed(lua_State* tolua_S)
     cobj = (cocos2d::Speed*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Speed_setSpeed'", nullptr);
         return 0;
@@ -20435,7 +19425,7 @@ int lua_cocos2dx_Speed_setSpeed(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -20477,7 +19467,7 @@ int lua_cocos2dx_Speed_getInnerAction(lua_State* tolua_S)
     cobj = (cocos2d::Speed*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Speed_getInnerAction'", nullptr);
         return 0;
@@ -20485,7 +19475,7 @@ int lua_cocos2dx_Speed_getInnerAction(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -20524,7 +19514,7 @@ int lua_cocos2dx_Speed_getSpeed(lua_State* tolua_S)
     cobj = (cocos2d::Speed*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Speed_getSpeed'", nullptr);
         return 0;
@@ -20532,7 +19522,7 @@ int lua_cocos2dx_Speed_getSpeed(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -20633,7 +19623,7 @@ int lua_cocos2dx_Follow_setBoundarySet(lua_State* tolua_S)
     cobj = (cocos2d::Follow*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Follow_setBoundarySet'", nullptr);
         return 0;
@@ -20641,7 +19631,7 @@ int lua_cocos2dx_Follow_setBoundarySet(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -20683,7 +19673,7 @@ int lua_cocos2dx_Follow_isBoundarySet(lua_State* tolua_S)
     cobj = (cocos2d::Follow*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Follow_isBoundarySet'", nullptr);
         return 0;
@@ -20691,7 +19681,7 @@ int lua_cocos2dx_Follow_isBoundarySet(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -20803,7 +19793,7 @@ int lua_cocos2dx_SpriteFrame_clone(lua_State* tolua_S)
     cobj = (cocos2d::SpriteFrame*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpriteFrame_clone'", nullptr);
         return 0;
@@ -20811,7 +19801,7 @@ int lua_cocos2dx_SpriteFrame_clone(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -20850,7 +19840,7 @@ int lua_cocos2dx_SpriteFrame_setRotated(lua_State* tolua_S)
     cobj = (cocos2d::SpriteFrame*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpriteFrame_setRotated'", nullptr);
         return 0;
@@ -20858,7 +19848,7 @@ int lua_cocos2dx_SpriteFrame_setRotated(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -20900,7 +19890,7 @@ int lua_cocos2dx_SpriteFrame_setTexture(lua_State* tolua_S)
     cobj = (cocos2d::SpriteFrame*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpriteFrame_setTexture'", nullptr);
         return 0;
@@ -20908,7 +19898,7 @@ int lua_cocos2dx_SpriteFrame_setTexture(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Texture2D* arg0;
 
@@ -20950,7 +19940,7 @@ int lua_cocos2dx_SpriteFrame_getOffset(lua_State* tolua_S)
     cobj = (cocos2d::SpriteFrame*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpriteFrame_getOffset'", nullptr);
         return 0;
@@ -20958,7 +19948,7 @@ int lua_cocos2dx_SpriteFrame_getOffset(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -20997,7 +19987,7 @@ int lua_cocos2dx_SpriteFrame_setRectInPixels(lua_State* tolua_S)
     cobj = (cocos2d::SpriteFrame*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpriteFrame_setRectInPixels'", nullptr);
         return 0;
@@ -21005,7 +19995,7 @@ int lua_cocos2dx_SpriteFrame_setRectInPixels(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Rect arg0;
 
@@ -21047,7 +20037,7 @@ int lua_cocos2dx_SpriteFrame_getTexture(lua_State* tolua_S)
     cobj = (cocos2d::SpriteFrame*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpriteFrame_getTexture'", nullptr);
         return 0;
@@ -21055,7 +20045,7 @@ int lua_cocos2dx_SpriteFrame_getTexture(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -21094,7 +20084,7 @@ int lua_cocos2dx_SpriteFrame_getRect(lua_State* tolua_S)
     cobj = (cocos2d::SpriteFrame*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpriteFrame_getRect'", nullptr);
         return 0;
@@ -21102,7 +20092,7 @@ int lua_cocos2dx_SpriteFrame_getRect(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -21141,7 +20131,7 @@ int lua_cocos2dx_SpriteFrame_setOffsetInPixels(lua_State* tolua_S)
     cobj = (cocos2d::SpriteFrame*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpriteFrame_setOffsetInPixels'", nullptr);
         return 0;
@@ -21149,7 +20139,7 @@ int lua_cocos2dx_SpriteFrame_setOffsetInPixels(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Vec2 arg0;
 
@@ -21191,7 +20181,7 @@ int lua_cocos2dx_SpriteFrame_getRectInPixels(lua_State* tolua_S)
     cobj = (cocos2d::SpriteFrame*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpriteFrame_getRectInPixels'", nullptr);
         return 0;
@@ -21199,7 +20189,7 @@ int lua_cocos2dx_SpriteFrame_getRectInPixels(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -21238,7 +20228,7 @@ int lua_cocos2dx_SpriteFrame_setOriginalSize(lua_State* tolua_S)
     cobj = (cocos2d::SpriteFrame*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpriteFrame_setOriginalSize'", nullptr);
         return 0;
@@ -21246,7 +20236,7 @@ int lua_cocos2dx_SpriteFrame_setOriginalSize(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Size arg0;
 
@@ -21288,7 +20278,7 @@ int lua_cocos2dx_SpriteFrame_getOriginalSizeInPixels(lua_State* tolua_S)
     cobj = (cocos2d::SpriteFrame*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpriteFrame_getOriginalSizeInPixels'", nullptr);
         return 0;
@@ -21296,7 +20286,7 @@ int lua_cocos2dx_SpriteFrame_getOriginalSizeInPixels(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -21335,7 +20325,7 @@ int lua_cocos2dx_SpriteFrame_setOriginalSizeInPixels(lua_State* tolua_S)
     cobj = (cocos2d::SpriteFrame*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpriteFrame_setOriginalSizeInPixels'", nullptr);
         return 0;
@@ -21343,7 +20333,7 @@ int lua_cocos2dx_SpriteFrame_setOriginalSizeInPixels(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Size arg0;
 
@@ -21385,7 +20375,7 @@ int lua_cocos2dx_SpriteFrame_setOffset(lua_State* tolua_S)
     cobj = (cocos2d::SpriteFrame*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpriteFrame_setOffset'", nullptr);
         return 0;
@@ -21393,7 +20383,7 @@ int lua_cocos2dx_SpriteFrame_setOffset(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Vec2 arg0;
 
@@ -21435,7 +20425,7 @@ int lua_cocos2dx_SpriteFrame_isRotated(lua_State* tolua_S)
     cobj = (cocos2d::SpriteFrame*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpriteFrame_isRotated'", nullptr);
         return 0;
@@ -21443,7 +20433,7 @@ int lua_cocos2dx_SpriteFrame_isRotated(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -21482,7 +20472,7 @@ int lua_cocos2dx_SpriteFrame_setRect(lua_State* tolua_S)
     cobj = (cocos2d::SpriteFrame*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpriteFrame_setRect'", nullptr);
         return 0;
@@ -21490,7 +20480,7 @@ int lua_cocos2dx_SpriteFrame_setRect(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Rect arg0;
 
@@ -21532,7 +20522,7 @@ int lua_cocos2dx_SpriteFrame_getOffsetInPixels(lua_State* tolua_S)
     cobj = (cocos2d::SpriteFrame*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpriteFrame_getOffsetInPixels'", nullptr);
         return 0;
@@ -21540,7 +20530,7 @@ int lua_cocos2dx_SpriteFrame_getOffsetInPixels(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -21579,7 +20569,7 @@ int lua_cocos2dx_SpriteFrame_getOriginalSize(lua_State* tolua_S)
     cobj = (cocos2d::SpriteFrame*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpriteFrame_getOriginalSize'", nullptr);
         return 0;
@@ -21587,7 +20577,7 @@ int lua_cocos2dx_SpriteFrame_getOriginalSize(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -21622,7 +20612,7 @@ int lua_cocos2dx_SpriteFrame_create(lua_State* tolua_S)
 
     argc = lua_gettop(tolua_S)-1;
 
-    do 
+    do
     {
         if (argc == 5)
         {
@@ -21647,7 +20637,7 @@ int lua_cocos2dx_SpriteFrame_create(lua_State* tolua_S)
         }
     } while (0);
     ok  = true;
-    do 
+    do
     {
         if (argc == 2)
         {
@@ -21685,7 +20675,7 @@ int lua_cocos2dx_SpriteFrame_createWithTexture(lua_State* tolua_S)
 
     argc = lua_gettop(tolua_S)-1;
 
-    do 
+    do
     {
         if (argc == 5)
         {
@@ -21710,7 +20700,7 @@ int lua_cocos2dx_SpriteFrame_createWithTexture(lua_State* tolua_S)
         }
     } while (0);
     ok  = true;
-    do 
+    do
     {
         if (argc == 2)
         {
@@ -21790,7 +20780,7 @@ int lua_cocos2dx_AnimationFrame_setSpriteFrame(lua_State* tolua_S)
     cobj = (cocos2d::AnimationFrame*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_AnimationFrame_setSpriteFrame'", nullptr);
         return 0;
@@ -21798,7 +20788,7 @@ int lua_cocos2dx_AnimationFrame_setSpriteFrame(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::SpriteFrame* arg0;
 
@@ -21887,7 +20877,7 @@ int lua_cocos2dx_AnimationFrame_setDelayUnits(lua_State* tolua_S)
     cobj = (cocos2d::AnimationFrame*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_AnimationFrame_setDelayUnits'", nullptr);
         return 0;
@@ -21895,7 +20885,7 @@ int lua_cocos2dx_AnimationFrame_setDelayUnits(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -21937,7 +20927,7 @@ int lua_cocos2dx_AnimationFrame_clone(lua_State* tolua_S)
     cobj = (cocos2d::AnimationFrame*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_AnimationFrame_clone'", nullptr);
         return 0;
@@ -21945,7 +20935,7 @@ int lua_cocos2dx_AnimationFrame_clone(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -21984,7 +20974,7 @@ int lua_cocos2dx_AnimationFrame_getSpriteFrame(lua_State* tolua_S)
     cobj = (cocos2d::AnimationFrame*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_AnimationFrame_getSpriteFrame'", nullptr);
         return 0;
@@ -21992,7 +20982,7 @@ int lua_cocos2dx_AnimationFrame_getSpriteFrame(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -22031,7 +21021,7 @@ int lua_cocos2dx_AnimationFrame_getDelayUnits(lua_State* tolua_S)
     cobj = (cocos2d::AnimationFrame*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_AnimationFrame_getDelayUnits'", nullptr);
         return 0;
@@ -22039,7 +21029,7 @@ int lua_cocos2dx_AnimationFrame_getDelayUnits(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -22078,7 +21068,7 @@ int lua_cocos2dx_AnimationFrame_setUserInfo(lua_State* tolua_S)
     cobj = (cocos2d::AnimationFrame*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_AnimationFrame_setUserInfo'", nullptr);
         return 0;
@@ -22086,7 +21076,7 @@ int lua_cocos2dx_AnimationFrame_setUserInfo(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::ValueMap arg0;
 
@@ -22195,7 +21185,7 @@ int lua_cocos2dx_Animation_getLoops(lua_State* tolua_S)
     cobj = (cocos2d::Animation*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Animation_getLoops'", nullptr);
         return 0;
@@ -22203,7 +21193,7 @@ int lua_cocos2dx_Animation_getLoops(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -22242,7 +21232,7 @@ int lua_cocos2dx_Animation_addSpriteFrame(lua_State* tolua_S)
     cobj = (cocos2d::Animation*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Animation_addSpriteFrame'", nullptr);
         return 0;
@@ -22250,7 +21240,7 @@ int lua_cocos2dx_Animation_addSpriteFrame(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::SpriteFrame* arg0;
 
@@ -22292,7 +21282,7 @@ int lua_cocos2dx_Animation_setRestoreOriginalFrame(lua_State* tolua_S)
     cobj = (cocos2d::Animation*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Animation_setRestoreOriginalFrame'", nullptr);
         return 0;
@@ -22300,7 +21290,7 @@ int lua_cocos2dx_Animation_setRestoreOriginalFrame(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -22342,7 +21332,7 @@ int lua_cocos2dx_Animation_clone(lua_State* tolua_S)
     cobj = (cocos2d::Animation*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Animation_clone'", nullptr);
         return 0;
@@ -22350,7 +21340,7 @@ int lua_cocos2dx_Animation_clone(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -22389,7 +21379,7 @@ int lua_cocos2dx_Animation_getDuration(lua_State* tolua_S)
     cobj = (cocos2d::Animation*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Animation_getDuration'", nullptr);
         return 0;
@@ -22397,7 +21387,7 @@ int lua_cocos2dx_Animation_getDuration(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -22436,7 +21426,7 @@ int lua_cocos2dx_Animation_setFrames(lua_State* tolua_S)
     cobj = (cocos2d::Animation*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Animation_setFrames'", nullptr);
         return 0;
@@ -22444,7 +21434,7 @@ int lua_cocos2dx_Animation_setFrames(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Vector<cocos2d::AnimationFrame *> arg0;
 
@@ -22486,7 +21476,7 @@ int lua_cocos2dx_Animation_getFrames(lua_State* tolua_S)
     cobj = (cocos2d::Animation*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Animation_getFrames'", nullptr);
         return 0;
@@ -22494,7 +21484,7 @@ int lua_cocos2dx_Animation_getFrames(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -22533,7 +21523,7 @@ int lua_cocos2dx_Animation_setLoops(lua_State* tolua_S)
     cobj = (cocos2d::Animation*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Animation_setLoops'", nullptr);
         return 0;
@@ -22541,7 +21531,7 @@ int lua_cocos2dx_Animation_setLoops(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         unsigned int arg0;
 
@@ -22583,7 +21573,7 @@ int lua_cocos2dx_Animation_setDelayPerUnit(lua_State* tolua_S)
     cobj = (cocos2d::Animation*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Animation_setDelayPerUnit'", nullptr);
         return 0;
@@ -22591,7 +21581,7 @@ int lua_cocos2dx_Animation_setDelayPerUnit(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -22633,7 +21623,7 @@ int lua_cocos2dx_Animation_addSpriteFrameWithFile(lua_State* tolua_S)
     cobj = (cocos2d::Animation*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Animation_addSpriteFrameWithFile'", nullptr);
         return 0;
@@ -22641,7 +21631,7 @@ int lua_cocos2dx_Animation_addSpriteFrameWithFile(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -22683,7 +21673,7 @@ int lua_cocos2dx_Animation_getTotalDelayUnits(lua_State* tolua_S)
     cobj = (cocos2d::Animation*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Animation_getTotalDelayUnits'", nullptr);
         return 0;
@@ -22691,7 +21681,7 @@ int lua_cocos2dx_Animation_getTotalDelayUnits(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -22730,7 +21720,7 @@ int lua_cocos2dx_Animation_getDelayPerUnit(lua_State* tolua_S)
     cobj = (cocos2d::Animation*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Animation_getDelayPerUnit'", nullptr);
         return 0;
@@ -22738,7 +21728,7 @@ int lua_cocos2dx_Animation_getDelayPerUnit(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -22777,7 +21767,7 @@ int lua_cocos2dx_Animation_getRestoreOriginalFrame(lua_State* tolua_S)
     cobj = (cocos2d::Animation*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Animation_getRestoreOriginalFrame'", nullptr);
         return 0;
@@ -22785,7 +21775,7 @@ int lua_cocos2dx_Animation_getRestoreOriginalFrame(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -22824,7 +21814,7 @@ int lua_cocos2dx_Animation_addSpriteFrameWithTexture(lua_State* tolua_S)
     cobj = (cocos2d::Animation*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Animation_addSpriteFrameWithTexture'", nullptr);
         return 0;
@@ -22832,7 +21822,7 @@ int lua_cocos2dx_Animation_addSpriteFrameWithTexture(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         cocos2d::Texture2D* arg0;
         cocos2d::Rect arg1;
@@ -22873,7 +21863,7 @@ int lua_cocos2dx_Animation_create(lua_State* tolua_S)
 
     argc = lua_gettop(tolua_S)-1;
 
-    do 
+    do
     {
         if (argc == 2)
         {
@@ -22889,7 +21879,7 @@ int lua_cocos2dx_Animation_create(lua_State* tolua_S)
         }
     } while (0);
     ok  = true;
-    do 
+    do
     {
         if (argc == 3)
         {
@@ -22908,7 +21898,7 @@ int lua_cocos2dx_Animation_create(lua_State* tolua_S)
         }
     } while (0);
     ok  = true;
-    do 
+    do
     {
         if (argc == 0)
         {
@@ -23047,7 +22037,7 @@ int lua_cocos2dx_ActionInterval_getAmplitudeRate(lua_State* tolua_S)
     cobj = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ActionInterval_getAmplitudeRate'", nullptr);
         return 0;
@@ -23055,7 +22045,7 @@ int lua_cocos2dx_ActionInterval_getAmplitudeRate(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -23094,7 +22084,7 @@ int lua_cocos2dx_ActionInterval_setAmplitudeRate(lua_State* tolua_S)
     cobj = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ActionInterval_setAmplitudeRate'", nullptr);
         return 0;
@@ -23102,7 +22092,7 @@ int lua_cocos2dx_ActionInterval_setAmplitudeRate(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -23144,7 +22134,7 @@ int lua_cocos2dx_ActionInterval_getElapsed(lua_State* tolua_S)
     cobj = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ActionInterval_getElapsed'", nullptr);
         return 0;
@@ -23152,7 +22142,7 @@ int lua_cocos2dx_ActionInterval_getElapsed(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -23232,7 +22222,7 @@ int lua_cocos2dx_Repeat_setInnerAction(lua_State* tolua_S)
     cobj = (cocos2d::Repeat*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Repeat_setInnerAction'", nullptr);
         return 0;
@@ -23240,7 +22230,7 @@ int lua_cocos2dx_Repeat_setInnerAction(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::FiniteTimeAction* arg0;
 
@@ -23282,7 +22272,7 @@ int lua_cocos2dx_Repeat_getInnerAction(lua_State* tolua_S)
     cobj = (cocos2d::Repeat*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Repeat_getInnerAction'", nullptr);
         return 0;
@@ -23290,7 +22280,7 @@ int lua_cocos2dx_Repeat_getInnerAction(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -23389,7 +22379,7 @@ int lua_cocos2dx_RepeatForever_setInnerAction(lua_State* tolua_S)
     cobj = (cocos2d::RepeatForever*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_RepeatForever_setInnerAction'", nullptr);
         return 0;
@@ -23397,7 +22387,7 @@ int lua_cocos2dx_RepeatForever_setInnerAction(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::ActionInterval* arg0;
 
@@ -23439,7 +22429,7 @@ int lua_cocos2dx_RepeatForever_getInnerAction(lua_State* tolua_S)
     cobj = (cocos2d::RepeatForever*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_RepeatForever_getInnerAction'", nullptr);
         return 0;
@@ -23447,7 +22437,7 @@ int lua_cocos2dx_RepeatForever_getInnerAction(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -23559,7 +22549,7 @@ int lua_cocos2dx_RotateTo_create(lua_State* tolua_S)
 
     argc = lua_gettop(tolua_S)-1;
 
-    do 
+    do
     {
         if (argc == 2)
         {
@@ -23575,7 +22565,7 @@ int lua_cocos2dx_RotateTo_create(lua_State* tolua_S)
         }
     } while (0);
     ok  = true;
-    do 
+    do
     {
         if (argc == 3)
         {
@@ -23594,7 +22584,7 @@ int lua_cocos2dx_RotateTo_create(lua_State* tolua_S)
         }
     } while (0);
     ok  = true;
-    do 
+    do
     {
         if (argc == 2)
         {
@@ -23652,7 +22642,7 @@ int lua_cocos2dx_RotateBy_create(lua_State* tolua_S)
 
     argc = lua_gettop(tolua_S)-1;
 
-    do 
+    do
     {
         if (argc == 3)
         {
@@ -23671,7 +22661,7 @@ int lua_cocos2dx_RotateBy_create(lua_State* tolua_S)
         }
     } while (0);
     ok  = true;
-    do 
+    do
     {
         if (argc == 2)
         {
@@ -23687,7 +22677,7 @@ int lua_cocos2dx_RotateBy_create(lua_State* tolua_S)
         }
     } while (0);
     ok  = true;
-    do 
+    do
     {
         if (argc == 2)
         {
@@ -24143,7 +23133,7 @@ int lua_cocos2dx_ScaleTo_create(lua_State* tolua_S)
 
     argc = lua_gettop(tolua_S)-1;
 
-    do 
+    do
     {
         if (argc == 3)
         {
@@ -24162,7 +23152,7 @@ int lua_cocos2dx_ScaleTo_create(lua_State* tolua_S)
         }
     } while (0);
     ok  = true;
-    do 
+    do
     {
         if (argc == 2)
         {
@@ -24178,7 +23168,7 @@ int lua_cocos2dx_ScaleTo_create(lua_State* tolua_S)
         }
     } while (0);
     ok  = true;
-    do 
+    do
     {
         if (argc == 4)
         {
@@ -24242,7 +23232,7 @@ int lua_cocos2dx_ScaleBy_create(lua_State* tolua_S)
 
     argc = lua_gettop(tolua_S)-1;
 
-    do 
+    do
     {
         if (argc == 3)
         {
@@ -24261,7 +23251,7 @@ int lua_cocos2dx_ScaleBy_create(lua_State* tolua_S)
         }
     } while (0);
     ok  = true;
-    do 
+    do
     {
         if (argc == 2)
         {
@@ -24277,7 +23267,7 @@ int lua_cocos2dx_ScaleBy_create(lua_State* tolua_S)
         }
     } while (0);
     ok  = true;
-    do 
+    do
     {
         if (argc == 4)
         {
@@ -24461,7 +23451,7 @@ int lua_cocos2dx_FadeIn_setReverseAction(lua_State* tolua_S)
     cobj = (cocos2d::FadeIn*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_FadeIn_setReverseAction'", nullptr);
         return 0;
@@ -24469,7 +23459,7 @@ int lua_cocos2dx_FadeIn_setReverseAction(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::FadeTo* arg0;
 
@@ -24568,7 +23558,7 @@ int lua_cocos2dx_FadeOut_setReverseAction(lua_State* tolua_S)
     cobj = (cocos2d::FadeOut*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_FadeOut_setReverseAction'", nullptr);
         return 0;
@@ -24576,7 +23566,7 @@ int lua_cocos2dx_FadeOut_setReverseAction(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::FadeTo* arg0;
 
@@ -24902,7 +23892,7 @@ int lua_cocos2dx_Animate_setAnimation(lua_State* tolua_S)
     cobj = (cocos2d::Animate*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Animate_setAnimation'", nullptr);
         return 0;
@@ -24910,7 +23900,7 @@ int lua_cocos2dx_Animate_setAnimation(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Animation* arg0;
 
@@ -25057,7 +24047,7 @@ int lua_cocos2dx_TargetedAction_setForcedTarget(lua_State* tolua_S)
     cobj = (cocos2d::TargetedAction*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TargetedAction_setForcedTarget'", nullptr);
         return 0;
@@ -25065,7 +24055,7 @@ int lua_cocos2dx_TargetedAction_setForcedTarget(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Node* arg0;
 
@@ -25230,7 +24220,7 @@ int lua_cocos2dx_ActionCamera_getEye(lua_State* tolua_S)
     cobj = (cocos2d::ActionCamera*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ActionCamera_getEye'", nullptr);
         return 0;
@@ -25238,7 +24228,7 @@ int lua_cocos2dx_ActionCamera_getEye(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -25277,7 +24267,7 @@ int lua_cocos2dx_ActionCamera_setUp(lua_State* tolua_S)
     cobj = (cocos2d::ActionCamera*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ActionCamera_setUp'", nullptr);
         return 0;
@@ -25285,7 +24275,7 @@ int lua_cocos2dx_ActionCamera_setUp(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Vec3 arg0;
 
@@ -25327,7 +24317,7 @@ int lua_cocos2dx_ActionCamera_getCenter(lua_State* tolua_S)
     cobj = (cocos2d::ActionCamera*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ActionCamera_getCenter'", nullptr);
         return 0;
@@ -25335,7 +24325,7 @@ int lua_cocos2dx_ActionCamera_getCenter(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -25374,7 +24364,7 @@ int lua_cocos2dx_ActionCamera_setCenter(lua_State* tolua_S)
     cobj = (cocos2d::ActionCamera*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ActionCamera_setCenter'", nullptr);
         return 0;
@@ -25382,7 +24372,7 @@ int lua_cocos2dx_ActionCamera_setCenter(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Vec3 arg0;
 
@@ -25424,7 +24414,7 @@ int lua_cocos2dx_ActionCamera_getUp(lua_State* tolua_S)
     cobj = (cocos2d::ActionCamera*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ActionCamera_getUp'", nullptr);
         return 0;
@@ -25432,7 +24422,7 @@ int lua_cocos2dx_ActionCamera_getUp(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -25466,7 +24456,7 @@ int lua_cocos2dx_ActionCamera_constructor(lua_State* tolua_S)
 
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -25602,7 +24592,7 @@ int lua_cocos2dx_ActionManager_getActionByTag(lua_State* tolua_S)
     cobj = (cocos2d::ActionManager*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ActionManager_getActionByTag'", nullptr);
         return 0;
@@ -25610,7 +24600,7 @@ int lua_cocos2dx_ActionManager_getActionByTag(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         int arg0;
         const cocos2d::Node* arg1;
@@ -25655,7 +24645,7 @@ int lua_cocos2dx_ActionManager_removeActionByTag(lua_State* tolua_S)
     cobj = (cocos2d::ActionManager*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ActionManager_removeActionByTag'", nullptr);
         return 0;
@@ -25663,7 +24653,7 @@ int lua_cocos2dx_ActionManager_removeActionByTag(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         int arg0;
         cocos2d::Node* arg1;
@@ -25708,7 +24698,7 @@ int lua_cocos2dx_ActionManager_removeAllActions(lua_State* tolua_S)
     cobj = (cocos2d::ActionManager*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ActionManager_removeAllActions'", nullptr);
         return 0;
@@ -25716,7 +24706,7 @@ int lua_cocos2dx_ActionManager_removeAllActions(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -25755,7 +24745,7 @@ int lua_cocos2dx_ActionManager_addAction(lua_State* tolua_S)
     cobj = (cocos2d::ActionManager*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ActionManager_addAction'", nullptr);
         return 0;
@@ -25763,7 +24753,7 @@ int lua_cocos2dx_ActionManager_addAction(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 3) 
+    if (argc == 3)
     {
         cocos2d::Action* arg0;
         cocos2d::Node* arg1;
@@ -25811,7 +24801,7 @@ int lua_cocos2dx_ActionManager_resumeTarget(lua_State* tolua_S)
     cobj = (cocos2d::ActionManager*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ActionManager_resumeTarget'", nullptr);
         return 0;
@@ -25819,7 +24809,7 @@ int lua_cocos2dx_ActionManager_resumeTarget(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Node* arg0;
 
@@ -25861,7 +24851,7 @@ int lua_cocos2dx_ActionManager_update(lua_State* tolua_S)
     cobj = (cocos2d::ActionManager*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ActionManager_update'", nullptr);
         return 0;
@@ -25869,7 +24859,7 @@ int lua_cocos2dx_ActionManager_update(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -25911,7 +24901,7 @@ int lua_cocos2dx_ActionManager_pauseTarget(lua_State* tolua_S)
     cobj = (cocos2d::ActionManager*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ActionManager_pauseTarget'", nullptr);
         return 0;
@@ -25919,7 +24909,7 @@ int lua_cocos2dx_ActionManager_pauseTarget(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Node* arg0;
 
@@ -25961,7 +24951,7 @@ int lua_cocos2dx_ActionManager_getNumberOfRunningActionsInTarget(lua_State* tolu
     cobj = (cocos2d::ActionManager*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ActionManager_getNumberOfRunningActionsInTarget'", nullptr);
         return 0;
@@ -25969,7 +24959,7 @@ int lua_cocos2dx_ActionManager_getNumberOfRunningActionsInTarget(lua_State* tolu
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         const cocos2d::Node* arg0;
 
@@ -26011,7 +25001,7 @@ int lua_cocos2dx_ActionManager_removeAllActionsFromTarget(lua_State* tolua_S)
     cobj = (cocos2d::ActionManager*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ActionManager_removeAllActionsFromTarget'", nullptr);
         return 0;
@@ -26019,7 +25009,7 @@ int lua_cocos2dx_ActionManager_removeAllActionsFromTarget(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Node* arg0;
 
@@ -26061,7 +25051,7 @@ int lua_cocos2dx_ActionManager_resumeTargets(lua_State* tolua_S)
     cobj = (cocos2d::ActionManager*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ActionManager_resumeTargets'", nullptr);
         return 0;
@@ -26069,7 +25059,7 @@ int lua_cocos2dx_ActionManager_resumeTargets(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Vector<cocos2d::Node *> arg0;
 
@@ -26111,7 +25101,7 @@ int lua_cocos2dx_ActionManager_removeAction(lua_State* tolua_S)
     cobj = (cocos2d::ActionManager*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ActionManager_removeAction'", nullptr);
         return 0;
@@ -26119,7 +25109,7 @@ int lua_cocos2dx_ActionManager_removeAction(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Action* arg0;
 
@@ -26161,7 +25151,7 @@ int lua_cocos2dx_ActionManager_removeAllActionsByTag(lua_State* tolua_S)
     cobj = (cocos2d::ActionManager*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ActionManager_removeAllActionsByTag'", nullptr);
         return 0;
@@ -26169,7 +25159,7 @@ int lua_cocos2dx_ActionManager_removeAllActionsByTag(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         int arg0;
         cocos2d::Node* arg1;
@@ -26214,7 +25204,7 @@ int lua_cocos2dx_ActionManager_pauseAllRunningActions(lua_State* tolua_S)
     cobj = (cocos2d::ActionManager*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ActionManager_pauseAllRunningActions'", nullptr);
         return 0;
@@ -26222,7 +25212,7 @@ int lua_cocos2dx_ActionManager_pauseAllRunningActions(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -26256,7 +25246,7 @@ int lua_cocos2dx_ActionManager_constructor(lua_State* tolua_S)
 
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -26331,7 +25321,7 @@ int lua_cocos2dx_ActionEase_getInnerAction(lua_State* tolua_S)
     cobj = (cocos2d::ActionEase*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ActionEase_getInnerAction'", nullptr);
         return 0;
@@ -26339,7 +25329,7 @@ int lua_cocos2dx_ActionEase_getInnerAction(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -26398,7 +25388,7 @@ int lua_cocos2dx_EaseRateAction_setRate(lua_State* tolua_S)
     cobj = (cocos2d::EaseRateAction*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EaseRateAction_setRate'", nullptr);
         return 0;
@@ -26406,7 +25396,7 @@ int lua_cocos2dx_EaseRateAction_setRate(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -26448,7 +25438,7 @@ int lua_cocos2dx_EaseRateAction_getRate(lua_State* tolua_S)
     cobj = (cocos2d::EaseRateAction*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EaseRateAction_getRate'", nullptr);
         return 0;
@@ -26456,7 +25446,7 @@ int lua_cocos2dx_EaseRateAction_getRate(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -27026,7 +26016,7 @@ int lua_cocos2dx_EaseElastic_setPeriod(lua_State* tolua_S)
     cobj = (cocos2d::EaseElastic*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EaseElastic_setPeriod'", nullptr);
         return 0;
@@ -27034,7 +26024,7 @@ int lua_cocos2dx_EaseElastic_setPeriod(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -27076,7 +26066,7 @@ int lua_cocos2dx_EaseElastic_getPeriod(lua_State* tolua_S)
     cobj = (cocos2d::EaseElastic*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EaseElastic_getPeriod'", nullptr);
         return 0;
@@ -27084,7 +26074,7 @@ int lua_cocos2dx_EaseElastic_getPeriod(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -27140,7 +26130,7 @@ int lua_cocos2dx_EaseElasticIn_create(lua_State* tolua_S)
 
     argc = lua_gettop(tolua_S)-1;
 
-    do 
+    do
     {
         if (argc == 1)
         {
@@ -27153,7 +26143,7 @@ int lua_cocos2dx_EaseElasticIn_create(lua_State* tolua_S)
         }
     } while (0);
     ok  = true;
-    do 
+    do
     {
         if (argc == 2)
         {
@@ -27211,7 +26201,7 @@ int lua_cocos2dx_EaseElasticOut_create(lua_State* tolua_S)
 
     argc = lua_gettop(tolua_S)-1;
 
-    do 
+    do
     {
         if (argc == 1)
         {
@@ -27224,7 +26214,7 @@ int lua_cocos2dx_EaseElasticOut_create(lua_State* tolua_S)
         }
     } while (0);
     ok  = true;
-    do 
+    do
     {
         if (argc == 2)
         {
@@ -27282,7 +26272,7 @@ int lua_cocos2dx_EaseElasticInOut_create(lua_State* tolua_S)
 
     argc = lua_gettop(tolua_S)-1;
 
-    do 
+    do
     {
         if (argc == 1)
         {
@@ -27295,7 +26285,7 @@ int lua_cocos2dx_EaseElasticInOut_create(lua_State* tolua_S)
         }
     } while (0);
     ok  = true;
-    do 
+    do
     {
         if (argc == 2)
         {
@@ -27712,7 +26702,7 @@ int lua_cocos2dx_EaseBezierAction_setBezierParamer(lua_State* tolua_S)
     cobj = (cocos2d::EaseBezierAction*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EaseBezierAction_setBezierParamer'", nullptr);
         return 0;
@@ -27720,7 +26710,7 @@ int lua_cocos2dx_EaseBezierAction_setBezierParamer(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 4) 
+    if (argc == 4)
     {
         double arg0;
         double arg1;
@@ -29084,7 +28074,7 @@ int lua_cocos2dx_CallFunc_execute(lua_State* tolua_S)
     cobj = (cocos2d::CallFunc*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_CallFunc_execute'", nullptr);
         return 0;
@@ -29092,7 +28082,7 @@ int lua_cocos2dx_CallFunc_execute(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -29131,7 +28121,7 @@ int lua_cocos2dx_CallFunc_getTargetCallback(lua_State* tolua_S)
     cobj = (cocos2d::CallFunc*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_CallFunc_getTargetCallback'", nullptr);
         return 0;
@@ -29139,7 +28129,7 @@ int lua_cocos2dx_CallFunc_getTargetCallback(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -29178,7 +28168,7 @@ int lua_cocos2dx_CallFunc_setTargetCallback(lua_State* tolua_S)
     cobj = (cocos2d::CallFunc*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_CallFunc_setTargetCallback'", nullptr);
         return 0;
@@ -29186,7 +28176,7 @@ int lua_cocos2dx_CallFunc_setTargetCallback(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Ref* arg0;
 
@@ -29250,7 +28240,7 @@ int lua_cocos2dx_GridAction_getGrid(lua_State* tolua_S)
     cobj = (cocos2d::GridAction*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GridAction_getGrid'", nullptr);
         return 0;
@@ -29258,7 +28248,7 @@ int lua_cocos2dx_GridAction_getGrid(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -29317,7 +28307,7 @@ int lua_cocos2dx_Grid3DAction_getGrid(lua_State* tolua_S)
     cobj = (cocos2d::Grid3DAction*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Grid3DAction_getGrid'", nullptr);
         return 0;
@@ -29325,7 +28315,7 @@ int lua_cocos2dx_Grid3DAction_getGrid(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -29384,7 +28374,7 @@ int lua_cocos2dx_TiledGrid3DAction_getGrid(lua_State* tolua_S)
     cobj = (cocos2d::TiledGrid3DAction*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TiledGrid3DAction_getGrid'", nullptr);
         return 0;
@@ -29392,7 +28382,7 @@ int lua_cocos2dx_TiledGrid3DAction_getGrid(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -29561,7 +28551,7 @@ int lua_cocos2dx_Waves3D_getAmplitudeRate(lua_State* tolua_S)
     cobj = (cocos2d::Waves3D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Waves3D_getAmplitudeRate'", nullptr);
         return 0;
@@ -29569,7 +28559,7 @@ int lua_cocos2dx_Waves3D_getAmplitudeRate(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -29608,7 +28598,7 @@ int lua_cocos2dx_Waves3D_setAmplitude(lua_State* tolua_S)
     cobj = (cocos2d::Waves3D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Waves3D_setAmplitude'", nullptr);
         return 0;
@@ -29616,7 +28606,7 @@ int lua_cocos2dx_Waves3D_setAmplitude(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -29658,7 +28648,7 @@ int lua_cocos2dx_Waves3D_setAmplitudeRate(lua_State* tolua_S)
     cobj = (cocos2d::Waves3D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Waves3D_setAmplitudeRate'", nullptr);
         return 0;
@@ -29666,7 +28656,7 @@ int lua_cocos2dx_Waves3D_setAmplitudeRate(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -29708,7 +28698,7 @@ int lua_cocos2dx_Waves3D_getAmplitude(lua_State* tolua_S)
     cobj = (cocos2d::Waves3D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Waves3D_getAmplitude'", nullptr);
         return 0;
@@ -29716,7 +28706,7 @@ int lua_cocos2dx_Waves3D_getAmplitude(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -29933,7 +28923,7 @@ int lua_cocos2dx_Lens3D_setPosition(lua_State* tolua_S)
     cobj = (cocos2d::Lens3D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Lens3D_setPosition'", nullptr);
         return 0;
@@ -29941,7 +28931,7 @@ int lua_cocos2dx_Lens3D_setPosition(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Vec2 arg0;
 
@@ -29983,7 +28973,7 @@ int lua_cocos2dx_Lens3D_setConcave(lua_State* tolua_S)
     cobj = (cocos2d::Lens3D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Lens3D_setConcave'", nullptr);
         return 0;
@@ -29991,7 +28981,7 @@ int lua_cocos2dx_Lens3D_setConcave(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -30033,7 +29023,7 @@ int lua_cocos2dx_Lens3D_setLensEffect(lua_State* tolua_S)
     cobj = (cocos2d::Lens3D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Lens3D_setLensEffect'", nullptr);
         return 0;
@@ -30041,7 +29031,7 @@ int lua_cocos2dx_Lens3D_setLensEffect(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -30083,7 +29073,7 @@ int lua_cocos2dx_Lens3D_getPosition(lua_State* tolua_S)
     cobj = (cocos2d::Lens3D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Lens3D_getPosition'", nullptr);
         return 0;
@@ -30091,7 +29081,7 @@ int lua_cocos2dx_Lens3D_getPosition(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -30130,7 +29120,7 @@ int lua_cocos2dx_Lens3D_getLensEffect(lua_State* tolua_S)
     cobj = (cocos2d::Lens3D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Lens3D_getLensEffect'", nullptr);
         return 0;
@@ -30138,7 +29128,7 @@ int lua_cocos2dx_Lens3D_getLensEffect(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -30244,7 +29234,7 @@ int lua_cocos2dx_Ripple3D_setAmplitudeRate(lua_State* tolua_S)
     cobj = (cocos2d::Ripple3D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Ripple3D_setAmplitudeRate'", nullptr);
         return 0;
@@ -30252,7 +29242,7 @@ int lua_cocos2dx_Ripple3D_setAmplitudeRate(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -30294,7 +29284,7 @@ int lua_cocos2dx_Ripple3D_getAmplitudeRate(lua_State* tolua_S)
     cobj = (cocos2d::Ripple3D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Ripple3D_getAmplitudeRate'", nullptr);
         return 0;
@@ -30302,7 +29292,7 @@ int lua_cocos2dx_Ripple3D_getAmplitudeRate(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -30341,7 +29331,7 @@ int lua_cocos2dx_Ripple3D_setAmplitude(lua_State* tolua_S)
     cobj = (cocos2d::Ripple3D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Ripple3D_setAmplitude'", nullptr);
         return 0;
@@ -30349,7 +29339,7 @@ int lua_cocos2dx_Ripple3D_setAmplitude(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -30391,7 +29381,7 @@ int lua_cocos2dx_Ripple3D_getAmplitude(lua_State* tolua_S)
     cobj = (cocos2d::Ripple3D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Ripple3D_getAmplitude'", nullptr);
         return 0;
@@ -30399,7 +29389,7 @@ int lua_cocos2dx_Ripple3D_getAmplitude(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -30438,7 +29428,7 @@ int lua_cocos2dx_Ripple3D_setPosition(lua_State* tolua_S)
     cobj = (cocos2d::Ripple3D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Ripple3D_setPosition'", nullptr);
         return 0;
@@ -30446,7 +29436,7 @@ int lua_cocos2dx_Ripple3D_setPosition(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Vec2 arg0;
 
@@ -30488,7 +29478,7 @@ int lua_cocos2dx_Ripple3D_getPosition(lua_State* tolua_S)
     cobj = (cocos2d::Ripple3D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Ripple3D_getPosition'", nullptr);
         return 0;
@@ -30496,7 +29486,7 @@ int lua_cocos2dx_Ripple3D_getPosition(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -30669,7 +29659,7 @@ int lua_cocos2dx_Liquid_getAmplitudeRate(lua_State* tolua_S)
     cobj = (cocos2d::Liquid*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Liquid_getAmplitudeRate'", nullptr);
         return 0;
@@ -30677,7 +29667,7 @@ int lua_cocos2dx_Liquid_getAmplitudeRate(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -30716,7 +29706,7 @@ int lua_cocos2dx_Liquid_setAmplitude(lua_State* tolua_S)
     cobj = (cocos2d::Liquid*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Liquid_setAmplitude'", nullptr);
         return 0;
@@ -30724,7 +29714,7 @@ int lua_cocos2dx_Liquid_setAmplitude(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -30766,7 +29756,7 @@ int lua_cocos2dx_Liquid_setAmplitudeRate(lua_State* tolua_S)
     cobj = (cocos2d::Liquid*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Liquid_setAmplitudeRate'", nullptr);
         return 0;
@@ -30774,7 +29764,7 @@ int lua_cocos2dx_Liquid_setAmplitudeRate(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -30816,7 +29806,7 @@ int lua_cocos2dx_Liquid_getAmplitude(lua_State* tolua_S)
     cobj = (cocos2d::Liquid*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Liquid_getAmplitude'", nullptr);
         return 0;
@@ -30824,7 +29814,7 @@ int lua_cocos2dx_Liquid_getAmplitude(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -30929,7 +29919,7 @@ int lua_cocos2dx_Waves_getAmplitudeRate(lua_State* tolua_S)
     cobj = (cocos2d::Waves*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Waves_getAmplitudeRate'", nullptr);
         return 0;
@@ -30937,7 +29927,7 @@ int lua_cocos2dx_Waves_getAmplitudeRate(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -30976,7 +29966,7 @@ int lua_cocos2dx_Waves_setAmplitude(lua_State* tolua_S)
     cobj = (cocos2d::Waves*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Waves_setAmplitude'", nullptr);
         return 0;
@@ -30984,7 +29974,7 @@ int lua_cocos2dx_Waves_setAmplitude(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -31026,7 +30016,7 @@ int lua_cocos2dx_Waves_setAmplitudeRate(lua_State* tolua_S)
     cobj = (cocos2d::Waves*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Waves_setAmplitudeRate'", nullptr);
         return 0;
@@ -31034,7 +30024,7 @@ int lua_cocos2dx_Waves_setAmplitudeRate(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -31076,7 +30066,7 @@ int lua_cocos2dx_Waves_getAmplitude(lua_State* tolua_S)
     cobj = (cocos2d::Waves*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Waves_getAmplitude'", nullptr);
         return 0;
@@ -31084,7 +30074,7 @@ int lua_cocos2dx_Waves_getAmplitude(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -31193,7 +30183,7 @@ int lua_cocos2dx_Twirl_setAmplitudeRate(lua_State* tolua_S)
     cobj = (cocos2d::Twirl*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Twirl_setAmplitudeRate'", nullptr);
         return 0;
@@ -31201,7 +30191,7 @@ int lua_cocos2dx_Twirl_setAmplitudeRate(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -31243,7 +30233,7 @@ int lua_cocos2dx_Twirl_getAmplitudeRate(lua_State* tolua_S)
     cobj = (cocos2d::Twirl*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Twirl_getAmplitudeRate'", nullptr);
         return 0;
@@ -31251,7 +30241,7 @@ int lua_cocos2dx_Twirl_getAmplitudeRate(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -31290,7 +30280,7 @@ int lua_cocos2dx_Twirl_setAmplitude(lua_State* tolua_S)
     cobj = (cocos2d::Twirl*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Twirl_setAmplitude'", nullptr);
         return 0;
@@ -31298,7 +30288,7 @@ int lua_cocos2dx_Twirl_setAmplitude(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -31340,7 +30330,7 @@ int lua_cocos2dx_Twirl_getAmplitude(lua_State* tolua_S)
     cobj = (cocos2d::Twirl*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Twirl_getAmplitude'", nullptr);
         return 0;
@@ -31348,7 +30338,7 @@ int lua_cocos2dx_Twirl_getAmplitude(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -31387,7 +30377,7 @@ int lua_cocos2dx_Twirl_setPosition(lua_State* tolua_S)
     cobj = (cocos2d::Twirl*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Twirl_setPosition'", nullptr);
         return 0;
@@ -31395,7 +30385,7 @@ int lua_cocos2dx_Twirl_setPosition(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Vec2 arg0;
 
@@ -31437,7 +30427,7 @@ int lua_cocos2dx_Twirl_getPosition(lua_State* tolua_S)
     cobj = (cocos2d::Twirl*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Twirl_getPosition'", nullptr);
         return 0;
@@ -31445,7 +30435,7 @@ int lua_cocos2dx_Twirl_getPosition(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -31554,7 +30544,7 @@ int lua_cocos2dx_PageTurn3D_getGrid(lua_State* tolua_S)
     cobj = (cocos2d::PageTurn3D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_PageTurn3D_getGrid'", nullptr);
         return 0;
@@ -31562,7 +30552,7 @@ int lua_cocos2dx_PageTurn3D_getGrid(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -31902,7 +30892,7 @@ int lua_cocos2dx_ShuffleTiles_getDelta(lua_State* tolua_S)
     cobj = (cocos2d::ShuffleTiles*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ShuffleTiles_getDelta'", nullptr);
         return 0;
@@ -31910,7 +30900,7 @@ int lua_cocos2dx_ShuffleTiles_getDelta(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Size arg0;
 
@@ -32013,7 +31003,7 @@ int lua_cocos2dx_FadeOutTRTiles_turnOnTile(lua_State* tolua_S)
     cobj = (cocos2d::FadeOutTRTiles*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_FadeOutTRTiles_turnOnTile'", nullptr);
         return 0;
@@ -32021,7 +31011,7 @@ int lua_cocos2dx_FadeOutTRTiles_turnOnTile(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Vec2 arg0;
 
@@ -32063,7 +31053,7 @@ int lua_cocos2dx_FadeOutTRTiles_turnOffTile(lua_State* tolua_S)
     cobj = (cocos2d::FadeOutTRTiles*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_FadeOutTRTiles_turnOffTile'", nullptr);
         return 0;
@@ -32071,7 +31061,7 @@ int lua_cocos2dx_FadeOutTRTiles_turnOffTile(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Vec2 arg0;
 
@@ -32113,7 +31103,7 @@ int lua_cocos2dx_FadeOutTRTiles_transformTile(lua_State* tolua_S)
     cobj = (cocos2d::FadeOutTRTiles*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_FadeOutTRTiles_transformTile'", nullptr);
         return 0;
@@ -32121,7 +31111,7 @@ int lua_cocos2dx_FadeOutTRTiles_transformTile(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         cocos2d::Vec2 arg0;
         double arg1;
@@ -32166,7 +31156,7 @@ int lua_cocos2dx_FadeOutTRTiles_testFunc(lua_State* tolua_S)
     cobj = (cocos2d::FadeOutTRTiles*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_FadeOutTRTiles_testFunc'", nullptr);
         return 0;
@@ -32174,7 +31164,7 @@ int lua_cocos2dx_FadeOutTRTiles_testFunc(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         cocos2d::Size arg0;
         double arg1;
@@ -32339,7 +31329,7 @@ int lua_cocos2dx_FadeOutUpTiles_transformTile(lua_State* tolua_S)
     cobj = (cocos2d::FadeOutUpTiles*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_FadeOutUpTiles_transformTile'", nullptr);
         return 0;
@@ -32347,7 +31337,7 @@ int lua_cocos2dx_FadeOutUpTiles_transformTile(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         cocos2d::Vec2 arg0;
         double arg1;
@@ -32509,7 +31499,7 @@ int lua_cocos2dx_TurnOffTiles_turnOnTile(lua_State* tolua_S)
     cobj = (cocos2d::TurnOffTiles*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TurnOffTiles_turnOnTile'", nullptr);
         return 0;
@@ -32517,7 +31507,7 @@ int lua_cocos2dx_TurnOffTiles_turnOnTile(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Vec2 arg0;
 
@@ -32559,7 +31549,7 @@ int lua_cocos2dx_TurnOffTiles_turnOffTile(lua_State* tolua_S)
     cobj = (cocos2d::TurnOffTiles*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TurnOffTiles_turnOffTile'", nullptr);
         return 0;
@@ -32567,7 +31557,7 @@ int lua_cocos2dx_TurnOffTiles_turnOffTile(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Vec2 arg0;
 
@@ -32605,7 +31595,7 @@ int lua_cocos2dx_TurnOffTiles_create(lua_State* tolua_S)
 
     argc = lua_gettop(tolua_S)-1;
 
-    do 
+    do
     {
         if (argc == 3)
         {
@@ -32624,7 +31614,7 @@ int lua_cocos2dx_TurnOffTiles_create(lua_State* tolua_S)
         }
     } while (0);
     ok  = true;
-    do 
+    do
     {
         if (argc == 2)
         {
@@ -32688,7 +31678,7 @@ int lua_cocos2dx_WavesTiles3D_getAmplitudeRate(lua_State* tolua_S)
     cobj = (cocos2d::WavesTiles3D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_WavesTiles3D_getAmplitudeRate'", nullptr);
         return 0;
@@ -32696,7 +31686,7 @@ int lua_cocos2dx_WavesTiles3D_getAmplitudeRate(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -32735,7 +31725,7 @@ int lua_cocos2dx_WavesTiles3D_setAmplitude(lua_State* tolua_S)
     cobj = (cocos2d::WavesTiles3D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_WavesTiles3D_setAmplitude'", nullptr);
         return 0;
@@ -32743,7 +31733,7 @@ int lua_cocos2dx_WavesTiles3D_setAmplitude(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -32785,7 +31775,7 @@ int lua_cocos2dx_WavesTiles3D_setAmplitudeRate(lua_State* tolua_S)
     cobj = (cocos2d::WavesTiles3D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_WavesTiles3D_setAmplitudeRate'", nullptr);
         return 0;
@@ -32793,7 +31783,7 @@ int lua_cocos2dx_WavesTiles3D_setAmplitudeRate(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -32835,7 +31825,7 @@ int lua_cocos2dx_WavesTiles3D_getAmplitude(lua_State* tolua_S)
     cobj = (cocos2d::WavesTiles3D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_WavesTiles3D_getAmplitude'", nullptr);
         return 0;
@@ -32843,7 +31833,7 @@ int lua_cocos2dx_WavesTiles3D_getAmplitude(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -32948,7 +31938,7 @@ int lua_cocos2dx_JumpTiles3D_getAmplitudeRate(lua_State* tolua_S)
     cobj = (cocos2d::JumpTiles3D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_JumpTiles3D_getAmplitudeRate'", nullptr);
         return 0;
@@ -32956,7 +31946,7 @@ int lua_cocos2dx_JumpTiles3D_getAmplitudeRate(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -32995,7 +31985,7 @@ int lua_cocos2dx_JumpTiles3D_setAmplitude(lua_State* tolua_S)
     cobj = (cocos2d::JumpTiles3D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_JumpTiles3D_setAmplitude'", nullptr);
         return 0;
@@ -33003,7 +31993,7 @@ int lua_cocos2dx_JumpTiles3D_setAmplitude(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -33045,7 +32035,7 @@ int lua_cocos2dx_JumpTiles3D_setAmplitudeRate(lua_State* tolua_S)
     cobj = (cocos2d::JumpTiles3D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_JumpTiles3D_setAmplitudeRate'", nullptr);
         return 0;
@@ -33053,7 +32043,7 @@ int lua_cocos2dx_JumpTiles3D_setAmplitudeRate(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -33095,7 +32085,7 @@ int lua_cocos2dx_JumpTiles3D_getAmplitude(lua_State* tolua_S)
     cobj = (cocos2d::JumpTiles3D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_JumpTiles3D_getAmplitude'", nullptr);
         return 0;
@@ -33103,7 +32093,7 @@ int lua_cocos2dx_JumpTiles3D_getAmplitude(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -33386,7 +32376,7 @@ int lua_cocos2dx_CardinalSplineTo_getPoints(lua_State* tolua_S)
     cobj = (cocos2d::CardinalSplineTo*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_CardinalSplineTo_getPoints'", nullptr);
         return 0;
@@ -33394,7 +32384,7 @@ int lua_cocos2dx_CardinalSplineTo_getPoints(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -33433,7 +32423,7 @@ int lua_cocos2dx_CardinalSplineTo_updatePosition(lua_State* tolua_S)
     cobj = (cocos2d::CardinalSplineTo*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_CardinalSplineTo_updatePosition'", nullptr);
         return 0;
@@ -33441,7 +32431,7 @@ int lua_cocos2dx_CardinalSplineTo_updatePosition(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Vec2 arg0;
 
@@ -33483,7 +32473,7 @@ int lua_cocos2dx_CardinalSplineTo_initWithDuration(lua_State* tolua_S)
     cobj = (cocos2d::CardinalSplineTo*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_CardinalSplineTo_initWithDuration'", nullptr);
         return 0;
@@ -33491,7 +32481,7 @@ int lua_cocos2dx_CardinalSplineTo_initWithDuration(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 3) 
+    if (argc == 3)
     {
         double arg0;
         cocos2d::PointArray* arg1;
@@ -33534,7 +32524,7 @@ int lua_cocos2dx_CardinalSplineTo_constructor(lua_State* tolua_S)
 
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -33594,7 +32584,7 @@ int lua_cocos2dx_CardinalSplineBy_constructor(lua_State* tolua_S)
 
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -33656,7 +32646,7 @@ int lua_cocos2dx_CatmullRomTo_initWithDuration(lua_State* tolua_S)
     cobj = (cocos2d::CatmullRomTo*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_CatmullRomTo_initWithDuration'", nullptr);
         return 0;
@@ -33664,7 +32654,7 @@ int lua_cocos2dx_CatmullRomTo_initWithDuration(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         double arg0;
         cocos2d::PointArray* arg1;
@@ -33729,7 +32719,7 @@ int lua_cocos2dx_CatmullRomBy_initWithDuration(lua_State* tolua_S)
     cobj = (cocos2d::CatmullRomBy*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_CatmullRomBy_initWithDuration'", nullptr);
         return 0;
@@ -33737,7 +32727,7 @@ int lua_cocos2dx_CatmullRomBy_initWithDuration(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         double arg0;
         cocos2d::PointArray* arg1;
@@ -33881,7 +32871,7 @@ int lua_cocos2dx_ProtectedNode_disableCascadeColor(lua_State* tolua_S)
     cobj = (cocos2d::ProtectedNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ProtectedNode_disableCascadeColor'", nullptr);
         return 0;
@@ -33889,7 +32879,7 @@ int lua_cocos2dx_ProtectedNode_disableCascadeColor(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -33928,7 +32918,7 @@ int lua_cocos2dx_ProtectedNode_removeProtectedChildByTag(lua_State* tolua_S)
     cobj = (cocos2d::ProtectedNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ProtectedNode_removeProtectedChildByTag'", nullptr);
         return 0;
@@ -33936,7 +32926,7 @@ int lua_cocos2dx_ProtectedNode_removeProtectedChildByTag(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         int arg0;
 
@@ -33950,7 +32940,7 @@ int lua_cocos2dx_ProtectedNode_removeProtectedChildByTag(lua_State* tolua_S)
         lua_settop(tolua_S, 1);
         return 1;
     }
-    if (argc == 2) 
+    if (argc == 2)
     {
         int arg0;
         bool arg1;
@@ -33995,7 +32985,7 @@ int lua_cocos2dx_ProtectedNode_reorderProtectedChild(lua_State* tolua_S)
     cobj = (cocos2d::ProtectedNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ProtectedNode_reorderProtectedChild'", nullptr);
         return 0;
@@ -34003,7 +32993,7 @@ int lua_cocos2dx_ProtectedNode_reorderProtectedChild(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         cocos2d::Node* arg0;
         int arg1;
@@ -34048,7 +33038,7 @@ int lua_cocos2dx_ProtectedNode_removeAllProtectedChildrenWithCleanup(lua_State* 
     cobj = (cocos2d::ProtectedNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ProtectedNode_removeAllProtectedChildrenWithCleanup'", nullptr);
         return 0;
@@ -34056,7 +33046,7 @@ int lua_cocos2dx_ProtectedNode_removeAllProtectedChildrenWithCleanup(lua_State* 
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -34098,7 +33088,7 @@ int lua_cocos2dx_ProtectedNode_disableCascadeOpacity(lua_State* tolua_S)
     cobj = (cocos2d::ProtectedNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ProtectedNode_disableCascadeOpacity'", nullptr);
         return 0;
@@ -34106,7 +33096,7 @@ int lua_cocos2dx_ProtectedNode_disableCascadeOpacity(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -34145,7 +33135,7 @@ int lua_cocos2dx_ProtectedNode_sortAllProtectedChildren(lua_State* tolua_S)
     cobj = (cocos2d::ProtectedNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ProtectedNode_sortAllProtectedChildren'", nullptr);
         return 0;
@@ -34153,7 +33143,7 @@ int lua_cocos2dx_ProtectedNode_sortAllProtectedChildren(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -34192,7 +33182,7 @@ int lua_cocos2dx_ProtectedNode_getProtectedChildByTag(lua_State* tolua_S)
     cobj = (cocos2d::ProtectedNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ProtectedNode_getProtectedChildByTag'", nullptr);
         return 0;
@@ -34200,7 +33190,7 @@ int lua_cocos2dx_ProtectedNode_getProtectedChildByTag(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         int arg0;
 
@@ -34242,7 +33232,7 @@ int lua_cocos2dx_ProtectedNode_removeProtectedChild(lua_State* tolua_S)
     cobj = (cocos2d::ProtectedNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ProtectedNode_removeProtectedChild'", nullptr);
         return 0;
@@ -34250,7 +33240,7 @@ int lua_cocos2dx_ProtectedNode_removeProtectedChild(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Node* arg0;
 
@@ -34264,7 +33254,7 @@ int lua_cocos2dx_ProtectedNode_removeProtectedChild(lua_State* tolua_S)
         lua_settop(tolua_S, 1);
         return 1;
     }
-    if (argc == 2) 
+    if (argc == 2)
     {
         cocos2d::Node* arg0;
         bool arg1;
@@ -34309,7 +33299,7 @@ int lua_cocos2dx_ProtectedNode_removeAllProtectedChildren(lua_State* tolua_S)
     cobj = (cocos2d::ProtectedNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ProtectedNode_removeAllProtectedChildren'", nullptr);
         return 0;
@@ -34317,7 +33307,7 @@ int lua_cocos2dx_ProtectedNode_removeAllProtectedChildren(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -34578,7 +33568,7 @@ int lua_cocos2dx_GLProgramState_applyUniforms(lua_State* tolua_S)
     cobj = (cocos2d::GLProgramState*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLProgramState_applyUniforms'", nullptr);
         return 0;
@@ -34586,7 +33576,7 @@ int lua_cocos2dx_GLProgramState_applyUniforms(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -34625,7 +33615,7 @@ int lua_cocos2dx_GLProgramState_applyGLProgram(lua_State* tolua_S)
     cobj = (cocos2d::GLProgramState*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLProgramState_applyGLProgram'", nullptr);
         return 0;
@@ -34633,7 +33623,7 @@ int lua_cocos2dx_GLProgramState_applyGLProgram(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Mat4 arg0;
 
@@ -34675,7 +33665,7 @@ int lua_cocos2dx_GLProgramState_getUniformCount(lua_State* tolua_S)
     cobj = (cocos2d::GLProgramState*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLProgramState_getUniformCount'", nullptr);
         return 0;
@@ -34683,7 +33673,7 @@ int lua_cocos2dx_GLProgramState_getUniformCount(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -34722,7 +33712,7 @@ int lua_cocos2dx_GLProgramState_applyAttributes(lua_State* tolua_S)
     cobj = (cocos2d::GLProgramState*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLProgramState_applyAttributes'", nullptr);
         return 0;
@@ -34730,7 +33720,7 @@ int lua_cocos2dx_GLProgramState_applyAttributes(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -34741,7 +33731,7 @@ int lua_cocos2dx_GLProgramState_applyAttributes(lua_State* tolua_S)
         lua_settop(tolua_S, 1);
         return 1;
     }
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -34972,7 +33962,7 @@ int lua_cocos2dx_GLProgramState_getVertexAttribCount(lua_State* tolua_S)
     cobj = (cocos2d::GLProgramState*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLProgramState_getVertexAttribCount'", nullptr);
         return 0;
@@ -34980,7 +33970,7 @@ int lua_cocos2dx_GLProgramState_getVertexAttribCount(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -35082,7 +34072,7 @@ int lua_cocos2dx_GLProgramState_setGLProgram(lua_State* tolua_S)
     cobj = (cocos2d::GLProgramState*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLProgramState_setGLProgram'", nullptr);
         return 0;
@@ -35090,7 +34080,7 @@ int lua_cocos2dx_GLProgramState_setGLProgram(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::GLProgram* arg0;
 
@@ -35195,7 +34185,7 @@ int lua_cocos2dx_GLProgramState_getVertexAttribsFlags(lua_State* tolua_S)
     cobj = (cocos2d::GLProgramState*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLProgramState_getVertexAttribsFlags'", nullptr);
         return 0;
@@ -35203,7 +34193,7 @@ int lua_cocos2dx_GLProgramState_getVertexAttribsFlags(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -35242,7 +34232,7 @@ int lua_cocos2dx_GLProgramState_apply(lua_State* tolua_S)
     cobj = (cocos2d::GLProgramState*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLProgramState_apply'", nullptr);
         return 0;
@@ -35250,7 +34240,7 @@ int lua_cocos2dx_GLProgramState_apply(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Mat4 arg0;
 
@@ -35292,7 +34282,7 @@ int lua_cocos2dx_GLProgramState_getGLProgram(lua_State* tolua_S)
     cobj = (cocos2d::GLProgramState*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLProgramState_getGLProgram'", nullptr);
         return 0;
@@ -35300,7 +34290,7 @@ int lua_cocos2dx_GLProgramState_getGLProgram(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -35485,7 +34475,7 @@ int lua_cocos2dx_AtlasNode_updateAtlasValues(lua_State* tolua_S)
     cobj = (cocos2d::AtlasNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_AtlasNode_updateAtlasValues'", nullptr);
         return 0;
@@ -35493,7 +34483,7 @@ int lua_cocos2dx_AtlasNode_updateAtlasValues(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -35532,7 +34522,7 @@ int lua_cocos2dx_AtlasNode_getTexture(lua_State* tolua_S)
     cobj = (cocos2d::AtlasNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_AtlasNode_getTexture'", nullptr);
         return 0;
@@ -35540,7 +34530,7 @@ int lua_cocos2dx_AtlasNode_getTexture(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -35579,7 +34569,7 @@ int lua_cocos2dx_AtlasNode_setTextureAtlas(lua_State* tolua_S)
     cobj = (cocos2d::AtlasNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_AtlasNode_setTextureAtlas'", nullptr);
         return 0;
@@ -35587,7 +34577,7 @@ int lua_cocos2dx_AtlasNode_setTextureAtlas(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::TextureAtlas* arg0;
 
@@ -35629,7 +34619,7 @@ int lua_cocos2dx_AtlasNode_getTextureAtlas(lua_State* tolua_S)
     cobj = (cocos2d::AtlasNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_AtlasNode_getTextureAtlas'", nullptr);
         return 0;
@@ -35637,7 +34627,7 @@ int lua_cocos2dx_AtlasNode_getTextureAtlas(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -35676,7 +34666,7 @@ int lua_cocos2dx_AtlasNode_getQuadsToDraw(lua_State* tolua_S)
     cobj = (cocos2d::AtlasNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_AtlasNode_getQuadsToDraw'", nullptr);
         return 0;
@@ -35684,7 +34674,7 @@ int lua_cocos2dx_AtlasNode_getQuadsToDraw(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -35723,7 +34713,7 @@ int lua_cocos2dx_AtlasNode_setTexture(lua_State* tolua_S)
     cobj = (cocos2d::AtlasNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_AtlasNode_setTexture'", nullptr);
         return 0;
@@ -35731,7 +34721,7 @@ int lua_cocos2dx_AtlasNode_setTexture(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Texture2D* arg0;
 
@@ -35773,7 +34763,7 @@ int lua_cocos2dx_AtlasNode_setQuadsToDraw(lua_State* tolua_S)
     cobj = (cocos2d::AtlasNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_AtlasNode_setQuadsToDraw'", nullptr);
         return 0;
@@ -35781,7 +34771,7 @@ int lua_cocos2dx_AtlasNode_setQuadsToDraw(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         ssize_t arg0;
 
@@ -35892,7 +34882,7 @@ int lua_cocos2dx_DrawNode_drawLine(lua_State* tolua_S)
     cobj = (cocos2d::DrawNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_DrawNode_drawLine'", nullptr);
         return 0;
@@ -35900,7 +34890,7 @@ int lua_cocos2dx_DrawNode_drawLine(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 3) 
+    if (argc == 3)
     {
         cocos2d::Vec2 arg0;
         cocos2d::Vec2 arg1;
@@ -36122,7 +35112,7 @@ int lua_cocos2dx_DrawNode_onDrawGLPoint(lua_State* tolua_S)
     cobj = (cocos2d::DrawNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_DrawNode_onDrawGLPoint'", nullptr);
         return 0;
@@ -36130,7 +35120,7 @@ int lua_cocos2dx_DrawNode_onDrawGLPoint(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         cocos2d::Mat4 arg0;
         unsigned int arg1;
@@ -36175,7 +35165,7 @@ int lua_cocos2dx_DrawNode_drawDot(lua_State* tolua_S)
     cobj = (cocos2d::DrawNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_DrawNode_drawDot'", nullptr);
         return 0;
@@ -36183,7 +35173,7 @@ int lua_cocos2dx_DrawNode_drawDot(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 3) 
+    if (argc == 3)
     {
         cocos2d::Vec2 arg0;
         double arg1;
@@ -36231,7 +35221,7 @@ int lua_cocos2dx_DrawNode_drawSegment(lua_State* tolua_S)
     cobj = (cocos2d::DrawNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_DrawNode_drawSegment'", nullptr);
         return 0;
@@ -36239,7 +35229,7 @@ int lua_cocos2dx_DrawNode_drawSegment(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 4) 
+    if (argc == 4)
     {
         cocos2d::Vec2 arg0;
         cocos2d::Vec2 arg1;
@@ -36290,7 +35280,7 @@ int lua_cocos2dx_DrawNode_onDraw(lua_State* tolua_S)
     cobj = (cocos2d::DrawNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_DrawNode_onDraw'", nullptr);
         return 0;
@@ -36298,7 +35288,7 @@ int lua_cocos2dx_DrawNode_onDraw(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         cocos2d::Mat4 arg0;
         unsigned int arg1;
@@ -36446,7 +35436,7 @@ int lua_cocos2dx_DrawNode_drawQuadBezier(lua_State* tolua_S)
     cobj = (cocos2d::DrawNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_DrawNode_drawQuadBezier'", nullptr);
         return 0;
@@ -36454,7 +35444,7 @@ int lua_cocos2dx_DrawNode_drawQuadBezier(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 5) 
+    if (argc == 5)
     {
         cocos2d::Vec2 arg0;
         cocos2d::Vec2 arg1;
@@ -36508,7 +35498,7 @@ int lua_cocos2dx_DrawNode_onDrawGLLine(lua_State* tolua_S)
     cobj = (cocos2d::DrawNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_DrawNode_onDrawGLLine'", nullptr);
         return 0;
@@ -36516,7 +35506,7 @@ int lua_cocos2dx_DrawNode_onDrawGLLine(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         cocos2d::Mat4 arg0;
         unsigned int arg1;
@@ -36561,7 +35551,7 @@ int lua_cocos2dx_DrawNode_drawTriangle(lua_State* tolua_S)
     cobj = (cocos2d::DrawNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_DrawNode_drawTriangle'", nullptr);
         return 0;
@@ -36569,7 +35559,7 @@ int lua_cocos2dx_DrawNode_drawTriangle(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 4) 
+    if (argc == 4)
     {
         cocos2d::Vec2 arg0;
         cocos2d::Vec2 arg1;
@@ -36620,7 +35610,7 @@ int lua_cocos2dx_DrawNode_clear(lua_State* tolua_S)
     cobj = (cocos2d::DrawNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_DrawNode_clear'", nullptr);
         return 0;
@@ -36628,7 +35618,7 @@ int lua_cocos2dx_DrawNode_clear(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -36667,7 +35657,7 @@ int lua_cocos2dx_DrawNode_drawSolidRect(lua_State* tolua_S)
     cobj = (cocos2d::DrawNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_DrawNode_drawSolidRect'", nullptr);
         return 0;
@@ -36675,7 +35665,7 @@ int lua_cocos2dx_DrawNode_drawSolidRect(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 3) 
+    if (argc == 3)
     {
         cocos2d::Vec2 arg0;
         cocos2d::Vec2 arg1;
@@ -36723,7 +35713,7 @@ int lua_cocos2dx_DrawNode_drawPoint(lua_State* tolua_S)
     cobj = (cocos2d::DrawNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_DrawNode_drawPoint'", nullptr);
         return 0;
@@ -36731,7 +35721,7 @@ int lua_cocos2dx_DrawNode_drawPoint(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 3) 
+    if (argc == 3)
     {
         cocos2d::Vec2 arg0;
         double arg1;
@@ -36779,7 +35769,7 @@ int lua_cocos2dx_DrawNode_drawCubicBezier(lua_State* tolua_S)
     cobj = (cocos2d::DrawNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_DrawNode_drawCubicBezier'", nullptr);
         return 0;
@@ -36787,7 +35777,7 @@ int lua_cocos2dx_DrawNode_drawCubicBezier(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 6) 
+    if (argc == 6)
     {
         cocos2d::Vec2 arg0;
         cocos2d::Vec2 arg1;
@@ -36913,7 +35903,7 @@ int lua_cocos2dx_LabelAtlas_setString(lua_State* tolua_S)
     cobj = (cocos2d::LabelAtlas*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LabelAtlas_setString'", nullptr);
         return 0;
@@ -36921,7 +35911,7 @@ int lua_cocos2dx_LabelAtlas_setString(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -37066,7 +36056,7 @@ int lua_cocos2dx_LabelAtlas_updateAtlasValues(lua_State* tolua_S)
     cobj = (cocos2d::LabelAtlas*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LabelAtlas_updateAtlasValues'", nullptr);
         return 0;
@@ -37074,7 +36064,7 @@ int lua_cocos2dx_LabelAtlas_updateAtlasValues(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -37113,7 +36103,7 @@ int lua_cocos2dx_LabelAtlas_getString(lua_State* tolua_S)
     cobj = (cocos2d::LabelAtlas*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LabelAtlas_getString'", nullptr);
         return 0;
@@ -37121,7 +36111,7 @@ int lua_cocos2dx_LabelAtlas_getString(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -37156,7 +36146,7 @@ int lua_cocos2dx_LabelAtlas_create(lua_State* tolua_S)
 
     argc = lua_gettop(tolua_S)-1;
 
-    do 
+    do
     {
         if (argc == 5)
         {
@@ -37181,7 +36171,7 @@ int lua_cocos2dx_LabelAtlas_create(lua_State* tolua_S)
         }
     } while (0);
     ok  = true;
-    do 
+    do
     {
         if (argc == 0)
         {
@@ -37191,7 +36181,7 @@ int lua_cocos2dx_LabelAtlas_create(lua_State* tolua_S)
         }
     } while (0);
     ok  = true;
-    do 
+    do
     {
         if (argc == 2)
         {
@@ -37257,7 +36247,7 @@ int lua_cocos2dx_SpriteBatchNode_appendChild(lua_State* tolua_S)
     cobj = (cocos2d::SpriteBatchNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpriteBatchNode_appendChild'", nullptr);
         return 0;
@@ -37265,7 +36255,7 @@ int lua_cocos2dx_SpriteBatchNode_appendChild(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Sprite* arg0;
 
@@ -37307,7 +36297,7 @@ int lua_cocos2dx_SpriteBatchNode_addSpriteWithoutQuad(lua_State* tolua_S)
     cobj = (cocos2d::SpriteBatchNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpriteBatchNode_addSpriteWithoutQuad'", nullptr);
         return 0;
@@ -37315,7 +36305,7 @@ int lua_cocos2dx_SpriteBatchNode_addSpriteWithoutQuad(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 3) 
+    if (argc == 3)
     {
         cocos2d::Sprite* arg0;
         int arg1;
@@ -37363,7 +36353,7 @@ int lua_cocos2dx_SpriteBatchNode_reorderBatch(lua_State* tolua_S)
     cobj = (cocos2d::SpriteBatchNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpriteBatchNode_reorderBatch'", nullptr);
         return 0;
@@ -37371,7 +36361,7 @@ int lua_cocos2dx_SpriteBatchNode_reorderBatch(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -37413,7 +36403,7 @@ int lua_cocos2dx_SpriteBatchNode_removeAllChildrenWithCleanup(lua_State* tolua_S
     cobj = (cocos2d::SpriteBatchNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpriteBatchNode_removeAllChildrenWithCleanup'", nullptr);
         return 0;
@@ -37421,7 +36411,7 @@ int lua_cocos2dx_SpriteBatchNode_removeAllChildrenWithCleanup(lua_State* tolua_S
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -37463,7 +36453,7 @@ int lua_cocos2dx_SpriteBatchNode_lowestAtlasIndexInChild(lua_State* tolua_S)
     cobj = (cocos2d::SpriteBatchNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpriteBatchNode_lowestAtlasIndexInChild'", nullptr);
         return 0;
@@ -37471,7 +36461,7 @@ int lua_cocos2dx_SpriteBatchNode_lowestAtlasIndexInChild(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Sprite* arg0;
 
@@ -37513,7 +36503,7 @@ int lua_cocos2dx_SpriteBatchNode_atlasIndexForChild(lua_State* tolua_S)
     cobj = (cocos2d::SpriteBatchNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpriteBatchNode_atlasIndexForChild'", nullptr);
         return 0;
@@ -37521,7 +36511,7 @@ int lua_cocos2dx_SpriteBatchNode_atlasIndexForChild(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         cocos2d::Sprite* arg0;
         int arg1;
@@ -37566,7 +36556,7 @@ int lua_cocos2dx_SpriteBatchNode_setTextureAtlas(lua_State* tolua_S)
     cobj = (cocos2d::SpriteBatchNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpriteBatchNode_setTextureAtlas'", nullptr);
         return 0;
@@ -37574,7 +36564,7 @@ int lua_cocos2dx_SpriteBatchNode_setTextureAtlas(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::TextureAtlas* arg0;
 
@@ -37616,7 +36606,7 @@ int lua_cocos2dx_SpriteBatchNode_getTexture(lua_State* tolua_S)
     cobj = (cocos2d::SpriteBatchNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpriteBatchNode_getTexture'", nullptr);
         return 0;
@@ -37624,7 +36614,7 @@ int lua_cocos2dx_SpriteBatchNode_getTexture(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -37663,7 +36653,7 @@ int lua_cocos2dx_SpriteBatchNode_increaseAtlasCapacity(lua_State* tolua_S)
     cobj = (cocos2d::SpriteBatchNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpriteBatchNode_increaseAtlasCapacity'", nullptr);
         return 0;
@@ -37671,7 +36661,7 @@ int lua_cocos2dx_SpriteBatchNode_increaseAtlasCapacity(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -37710,7 +36700,7 @@ int lua_cocos2dx_SpriteBatchNode_getTextureAtlas(lua_State* tolua_S)
     cobj = (cocos2d::SpriteBatchNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpriteBatchNode_getTextureAtlas'", nullptr);
         return 0;
@@ -37718,7 +36708,7 @@ int lua_cocos2dx_SpriteBatchNode_getTextureAtlas(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -37757,7 +36747,7 @@ int lua_cocos2dx_SpriteBatchNode_insertQuadFromSprite(lua_State* tolua_S)
     cobj = (cocos2d::SpriteBatchNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpriteBatchNode_insertQuadFromSprite'", nullptr);
         return 0;
@@ -37765,7 +36755,7 @@ int lua_cocos2dx_SpriteBatchNode_insertQuadFromSprite(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         cocos2d::Sprite* arg0;
         ssize_t arg1;
@@ -37810,7 +36800,7 @@ int lua_cocos2dx_SpriteBatchNode_setTexture(lua_State* tolua_S)
     cobj = (cocos2d::SpriteBatchNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpriteBatchNode_setTexture'", nullptr);
         return 0;
@@ -37818,7 +36808,7 @@ int lua_cocos2dx_SpriteBatchNode_setTexture(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Texture2D* arg0;
 
@@ -37860,7 +36850,7 @@ int lua_cocos2dx_SpriteBatchNode_rebuildIndexInOrder(lua_State* tolua_S)
     cobj = (cocos2d::SpriteBatchNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpriteBatchNode_rebuildIndexInOrder'", nullptr);
         return 0;
@@ -37868,7 +36858,7 @@ int lua_cocos2dx_SpriteBatchNode_rebuildIndexInOrder(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         cocos2d::Sprite* arg0;
         ssize_t arg1;
@@ -37913,7 +36903,7 @@ int lua_cocos2dx_SpriteBatchNode_highestAtlasIndexInChild(lua_State* tolua_S)
     cobj = (cocos2d::SpriteBatchNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpriteBatchNode_highestAtlasIndexInChild'", nullptr);
         return 0;
@@ -37921,7 +36911,7 @@ int lua_cocos2dx_SpriteBatchNode_highestAtlasIndexInChild(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Sprite* arg0;
 
@@ -37963,7 +36953,7 @@ int lua_cocos2dx_SpriteBatchNode_removeChildAtIndex(lua_State* tolua_S)
     cobj = (cocos2d::SpriteBatchNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpriteBatchNode_removeChildAtIndex'", nullptr);
         return 0;
@@ -37971,7 +36961,7 @@ int lua_cocos2dx_SpriteBatchNode_removeChildAtIndex(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         ssize_t arg0;
         bool arg1;
@@ -38016,7 +37006,7 @@ int lua_cocos2dx_SpriteBatchNode_removeSpriteFromAtlas(lua_State* tolua_S)
     cobj = (cocos2d::SpriteBatchNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpriteBatchNode_removeSpriteFromAtlas'", nullptr);
         return 0;
@@ -38024,7 +37014,7 @@ int lua_cocos2dx_SpriteBatchNode_removeSpriteFromAtlas(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Sprite* arg0;
 
@@ -38205,7 +37195,7 @@ int lua_cocos2dx_Label_isClipMarginEnabled(lua_State* tolua_S)
     cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_isClipMarginEnabled'", nullptr);
         return 0;
@@ -38213,7 +37203,7 @@ int lua_cocos2dx_Label_isClipMarginEnabled(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -38252,7 +37242,7 @@ int lua_cocos2dx_Label_enableShadow(lua_State* tolua_S)
     cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_enableShadow'", nullptr);
         return 0;
@@ -38260,7 +37250,7 @@ int lua_cocos2dx_Label_enableShadow(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -38271,7 +37261,7 @@ int lua_cocos2dx_Label_enableShadow(lua_State* tolua_S)
         lua_settop(tolua_S, 1);
         return 1;
     }
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Color4B arg0;
 
@@ -38285,7 +37275,7 @@ int lua_cocos2dx_Label_enableShadow(lua_State* tolua_S)
         lua_settop(tolua_S, 1);
         return 1;
     }
-    if (argc == 2) 
+    if (argc == 2)
     {
         cocos2d::Color4B arg0;
         cocos2d::Size arg1;
@@ -38302,7 +37292,7 @@ int lua_cocos2dx_Label_enableShadow(lua_State* tolua_S)
         lua_settop(tolua_S, 1);
         return 1;
     }
-    if (argc == 3) 
+    if (argc == 3)
     {
         cocos2d::Color4B arg0;
         cocos2d::Size arg1;
@@ -38350,7 +37340,7 @@ int lua_cocos2dx_Label_setDimensions(lua_State* tolua_S)
     cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_setDimensions'", nullptr);
         return 0;
@@ -38358,7 +37348,7 @@ int lua_cocos2dx_Label_setDimensions(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         unsigned int arg0;
         unsigned int arg1;
@@ -38403,7 +37393,7 @@ int lua_cocos2dx_Label_getString(lua_State* tolua_S)
     cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_getString'", nullptr);
         return 0;
@@ -38411,7 +37401,7 @@ int lua_cocos2dx_Label_getString(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -38450,7 +37440,7 @@ int lua_cocos2dx_Label_getHeight(lua_State* tolua_S)
     cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_getHeight'", nullptr);
         return 0;
@@ -38458,7 +37448,7 @@ int lua_cocos2dx_Label_getHeight(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -38497,7 +37487,7 @@ int lua_cocos2dx_Label_disableEffect(lua_State* tolua_S)
     cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_disableEffect'", nullptr);
         return 0;
@@ -38505,7 +37495,7 @@ int lua_cocos2dx_Label_disableEffect(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -38544,7 +37534,7 @@ int lua_cocos2dx_Label_setTTFConfig(lua_State* tolua_S)
     cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_setTTFConfig'", nullptr);
         return 0;
@@ -38552,7 +37542,7 @@ int lua_cocos2dx_Label_setTTFConfig(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::_ttfConfig arg0;
 
@@ -38594,7 +37584,7 @@ int lua_cocos2dx_Label_getTextColor(lua_State* tolua_S)
     cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_getTextColor'", nullptr);
         return 0;
@@ -38602,7 +37592,7 @@ int lua_cocos2dx_Label_getTextColor(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -38641,7 +37631,7 @@ int lua_cocos2dx_Label_setWidth(lua_State* tolua_S)
     cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_setWidth'", nullptr);
         return 0;
@@ -38649,7 +37639,7 @@ int lua_cocos2dx_Label_setWidth(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         unsigned int arg0;
 
@@ -38691,7 +37681,7 @@ int lua_cocos2dx_Label_getMaxLineWidth(lua_State* tolua_S)
     cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_getMaxLineWidth'", nullptr);
         return 0;
@@ -38699,7 +37689,7 @@ int lua_cocos2dx_Label_getMaxLineWidth(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -38738,7 +37728,7 @@ int lua_cocos2dx_Label_getHorizontalAlignment(lua_State* tolua_S)
     cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_getHorizontalAlignment'", nullptr);
         return 0;
@@ -38746,7 +37736,7 @@ int lua_cocos2dx_Label_getHorizontalAlignment(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -38785,7 +37775,7 @@ int lua_cocos2dx_Label_setClipMarginEnabled(lua_State* tolua_S)
     cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_setClipMarginEnabled'", nullptr);
         return 0;
@@ -38793,7 +37783,7 @@ int lua_cocos2dx_Label_setClipMarginEnabled(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -38835,7 +37825,7 @@ int lua_cocos2dx_Label_setString(lua_State* tolua_S)
     cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_setString'", nullptr);
         return 0;
@@ -38843,7 +37833,7 @@ int lua_cocos2dx_Label_setString(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -38885,7 +37875,7 @@ int lua_cocos2dx_Label_setSystemFontName(lua_State* tolua_S)
     cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_setSystemFontName'", nullptr);
         return 0;
@@ -38893,7 +37883,7 @@ int lua_cocos2dx_Label_setSystemFontName(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -38935,7 +37925,7 @@ int lua_cocos2dx_Label_setBMFontFilePath(lua_State* tolua_S)
     cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_setBMFontFilePath'", nullptr);
         return 0;
@@ -38943,7 +37933,7 @@ int lua_cocos2dx_Label_setBMFontFilePath(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -38957,7 +37947,7 @@ int lua_cocos2dx_Label_setBMFontFilePath(lua_State* tolua_S)
         tolua_pushboolean(tolua_S,(bool)ret);
         return 1;
     }
-    if (argc == 2) 
+    if (argc == 2)
     {
         std::string arg0;
         cocos2d::Vec2 arg1;
@@ -39002,7 +37992,7 @@ int lua_cocos2dx_Label_getFontAtlas(lua_State* tolua_S)
     cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_getFontAtlas'", nullptr);
         return 0;
@@ -39010,7 +38000,7 @@ int lua_cocos2dx_Label_getFontAtlas(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -39049,7 +38039,7 @@ int lua_cocos2dx_Label_setLineHeight(lua_State* tolua_S)
     cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_setLineHeight'", nullptr);
         return 0;
@@ -39057,7 +38047,7 @@ int lua_cocos2dx_Label_setLineHeight(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -39099,7 +38089,7 @@ int lua_cocos2dx_Label_setSystemFontSize(lua_State* tolua_S)
     cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_setSystemFontSize'", nullptr);
         return 0;
@@ -39107,7 +38097,7 @@ int lua_cocos2dx_Label_setSystemFontSize(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -39149,7 +38139,7 @@ int lua_cocos2dx_Label_updateContent(lua_State* tolua_S)
     cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_updateContent'", nullptr);
         return 0;
@@ -39157,7 +38147,7 @@ int lua_cocos2dx_Label_updateContent(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -39196,7 +38186,7 @@ int lua_cocos2dx_Label_getStringLength(lua_State* tolua_S)
     cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_getStringLength'", nullptr);
         return 0;
@@ -39204,7 +38194,7 @@ int lua_cocos2dx_Label_getStringLength(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -39243,7 +38233,7 @@ int lua_cocos2dx_Label_setLineBreakWithoutSpace(lua_State* tolua_S)
     cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_setLineBreakWithoutSpace'", nullptr);
         return 0;
@@ -39251,7 +38241,7 @@ int lua_cocos2dx_Label_setLineBreakWithoutSpace(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -39293,7 +38283,7 @@ int lua_cocos2dx_Label_getStringNumLines(lua_State* tolua_S)
     cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_getStringNumLines'", nullptr);
         return 0;
@@ -39301,7 +38291,7 @@ int lua_cocos2dx_Label_getStringNumLines(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -39340,7 +38330,7 @@ int lua_cocos2dx_Label_enableOutline(lua_State* tolua_S)
     cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_enableOutline'", nullptr);
         return 0;
@@ -39348,7 +38338,7 @@ int lua_cocos2dx_Label_enableOutline(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Color4B arg0;
 
@@ -39362,7 +38352,7 @@ int lua_cocos2dx_Label_enableOutline(lua_State* tolua_S)
         lua_settop(tolua_S, 1);
         return 1;
     }
-    if (argc == 2) 
+    if (argc == 2)
     {
         cocos2d::Color4B arg0;
         int arg1;
@@ -39407,7 +38397,7 @@ int lua_cocos2dx_Label_getAdditionalKerning(lua_State* tolua_S)
     cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_getAdditionalKerning'", nullptr);
         return 0;
@@ -39415,7 +38405,7 @@ int lua_cocos2dx_Label_getAdditionalKerning(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -39545,7 +38535,7 @@ int lua_cocos2dx_Label_getDimensions(lua_State* tolua_S)
     cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_getDimensions'", nullptr);
         return 0;
@@ -39553,7 +38543,7 @@ int lua_cocos2dx_Label_getDimensions(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -39592,7 +38582,7 @@ int lua_cocos2dx_Label_setMaxLineWidth(lua_State* tolua_S)
     cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_setMaxLineWidth'", nullptr);
         return 0;
@@ -39600,7 +38590,7 @@ int lua_cocos2dx_Label_setMaxLineWidth(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         unsigned int arg0;
 
@@ -39642,7 +38632,7 @@ int lua_cocos2dx_Label_getSystemFontName(lua_State* tolua_S)
     cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_getSystemFontName'", nullptr);
         return 0;
@@ -39650,7 +38640,7 @@ int lua_cocos2dx_Label_getSystemFontName(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -39689,7 +38679,7 @@ int lua_cocos2dx_Label_setVerticalAlignment(lua_State* tolua_S)
     cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_setVerticalAlignment'", nullptr);
         return 0;
@@ -39697,7 +38687,7 @@ int lua_cocos2dx_Label_setVerticalAlignment(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::TextVAlignment arg0;
 
@@ -39739,7 +38729,7 @@ int lua_cocos2dx_Label_getLineHeight(lua_State* tolua_S)
     cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_getLineHeight'", nullptr);
         return 0;
@@ -39747,7 +38737,7 @@ int lua_cocos2dx_Label_getLineHeight(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -39786,7 +38776,7 @@ int lua_cocos2dx_Label_getTTFConfig(lua_State* tolua_S)
     cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_getTTFConfig'", nullptr);
         return 0;
@@ -39794,7 +38784,7 @@ int lua_cocos2dx_Label_getTTFConfig(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -39833,7 +38823,7 @@ int lua_cocos2dx_Label_getVerticalAlignment(lua_State* tolua_S)
     cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_getVerticalAlignment'", nullptr);
         return 0;
@@ -39841,7 +38831,7 @@ int lua_cocos2dx_Label_getVerticalAlignment(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -39880,7 +38870,7 @@ int lua_cocos2dx_Label_setTextColor(lua_State* tolua_S)
     cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_setTextColor'", nullptr);
         return 0;
@@ -39888,7 +38878,7 @@ int lua_cocos2dx_Label_setTextColor(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Color4B arg0;
 
@@ -39930,7 +38920,7 @@ int lua_cocos2dx_Label_setHeight(lua_State* tolua_S)
     cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_setHeight'", nullptr);
         return 0;
@@ -39938,7 +38928,7 @@ int lua_cocos2dx_Label_setHeight(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         unsigned int arg0;
 
@@ -39980,7 +38970,7 @@ int lua_cocos2dx_Label_getWidth(lua_State* tolua_S)
     cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_getWidth'", nullptr);
         return 0;
@@ -39988,7 +38978,7 @@ int lua_cocos2dx_Label_getWidth(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -40027,7 +39017,7 @@ int lua_cocos2dx_Label_enableGlow(lua_State* tolua_S)
     cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_enableGlow'", nullptr);
         return 0;
@@ -40035,7 +39025,7 @@ int lua_cocos2dx_Label_enableGlow(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Color4B arg0;
 
@@ -40077,7 +39067,7 @@ int lua_cocos2dx_Label_getLetter(lua_State* tolua_S)
     cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_getLetter'", nullptr);
         return 0;
@@ -40085,7 +39075,7 @@ int lua_cocos2dx_Label_getLetter(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         int arg0;
 
@@ -40127,7 +39117,7 @@ int lua_cocos2dx_Label_setAdditionalKerning(lua_State* tolua_S)
     cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_setAdditionalKerning'", nullptr);
         return 0;
@@ -40135,7 +39125,7 @@ int lua_cocos2dx_Label_setAdditionalKerning(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -40177,7 +39167,7 @@ int lua_cocos2dx_Label_getSystemFontSize(lua_State* tolua_S)
     cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_getSystemFontSize'", nullptr);
         return 0;
@@ -40185,7 +39175,7 @@ int lua_cocos2dx_Label_getSystemFontSize(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -40224,7 +39214,7 @@ int lua_cocos2dx_Label_getTextAlignment(lua_State* tolua_S)
     cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_getTextAlignment'", nullptr);
         return 0;
@@ -40232,7 +39222,7 @@ int lua_cocos2dx_Label_getTextAlignment(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -40271,7 +39261,7 @@ int lua_cocos2dx_Label_getBMFontFilePath(lua_State* tolua_S)
     cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_getBMFontFilePath'", nullptr);
         return 0;
@@ -40279,7 +39269,7 @@ int lua_cocos2dx_Label_getBMFontFilePath(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -40318,7 +39308,7 @@ int lua_cocos2dx_Label_setHorizontalAlignment(lua_State* tolua_S)
     cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_setHorizontalAlignment'", nullptr);
         return 0;
@@ -40326,7 +39316,7 @@ int lua_cocos2dx_Label_setHorizontalAlignment(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::TextHAlignment arg0;
 
@@ -40427,7 +39417,7 @@ int lua_cocos2dx_Label_requestSystemFontRefresh(lua_State* tolua_S)
     cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_requestSystemFontRefresh'", nullptr);
         return 0;
@@ -40435,7 +39425,7 @@ int lua_cocos2dx_Label_requestSystemFontRefresh(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -40599,7 +39589,7 @@ int lua_cocos2dx_Label_createWithCharMap(lua_State* tolua_S)
 
     argc = lua_gettop(tolua_S)-1;
 
-    do 
+    do
     {
         if (argc == 4)
         {
@@ -40621,7 +39611,7 @@ int lua_cocos2dx_Label_createWithCharMap(lua_State* tolua_S)
         }
     } while (0);
     ok  = true;
-    do 
+    do
     {
         if (argc == 4)
         {
@@ -40643,7 +39633,7 @@ int lua_cocos2dx_Label_createWithCharMap(lua_State* tolua_S)
         }
     } while (0);
     ok  = true;
-    do 
+    do
     {
         if (argc == 1)
         {
@@ -40906,7 +39896,7 @@ int lua_cocos2dx_LayerColor_changeWidthAndHeight(lua_State* tolua_S)
     cobj = (cocos2d::LayerColor*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LayerColor_changeWidthAndHeight'", nullptr);
         return 0;
@@ -40914,7 +39904,7 @@ int lua_cocos2dx_LayerColor_changeWidthAndHeight(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         double arg0;
         double arg1;
@@ -40959,7 +39949,7 @@ int lua_cocos2dx_LayerColor_changeHeight(lua_State* tolua_S)
     cobj = (cocos2d::LayerColor*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LayerColor_changeHeight'", nullptr);
         return 0;
@@ -40967,7 +39957,7 @@ int lua_cocos2dx_LayerColor_changeHeight(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -41009,7 +39999,7 @@ int lua_cocos2dx_LayerColor_changeWidth(lua_State* tolua_S)
     cobj = (cocos2d::LayerColor*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LayerColor_changeWidth'", nullptr);
         return 0;
@@ -41017,7 +40007,7 @@ int lua_cocos2dx_LayerColor_changeWidth(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -41055,7 +40045,7 @@ int lua_cocos2dx_LayerColor_create(lua_State* tolua_S)
 
     argc = lua_gettop(tolua_S)-1;
 
-    do 
+    do
     {
         if (argc == 3)
         {
@@ -41074,7 +40064,7 @@ int lua_cocos2dx_LayerColor_create(lua_State* tolua_S)
         }
     } while (0);
     ok  = true;
-    do 
+    do
     {
         if (argc == 0)
         {
@@ -41084,7 +40074,7 @@ int lua_cocos2dx_LayerColor_create(lua_State* tolua_S)
         }
     } while (0);
     ok  = true;
-    do 
+    do
     {
         if (argc == 1)
         {
@@ -41146,7 +40136,7 @@ int lua_cocos2dx_LayerGradient_getStartColor(lua_State* tolua_S)
     cobj = (cocos2d::LayerGradient*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LayerGradient_getStartColor'", nullptr);
         return 0;
@@ -41154,7 +40144,7 @@ int lua_cocos2dx_LayerGradient_getStartColor(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -41193,7 +40183,7 @@ int lua_cocos2dx_LayerGradient_isCompressedInterpolation(lua_State* tolua_S)
     cobj = (cocos2d::LayerGradient*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LayerGradient_isCompressedInterpolation'", nullptr);
         return 0;
@@ -41201,7 +40191,7 @@ int lua_cocos2dx_LayerGradient_isCompressedInterpolation(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -41240,7 +40230,7 @@ int lua_cocos2dx_LayerGradient_getStartOpacity(lua_State* tolua_S)
     cobj = (cocos2d::LayerGradient*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LayerGradient_getStartOpacity'", nullptr);
         return 0;
@@ -41248,7 +40238,7 @@ int lua_cocos2dx_LayerGradient_getStartOpacity(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -41287,7 +40277,7 @@ int lua_cocos2dx_LayerGradient_setVector(lua_State* tolua_S)
     cobj = (cocos2d::LayerGradient*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LayerGradient_setVector'", nullptr);
         return 0;
@@ -41295,7 +40285,7 @@ int lua_cocos2dx_LayerGradient_setVector(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Vec2 arg0;
 
@@ -41337,7 +40327,7 @@ int lua_cocos2dx_LayerGradient_setStartOpacity(lua_State* tolua_S)
     cobj = (cocos2d::LayerGradient*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LayerGradient_setStartOpacity'", nullptr);
         return 0;
@@ -41345,7 +40335,7 @@ int lua_cocos2dx_LayerGradient_setStartOpacity(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         uint16_t arg0;
 
@@ -41387,7 +40377,7 @@ int lua_cocos2dx_LayerGradient_setCompressedInterpolation(lua_State* tolua_S)
     cobj = (cocos2d::LayerGradient*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LayerGradient_setCompressedInterpolation'", nullptr);
         return 0;
@@ -41395,7 +40385,7 @@ int lua_cocos2dx_LayerGradient_setCompressedInterpolation(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -41437,7 +40427,7 @@ int lua_cocos2dx_LayerGradient_setEndOpacity(lua_State* tolua_S)
     cobj = (cocos2d::LayerGradient*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LayerGradient_setEndOpacity'", nullptr);
         return 0;
@@ -41445,7 +40435,7 @@ int lua_cocos2dx_LayerGradient_setEndOpacity(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         uint16_t arg0;
 
@@ -41487,7 +40477,7 @@ int lua_cocos2dx_LayerGradient_getVector(lua_State* tolua_S)
     cobj = (cocos2d::LayerGradient*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LayerGradient_getVector'", nullptr);
         return 0;
@@ -41495,7 +40485,7 @@ int lua_cocos2dx_LayerGradient_getVector(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -41534,7 +40524,7 @@ int lua_cocos2dx_LayerGradient_setEndColor(lua_State* tolua_S)
     cobj = (cocos2d::LayerGradient*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LayerGradient_setEndColor'", nullptr);
         return 0;
@@ -41542,7 +40532,7 @@ int lua_cocos2dx_LayerGradient_setEndColor(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Color3B arg0;
 
@@ -41584,7 +40574,7 @@ int lua_cocos2dx_LayerGradient_getEndColor(lua_State* tolua_S)
     cobj = (cocos2d::LayerGradient*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LayerGradient_getEndColor'", nullptr);
         return 0;
@@ -41592,7 +40582,7 @@ int lua_cocos2dx_LayerGradient_getEndColor(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -41631,7 +40621,7 @@ int lua_cocos2dx_LayerGradient_getEndOpacity(lua_State* tolua_S)
     cobj = (cocos2d::LayerGradient*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LayerGradient_getEndOpacity'", nullptr);
         return 0;
@@ -41639,7 +40629,7 @@ int lua_cocos2dx_LayerGradient_getEndOpacity(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -41678,7 +40668,7 @@ int lua_cocos2dx_LayerGradient_setStartColor(lua_State* tolua_S)
     cobj = (cocos2d::LayerGradient*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LayerGradient_setStartColor'", nullptr);
         return 0;
@@ -41686,7 +40676,7 @@ int lua_cocos2dx_LayerGradient_setStartColor(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Color3B arg0;
 
@@ -41724,7 +40714,7 @@ int lua_cocos2dx_LayerGradient_create(lua_State* tolua_S)
 
     argc = lua_gettop(tolua_S)-1;
 
-    do 
+    do
     {
         if (argc == 2)
         {
@@ -41740,7 +40730,7 @@ int lua_cocos2dx_LayerGradient_create(lua_State* tolua_S)
         }
     } while (0);
     ok  = true;
-    do 
+    do
     {
         if (argc == 0)
         {
@@ -41750,7 +40740,7 @@ int lua_cocos2dx_LayerGradient_create(lua_State* tolua_S)
         }
     } while (0);
     ok  = true;
-    do 
+    do
     {
         if (argc == 3)
         {
@@ -41827,7 +40817,7 @@ int lua_cocos2dx_LayerMultiplex_switchToAndReleaseMe(lua_State* tolua_S)
     cobj = (cocos2d::LayerMultiplex*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LayerMultiplex_switchToAndReleaseMe'", nullptr);
         return 0;
@@ -41835,7 +40825,7 @@ int lua_cocos2dx_LayerMultiplex_switchToAndReleaseMe(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         int arg0;
 
@@ -41877,7 +40867,7 @@ int lua_cocos2dx_LayerMultiplex_addLayer(lua_State* tolua_S)
     cobj = (cocos2d::LayerMultiplex*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LayerMultiplex_addLayer'", nullptr);
         return 0;
@@ -41885,7 +40875,7 @@ int lua_cocos2dx_LayerMultiplex_addLayer(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Layer* arg0;
 
@@ -41927,7 +40917,7 @@ int lua_cocos2dx_LayerMultiplex_switchTo(lua_State* tolua_S)
     cobj = (cocos2d::LayerMultiplex*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LayerMultiplex_switchTo'", nullptr);
         return 0;
@@ -41935,7 +40925,7 @@ int lua_cocos2dx_LayerMultiplex_switchTo(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         int arg0;
 
@@ -41999,7 +40989,7 @@ int lua_cocos2dx_TransitionEaseScene_easeActionWithAction(lua_State* tolua_S)
     cobj = (cocos2d::TransitionEaseScene*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TransitionEaseScene_easeActionWithAction'", nullptr);
         return 0;
@@ -42007,7 +40997,7 @@ int lua_cocos2dx_TransitionEaseScene_easeActionWithAction(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::ActionInterval* arg0;
 
@@ -42069,7 +41059,7 @@ int lua_cocos2dx_TransitionScene_finish(lua_State* tolua_S)
     cobj = (cocos2d::TransitionScene*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TransitionScene_finish'", nullptr);
         return 0;
@@ -42077,7 +41067,7 @@ int lua_cocos2dx_TransitionScene_finish(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -42116,7 +41106,7 @@ int lua_cocos2dx_TransitionScene_hideOutShowIn(lua_State* tolua_S)
     cobj = (cocos2d::TransitionScene*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TransitionScene_hideOutShowIn'", nullptr);
         return 0;
@@ -42124,7 +41114,7 @@ int lua_cocos2dx_TransitionScene_hideOutShowIn(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -42399,7 +41389,7 @@ int lua_cocos2dx_TransitionMoveInL_action(lua_State* tolua_S)
     cobj = (cocos2d::TransitionMoveInL*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TransitionMoveInL_action'", nullptr);
         return 0;
@@ -42407,7 +41397,7 @@ int lua_cocos2dx_TransitionMoveInL_action(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -42446,7 +41436,7 @@ int lua_cocos2dx_TransitionMoveInL_easeActionWithAction(lua_State* tolua_S)
     cobj = (cocos2d::TransitionMoveInL*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TransitionMoveInL_easeActionWithAction'", nullptr);
         return 0;
@@ -42454,7 +41444,7 @@ int lua_cocos2dx_TransitionMoveInL_easeActionWithAction(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::ActionInterval* arg0;
 
@@ -42730,7 +41720,7 @@ int lua_cocos2dx_TransitionSlideInL_action(lua_State* tolua_S)
     cobj = (cocos2d::TransitionSlideInL*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TransitionSlideInL_action'", nullptr);
         return 0;
@@ -42738,7 +41728,7 @@ int lua_cocos2dx_TransitionSlideInL_action(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -42777,7 +41767,7 @@ int lua_cocos2dx_TransitionSlideInL_easeActionWithAction(lua_State* tolua_S)
     cobj = (cocos2d::TransitionSlideInL*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TransitionSlideInL_easeActionWithAction'", nullptr);
         return 0;
@@ -42785,7 +41775,7 @@ int lua_cocos2dx_TransitionSlideInL_easeActionWithAction(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::ActionInterval* arg0;
 
@@ -42887,7 +41877,7 @@ int lua_cocos2dx_TransitionSlideInR_action(lua_State* tolua_S)
     cobj = (cocos2d::TransitionSlideInR*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TransitionSlideInR_action'", nullptr);
         return 0;
@@ -42895,7 +41885,7 @@ int lua_cocos2dx_TransitionSlideInR_action(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -42993,7 +41983,7 @@ int lua_cocos2dx_TransitionSlideInB_action(lua_State* tolua_S)
     cobj = (cocos2d::TransitionSlideInB*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TransitionSlideInB_action'", nullptr);
         return 0;
@@ -43001,7 +41991,7 @@ int lua_cocos2dx_TransitionSlideInB_action(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -43099,7 +42089,7 @@ int lua_cocos2dx_TransitionSlideInT_action(lua_State* tolua_S)
     cobj = (cocos2d::TransitionSlideInT*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TransitionSlideInT_action'", nullptr);
         return 0;
@@ -43107,7 +42097,7 @@ int lua_cocos2dx_TransitionSlideInT_action(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -43205,7 +42195,7 @@ int lua_cocos2dx_TransitionShrinkGrow_easeActionWithAction(lua_State* tolua_S)
     cobj = (cocos2d::TransitionShrinkGrow*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TransitionShrinkGrow_easeActionWithAction'", nullptr);
         return 0;
@@ -43213,7 +42203,7 @@ int lua_cocos2dx_TransitionShrinkGrow_easeActionWithAction(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::ActionInterval* arg0;
 
@@ -43310,7 +42300,7 @@ int lua_cocos2dx_TransitionFlipX_create(lua_State* tolua_S)
 
     argc = lua_gettop(tolua_S)-1;
 
-    do 
+    do
     {
         if (argc == 2)
         {
@@ -43326,7 +42316,7 @@ int lua_cocos2dx_TransitionFlipX_create(lua_State* tolua_S)
         }
     } while (0);
     ok  = true;
-    do 
+    do
     {
         if (argc == 3)
         {
@@ -43387,7 +42377,7 @@ int lua_cocos2dx_TransitionFlipY_create(lua_State* tolua_S)
 
     argc = lua_gettop(tolua_S)-1;
 
-    do 
+    do
     {
         if (argc == 2)
         {
@@ -43403,7 +42393,7 @@ int lua_cocos2dx_TransitionFlipY_create(lua_State* tolua_S)
         }
     } while (0);
     ok  = true;
-    do 
+    do
     {
         if (argc == 3)
         {
@@ -43464,7 +42454,7 @@ int lua_cocos2dx_TransitionFlipAngular_create(lua_State* tolua_S)
 
     argc = lua_gettop(tolua_S)-1;
 
-    do 
+    do
     {
         if (argc == 2)
         {
@@ -43480,7 +42470,7 @@ int lua_cocos2dx_TransitionFlipAngular_create(lua_State* tolua_S)
         }
     } while (0);
     ok  = true;
-    do 
+    do
     {
         if (argc == 3)
         {
@@ -43541,7 +42531,7 @@ int lua_cocos2dx_TransitionZoomFlipX_create(lua_State* tolua_S)
 
     argc = lua_gettop(tolua_S)-1;
 
-    do 
+    do
     {
         if (argc == 2)
         {
@@ -43557,7 +42547,7 @@ int lua_cocos2dx_TransitionZoomFlipX_create(lua_State* tolua_S)
         }
     } while (0);
     ok  = true;
-    do 
+    do
     {
         if (argc == 3)
         {
@@ -43618,7 +42608,7 @@ int lua_cocos2dx_TransitionZoomFlipY_create(lua_State* tolua_S)
 
     argc = lua_gettop(tolua_S)-1;
 
-    do 
+    do
     {
         if (argc == 2)
         {
@@ -43634,7 +42624,7 @@ int lua_cocos2dx_TransitionZoomFlipY_create(lua_State* tolua_S)
         }
     } while (0);
     ok  = true;
-    do 
+    do
     {
         if (argc == 3)
         {
@@ -43695,7 +42685,7 @@ int lua_cocos2dx_TransitionZoomFlipAngular_create(lua_State* tolua_S)
 
     argc = lua_gettop(tolua_S)-1;
 
-    do 
+    do
     {
         if (argc == 2)
         {
@@ -43711,7 +42701,7 @@ int lua_cocos2dx_TransitionZoomFlipAngular_create(lua_State* tolua_S)
         }
     } while (0);
     ok  = true;
-    do 
+    do
     {
         if (argc == 3)
         {
@@ -43772,7 +42762,7 @@ int lua_cocos2dx_TransitionFade_create(lua_State* tolua_S)
 
     argc = lua_gettop(tolua_S)-1;
 
-    do 
+    do
     {
         if (argc == 2)
         {
@@ -43788,7 +42778,7 @@ int lua_cocos2dx_TransitionFade_create(lua_State* tolua_S)
         }
     } while (0);
     ok  = true;
-    do 
+    do
     {
         if (argc == 3)
         {
@@ -43911,7 +42901,7 @@ int lua_cocos2dx_TransitionTurnOffTiles_easeActionWithAction(lua_State* tolua_S)
     cobj = (cocos2d::TransitionTurnOffTiles*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TransitionTurnOffTiles_easeActionWithAction'", nullptr);
         return 0;
@@ -43919,7 +42909,7 @@ int lua_cocos2dx_TransitionTurnOffTiles_easeActionWithAction(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::ActionInterval* arg0;
 
@@ -44020,7 +43010,7 @@ int lua_cocos2dx_TransitionSplitCols_action(lua_State* tolua_S)
     cobj = (cocos2d::TransitionSplitCols*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TransitionSplitCols_action'", nullptr);
         return 0;
@@ -44028,7 +43018,7 @@ int lua_cocos2dx_TransitionSplitCols_action(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -44067,7 +43057,7 @@ int lua_cocos2dx_TransitionSplitCols_easeActionWithAction(lua_State* tolua_S)
     cobj = (cocos2d::TransitionSplitCols*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TransitionSplitCols_easeActionWithAction'", nullptr);
         return 0;
@@ -44075,7 +43065,7 @@ int lua_cocos2dx_TransitionSplitCols_easeActionWithAction(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::ActionInterval* arg0;
 
@@ -44235,7 +43225,7 @@ int lua_cocos2dx_TransitionFadeTR_easeActionWithAction(lua_State* tolua_S)
     cobj = (cocos2d::TransitionFadeTR*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TransitionFadeTR_easeActionWithAction'", nullptr);
         return 0;
@@ -44243,7 +43233,7 @@ int lua_cocos2dx_TransitionFadeTR_easeActionWithAction(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::ActionInterval* arg0;
 
@@ -44285,7 +43275,7 @@ int lua_cocos2dx_TransitionFadeTR_actionWithSize(lua_State* tolua_S)
     cobj = (cocos2d::TransitionFadeTR*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TransitionFadeTR_actionWithSize'", nullptr);
         return 0;
@@ -44293,7 +43283,7 @@ int lua_cocos2dx_TransitionFadeTR_actionWithSize(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Size arg0;
 
@@ -44569,7 +43559,7 @@ int lua_cocos2dx_TransitionPageTurn_actionWithSize(lua_State* tolua_S)
     cobj = (cocos2d::TransitionPageTurn*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TransitionPageTurn_actionWithSize'", nullptr);
         return 0;
@@ -44577,7 +43567,7 @@ int lua_cocos2dx_TransitionPageTurn_actionWithSize(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Size arg0;
 
@@ -44619,7 +43609,7 @@ int lua_cocos2dx_TransitionPageTurn_initWithDuration(lua_State* tolua_S)
     cobj = (cocos2d::TransitionPageTurn*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TransitionPageTurn_initWithDuration'", nullptr);
         return 0;
@@ -44627,7 +43617,7 @@ int lua_cocos2dx_TransitionPageTurn_initWithDuration(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 3) 
+    if (argc == 3)
     {
         double arg0;
         cocos2d::Scene* arg1;
@@ -45125,2231 +44115,6 @@ int lua_register_cocos2dx_TransitionProgressOutIn(lua_State* tolua_S)
     return 1;
 }
 
-int lua_cocos2dx_MenuItem_setEnabled(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::MenuItem* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.MenuItem",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::MenuItem*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_MenuItem_setEnabled'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        bool arg0;
-
-        ok &= luaval_to_boolean(tolua_S, 2,&arg0, "cc.MenuItem:setEnabled");
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MenuItem_setEnabled'", nullptr);
-            return 0;
-        }
-        cobj->setEnabled(arg0);
-        lua_settop(tolua_S, 1);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.MenuItem:setEnabled",argc, 1);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_MenuItem_setEnabled'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_MenuItem_activate(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::MenuItem* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.MenuItem",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::MenuItem*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_MenuItem_activate'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MenuItem_activate'", nullptr);
-            return 0;
-        }
-        cobj->activate();
-        lua_settop(tolua_S, 1);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.MenuItem:activate",argc, 0);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_MenuItem_activate'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_MenuItem_isEnabled(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::MenuItem* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.MenuItem",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::MenuItem*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_MenuItem_isEnabled'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MenuItem_isEnabled'", nullptr);
-            return 0;
-        }
-        bool ret = cobj->isEnabled();
-        tolua_pushboolean(tolua_S,(bool)ret);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.MenuItem:isEnabled",argc, 0);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_MenuItem_isEnabled'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_MenuItem_selected(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::MenuItem* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.MenuItem",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::MenuItem*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_MenuItem_selected'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MenuItem_selected'", nullptr);
-            return 0;
-        }
-        cobj->selected();
-        lua_settop(tolua_S, 1);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.MenuItem:selected",argc, 0);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_MenuItem_selected'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_MenuItem_isSelected(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::MenuItem* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.MenuItem",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::MenuItem*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_MenuItem_isSelected'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MenuItem_isSelected'", nullptr);
-            return 0;
-        }
-        bool ret = cobj->isSelected();
-        tolua_pushboolean(tolua_S,(bool)ret);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.MenuItem:isSelected",argc, 0);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_MenuItem_isSelected'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_MenuItem_unselected(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::MenuItem* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.MenuItem",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::MenuItem*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_MenuItem_unselected'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MenuItem_unselected'", nullptr);
-            return 0;
-        }
-        cobj->unselected();
-        lua_settop(tolua_S, 1);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.MenuItem:unselected",argc, 0);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_MenuItem_unselected'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_MenuItem_rect(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::MenuItem* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.MenuItem",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::MenuItem*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_MenuItem_rect'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MenuItem_rect'", nullptr);
-            return 0;
-        }
-        cocos2d::Rect ret = cobj->rect();
-        rect_to_luaval(tolua_S, ret);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.MenuItem:rect",argc, 0);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_MenuItem_rect'.",&tolua_err);
-#endif
-
-    return 0;
-}
-static int lua_cocos2dx_MenuItem_finalize(lua_State* tolua_S)
-{
-    printf("luabindings: finalizing LUA object (MenuItem)");
-    return 0;
-}
-
-int lua_register_cocos2dx_MenuItem(lua_State* tolua_S)
-{
-    tolua_usertype(tolua_S,"cc.MenuItem");
-    tolua_cclass(tolua_S,"MenuItem","cc.MenuItem","cc.Node",nullptr);
-
-    tolua_beginmodule(tolua_S,"MenuItem");
-        tolua_function(tolua_S,"setEnabled",lua_cocos2dx_MenuItem_setEnabled);
-        tolua_function(tolua_S,"activate",lua_cocos2dx_MenuItem_activate);
-        tolua_function(tolua_S,"isEnabled",lua_cocos2dx_MenuItem_isEnabled);
-        tolua_function(tolua_S,"selected",lua_cocos2dx_MenuItem_selected);
-        tolua_function(tolua_S,"isSelected",lua_cocos2dx_MenuItem_isSelected);
-        tolua_function(tolua_S,"unselected",lua_cocos2dx_MenuItem_unselected);
-        tolua_function(tolua_S,"rect",lua_cocos2dx_MenuItem_rect);
-    tolua_endmodule(tolua_S);
-    std::string typeName = typeid(cocos2d::MenuItem).name();
-    g_luaType[typeName] = "cc.MenuItem";
-    g_typeCast["MenuItem"] = "cc.MenuItem";
-    return 1;
-}
-
-int lua_cocos2dx_MenuItemLabel_getDisabledColor(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::MenuItemLabel* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.MenuItemLabel",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::MenuItemLabel*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_MenuItemLabel_getDisabledColor'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MenuItemLabel_getDisabledColor'", nullptr);
-            return 0;
-        }
-        const cocos2d::Color3B& ret = cobj->getDisabledColor();
-        color3b_to_luaval(tolua_S, ret);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.MenuItemLabel:getDisabledColor",argc, 0);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_MenuItemLabel_getDisabledColor'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_MenuItemLabel_setString(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::MenuItemLabel* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.MenuItemLabel",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::MenuItemLabel*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_MenuItemLabel_setString'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        std::string arg0;
-
-        ok &= luaval_to_std_string(tolua_S, 2,&arg0, "cc.MenuItemLabel:setString");
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MenuItemLabel_setString'", nullptr);
-            return 0;
-        }
-        cobj->setString(arg0);
-        lua_settop(tolua_S, 1);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.MenuItemLabel:setString",argc, 1);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_MenuItemLabel_setString'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_MenuItemLabel_setLabel(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::MenuItemLabel* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.MenuItemLabel",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::MenuItemLabel*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_MenuItemLabel_setLabel'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        cocos2d::Node* arg0;
-
-        ok &= luaval_to_object<cocos2d::Node>(tolua_S, 2, "cc.Node",&arg0);
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MenuItemLabel_setLabel'", nullptr);
-            return 0;
-        }
-        cobj->setLabel(arg0);
-        lua_settop(tolua_S, 1);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.MenuItemLabel:setLabel",argc, 1);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_MenuItemLabel_setLabel'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_MenuItemLabel_setDisabledColor(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::MenuItemLabel* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.MenuItemLabel",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::MenuItemLabel*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_MenuItemLabel_setDisabledColor'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        cocos2d::Color3B arg0;
-
-        ok &= luaval_to_color3b(tolua_S, 2, &arg0, "cc.MenuItemLabel:setDisabledColor");
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MenuItemLabel_setDisabledColor'", nullptr);
-            return 0;
-        }
-        cobj->setDisabledColor(arg0);
-        lua_settop(tolua_S, 1);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.MenuItemLabel:setDisabledColor",argc, 1);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_MenuItemLabel_setDisabledColor'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_MenuItemLabel_getLabel(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::MenuItemLabel* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.MenuItemLabel",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::MenuItemLabel*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_MenuItemLabel_getLabel'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MenuItemLabel_getLabel'", nullptr);
-            return 0;
-        }
-        cocos2d::Node* ret = cobj->getLabel();
-        object_to_luaval<cocos2d::Node>(tolua_S, "cc.Node",(cocos2d::Node*)ret);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.MenuItemLabel:getLabel",argc, 0);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_MenuItemLabel_getLabel'.",&tolua_err);
-#endif
-
-    return 0;
-}
-static int lua_cocos2dx_MenuItemLabel_finalize(lua_State* tolua_S)
-{
-    printf("luabindings: finalizing LUA object (MenuItemLabel)");
-    return 0;
-}
-
-int lua_register_cocos2dx_MenuItemLabel(lua_State* tolua_S)
-{
-    tolua_usertype(tolua_S,"cc.MenuItemLabel");
-    tolua_cclass(tolua_S,"MenuItemLabel","cc.MenuItemLabel","cc.MenuItem",nullptr);
-
-    tolua_beginmodule(tolua_S,"MenuItemLabel");
-        tolua_function(tolua_S,"getDisabledColor",lua_cocos2dx_MenuItemLabel_getDisabledColor);
-        tolua_function(tolua_S,"setString",lua_cocos2dx_MenuItemLabel_setString);
-        tolua_function(tolua_S,"setLabel",lua_cocos2dx_MenuItemLabel_setLabel);
-        tolua_function(tolua_S,"setDisabledColor",lua_cocos2dx_MenuItemLabel_setDisabledColor);
-        tolua_function(tolua_S,"getLabel",lua_cocos2dx_MenuItemLabel_getLabel);
-    tolua_endmodule(tolua_S);
-    std::string typeName = typeid(cocos2d::MenuItemLabel).name();
-    g_luaType[typeName] = "cc.MenuItemLabel";
-    g_typeCast["MenuItemLabel"] = "cc.MenuItemLabel";
-    return 1;
-}
-
-static int lua_cocos2dx_MenuItemAtlasFont_finalize(lua_State* tolua_S)
-{
-    printf("luabindings: finalizing LUA object (MenuItemAtlasFont)");
-    return 0;
-}
-
-int lua_register_cocos2dx_MenuItemAtlasFont(lua_State* tolua_S)
-{
-    tolua_usertype(tolua_S,"cc.MenuItemAtlasFont");
-    tolua_cclass(tolua_S,"MenuItemAtlasFont","cc.MenuItemAtlasFont","cc.MenuItemLabel",nullptr);
-
-    tolua_beginmodule(tolua_S,"MenuItemAtlasFont");
-    tolua_endmodule(tolua_S);
-    std::string typeName = typeid(cocos2d::MenuItemAtlasFont).name();
-    g_luaType[typeName] = "cc.MenuItemAtlasFont";
-    g_typeCast["MenuItemAtlasFont"] = "cc.MenuItemAtlasFont";
-    return 1;
-}
-
-int lua_cocos2dx_MenuItemFont_getFontSizeObj(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::MenuItemFont* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.MenuItemFont",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::MenuItemFont*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_MenuItemFont_getFontSizeObj'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MenuItemFont_getFontSizeObj'", nullptr);
-            return 0;
-        }
-        int ret = cobj->getFontSizeObj();
-        tolua_pushnumber(tolua_S,(lua_Number)ret);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.MenuItemFont:getFontSizeObj",argc, 0);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_MenuItemFont_getFontSizeObj'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_MenuItemFont_getFontNameObj(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::MenuItemFont* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.MenuItemFont",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::MenuItemFont*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_MenuItemFont_getFontNameObj'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MenuItemFont_getFontNameObj'", nullptr);
-            return 0;
-        }
-        const std::string& ret = cobj->getFontNameObj();
-        tolua_pushcppstring(tolua_S,ret);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.MenuItemFont:getFontNameObj",argc, 0);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_MenuItemFont_getFontNameObj'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_MenuItemFont_setFontSizeObj(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::MenuItemFont* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.MenuItemFont",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::MenuItemFont*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_MenuItemFont_setFontSizeObj'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        int arg0;
-
-        ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0, "cc.MenuItemFont:setFontSizeObj");
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MenuItemFont_setFontSizeObj'", nullptr);
-            return 0;
-        }
-        cobj->setFontSizeObj(arg0);
-        lua_settop(tolua_S, 1);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.MenuItemFont:setFontSizeObj",argc, 1);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_MenuItemFont_setFontSizeObj'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_MenuItemFont_setFontNameObj(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::MenuItemFont* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.MenuItemFont",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::MenuItemFont*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_MenuItemFont_setFontNameObj'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        std::string arg0;
-
-        ok &= luaval_to_std_string(tolua_S, 2,&arg0, "cc.MenuItemFont:setFontNameObj");
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MenuItemFont_setFontNameObj'", nullptr);
-            return 0;
-        }
-        cobj->setFontNameObj(arg0);
-        lua_settop(tolua_S, 1);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.MenuItemFont:setFontNameObj",argc, 1);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_MenuItemFont_setFontNameObj'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_MenuItemFont_setFontName(lua_State* tolua_S)
-{
-    int argc = 0;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"cc.MenuItemFont",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    argc = lua_gettop(tolua_S) - 1;
-
-    if (argc == 1)
-    {
-        std::string arg0;
-        ok &= luaval_to_std_string(tolua_S, 2,&arg0, "cc.MenuItemFont:setFontName");
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MenuItemFont_setFontName'", nullptr);
-            return 0;
-        }
-        cocos2d::MenuItemFont::setFontName(arg0);
-        lua_settop(tolua_S, 1);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d\n ", "cc.MenuItemFont:setFontName",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_MenuItemFont_setFontName'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_MenuItemFont_getFontSize(lua_State* tolua_S)
-{
-    int argc = 0;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"cc.MenuItemFont",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    argc = lua_gettop(tolua_S) - 1;
-
-    if (argc == 0)
-    {
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MenuItemFont_getFontSize'", nullptr);
-            return 0;
-        }
-        int ret = cocos2d::MenuItemFont::getFontSize();
-        tolua_pushnumber(tolua_S,(lua_Number)ret);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d\n ", "cc.MenuItemFont:getFontSize",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_MenuItemFont_getFontSize'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_MenuItemFont_getFontName(lua_State* tolua_S)
-{
-    int argc = 0;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"cc.MenuItemFont",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    argc = lua_gettop(tolua_S) - 1;
-
-    if (argc == 0)
-    {
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MenuItemFont_getFontName'", nullptr);
-            return 0;
-        }
-        const std::string& ret = cocos2d::MenuItemFont::getFontName();
-        tolua_pushcppstring(tolua_S,ret);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d\n ", "cc.MenuItemFont:getFontName",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_MenuItemFont_getFontName'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_MenuItemFont_setFontSize(lua_State* tolua_S)
-{
-    int argc = 0;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"cc.MenuItemFont",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    argc = lua_gettop(tolua_S) - 1;
-
-    if (argc == 1)
-    {
-        int arg0;
-        ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0, "cc.MenuItemFont:setFontSize");
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MenuItemFont_setFontSize'", nullptr);
-            return 0;
-        }
-        cocos2d::MenuItemFont::setFontSize(arg0);
-        lua_settop(tolua_S, 1);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d\n ", "cc.MenuItemFont:setFontSize",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_MenuItemFont_setFontSize'.",&tolua_err);
-#endif
-    return 0;
-}
-static int lua_cocos2dx_MenuItemFont_finalize(lua_State* tolua_S)
-{
-    printf("luabindings: finalizing LUA object (MenuItemFont)");
-    return 0;
-}
-
-int lua_register_cocos2dx_MenuItemFont(lua_State* tolua_S)
-{
-    tolua_usertype(tolua_S,"cc.MenuItemFont");
-    tolua_cclass(tolua_S,"MenuItemFont","cc.MenuItemFont","cc.MenuItemLabel",nullptr);
-
-    tolua_beginmodule(tolua_S,"MenuItemFont");
-        tolua_function(tolua_S,"getFontSizeObj",lua_cocos2dx_MenuItemFont_getFontSizeObj);
-        tolua_function(tolua_S,"getFontNameObj",lua_cocos2dx_MenuItemFont_getFontNameObj);
-        tolua_function(tolua_S,"setFontSizeObj",lua_cocos2dx_MenuItemFont_setFontSizeObj);
-        tolua_function(tolua_S,"setFontNameObj",lua_cocos2dx_MenuItemFont_setFontNameObj);
-        tolua_function(tolua_S,"setFontName", lua_cocos2dx_MenuItemFont_setFontName);
-        tolua_function(tolua_S,"getFontSize", lua_cocos2dx_MenuItemFont_getFontSize);
-        tolua_function(tolua_S,"getFontName", lua_cocos2dx_MenuItemFont_getFontName);
-        tolua_function(tolua_S,"setFontSize", lua_cocos2dx_MenuItemFont_setFontSize);
-    tolua_endmodule(tolua_S);
-    std::string typeName = typeid(cocos2d::MenuItemFont).name();
-    g_luaType[typeName] = "cc.MenuItemFont";
-    g_typeCast["MenuItemFont"] = "cc.MenuItemFont";
-    return 1;
-}
-
-int lua_cocos2dx_MenuItemSprite_setEnabled(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::MenuItemSprite* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.MenuItemSprite",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::MenuItemSprite*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_MenuItemSprite_setEnabled'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        bool arg0;
-
-        ok &= luaval_to_boolean(tolua_S, 2,&arg0, "cc.MenuItemSprite:setEnabled");
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MenuItemSprite_setEnabled'", nullptr);
-            return 0;
-        }
-        cobj->setEnabled(arg0);
-        lua_settop(tolua_S, 1);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.MenuItemSprite:setEnabled",argc, 1);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_MenuItemSprite_setEnabled'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_MenuItemSprite_selected(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::MenuItemSprite* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.MenuItemSprite",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::MenuItemSprite*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_MenuItemSprite_selected'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MenuItemSprite_selected'", nullptr);
-            return 0;
-        }
-        cobj->selected();
-        lua_settop(tolua_S, 1);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.MenuItemSprite:selected",argc, 0);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_MenuItemSprite_selected'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_MenuItemSprite_setNormalImage(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::MenuItemSprite* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.MenuItemSprite",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::MenuItemSprite*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_MenuItemSprite_setNormalImage'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        cocos2d::Node* arg0;
-
-        ok &= luaval_to_object<cocos2d::Node>(tolua_S, 2, "cc.Node",&arg0);
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MenuItemSprite_setNormalImage'", nullptr);
-            return 0;
-        }
-        cobj->setNormalImage(arg0);
-        lua_settop(tolua_S, 1);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.MenuItemSprite:setNormalImage",argc, 1);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_MenuItemSprite_setNormalImage'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_MenuItemSprite_setDisabledImage(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::MenuItemSprite* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.MenuItemSprite",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::MenuItemSprite*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_MenuItemSprite_setDisabledImage'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        cocos2d::Node* arg0;
-
-        ok &= luaval_to_object<cocos2d::Node>(tolua_S, 2, "cc.Node",&arg0);
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MenuItemSprite_setDisabledImage'", nullptr);
-            return 0;
-        }
-        cobj->setDisabledImage(arg0);
-        lua_settop(tolua_S, 1);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.MenuItemSprite:setDisabledImage",argc, 1);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_MenuItemSprite_setDisabledImage'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_MenuItemSprite_setSelectedImage(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::MenuItemSprite* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.MenuItemSprite",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::MenuItemSprite*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_MenuItemSprite_setSelectedImage'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        cocos2d::Node* arg0;
-
-        ok &= luaval_to_object<cocos2d::Node>(tolua_S, 2, "cc.Node",&arg0);
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MenuItemSprite_setSelectedImage'", nullptr);
-            return 0;
-        }
-        cobj->setSelectedImage(arg0);
-        lua_settop(tolua_S, 1);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.MenuItemSprite:setSelectedImage",argc, 1);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_MenuItemSprite_setSelectedImage'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_MenuItemSprite_getDisabledImage(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::MenuItemSprite* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.MenuItemSprite",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::MenuItemSprite*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_MenuItemSprite_getDisabledImage'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MenuItemSprite_getDisabledImage'", nullptr);
-            return 0;
-        }
-        cocos2d::Node* ret = cobj->getDisabledImage();
-        object_to_luaval<cocos2d::Node>(tolua_S, "cc.Node",(cocos2d::Node*)ret);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.MenuItemSprite:getDisabledImage",argc, 0);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_MenuItemSprite_getDisabledImage'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_MenuItemSprite_getSelectedImage(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::MenuItemSprite* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.MenuItemSprite",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::MenuItemSprite*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_MenuItemSprite_getSelectedImage'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MenuItemSprite_getSelectedImage'", nullptr);
-            return 0;
-        }
-        cocos2d::Node* ret = cobj->getSelectedImage();
-        object_to_luaval<cocos2d::Node>(tolua_S, "cc.Node",(cocos2d::Node*)ret);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.MenuItemSprite:getSelectedImage",argc, 0);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_MenuItemSprite_getSelectedImage'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_MenuItemSprite_getNormalImage(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::MenuItemSprite* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.MenuItemSprite",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::MenuItemSprite*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_MenuItemSprite_getNormalImage'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MenuItemSprite_getNormalImage'", nullptr);
-            return 0;
-        }
-        cocos2d::Node* ret = cobj->getNormalImage();
-        object_to_luaval<cocos2d::Node>(tolua_S, "cc.Node",(cocos2d::Node*)ret);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.MenuItemSprite:getNormalImage",argc, 0);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_MenuItemSprite_getNormalImage'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_MenuItemSprite_unselected(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::MenuItemSprite* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.MenuItemSprite",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::MenuItemSprite*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_MenuItemSprite_unselected'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MenuItemSprite_unselected'", nullptr);
-            return 0;
-        }
-        cobj->unselected();
-        lua_settop(tolua_S, 1);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.MenuItemSprite:unselected",argc, 0);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_MenuItemSprite_unselected'.",&tolua_err);
-#endif
-
-    return 0;
-}
-static int lua_cocos2dx_MenuItemSprite_finalize(lua_State* tolua_S)
-{
-    printf("luabindings: finalizing LUA object (MenuItemSprite)");
-    return 0;
-}
-
-int lua_register_cocos2dx_MenuItemSprite(lua_State* tolua_S)
-{
-    tolua_usertype(tolua_S,"cc.MenuItemSprite");
-    tolua_cclass(tolua_S,"MenuItemSprite","cc.MenuItemSprite","cc.MenuItem",nullptr);
-
-    tolua_beginmodule(tolua_S,"MenuItemSprite");
-        tolua_function(tolua_S,"setEnabled",lua_cocos2dx_MenuItemSprite_setEnabled);
-        tolua_function(tolua_S,"selected",lua_cocos2dx_MenuItemSprite_selected);
-        tolua_function(tolua_S,"setNormalImage",lua_cocos2dx_MenuItemSprite_setNormalImage);
-        tolua_function(tolua_S,"setDisabledImage",lua_cocos2dx_MenuItemSprite_setDisabledImage);
-        tolua_function(tolua_S,"setSelectedImage",lua_cocos2dx_MenuItemSprite_setSelectedImage);
-        tolua_function(tolua_S,"getDisabledImage",lua_cocos2dx_MenuItemSprite_getDisabledImage);
-        tolua_function(tolua_S,"getSelectedImage",lua_cocos2dx_MenuItemSprite_getSelectedImage);
-        tolua_function(tolua_S,"getNormalImage",lua_cocos2dx_MenuItemSprite_getNormalImage);
-        tolua_function(tolua_S,"unselected",lua_cocos2dx_MenuItemSprite_unselected);
-    tolua_endmodule(tolua_S);
-    std::string typeName = typeid(cocos2d::MenuItemSprite).name();
-    g_luaType[typeName] = "cc.MenuItemSprite";
-    g_typeCast["MenuItemSprite"] = "cc.MenuItemSprite";
-    return 1;
-}
-
-int lua_cocos2dx_MenuItemImage_setDisabledSpriteFrame(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::MenuItemImage* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.MenuItemImage",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::MenuItemImage*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_MenuItemImage_setDisabledSpriteFrame'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        cocos2d::SpriteFrame* arg0;
-
-        ok &= luaval_to_object<cocos2d::SpriteFrame>(tolua_S, 2, "cc.SpriteFrame",&arg0);
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MenuItemImage_setDisabledSpriteFrame'", nullptr);
-            return 0;
-        }
-        cobj->setDisabledSpriteFrame(arg0);
-        lua_settop(tolua_S, 1);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.MenuItemImage:setDisabledSpriteFrame",argc, 1);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_MenuItemImage_setDisabledSpriteFrame'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_MenuItemImage_setSelectedSpriteFrame(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::MenuItemImage* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.MenuItemImage",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::MenuItemImage*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_MenuItemImage_setSelectedSpriteFrame'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        cocos2d::SpriteFrame* arg0;
-
-        ok &= luaval_to_object<cocos2d::SpriteFrame>(tolua_S, 2, "cc.SpriteFrame",&arg0);
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MenuItemImage_setSelectedSpriteFrame'", nullptr);
-            return 0;
-        }
-        cobj->setSelectedSpriteFrame(arg0);
-        lua_settop(tolua_S, 1);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.MenuItemImage:setSelectedSpriteFrame",argc, 1);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_MenuItemImage_setSelectedSpriteFrame'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_MenuItemImage_setNormalSpriteFrame(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::MenuItemImage* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.MenuItemImage",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::MenuItemImage*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_MenuItemImage_setNormalSpriteFrame'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        cocos2d::SpriteFrame* arg0;
-
-        ok &= luaval_to_object<cocos2d::SpriteFrame>(tolua_S, 2, "cc.SpriteFrame",&arg0);
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MenuItemImage_setNormalSpriteFrame'", nullptr);
-            return 0;
-        }
-        cobj->setNormalSpriteFrame(arg0);
-        lua_settop(tolua_S, 1);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.MenuItemImage:setNormalSpriteFrame",argc, 1);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_MenuItemImage_setNormalSpriteFrame'.",&tolua_err);
-#endif
-
-    return 0;
-}
-static int lua_cocos2dx_MenuItemImage_finalize(lua_State* tolua_S)
-{
-    printf("luabindings: finalizing LUA object (MenuItemImage)");
-    return 0;
-}
-
-int lua_register_cocos2dx_MenuItemImage(lua_State* tolua_S)
-{
-    tolua_usertype(tolua_S,"cc.MenuItemImage");
-    tolua_cclass(tolua_S,"MenuItemImage","cc.MenuItemImage","cc.MenuItemSprite",nullptr);
-
-    tolua_beginmodule(tolua_S,"MenuItemImage");
-        tolua_function(tolua_S,"setDisabledSpriteFrame",lua_cocos2dx_MenuItemImage_setDisabledSpriteFrame);
-        tolua_function(tolua_S,"setSelectedSpriteFrame",lua_cocos2dx_MenuItemImage_setSelectedSpriteFrame);
-        tolua_function(tolua_S,"setNormalSpriteFrame",lua_cocos2dx_MenuItemImage_setNormalSpriteFrame);
-    tolua_endmodule(tolua_S);
-    std::string typeName = typeid(cocos2d::MenuItemImage).name();
-    g_luaType[typeName] = "cc.MenuItemImage";
-    g_typeCast["MenuItemImage"] = "cc.MenuItemImage";
-    return 1;
-}
-
-int lua_cocos2dx_MenuItemToggle_setSubItems(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::MenuItemToggle* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.MenuItemToggle",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::MenuItemToggle*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_MenuItemToggle_setSubItems'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        cocos2d::Vector<cocos2d::MenuItem *> arg0;
-
-        ok &= luaval_to_ccvector(tolua_S, 2, &arg0, "cc.MenuItemToggle:setSubItems");
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MenuItemToggle_setSubItems'", nullptr);
-            return 0;
-        }
-        cobj->setSubItems(arg0);
-        lua_settop(tolua_S, 1);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.MenuItemToggle:setSubItems",argc, 1);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_MenuItemToggle_setSubItems'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_MenuItemToggle_getSelectedIndex(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::MenuItemToggle* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.MenuItemToggle",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::MenuItemToggle*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_MenuItemToggle_getSelectedIndex'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MenuItemToggle_getSelectedIndex'", nullptr);
-            return 0;
-        }
-        unsigned int ret = cobj->getSelectedIndex();
-        tolua_pushnumber(tolua_S,(lua_Number)ret);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.MenuItemToggle:getSelectedIndex",argc, 0);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_MenuItemToggle_getSelectedIndex'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_MenuItemToggle_addSubItem(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::MenuItemToggle* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.MenuItemToggle",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::MenuItemToggle*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_MenuItemToggle_addSubItem'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        cocos2d::MenuItem* arg0;
-
-        ok &= luaval_to_object<cocos2d::MenuItem>(tolua_S, 2, "cc.MenuItem",&arg0);
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MenuItemToggle_addSubItem'", nullptr);
-            return 0;
-        }
-        cobj->addSubItem(arg0);
-        lua_settop(tolua_S, 1);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.MenuItemToggle:addSubItem",argc, 1);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_MenuItemToggle_addSubItem'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_MenuItemToggle_getSelectedItem(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::MenuItemToggle* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.MenuItemToggle",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::MenuItemToggle*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_MenuItemToggle_getSelectedItem'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MenuItemToggle_getSelectedItem'", nullptr);
-            return 0;
-        }
-        cocos2d::MenuItem* ret = cobj->getSelectedItem();
-        object_to_luaval<cocos2d::MenuItem>(tolua_S, "cc.MenuItem",(cocos2d::MenuItem*)ret);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.MenuItemToggle:getSelectedItem",argc, 0);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_MenuItemToggle_getSelectedItem'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_MenuItemToggle_setSelectedIndex(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::MenuItemToggle* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.MenuItemToggle",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::MenuItemToggle*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_MenuItemToggle_setSelectedIndex'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        unsigned int arg0;
-
-        ok &= luaval_to_uint32(tolua_S, 2,&arg0, "cc.MenuItemToggle:setSelectedIndex");
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MenuItemToggle_setSelectedIndex'", nullptr);
-            return 0;
-        }
-        cobj->setSelectedIndex(arg0);
-        lua_settop(tolua_S, 1);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.MenuItemToggle:setSelectedIndex",argc, 1);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_MenuItemToggle_setSelectedIndex'.",&tolua_err);
-#endif
-
-    return 0;
-}
-static int lua_cocos2dx_MenuItemToggle_finalize(lua_State* tolua_S)
-{
-    printf("luabindings: finalizing LUA object (MenuItemToggle)");
-    return 0;
-}
-
-int lua_register_cocos2dx_MenuItemToggle(lua_State* tolua_S)
-{
-    tolua_usertype(tolua_S,"cc.MenuItemToggle");
-    tolua_cclass(tolua_S,"MenuItemToggle","cc.MenuItemToggle","cc.MenuItem",nullptr);
-
-    tolua_beginmodule(tolua_S,"MenuItemToggle");
-        tolua_function(tolua_S,"setSubItems",lua_cocos2dx_MenuItemToggle_setSubItems);
-        tolua_function(tolua_S,"getSelectedIndex",lua_cocos2dx_MenuItemToggle_getSelectedIndex);
-        tolua_function(tolua_S,"addSubItem",lua_cocos2dx_MenuItemToggle_addSubItem);
-        tolua_function(tolua_S,"getSelectedItem",lua_cocos2dx_MenuItemToggle_getSelectedItem);
-        tolua_function(tolua_S,"setSelectedIndex",lua_cocos2dx_MenuItemToggle_setSelectedIndex);
-    tolua_endmodule(tolua_S);
-    std::string typeName = typeid(cocos2d::MenuItemToggle).name();
-    g_luaType[typeName] = "cc.MenuItemToggle";
-    g_typeCast["MenuItemToggle"] = "cc.MenuItemToggle";
-    return 1;
-}
-
-int lua_cocos2dx_Menu_setEnabled(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::Menu* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.Menu",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::Menu*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Menu_setEnabled'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        bool arg0;
-
-        ok &= luaval_to_boolean(tolua_S, 2,&arg0, "cc.Menu:setEnabled");
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_Menu_setEnabled'", nullptr);
-            return 0;
-        }
-        cobj->setEnabled(arg0);
-        lua_settop(tolua_S, 1);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.Menu:setEnabled",argc, 1);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Menu_setEnabled'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_Menu_alignItemsVertically(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::Menu* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.Menu",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::Menu*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Menu_alignItemsVertically'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_Menu_alignItemsVertically'", nullptr);
-            return 0;
-        }
-        cobj->alignItemsVertically();
-        lua_settop(tolua_S, 1);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.Menu:alignItemsVertically",argc, 0);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Menu_alignItemsVertically'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_Menu_isEnabled(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::Menu* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.Menu",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::Menu*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Menu_isEnabled'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_Menu_isEnabled'", nullptr);
-            return 0;
-        }
-        bool ret = cobj->isEnabled();
-        tolua_pushboolean(tolua_S,(bool)ret);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.Menu:isEnabled",argc, 0);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Menu_isEnabled'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_Menu_alignItemsHorizontallyWithPadding(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::Menu* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.Menu",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::Menu*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Menu_alignItemsHorizontallyWithPadding'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        double arg0;
-
-        ok &= luaval_to_number(tolua_S, 2,&arg0, "cc.Menu:alignItemsHorizontallyWithPadding");
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_Menu_alignItemsHorizontallyWithPadding'", nullptr);
-            return 0;
-        }
-        cobj->alignItemsHorizontallyWithPadding(arg0);
-        lua_settop(tolua_S, 1);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.Menu:alignItemsHorizontallyWithPadding",argc, 1);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Menu_alignItemsHorizontallyWithPadding'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_Menu_alignItemsVerticallyWithPadding(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::Menu* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.Menu",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::Menu*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Menu_alignItemsVerticallyWithPadding'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        double arg0;
-
-        ok &= luaval_to_number(tolua_S, 2,&arg0, "cc.Menu:alignItemsVerticallyWithPadding");
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_Menu_alignItemsVerticallyWithPadding'", nullptr);
-            return 0;
-        }
-        cobj->alignItemsVerticallyWithPadding(arg0);
-        lua_settop(tolua_S, 1);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.Menu:alignItemsVerticallyWithPadding",argc, 1);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Menu_alignItemsVerticallyWithPadding'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_Menu_alignItemsHorizontally(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::Menu* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.Menu",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::Menu*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Menu_alignItemsHorizontally'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_Menu_alignItemsHorizontally'", nullptr);
-            return 0;
-        }
-        cobj->alignItemsHorizontally();
-        lua_settop(tolua_S, 1);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.Menu:alignItemsHorizontally",argc, 0);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Menu_alignItemsHorizontally'.",&tolua_err);
-#endif
-
-    return 0;
-}
-static int lua_cocos2dx_Menu_finalize(lua_State* tolua_S)
-{
-    printf("luabindings: finalizing LUA object (Menu)");
-    return 0;
-}
-
-int lua_register_cocos2dx_Menu(lua_State* tolua_S)
-{
-    tolua_usertype(tolua_S,"cc.Menu");
-    tolua_cclass(tolua_S,"Menu","cc.Menu","cc.Layer",nullptr);
-
-    tolua_beginmodule(tolua_S,"Menu");
-        tolua_function(tolua_S,"setEnabled",lua_cocos2dx_Menu_setEnabled);
-        tolua_function(tolua_S,"alignItemsVertically",lua_cocos2dx_Menu_alignItemsVertically);
-        tolua_function(tolua_S,"isEnabled",lua_cocos2dx_Menu_isEnabled);
-        tolua_function(tolua_S,"alignItemsHorizontallyWithPadding",lua_cocos2dx_Menu_alignItemsHorizontallyWithPadding);
-        tolua_function(tolua_S,"alignItemsVerticallyWithPadding",lua_cocos2dx_Menu_alignItemsVerticallyWithPadding);
-        tolua_function(tolua_S,"alignItemsHorizontally",lua_cocos2dx_Menu_alignItemsHorizontally);
-    tolua_endmodule(tolua_S);
-    std::string typeName = typeid(cocos2d::Menu).name();
-    g_luaType[typeName] = "cc.Menu";
-    g_typeCast["Menu"] = "cc.Menu";
-    return 1;
-}
-
 int lua_cocos2dx_ClippingNode_hasContent(lua_State* tolua_S)
 {
     int argc = 0;
@@ -47368,7 +44133,7 @@ int lua_cocos2dx_ClippingNode_hasContent(lua_State* tolua_S)
     cobj = (cocos2d::ClippingNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ClippingNode_hasContent'", nullptr);
         return 0;
@@ -47376,7 +44141,7 @@ int lua_cocos2dx_ClippingNode_hasContent(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -47415,7 +44180,7 @@ int lua_cocos2dx_ClippingNode_setInverted(lua_State* tolua_S)
     cobj = (cocos2d::ClippingNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ClippingNode_setInverted'", nullptr);
         return 0;
@@ -47423,7 +44188,7 @@ int lua_cocos2dx_ClippingNode_setInverted(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -47465,7 +44230,7 @@ int lua_cocos2dx_ClippingNode_setStencil(lua_State* tolua_S)
     cobj = (cocos2d::ClippingNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ClippingNode_setStencil'", nullptr);
         return 0;
@@ -47473,7 +44238,7 @@ int lua_cocos2dx_ClippingNode_setStencil(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Node* arg0;
 
@@ -47515,7 +44280,7 @@ int lua_cocos2dx_ClippingNode_getAlphaThreshold(lua_State* tolua_S)
     cobj = (cocos2d::ClippingNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ClippingNode_getAlphaThreshold'", nullptr);
         return 0;
@@ -47523,7 +44288,7 @@ int lua_cocos2dx_ClippingNode_getAlphaThreshold(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -47562,7 +44327,7 @@ int lua_cocos2dx_ClippingNode_getStencil(lua_State* tolua_S)
     cobj = (cocos2d::ClippingNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ClippingNode_getStencil'", nullptr);
         return 0;
@@ -47570,7 +44335,7 @@ int lua_cocos2dx_ClippingNode_getStencil(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -47609,7 +44374,7 @@ int lua_cocos2dx_ClippingNode_setAlphaThreshold(lua_State* tolua_S)
     cobj = (cocos2d::ClippingNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ClippingNode_setAlphaThreshold'", nullptr);
         return 0;
@@ -47617,7 +44382,7 @@ int lua_cocos2dx_ClippingNode_setAlphaThreshold(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -47659,7 +44424,7 @@ int lua_cocos2dx_ClippingNode_isInverted(lua_State* tolua_S)
     cobj = (cocos2d::ClippingNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ClippingNode_isInverted'", nullptr);
         return 0;
@@ -47667,7 +44432,7 @@ int lua_cocos2dx_ClippingNode_isInverted(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -47702,7 +44467,7 @@ int lua_cocos2dx_ClippingNode_create(lua_State* tolua_S)
 
     argc = lua_gettop(tolua_S)-1;
 
-    do 
+    do
     {
         if (argc == 1)
         {
@@ -47715,7 +44480,7 @@ int lua_cocos2dx_ClippingNode_create(lua_State* tolua_S)
         }
     } while (0);
     ok  = true;
-    do 
+    do
     {
         if (argc == 0)
         {
@@ -47778,7 +44543,7 @@ int lua_cocos2dx_ClippingRectangleNode_isClippingEnabled(lua_State* tolua_S)
     cobj = (cocos2d::ClippingRectangleNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ClippingRectangleNode_isClippingEnabled'", nullptr);
         return 0;
@@ -47786,7 +44551,7 @@ int lua_cocos2dx_ClippingRectangleNode_isClippingEnabled(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -47825,7 +44590,7 @@ int lua_cocos2dx_ClippingRectangleNode_setClippingEnabled(lua_State* tolua_S)
     cobj = (cocos2d::ClippingRectangleNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ClippingRectangleNode_setClippingEnabled'", nullptr);
         return 0;
@@ -47833,7 +44598,7 @@ int lua_cocos2dx_ClippingRectangleNode_setClippingEnabled(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -47875,7 +44640,7 @@ int lua_cocos2dx_ClippingRectangleNode_getClippingRegion(lua_State* tolua_S)
     cobj = (cocos2d::ClippingRectangleNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ClippingRectangleNode_getClippingRegion'", nullptr);
         return 0;
@@ -47883,7 +44648,7 @@ int lua_cocos2dx_ClippingRectangleNode_getClippingRegion(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -47922,7 +44687,7 @@ int lua_cocos2dx_ClippingRectangleNode_setClippingRegion(lua_State* tolua_S)
     cobj = (cocos2d::ClippingRectangleNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ClippingRectangleNode_setClippingRegion'", nullptr);
         return 0;
@@ -47930,7 +44695,7 @@ int lua_cocos2dx_ClippingRectangleNode_setClippingRegion(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Rect arg0;
 
@@ -47968,7 +44733,7 @@ int lua_cocos2dx_ClippingRectangleNode_create(lua_State* tolua_S)
 
     argc = lua_gettop(tolua_S)-1;
 
-    do 
+    do
     {
         if (argc == 0)
         {
@@ -47978,7 +44743,7 @@ int lua_cocos2dx_ClippingRectangleNode_create(lua_State* tolua_S)
         }
     } while (0);
     ok  = true;
-    do 
+    do
     {
         if (argc == 1)
         {
@@ -48041,7 +44806,7 @@ int lua_cocos2dx_MotionStreak_reset(lua_State* tolua_S)
     cobj = (cocos2d::MotionStreak*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_MotionStreak_reset'", nullptr);
         return 0;
@@ -48049,7 +44814,7 @@ int lua_cocos2dx_MotionStreak_reset(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -48088,7 +44853,7 @@ int lua_cocos2dx_MotionStreak_setTexture(lua_State* tolua_S)
     cobj = (cocos2d::MotionStreak*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_MotionStreak_setTexture'", nullptr);
         return 0;
@@ -48096,7 +44861,7 @@ int lua_cocos2dx_MotionStreak_setTexture(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Texture2D* arg0;
 
@@ -48138,7 +44903,7 @@ int lua_cocos2dx_MotionStreak_getTexture(lua_State* tolua_S)
     cobj = (cocos2d::MotionStreak*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_MotionStreak_getTexture'", nullptr);
         return 0;
@@ -48146,7 +44911,7 @@ int lua_cocos2dx_MotionStreak_getTexture(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -48185,7 +44950,7 @@ int lua_cocos2dx_MotionStreak_tintWithColor(lua_State* tolua_S)
     cobj = (cocos2d::MotionStreak*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_MotionStreak_tintWithColor'", nullptr);
         return 0;
@@ -48193,7 +44958,7 @@ int lua_cocos2dx_MotionStreak_tintWithColor(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Color3B arg0;
 
@@ -48235,7 +45000,7 @@ int lua_cocos2dx_MotionStreak_setStartingPositionInitialized(lua_State* tolua_S)
     cobj = (cocos2d::MotionStreak*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_MotionStreak_setStartingPositionInitialized'", nullptr);
         return 0;
@@ -48243,7 +45008,7 @@ int lua_cocos2dx_MotionStreak_setStartingPositionInitialized(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -48285,7 +45050,7 @@ int lua_cocos2dx_MotionStreak_isStartingPositionInitialized(lua_State* tolua_S)
     cobj = (cocos2d::MotionStreak*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_MotionStreak_isStartingPositionInitialized'", nullptr);
         return 0;
@@ -48293,7 +45058,7 @@ int lua_cocos2dx_MotionStreak_isStartingPositionInitialized(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -48332,7 +45097,7 @@ int lua_cocos2dx_MotionStreak_isFastMode(lua_State* tolua_S)
     cobj = (cocos2d::MotionStreak*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_MotionStreak_isFastMode'", nullptr);
         return 0;
@@ -48340,7 +45105,7 @@ int lua_cocos2dx_MotionStreak_isFastMode(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -48379,7 +45144,7 @@ int lua_cocos2dx_MotionStreak_setFastMode(lua_State* tolua_S)
     cobj = (cocos2d::MotionStreak*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_MotionStreak_setFastMode'", nullptr);
         return 0;
@@ -48387,7 +45152,7 @@ int lua_cocos2dx_MotionStreak_setFastMode(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -48425,7 +45190,7 @@ int lua_cocos2dx_MotionStreak_create(lua_State* tolua_S)
 
     argc = lua_gettop(tolua_S)-1;
 
-    do 
+    do
     {
         if (argc == 5)
         {
@@ -48450,7 +45215,7 @@ int lua_cocos2dx_MotionStreak_create(lua_State* tolua_S)
         }
     } while (0);
     ok  = true;
-    do 
+    do
     {
         if (argc == 5)
         {
@@ -48529,7 +45294,7 @@ int lua_cocos2dx_ProgressTimer_isReverseDirection(lua_State* tolua_S)
     cobj = (cocos2d::ProgressTimer*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ProgressTimer_isReverseDirection'", nullptr);
         return 0;
@@ -48537,7 +45302,7 @@ int lua_cocos2dx_ProgressTimer_isReverseDirection(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -48576,7 +45341,7 @@ int lua_cocos2dx_ProgressTimer_setBarChangeRate(lua_State* tolua_S)
     cobj = (cocos2d::ProgressTimer*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ProgressTimer_setBarChangeRate'", nullptr);
         return 0;
@@ -48584,7 +45349,7 @@ int lua_cocos2dx_ProgressTimer_setBarChangeRate(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Vec2 arg0;
 
@@ -48626,7 +45391,7 @@ int lua_cocos2dx_ProgressTimer_getPercentage(lua_State* tolua_S)
     cobj = (cocos2d::ProgressTimer*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ProgressTimer_getPercentage'", nullptr);
         return 0;
@@ -48634,7 +45399,7 @@ int lua_cocos2dx_ProgressTimer_getPercentage(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -48673,7 +45438,7 @@ int lua_cocos2dx_ProgressTimer_setSprite(lua_State* tolua_S)
     cobj = (cocos2d::ProgressTimer*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ProgressTimer_setSprite'", nullptr);
         return 0;
@@ -48681,7 +45446,7 @@ int lua_cocos2dx_ProgressTimer_setSprite(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Sprite* arg0;
 
@@ -48723,7 +45488,7 @@ int lua_cocos2dx_ProgressTimer_getType(lua_State* tolua_S)
     cobj = (cocos2d::ProgressTimer*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ProgressTimer_getType'", nullptr);
         return 0;
@@ -48731,7 +45496,7 @@ int lua_cocos2dx_ProgressTimer_getType(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -48770,7 +45535,7 @@ int lua_cocos2dx_ProgressTimer_getSprite(lua_State* tolua_S)
     cobj = (cocos2d::ProgressTimer*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ProgressTimer_getSprite'", nullptr);
         return 0;
@@ -48778,7 +45543,7 @@ int lua_cocos2dx_ProgressTimer_getSprite(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -48817,7 +45582,7 @@ int lua_cocos2dx_ProgressTimer_setMidpoint(lua_State* tolua_S)
     cobj = (cocos2d::ProgressTimer*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ProgressTimer_setMidpoint'", nullptr);
         return 0;
@@ -48825,7 +45590,7 @@ int lua_cocos2dx_ProgressTimer_setMidpoint(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Vec2 arg0;
 
@@ -48867,7 +45632,7 @@ int lua_cocos2dx_ProgressTimer_getBarChangeRate(lua_State* tolua_S)
     cobj = (cocos2d::ProgressTimer*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ProgressTimer_getBarChangeRate'", nullptr);
         return 0;
@@ -48875,7 +45640,7 @@ int lua_cocos2dx_ProgressTimer_getBarChangeRate(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -48969,7 +45734,7 @@ int lua_cocos2dx_ProgressTimer_getMidpoint(lua_State* tolua_S)
     cobj = (cocos2d::ProgressTimer*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ProgressTimer_getMidpoint'", nullptr);
         return 0;
@@ -48977,7 +45742,7 @@ int lua_cocos2dx_ProgressTimer_getMidpoint(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -49016,7 +45781,7 @@ int lua_cocos2dx_ProgressTimer_setPercentage(lua_State* tolua_S)
     cobj = (cocos2d::ProgressTimer*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ProgressTimer_setPercentage'", nullptr);
         return 0;
@@ -49024,7 +45789,7 @@ int lua_cocos2dx_ProgressTimer_setPercentage(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -49066,7 +45831,7 @@ int lua_cocos2dx_ProgressTimer_setType(lua_State* tolua_S)
     cobj = (cocos2d::ProgressTimer*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ProgressTimer_setType'", nullptr);
         return 0;
@@ -49074,7 +45839,7 @@ int lua_cocos2dx_ProgressTimer_setType(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::ProgressTimer::Type arg0;
 
@@ -49294,7 +46059,7 @@ int lua_cocos2dx_Sprite_getTexture(lua_State* tolua_S)
     cobj = (cocos2d::Sprite*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Sprite_getTexture'", nullptr);
         return 0;
@@ -49302,7 +46067,7 @@ int lua_cocos2dx_Sprite_getTexture(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -49341,7 +46106,7 @@ int lua_cocos2dx_Sprite_setFlippedY(lua_State* tolua_S)
     cobj = (cocos2d::Sprite*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Sprite_setFlippedY'", nullptr);
         return 0;
@@ -49349,7 +46114,7 @@ int lua_cocos2dx_Sprite_setFlippedY(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -49391,7 +46156,7 @@ int lua_cocos2dx_Sprite_setFlippedX(lua_State* tolua_S)
     cobj = (cocos2d::Sprite*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Sprite_setFlippedX'", nullptr);
         return 0;
@@ -49399,7 +46164,7 @@ int lua_cocos2dx_Sprite_setFlippedX(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -49441,7 +46206,7 @@ int lua_cocos2dx_Sprite_getBatchNode(lua_State* tolua_S)
     cobj = (cocos2d::Sprite*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Sprite_getBatchNode'", nullptr);
         return 0;
@@ -49449,7 +46214,7 @@ int lua_cocos2dx_Sprite_getBatchNode(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -49488,7 +46253,7 @@ int lua_cocos2dx_Sprite_getOffsetPosition(lua_State* tolua_S)
     cobj = (cocos2d::Sprite*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Sprite_getOffsetPosition'", nullptr);
         return 0;
@@ -49496,7 +46261,7 @@ int lua_cocos2dx_Sprite_getOffsetPosition(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -49535,7 +46300,7 @@ int lua_cocos2dx_Sprite_removeAllChildrenWithCleanup(lua_State* tolua_S)
     cobj = (cocos2d::Sprite*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Sprite_removeAllChildrenWithCleanup'", nullptr);
         return 0;
@@ -49543,7 +46308,7 @@ int lua_cocos2dx_Sprite_removeAllChildrenWithCleanup(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -49585,7 +46350,7 @@ int lua_cocos2dx_Sprite_updateTransform(lua_State* tolua_S)
     cobj = (cocos2d::Sprite*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Sprite_updateTransform'", nullptr);
         return 0;
@@ -49593,7 +46358,7 @@ int lua_cocos2dx_Sprite_updateTransform(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -49695,7 +46460,7 @@ int lua_cocos2dx_Sprite_isFrameDisplayed(lua_State* tolua_S)
     cobj = (cocos2d::Sprite*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Sprite_isFrameDisplayed'", nullptr);
         return 0;
@@ -49703,7 +46468,7 @@ int lua_cocos2dx_Sprite_isFrameDisplayed(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::SpriteFrame* arg0;
 
@@ -49745,7 +46510,7 @@ int lua_cocos2dx_Sprite_getAtlasIndex(lua_State* tolua_S)
     cobj = (cocos2d::Sprite*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Sprite_getAtlasIndex'", nullptr);
         return 0;
@@ -49753,7 +46518,7 @@ int lua_cocos2dx_Sprite_getAtlasIndex(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -49792,7 +46557,7 @@ int lua_cocos2dx_Sprite_setBatchNode(lua_State* tolua_S)
     cobj = (cocos2d::Sprite*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Sprite_setBatchNode'", nullptr);
         return 0;
@@ -49800,7 +46565,7 @@ int lua_cocos2dx_Sprite_setBatchNode(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::SpriteBatchNode* arg0;
 
@@ -49842,7 +46607,7 @@ int lua_cocos2dx_Sprite_setDisplayFrameWithAnimationName(lua_State* tolua_S)
     cobj = (cocos2d::Sprite*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Sprite_setDisplayFrameWithAnimationName'", nullptr);
         return 0;
@@ -49850,7 +46615,7 @@ int lua_cocos2dx_Sprite_setDisplayFrameWithAnimationName(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         std::string arg0;
         ssize_t arg1;
@@ -49895,7 +46660,7 @@ int lua_cocos2dx_Sprite_setTextureAtlas(lua_State* tolua_S)
     cobj = (cocos2d::Sprite*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Sprite_setTextureAtlas'", nullptr);
         return 0;
@@ -49903,7 +46668,7 @@ int lua_cocos2dx_Sprite_setTextureAtlas(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::TextureAtlas* arg0;
 
@@ -49945,7 +46710,7 @@ int lua_cocos2dx_Sprite_getSpriteFrame(lua_State* tolua_S)
     cobj = (cocos2d::Sprite*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Sprite_getSpriteFrame'", nullptr);
         return 0;
@@ -49953,7 +46718,7 @@ int lua_cocos2dx_Sprite_getSpriteFrame(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -49992,7 +46757,7 @@ int lua_cocos2dx_Sprite_isDirty(lua_State* tolua_S)
     cobj = (cocos2d::Sprite*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Sprite_isDirty'", nullptr);
         return 0;
@@ -50000,7 +46765,7 @@ int lua_cocos2dx_Sprite_isDirty(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -50039,7 +46804,7 @@ int lua_cocos2dx_Sprite_setAtlasIndex(lua_State* tolua_S)
     cobj = (cocos2d::Sprite*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Sprite_setAtlasIndex'", nullptr);
         return 0;
@@ -50047,7 +46812,7 @@ int lua_cocos2dx_Sprite_setAtlasIndex(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         ssize_t arg0;
 
@@ -50089,7 +46854,7 @@ int lua_cocos2dx_Sprite_setDirty(lua_State* tolua_S)
     cobj = (cocos2d::Sprite*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Sprite_setDirty'", nullptr);
         return 0;
@@ -50097,7 +46862,7 @@ int lua_cocos2dx_Sprite_setDirty(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -50139,7 +46904,7 @@ int lua_cocos2dx_Sprite_isTextureRectRotated(lua_State* tolua_S)
     cobj = (cocos2d::Sprite*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Sprite_isTextureRectRotated'", nullptr);
         return 0;
@@ -50147,7 +46912,7 @@ int lua_cocos2dx_Sprite_isTextureRectRotated(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -50186,7 +46951,7 @@ int lua_cocos2dx_Sprite_getTextureRect(lua_State* tolua_S)
     cobj = (cocos2d::Sprite*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Sprite_getTextureRect'", nullptr);
         return 0;
@@ -50194,7 +46959,7 @@ int lua_cocos2dx_Sprite_getTextureRect(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -50233,7 +46998,7 @@ int lua_cocos2dx_Sprite_getTextureAtlas(lua_State* tolua_S)
     cobj = (cocos2d::Sprite*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Sprite_getTextureAtlas'", nullptr);
         return 0;
@@ -50241,7 +47006,7 @@ int lua_cocos2dx_Sprite_getTextureAtlas(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -50280,7 +47045,7 @@ int lua_cocos2dx_Sprite_isFlippedX(lua_State* tolua_S)
     cobj = (cocos2d::Sprite*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Sprite_isFlippedX'", nullptr);
         return 0;
@@ -50288,7 +47053,7 @@ int lua_cocos2dx_Sprite_isFlippedX(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -50327,7 +47092,7 @@ int lua_cocos2dx_Sprite_isFlippedY(lua_State* tolua_S)
     cobj = (cocos2d::Sprite*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Sprite_isFlippedY'", nullptr);
         return 0;
@@ -50335,7 +47100,7 @@ int lua_cocos2dx_Sprite_isFlippedY(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -50374,7 +47139,7 @@ int lua_cocos2dx_Sprite_setVertexRect(lua_State* tolua_S)
     cobj = (cocos2d::Sprite*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Sprite_setVertexRect'", nullptr);
         return 0;
@@ -50382,7 +47147,7 @@ int lua_cocos2dx_Sprite_setVertexRect(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Rect arg0;
 
@@ -50420,7 +47185,7 @@ int lua_cocos2dx_Sprite_create(lua_State* tolua_S)
 
     argc = lua_gettop(tolua_S)-1;
 
-    do 
+    do
     {
         if (argc == 1)
         {
@@ -50433,7 +47198,7 @@ int lua_cocos2dx_Sprite_create(lua_State* tolua_S)
         }
     } while (0);
     ok  = true;
-    do 
+    do
     {
         if (argc == 0)
         {
@@ -50443,7 +47208,7 @@ int lua_cocos2dx_Sprite_create(lua_State* tolua_S)
         }
     } while (0);
     ok  = true;
-    do 
+    do
     {
         if (argc == 2)
         {
@@ -50481,7 +47246,7 @@ int lua_cocos2dx_Sprite_createWithTexture(lua_State* tolua_S)
 
     argc = lua_gettop(tolua_S)-1;
 
-    do 
+    do
     {
         if (argc == 2)
         {
@@ -50497,7 +47262,7 @@ int lua_cocos2dx_Sprite_createWithTexture(lua_State* tolua_S)
         }
     } while (0);
     ok  = true;
-    do 
+    do
     {
         if (argc == 3)
         {
@@ -50516,7 +47281,7 @@ int lua_cocos2dx_Sprite_createWithTexture(lua_State* tolua_S)
         }
     } while (0);
     ok  = true;
-    do 
+    do
     {
         if (argc == 1)
         {
@@ -50675,7 +47440,7 @@ int lua_cocos2dx_Image_hasPremultipliedAlpha(lua_State* tolua_S)
     cobj = (cocos2d::Image*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Image_hasPremultipliedAlpha'", nullptr);
         return 0;
@@ -50683,7 +47448,7 @@ int lua_cocos2dx_Image_hasPremultipliedAlpha(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -50722,7 +47487,7 @@ int lua_cocos2dx_Image_saveToFile(lua_State* tolua_S)
     cobj = (cocos2d::Image*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Image_saveToFile'", nullptr);
         return 0;
@@ -50730,7 +47495,7 @@ int lua_cocos2dx_Image_saveToFile(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -50744,7 +47509,7 @@ int lua_cocos2dx_Image_saveToFile(lua_State* tolua_S)
         tolua_pushboolean(tolua_S,(bool)ret);
         return 1;
     }
-    if (argc == 2) 
+    if (argc == 2)
     {
         std::string arg0;
         bool arg1;
@@ -50789,7 +47554,7 @@ int lua_cocos2dx_Image_hasAlpha(lua_State* tolua_S)
     cobj = (cocos2d::Image*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Image_hasAlpha'", nullptr);
         return 0;
@@ -50797,7 +47562,7 @@ int lua_cocos2dx_Image_hasAlpha(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -50836,7 +47601,7 @@ int lua_cocos2dx_Image_isCompressed(lua_State* tolua_S)
     cobj = (cocos2d::Image*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Image_isCompressed'", nullptr);
         return 0;
@@ -50844,7 +47609,7 @@ int lua_cocos2dx_Image_isCompressed(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -50883,7 +47648,7 @@ int lua_cocos2dx_Image_getHeight(lua_State* tolua_S)
     cobj = (cocos2d::Image*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Image_getHeight'", nullptr);
         return 0;
@@ -50891,7 +47656,7 @@ int lua_cocos2dx_Image_getHeight(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -50930,7 +47695,7 @@ int lua_cocos2dx_Image_initWithImageFile(lua_State* tolua_S)
     cobj = (cocos2d::Image*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Image_initWithImageFile'", nullptr);
         return 0;
@@ -50938,7 +47703,7 @@ int lua_cocos2dx_Image_initWithImageFile(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -50980,7 +47745,7 @@ int lua_cocos2dx_Image_getWidth(lua_State* tolua_S)
     cobj = (cocos2d::Image*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Image_getWidth'", nullptr);
         return 0;
@@ -50988,7 +47753,7 @@ int lua_cocos2dx_Image_getWidth(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -51027,7 +47792,7 @@ int lua_cocos2dx_Image_getBitPerPixel(lua_State* tolua_S)
     cobj = (cocos2d::Image*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Image_getBitPerPixel'", nullptr);
         return 0;
@@ -51035,7 +47800,7 @@ int lua_cocos2dx_Image_getBitPerPixel(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -51074,7 +47839,7 @@ int lua_cocos2dx_Image_getFileType(lua_State* tolua_S)
     cobj = (cocos2d::Image*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Image_getFileType'", nullptr);
         return 0;
@@ -51082,7 +47847,7 @@ int lua_cocos2dx_Image_getFileType(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -51121,7 +47886,7 @@ int lua_cocos2dx_Image_getNumberOfMipmaps(lua_State* tolua_S)
     cobj = (cocos2d::Image*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Image_getNumberOfMipmaps'", nullptr);
         return 0;
@@ -51129,7 +47894,7 @@ int lua_cocos2dx_Image_getNumberOfMipmaps(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -51168,7 +47933,7 @@ int lua_cocos2dx_Image_getRenderFormat(lua_State* tolua_S)
     cobj = (cocos2d::Image*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Image_getRenderFormat'", nullptr);
         return 0;
@@ -51176,7 +47941,7 @@ int lua_cocos2dx_Image_getRenderFormat(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -51246,7 +48011,7 @@ int lua_cocos2dx_Image_constructor(lua_State* tolua_S)
 
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -51320,7 +48085,7 @@ int lua_cocos2dx_RenderTexture_setVirtualViewport(lua_State* tolua_S)
     cobj = (cocos2d::RenderTexture*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_RenderTexture_setVirtualViewport'", nullptr);
         return 0;
@@ -51328,7 +48093,7 @@ int lua_cocos2dx_RenderTexture_setVirtualViewport(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 3) 
+    if (argc == 3)
     {
         cocos2d::Vec2 arg0;
         cocos2d::Rect arg1;
@@ -51376,7 +48141,7 @@ int lua_cocos2dx_RenderTexture_clearStencil(lua_State* tolua_S)
     cobj = (cocos2d::RenderTexture*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_RenderTexture_clearStencil'", nullptr);
         return 0;
@@ -51384,7 +48149,7 @@ int lua_cocos2dx_RenderTexture_clearStencil(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         int arg0;
 
@@ -51426,7 +48191,7 @@ int lua_cocos2dx_RenderTexture_getClearDepth(lua_State* tolua_S)
     cobj = (cocos2d::RenderTexture*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_RenderTexture_getClearDepth'", nullptr);
         return 0;
@@ -51434,7 +48199,7 @@ int lua_cocos2dx_RenderTexture_getClearDepth(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -51473,7 +48238,7 @@ int lua_cocos2dx_RenderTexture_getClearStencil(lua_State* tolua_S)
     cobj = (cocos2d::RenderTexture*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_RenderTexture_getClearStencil'", nullptr);
         return 0;
@@ -51481,7 +48246,7 @@ int lua_cocos2dx_RenderTexture_getClearStencil(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -51520,7 +48285,7 @@ int lua_cocos2dx_RenderTexture_end(lua_State* tolua_S)
     cobj = (cocos2d::RenderTexture*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_RenderTexture_end'", nullptr);
         return 0;
@@ -51528,7 +48293,7 @@ int lua_cocos2dx_RenderTexture_end(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -51567,7 +48332,7 @@ int lua_cocos2dx_RenderTexture_setClearStencil(lua_State* tolua_S)
     cobj = (cocos2d::RenderTexture*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_RenderTexture_setClearStencil'", nullptr);
         return 0;
@@ -51575,7 +48340,7 @@ int lua_cocos2dx_RenderTexture_setClearStencil(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         int arg0;
 
@@ -51617,7 +48382,7 @@ int lua_cocos2dx_RenderTexture_setSprite(lua_State* tolua_S)
     cobj = (cocos2d::RenderTexture*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_RenderTexture_setSprite'", nullptr);
         return 0;
@@ -51625,7 +48390,7 @@ int lua_cocos2dx_RenderTexture_setSprite(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Sprite* arg0;
 
@@ -51667,7 +48432,7 @@ int lua_cocos2dx_RenderTexture_getSprite(lua_State* tolua_S)
     cobj = (cocos2d::RenderTexture*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_RenderTexture_getSprite'", nullptr);
         return 0;
@@ -51675,7 +48440,7 @@ int lua_cocos2dx_RenderTexture_getSprite(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -51714,7 +48479,7 @@ int lua_cocos2dx_RenderTexture_isAutoDraw(lua_State* tolua_S)
     cobj = (cocos2d::RenderTexture*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_RenderTexture_isAutoDraw'", nullptr);
         return 0;
@@ -51722,7 +48487,7 @@ int lua_cocos2dx_RenderTexture_isAutoDraw(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -51761,7 +48526,7 @@ int lua_cocos2dx_RenderTexture_setKeepMatrix(lua_State* tolua_S)
     cobj = (cocos2d::RenderTexture*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_RenderTexture_setKeepMatrix'", nullptr);
         return 0;
@@ -51769,7 +48534,7 @@ int lua_cocos2dx_RenderTexture_setKeepMatrix(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -51811,7 +48576,7 @@ int lua_cocos2dx_RenderTexture_setClearFlags(lua_State* tolua_S)
     cobj = (cocos2d::RenderTexture*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_RenderTexture_setClearFlags'", nullptr);
         return 0;
@@ -51819,7 +48584,7 @@ int lua_cocos2dx_RenderTexture_setClearFlags(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         unsigned int arg0;
 
@@ -51861,7 +48626,7 @@ int lua_cocos2dx_RenderTexture_begin(lua_State* tolua_S)
     cobj = (cocos2d::RenderTexture*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_RenderTexture_begin'", nullptr);
         return 0;
@@ -51869,7 +48634,7 @@ int lua_cocos2dx_RenderTexture_begin(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -52055,7 +48820,7 @@ int lua_cocos2dx_RenderTexture_setAutoDraw(lua_State* tolua_S)
     cobj = (cocos2d::RenderTexture*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_RenderTexture_setAutoDraw'", nullptr);
         return 0;
@@ -52063,7 +48828,7 @@ int lua_cocos2dx_RenderTexture_setAutoDraw(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -52105,7 +48870,7 @@ int lua_cocos2dx_RenderTexture_setClearColor(lua_State* tolua_S)
     cobj = (cocos2d::RenderTexture*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_RenderTexture_setClearColor'", nullptr);
         return 0;
@@ -52113,7 +48878,7 @@ int lua_cocos2dx_RenderTexture_setClearColor(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Color4F arg0;
 
@@ -52155,7 +48920,7 @@ int lua_cocos2dx_RenderTexture_endToLua(lua_State* tolua_S)
     cobj = (cocos2d::RenderTexture*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_RenderTexture_endToLua'", nullptr);
         return 0;
@@ -52163,7 +48928,7 @@ int lua_cocos2dx_RenderTexture_endToLua(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -52317,7 +49082,7 @@ int lua_cocos2dx_RenderTexture_clearDepth(lua_State* tolua_S)
     cobj = (cocos2d::RenderTexture*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_RenderTexture_clearDepth'", nullptr);
         return 0;
@@ -52325,7 +49090,7 @@ int lua_cocos2dx_RenderTexture_clearDepth(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -52367,7 +49132,7 @@ int lua_cocos2dx_RenderTexture_getClearColor(lua_State* tolua_S)
     cobj = (cocos2d::RenderTexture*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_RenderTexture_getClearColor'", nullptr);
         return 0;
@@ -52375,7 +49140,7 @@ int lua_cocos2dx_RenderTexture_getClearColor(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -52414,7 +49179,7 @@ int lua_cocos2dx_RenderTexture_clear(lua_State* tolua_S)
     cobj = (cocos2d::RenderTexture*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_RenderTexture_clear'", nullptr);
         return 0;
@@ -52422,7 +49187,7 @@ int lua_cocos2dx_RenderTexture_clear(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 4) 
+    if (argc == 4)
     {
         double arg0;
         double arg1;
@@ -52473,7 +49238,7 @@ int lua_cocos2dx_RenderTexture_getClearFlags(lua_State* tolua_S)
     cobj = (cocos2d::RenderTexture*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_RenderTexture_getClearFlags'", nullptr);
         return 0;
@@ -52481,7 +49246,7 @@ int lua_cocos2dx_RenderTexture_getClearFlags(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -52520,7 +49285,7 @@ int lua_cocos2dx_RenderTexture_newImage(lua_State* tolua_S)
     cobj = (cocos2d::RenderTexture*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_RenderTexture_newImage'", nullptr);
         return 0;
@@ -52528,7 +49293,7 @@ int lua_cocos2dx_RenderTexture_newImage(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -52539,7 +49304,7 @@ int lua_cocos2dx_RenderTexture_newImage(lua_State* tolua_S)
         object_to_luaval<cocos2d::Image>(tolua_S, "cc.Image",(cocos2d::Image*)ret);
         return 1;
     }
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -52581,7 +49346,7 @@ int lua_cocos2dx_RenderTexture_setClearDepth(lua_State* tolua_S)
     cobj = (cocos2d::RenderTexture*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_RenderTexture_setClearDepth'", nullptr);
         return 0;
@@ -52589,7 +49354,7 @@ int lua_cocos2dx_RenderTexture_setClearDepth(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -52702,7 +49467,7 @@ int lua_cocos2dx_RenderTexture_create(lua_State* tolua_S)
 
     argc = lua_gettop(tolua_S)-1;
 
-    do 
+    do
     {
         if (argc == 3)
         {
@@ -52721,7 +49486,7 @@ int lua_cocos2dx_RenderTexture_create(lua_State* tolua_S)
         }
     } while (0);
     ok  = true;
-    do 
+    do
     {
         if (argc == 4)
         {
@@ -52743,7 +49508,7 @@ int lua_cocos2dx_RenderTexture_create(lua_State* tolua_S)
         }
     } while (0);
     ok  = true;
-    do 
+    do
     {
         if (argc == 2)
         {
@@ -52780,7 +49545,7 @@ int lua_cocos2dx_RenderTexture_constructor(lua_State* tolua_S)
 
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -52867,7 +49632,7 @@ int lua_cocos2dx_NodeGrid_setTarget(lua_State* tolua_S)
     cobj = (cocos2d::NodeGrid*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_NodeGrid_setTarget'", nullptr);
         return 0;
@@ -52875,7 +49640,7 @@ int lua_cocos2dx_NodeGrid_setTarget(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Node* arg0;
 
@@ -52964,7 +49729,7 @@ int lua_cocos2dx_NodeGrid_setGrid(lua_State* tolua_S)
     cobj = (cocos2d::NodeGrid*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_NodeGrid_setGrid'", nullptr);
         return 0;
@@ -52972,7 +49737,7 @@ int lua_cocos2dx_NodeGrid_setGrid(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::GridBase* arg0;
 
@@ -53071,7 +49836,7 @@ int lua_cocos2dx_ParticleBatchNode_setTexture(lua_State* tolua_S)
     cobj = (cocos2d::ParticleBatchNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleBatchNode_setTexture'", nullptr);
         return 0;
@@ -53079,7 +49844,7 @@ int lua_cocos2dx_ParticleBatchNode_setTexture(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Texture2D* arg0;
 
@@ -53121,7 +49886,7 @@ int lua_cocos2dx_ParticleBatchNode_disableParticle(lua_State* tolua_S)
     cobj = (cocos2d::ParticleBatchNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleBatchNode_disableParticle'", nullptr);
         return 0;
@@ -53129,7 +49894,7 @@ int lua_cocos2dx_ParticleBatchNode_disableParticle(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         int arg0;
 
@@ -53171,7 +49936,7 @@ int lua_cocos2dx_ParticleBatchNode_getTexture(lua_State* tolua_S)
     cobj = (cocos2d::ParticleBatchNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleBatchNode_getTexture'", nullptr);
         return 0;
@@ -53179,7 +49944,7 @@ int lua_cocos2dx_ParticleBatchNode_getTexture(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -53218,7 +49983,7 @@ int lua_cocos2dx_ParticleBatchNode_setTextureAtlas(lua_State* tolua_S)
     cobj = (cocos2d::ParticleBatchNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleBatchNode_setTextureAtlas'", nullptr);
         return 0;
@@ -53226,7 +49991,7 @@ int lua_cocos2dx_ParticleBatchNode_setTextureAtlas(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::TextureAtlas* arg0;
 
@@ -53268,7 +50033,7 @@ int lua_cocos2dx_ParticleBatchNode_removeAllChildrenWithCleanup(lua_State* tolua
     cobj = (cocos2d::ParticleBatchNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleBatchNode_removeAllChildrenWithCleanup'", nullptr);
         return 0;
@@ -53276,7 +50041,7 @@ int lua_cocos2dx_ParticleBatchNode_removeAllChildrenWithCleanup(lua_State* tolua
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -53318,7 +50083,7 @@ int lua_cocos2dx_ParticleBatchNode_getTextureAtlas(lua_State* tolua_S)
     cobj = (cocos2d::ParticleBatchNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleBatchNode_getTextureAtlas'", nullptr);
         return 0;
@@ -53326,7 +50091,7 @@ int lua_cocos2dx_ParticleBatchNode_getTextureAtlas(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -53365,7 +50130,7 @@ int lua_cocos2dx_ParticleBatchNode_insertChild(lua_State* tolua_S)
     cobj = (cocos2d::ParticleBatchNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleBatchNode_insertChild'", nullptr);
         return 0;
@@ -53373,7 +50138,7 @@ int lua_cocos2dx_ParticleBatchNode_insertChild(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         cocos2d::ParticleSystem* arg0;
         int arg1;
@@ -53418,7 +50183,7 @@ int lua_cocos2dx_ParticleBatchNode_removeChildAtIndex(lua_State* tolua_S)
     cobj = (cocos2d::ParticleBatchNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleBatchNode_removeChildAtIndex'", nullptr);
         return 0;
@@ -53426,7 +50191,7 @@ int lua_cocos2dx_ParticleBatchNode_removeChildAtIndex(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         int arg0;
         bool arg1;
@@ -53602,7 +50367,7 @@ int lua_cocos2dx_ParticleSystem_getStartSizeVar(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_getStartSizeVar'", nullptr);
         return 0;
@@ -53610,7 +50375,7 @@ int lua_cocos2dx_ParticleSystem_getStartSizeVar(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -53649,7 +50414,7 @@ int lua_cocos2dx_ParticleSystem_getTexture(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_getTexture'", nullptr);
         return 0;
@@ -53657,7 +50422,7 @@ int lua_cocos2dx_ParticleSystem_getTexture(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -53696,7 +50461,7 @@ int lua_cocos2dx_ParticleSystem_isFull(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_isFull'", nullptr);
         return 0;
@@ -53704,7 +50469,7 @@ int lua_cocos2dx_ParticleSystem_isFull(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -53743,7 +50508,7 @@ int lua_cocos2dx_ParticleSystem_getBatchNode(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_getBatchNode'", nullptr);
         return 0;
@@ -53751,7 +50516,7 @@ int lua_cocos2dx_ParticleSystem_getBatchNode(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -53790,7 +50555,7 @@ int lua_cocos2dx_ParticleSystem_getStartColor(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_getStartColor'", nullptr);
         return 0;
@@ -53798,7 +50563,7 @@ int lua_cocos2dx_ParticleSystem_getStartColor(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -53837,7 +50602,7 @@ int lua_cocos2dx_ParticleSystem_getPositionType(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_getPositionType'", nullptr);
         return 0;
@@ -53845,7 +50610,7 @@ int lua_cocos2dx_ParticleSystem_getPositionType(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -53884,7 +50649,7 @@ int lua_cocos2dx_ParticleSystem_setPosVar(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setPosVar'", nullptr);
         return 0;
@@ -53892,7 +50657,7 @@ int lua_cocos2dx_ParticleSystem_setPosVar(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Vec2 arg0;
 
@@ -53934,7 +50699,7 @@ int lua_cocos2dx_ParticleSystem_getEndSpin(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_getEndSpin'", nullptr);
         return 0;
@@ -53942,7 +50707,7 @@ int lua_cocos2dx_ParticleSystem_getEndSpin(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -53981,7 +50746,7 @@ int lua_cocos2dx_ParticleSystem_setRotatePerSecondVar(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setRotatePerSecondVar'", nullptr);
         return 0;
@@ -53989,7 +50754,7 @@ int lua_cocos2dx_ParticleSystem_setRotatePerSecondVar(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -54031,7 +50796,7 @@ int lua_cocos2dx_ParticleSystem_getStartSpinVar(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_getStartSpinVar'", nullptr);
         return 0;
@@ -54039,7 +50804,7 @@ int lua_cocos2dx_ParticleSystem_getStartSpinVar(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -54078,7 +50843,7 @@ int lua_cocos2dx_ParticleSystem_getRadialAccelVar(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_getRadialAccelVar'", nullptr);
         return 0;
@@ -54086,7 +50851,7 @@ int lua_cocos2dx_ParticleSystem_getRadialAccelVar(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -54125,7 +50890,7 @@ int lua_cocos2dx_ParticleSystem_getEndSizeVar(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_getEndSizeVar'", nullptr);
         return 0;
@@ -54133,7 +50898,7 @@ int lua_cocos2dx_ParticleSystem_getEndSizeVar(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -54172,7 +50937,7 @@ int lua_cocos2dx_ParticleSystem_setRotation(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setRotation'", nullptr);
         return 0;
@@ -54180,7 +50945,7 @@ int lua_cocos2dx_ParticleSystem_setRotation(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -54222,7 +50987,7 @@ int lua_cocos2dx_ParticleSystem_setTangentialAccel(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setTangentialAccel'", nullptr);
         return 0;
@@ -54230,7 +50995,7 @@ int lua_cocos2dx_ParticleSystem_setTangentialAccel(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -54272,7 +51037,7 @@ int lua_cocos2dx_ParticleSystem_setScaleY(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setScaleY'", nullptr);
         return 0;
@@ -54280,7 +51045,7 @@ int lua_cocos2dx_ParticleSystem_setScaleY(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -54322,7 +51087,7 @@ int lua_cocos2dx_ParticleSystem_setScaleX(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setScaleX'", nullptr);
         return 0;
@@ -54330,7 +51095,7 @@ int lua_cocos2dx_ParticleSystem_setScaleX(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -54372,7 +51137,7 @@ int lua_cocos2dx_ParticleSystem_getRadialAccel(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_getRadialAccel'", nullptr);
         return 0;
@@ -54380,7 +51145,7 @@ int lua_cocos2dx_ParticleSystem_getRadialAccel(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -54419,7 +51184,7 @@ int lua_cocos2dx_ParticleSystem_setStartRadius(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setStartRadius'", nullptr);
         return 0;
@@ -54427,7 +51192,7 @@ int lua_cocos2dx_ParticleSystem_setStartRadius(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -54469,7 +51234,7 @@ int lua_cocos2dx_ParticleSystem_setRotatePerSecond(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setRotatePerSecond'", nullptr);
         return 0;
@@ -54477,7 +51242,7 @@ int lua_cocos2dx_ParticleSystem_setRotatePerSecond(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -54519,7 +51284,7 @@ int lua_cocos2dx_ParticleSystem_setEndSize(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setEndSize'", nullptr);
         return 0;
@@ -54527,7 +51292,7 @@ int lua_cocos2dx_ParticleSystem_setEndSize(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -54569,7 +51334,7 @@ int lua_cocos2dx_ParticleSystem_getGravity(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_getGravity'", nullptr);
         return 0;
@@ -54577,7 +51342,7 @@ int lua_cocos2dx_ParticleSystem_getGravity(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -54616,7 +51381,7 @@ int lua_cocos2dx_ParticleSystem_getTangentialAccel(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_getTangentialAccel'", nullptr);
         return 0;
@@ -54624,7 +51389,7 @@ int lua_cocos2dx_ParticleSystem_getTangentialAccel(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -54663,7 +51428,7 @@ int lua_cocos2dx_ParticleSystem_setEndRadius(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setEndRadius'", nullptr);
         return 0;
@@ -54671,7 +51436,7 @@ int lua_cocos2dx_ParticleSystem_setEndRadius(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -54713,7 +51478,7 @@ int lua_cocos2dx_ParticleSystem_getSpeed(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_getSpeed'", nullptr);
         return 0;
@@ -54721,7 +51486,7 @@ int lua_cocos2dx_ParticleSystem_getSpeed(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -54760,7 +51525,7 @@ int lua_cocos2dx_ParticleSystem_getAngle(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_getAngle'", nullptr);
         return 0;
@@ -54768,7 +51533,7 @@ int lua_cocos2dx_ParticleSystem_getAngle(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -54807,7 +51572,7 @@ int lua_cocos2dx_ParticleSystem_setEndColor(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setEndColor'", nullptr);
         return 0;
@@ -54815,7 +51580,7 @@ int lua_cocos2dx_ParticleSystem_setEndColor(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Color4F arg0;
 
@@ -54857,7 +51622,7 @@ int lua_cocos2dx_ParticleSystem_setStartSpin(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setStartSpin'", nullptr);
         return 0;
@@ -54865,7 +51630,7 @@ int lua_cocos2dx_ParticleSystem_setStartSpin(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -54907,7 +51672,7 @@ int lua_cocos2dx_ParticleSystem_setDuration(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setDuration'", nullptr);
         return 0;
@@ -54915,7 +51680,7 @@ int lua_cocos2dx_ParticleSystem_setDuration(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -54957,7 +51722,7 @@ int lua_cocos2dx_ParticleSystem_setTexture(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setTexture'", nullptr);
         return 0;
@@ -54965,7 +51730,7 @@ int lua_cocos2dx_ParticleSystem_setTexture(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Texture2D* arg0;
 
@@ -55007,7 +51772,7 @@ int lua_cocos2dx_ParticleSystem_getPosVar(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_getPosVar'", nullptr);
         return 0;
@@ -55015,7 +51780,7 @@ int lua_cocos2dx_ParticleSystem_getPosVar(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -55054,7 +51819,7 @@ int lua_cocos2dx_ParticleSystem_updateWithNoTime(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_updateWithNoTime'", nullptr);
         return 0;
@@ -55062,7 +51827,7 @@ int lua_cocos2dx_ParticleSystem_updateWithNoTime(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -55101,7 +51866,7 @@ int lua_cocos2dx_ParticleSystem_isBlendAdditive(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_isBlendAdditive'", nullptr);
         return 0;
@@ -55109,7 +51874,7 @@ int lua_cocos2dx_ParticleSystem_isBlendAdditive(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -55148,7 +51913,7 @@ int lua_cocos2dx_ParticleSystem_getSpeedVar(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_getSpeedVar'", nullptr);
         return 0;
@@ -55156,7 +51921,7 @@ int lua_cocos2dx_ParticleSystem_getSpeedVar(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -55195,7 +51960,7 @@ int lua_cocos2dx_ParticleSystem_setPositionType(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setPositionType'", nullptr);
         return 0;
@@ -55203,7 +51968,7 @@ int lua_cocos2dx_ParticleSystem_setPositionType(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::ParticleSystem::PositionType arg0;
 
@@ -55245,7 +52010,7 @@ int lua_cocos2dx_ParticleSystem_stopSystem(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_stopSystem'", nullptr);
         return 0;
@@ -55253,7 +52018,7 @@ int lua_cocos2dx_ParticleSystem_stopSystem(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -55292,7 +52057,7 @@ int lua_cocos2dx_ParticleSystem_getSourcePosition(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_getSourcePosition'", nullptr);
         return 0;
@@ -55300,7 +52065,7 @@ int lua_cocos2dx_ParticleSystem_getSourcePosition(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -55339,7 +52104,7 @@ int lua_cocos2dx_ParticleSystem_setLifeVar(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setLifeVar'", nullptr);
         return 0;
@@ -55347,7 +52112,7 @@ int lua_cocos2dx_ParticleSystem_setLifeVar(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -55389,7 +52154,7 @@ int lua_cocos2dx_ParticleSystem_setTotalParticles(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setTotalParticles'", nullptr);
         return 0;
@@ -55397,7 +52162,7 @@ int lua_cocos2dx_ParticleSystem_setTotalParticles(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         int arg0;
 
@@ -55439,7 +52204,7 @@ int lua_cocos2dx_ParticleSystem_setEndColorVar(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setEndColorVar'", nullptr);
         return 0;
@@ -55447,7 +52212,7 @@ int lua_cocos2dx_ParticleSystem_setEndColorVar(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Color4F arg0;
 
@@ -55489,7 +52254,7 @@ int lua_cocos2dx_ParticleSystem_getAtlasIndex(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_getAtlasIndex'", nullptr);
         return 0;
@@ -55497,7 +52262,7 @@ int lua_cocos2dx_ParticleSystem_getAtlasIndex(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -55536,7 +52301,7 @@ int lua_cocos2dx_ParticleSystem_getStartSize(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_getStartSize'", nullptr);
         return 0;
@@ -55544,7 +52309,7 @@ int lua_cocos2dx_ParticleSystem_getStartSize(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -55583,7 +52348,7 @@ int lua_cocos2dx_ParticleSystem_setStartSpinVar(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setStartSpinVar'", nullptr);
         return 0;
@@ -55591,7 +52356,7 @@ int lua_cocos2dx_ParticleSystem_setStartSpinVar(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -55633,7 +52398,7 @@ int lua_cocos2dx_ParticleSystem_resetSystem(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_resetSystem'", nullptr);
         return 0;
@@ -55641,7 +52406,7 @@ int lua_cocos2dx_ParticleSystem_resetSystem(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -55680,7 +52445,7 @@ int lua_cocos2dx_ParticleSystem_setAtlasIndex(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setAtlasIndex'", nullptr);
         return 0;
@@ -55688,7 +52453,7 @@ int lua_cocos2dx_ParticleSystem_setAtlasIndex(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         int arg0;
 
@@ -55730,7 +52495,7 @@ int lua_cocos2dx_ParticleSystem_setTangentialAccelVar(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setTangentialAccelVar'", nullptr);
         return 0;
@@ -55738,7 +52503,7 @@ int lua_cocos2dx_ParticleSystem_setTangentialAccelVar(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -55780,7 +52545,7 @@ int lua_cocos2dx_ParticleSystem_setEndRadiusVar(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setEndRadiusVar'", nullptr);
         return 0;
@@ -55788,7 +52553,7 @@ int lua_cocos2dx_ParticleSystem_setEndRadiusVar(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -55830,7 +52595,7 @@ int lua_cocos2dx_ParticleSystem_getEndRadius(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_getEndRadius'", nullptr);
         return 0;
@@ -55838,7 +52603,7 @@ int lua_cocos2dx_ParticleSystem_getEndRadius(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -55877,7 +52642,7 @@ int lua_cocos2dx_ParticleSystem_isOpacityModifyRGB(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_isOpacityModifyRGB'", nullptr);
         return 0;
@@ -55885,7 +52650,7 @@ int lua_cocos2dx_ParticleSystem_isOpacityModifyRGB(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -55924,7 +52689,7 @@ int lua_cocos2dx_ParticleSystem_isActive(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_isActive'", nullptr);
         return 0;
@@ -55932,7 +52697,7 @@ int lua_cocos2dx_ParticleSystem_isActive(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -55971,7 +52736,7 @@ int lua_cocos2dx_ParticleSystem_setRadialAccelVar(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setRadialAccelVar'", nullptr);
         return 0;
@@ -55979,7 +52744,7 @@ int lua_cocos2dx_ParticleSystem_setRadialAccelVar(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -56021,7 +52786,7 @@ int lua_cocos2dx_ParticleSystem_setStartSize(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setStartSize'", nullptr);
         return 0;
@@ -56029,7 +52794,7 @@ int lua_cocos2dx_ParticleSystem_setStartSize(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -56071,7 +52836,7 @@ int lua_cocos2dx_ParticleSystem_setSpeed(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setSpeed'", nullptr);
         return 0;
@@ -56079,7 +52844,7 @@ int lua_cocos2dx_ParticleSystem_setSpeed(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -56121,7 +52886,7 @@ int lua_cocos2dx_ParticleSystem_getStartSpin(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_getStartSpin'", nullptr);
         return 0;
@@ -56129,7 +52894,7 @@ int lua_cocos2dx_ParticleSystem_getStartSpin(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -56168,7 +52933,7 @@ int lua_cocos2dx_ParticleSystem_getRotatePerSecond(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_getRotatePerSecond'", nullptr);
         return 0;
@@ -56176,7 +52941,7 @@ int lua_cocos2dx_ParticleSystem_getRotatePerSecond(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -56215,7 +52980,7 @@ int lua_cocos2dx_ParticleSystem_setEmitterMode(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setEmitterMode'", nullptr);
         return 0;
@@ -56223,7 +52988,7 @@ int lua_cocos2dx_ParticleSystem_setEmitterMode(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::ParticleSystem::Mode arg0;
 
@@ -56265,7 +53030,7 @@ int lua_cocos2dx_ParticleSystem_getDuration(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_getDuration'", nullptr);
         return 0;
@@ -56273,7 +53038,7 @@ int lua_cocos2dx_ParticleSystem_getDuration(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -56312,7 +53077,7 @@ int lua_cocos2dx_ParticleSystem_setSourcePosition(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setSourcePosition'", nullptr);
         return 0;
@@ -56320,7 +53085,7 @@ int lua_cocos2dx_ParticleSystem_setSourcePosition(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Vec2 arg0;
 
@@ -56362,7 +53127,7 @@ int lua_cocos2dx_ParticleSystem_getEndSpinVar(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_getEndSpinVar'", nullptr);
         return 0;
@@ -56370,7 +53135,7 @@ int lua_cocos2dx_ParticleSystem_getEndSpinVar(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -56409,7 +53174,7 @@ int lua_cocos2dx_ParticleSystem_setBlendAdditive(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setBlendAdditive'", nullptr);
         return 0;
@@ -56417,7 +53182,7 @@ int lua_cocos2dx_ParticleSystem_setBlendAdditive(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -56459,7 +53224,7 @@ int lua_cocos2dx_ParticleSystem_setLife(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setLife'", nullptr);
         return 0;
@@ -56467,7 +53232,7 @@ int lua_cocos2dx_ParticleSystem_setLife(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -56509,7 +53274,7 @@ int lua_cocos2dx_ParticleSystem_setAngleVar(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setAngleVar'", nullptr);
         return 0;
@@ -56517,7 +53282,7 @@ int lua_cocos2dx_ParticleSystem_setAngleVar(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -56559,7 +53324,7 @@ int lua_cocos2dx_ParticleSystem_setRotationIsDir(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setRotationIsDir'", nullptr);
         return 0;
@@ -56567,7 +53332,7 @@ int lua_cocos2dx_ParticleSystem_setRotationIsDir(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -56609,7 +53374,7 @@ int lua_cocos2dx_ParticleSystem_setEndSizeVar(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setEndSizeVar'", nullptr);
         return 0;
@@ -56617,7 +53382,7 @@ int lua_cocos2dx_ParticleSystem_setEndSizeVar(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -56659,7 +53424,7 @@ int lua_cocos2dx_ParticleSystem_setAngle(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setAngle'", nullptr);
         return 0;
@@ -56667,7 +53432,7 @@ int lua_cocos2dx_ParticleSystem_setAngle(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -56709,7 +53474,7 @@ int lua_cocos2dx_ParticleSystem_setBatchNode(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setBatchNode'", nullptr);
         return 0;
@@ -56717,7 +53482,7 @@ int lua_cocos2dx_ParticleSystem_setBatchNode(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::ParticleBatchNode* arg0;
 
@@ -56759,7 +53524,7 @@ int lua_cocos2dx_ParticleSystem_getTangentialAccelVar(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_getTangentialAccelVar'", nullptr);
         return 0;
@@ -56767,7 +53532,7 @@ int lua_cocos2dx_ParticleSystem_getTangentialAccelVar(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -56806,7 +53571,7 @@ int lua_cocos2dx_ParticleSystem_getEmitterMode(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_getEmitterMode'", nullptr);
         return 0;
@@ -56814,7 +53579,7 @@ int lua_cocos2dx_ParticleSystem_getEmitterMode(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -56853,7 +53618,7 @@ int lua_cocos2dx_ParticleSystem_setEndSpinVar(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setEndSpinVar'", nullptr);
         return 0;
@@ -56861,7 +53626,7 @@ int lua_cocos2dx_ParticleSystem_setEndSpinVar(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -56903,7 +53668,7 @@ int lua_cocos2dx_ParticleSystem_getAngleVar(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_getAngleVar'", nullptr);
         return 0;
@@ -56911,7 +53676,7 @@ int lua_cocos2dx_ParticleSystem_getAngleVar(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -56950,7 +53715,7 @@ int lua_cocos2dx_ParticleSystem_setStartColor(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setStartColor'", nullptr);
         return 0;
@@ -56958,7 +53723,7 @@ int lua_cocos2dx_ParticleSystem_setStartColor(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Color4F arg0;
 
@@ -57000,7 +53765,7 @@ int lua_cocos2dx_ParticleSystem_getRotatePerSecondVar(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_getRotatePerSecondVar'", nullptr);
         return 0;
@@ -57008,7 +53773,7 @@ int lua_cocos2dx_ParticleSystem_getRotatePerSecondVar(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -57047,7 +53812,7 @@ int lua_cocos2dx_ParticleSystem_getEndSize(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_getEndSize'", nullptr);
         return 0;
@@ -57055,7 +53820,7 @@ int lua_cocos2dx_ParticleSystem_getEndSize(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -57094,7 +53859,7 @@ int lua_cocos2dx_ParticleSystem_getLife(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_getLife'", nullptr);
         return 0;
@@ -57102,7 +53867,7 @@ int lua_cocos2dx_ParticleSystem_getLife(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -57141,7 +53906,7 @@ int lua_cocos2dx_ParticleSystem_setSpeedVar(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setSpeedVar'", nullptr);
         return 0;
@@ -57149,7 +53914,7 @@ int lua_cocos2dx_ParticleSystem_setSpeedVar(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -57191,7 +53956,7 @@ int lua_cocos2dx_ParticleSystem_setAutoRemoveOnFinish(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setAutoRemoveOnFinish'", nullptr);
         return 0;
@@ -57199,7 +53964,7 @@ int lua_cocos2dx_ParticleSystem_setAutoRemoveOnFinish(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -57241,7 +54006,7 @@ int lua_cocos2dx_ParticleSystem_setGravity(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setGravity'", nullptr);
         return 0;
@@ -57249,7 +54014,7 @@ int lua_cocos2dx_ParticleSystem_setGravity(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Vec2 arg0;
 
@@ -57291,7 +54056,7 @@ int lua_cocos2dx_ParticleSystem_postStep(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_postStep'", nullptr);
         return 0;
@@ -57299,7 +54064,7 @@ int lua_cocos2dx_ParticleSystem_postStep(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -57338,7 +54103,7 @@ int lua_cocos2dx_ParticleSystem_setEmissionRate(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setEmissionRate'", nullptr);
         return 0;
@@ -57346,7 +54111,7 @@ int lua_cocos2dx_ParticleSystem_setEmissionRate(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -57388,7 +54153,7 @@ int lua_cocos2dx_ParticleSystem_getEndColorVar(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_getEndColorVar'", nullptr);
         return 0;
@@ -57396,7 +54161,7 @@ int lua_cocos2dx_ParticleSystem_getEndColorVar(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -57435,7 +54200,7 @@ int lua_cocos2dx_ParticleSystem_getRotationIsDir(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_getRotationIsDir'", nullptr);
         return 0;
@@ -57443,7 +54208,7 @@ int lua_cocos2dx_ParticleSystem_getRotationIsDir(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -57482,7 +54247,7 @@ int lua_cocos2dx_ParticleSystem_setScale(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setScale'", nullptr);
         return 0;
@@ -57490,7 +54255,7 @@ int lua_cocos2dx_ParticleSystem_setScale(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -57532,7 +54297,7 @@ int lua_cocos2dx_ParticleSystem_getEmissionRate(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_getEmissionRate'", nullptr);
         return 0;
@@ -57540,7 +54305,7 @@ int lua_cocos2dx_ParticleSystem_getEmissionRate(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -57579,7 +54344,7 @@ int lua_cocos2dx_ParticleSystem_getEndColor(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_getEndColor'", nullptr);
         return 0;
@@ -57587,7 +54352,7 @@ int lua_cocos2dx_ParticleSystem_getEndColor(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -57626,7 +54391,7 @@ int lua_cocos2dx_ParticleSystem_getLifeVar(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_getLifeVar'", nullptr);
         return 0;
@@ -57634,7 +54399,7 @@ int lua_cocos2dx_ParticleSystem_getLifeVar(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -57673,7 +54438,7 @@ int lua_cocos2dx_ParticleSystem_setStartSizeVar(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setStartSizeVar'", nullptr);
         return 0;
@@ -57681,7 +54446,7 @@ int lua_cocos2dx_ParticleSystem_setStartSizeVar(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -57723,7 +54488,7 @@ int lua_cocos2dx_ParticleSystem_setOpacityModifyRGB(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setOpacityModifyRGB'", nullptr);
         return 0;
@@ -57731,7 +54496,7 @@ int lua_cocos2dx_ParticleSystem_setOpacityModifyRGB(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -57773,7 +54538,7 @@ int lua_cocos2dx_ParticleSystem_addParticle(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_addParticle'", nullptr);
         return 0;
@@ -57781,7 +54546,7 @@ int lua_cocos2dx_ParticleSystem_addParticle(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -57820,7 +54585,7 @@ int lua_cocos2dx_ParticleSystem_getStartRadius(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_getStartRadius'", nullptr);
         return 0;
@@ -57828,7 +54593,7 @@ int lua_cocos2dx_ParticleSystem_getStartRadius(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -57867,7 +54632,7 @@ int lua_cocos2dx_ParticleSystem_getParticleCount(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_getParticleCount'", nullptr);
         return 0;
@@ -57875,7 +54640,7 @@ int lua_cocos2dx_ParticleSystem_getParticleCount(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -57914,7 +54679,7 @@ int lua_cocos2dx_ParticleSystem_getStartRadiusVar(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_getStartRadiusVar'", nullptr);
         return 0;
@@ -57922,7 +54687,7 @@ int lua_cocos2dx_ParticleSystem_getStartRadiusVar(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -57961,7 +54726,7 @@ int lua_cocos2dx_ParticleSystem_setStartColorVar(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setStartColorVar'", nullptr);
         return 0;
@@ -57969,7 +54734,7 @@ int lua_cocos2dx_ParticleSystem_setStartColorVar(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Color4F arg0;
 
@@ -58011,7 +54776,7 @@ int lua_cocos2dx_ParticleSystem_setEndSpin(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setEndSpin'", nullptr);
         return 0;
@@ -58019,7 +54784,7 @@ int lua_cocos2dx_ParticleSystem_setEndSpin(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -58061,7 +54826,7 @@ int lua_cocos2dx_ParticleSystem_setRadialAccel(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setRadialAccel'", nullptr);
         return 0;
@@ -58069,7 +54834,7 @@ int lua_cocos2dx_ParticleSystem_setRadialAccel(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -58111,7 +54876,7 @@ int lua_cocos2dx_ParticleSystem_isAutoRemoveOnFinish(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_isAutoRemoveOnFinish'", nullptr);
         return 0;
@@ -58119,7 +54884,7 @@ int lua_cocos2dx_ParticleSystem_isAutoRemoveOnFinish(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -58158,7 +54923,7 @@ int lua_cocos2dx_ParticleSystem_getTotalParticles(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_getTotalParticles'", nullptr);
         return 0;
@@ -58166,7 +54931,7 @@ int lua_cocos2dx_ParticleSystem_getTotalParticles(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -58205,7 +54970,7 @@ int lua_cocos2dx_ParticleSystem_setStartRadiusVar(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_setStartRadiusVar'", nullptr);
         return 0;
@@ -58213,7 +54978,7 @@ int lua_cocos2dx_ParticleSystem_setStartRadiusVar(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -58255,7 +55020,7 @@ int lua_cocos2dx_ParticleSystem_getEndRadiusVar(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_getEndRadiusVar'", nullptr);
         return 0;
@@ -58263,7 +55028,7 @@ int lua_cocos2dx_ParticleSystem_getEndRadiusVar(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -58302,7 +55067,7 @@ int lua_cocos2dx_ParticleSystem_getStartColorVar(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystem_getStartColorVar'", nullptr);
         return 0;
@@ -58310,7 +55075,7 @@ int lua_cocos2dx_ParticleSystem_getStartColorVar(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -58540,7 +55305,7 @@ int lua_cocos2dx_ParticleSystemQuad_setDisplayFrame(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystemQuad*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystemQuad_setDisplayFrame'", nullptr);
         return 0;
@@ -58548,7 +55313,7 @@ int lua_cocos2dx_ParticleSystemQuad_setDisplayFrame(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::SpriteFrame* arg0;
 
@@ -58590,7 +55355,7 @@ int lua_cocos2dx_ParticleSystemQuad_setTextureWithRect(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystemQuad*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystemQuad_setTextureWithRect'", nullptr);
         return 0;
@@ -58598,7 +55363,7 @@ int lua_cocos2dx_ParticleSystemQuad_setTextureWithRect(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         cocos2d::Texture2D* arg0;
         cocos2d::Rect arg1;
@@ -58643,7 +55408,7 @@ int lua_cocos2dx_ParticleSystemQuad_listenRendererRecreated(lua_State* tolua_S)
     cobj = (cocos2d::ParticleSystemQuad*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleSystemQuad_listenRendererRecreated'", nullptr);
         return 0;
@@ -58651,7 +55416,7 @@ int lua_cocos2dx_ParticleSystemQuad_listenRendererRecreated(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::EventCustom* arg0;
 
@@ -58689,7 +55454,7 @@ int lua_cocos2dx_ParticleSystemQuad_create(lua_State* tolua_S)
 
     argc = lua_gettop(tolua_S)-1;
 
-    do 
+    do
     {
         if (argc == 1)
         {
@@ -58702,7 +55467,7 @@ int lua_cocos2dx_ParticleSystemQuad_create(lua_State* tolua_S)
         }
     } while (0);
     ok  = true;
-    do 
+    do
     {
         if (argc == 0)
         {
@@ -58712,7 +55477,7 @@ int lua_cocos2dx_ParticleSystemQuad_create(lua_State* tolua_S)
         }
     } while (0);
     ok  = true;
-    do 
+    do
     {
         if (argc == 1)
         {
@@ -59812,7 +56577,7 @@ int lua_cocos2dx_GridBase_setGridSize(lua_State* tolua_S)
     cobj = (cocos2d::GridBase*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GridBase_setGridSize'", nullptr);
         return 0;
@@ -59820,7 +56585,7 @@ int lua_cocos2dx_GridBase_setGridSize(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Size arg0;
 
@@ -59862,7 +56627,7 @@ int lua_cocos2dx_GridBase_afterBlit(lua_State* tolua_S)
     cobj = (cocos2d::GridBase*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GridBase_afterBlit'", nullptr);
         return 0;
@@ -59870,7 +56635,7 @@ int lua_cocos2dx_GridBase_afterBlit(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -59909,7 +56674,7 @@ int lua_cocos2dx_GridBase_afterDraw(lua_State* tolua_S)
     cobj = (cocos2d::GridBase*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GridBase_afterDraw'", nullptr);
         return 0;
@@ -59917,7 +56682,7 @@ int lua_cocos2dx_GridBase_afterDraw(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Node* arg0;
 
@@ -59959,7 +56724,7 @@ int lua_cocos2dx_GridBase_beforeDraw(lua_State* tolua_S)
     cobj = (cocos2d::GridBase*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GridBase_beforeDraw'", nullptr);
         return 0;
@@ -59967,7 +56732,7 @@ int lua_cocos2dx_GridBase_beforeDraw(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -60006,7 +56771,7 @@ int lua_cocos2dx_GridBase_calculateVertexPoints(lua_State* tolua_S)
     cobj = (cocos2d::GridBase*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GridBase_calculateVertexPoints'", nullptr);
         return 0;
@@ -60014,7 +56779,7 @@ int lua_cocos2dx_GridBase_calculateVertexPoints(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -60053,7 +56818,7 @@ int lua_cocos2dx_GridBase_isTextureFlipped(lua_State* tolua_S)
     cobj = (cocos2d::GridBase*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GridBase_isTextureFlipped'", nullptr);
         return 0;
@@ -60061,7 +56826,7 @@ int lua_cocos2dx_GridBase_isTextureFlipped(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -60100,7 +56865,7 @@ int lua_cocos2dx_GridBase_getGridSize(lua_State* tolua_S)
     cobj = (cocos2d::GridBase*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GridBase_getGridSize'", nullptr);
         return 0;
@@ -60108,7 +56873,7 @@ int lua_cocos2dx_GridBase_getGridSize(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -60147,7 +56912,7 @@ int lua_cocos2dx_GridBase_getStep(lua_State* tolua_S)
     cobj = (cocos2d::GridBase*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GridBase_getStep'", nullptr);
         return 0;
@@ -60155,7 +56920,7 @@ int lua_cocos2dx_GridBase_getStep(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -60194,7 +56959,7 @@ int lua_cocos2dx_GridBase_set2DProjection(lua_State* tolua_S)
     cobj = (cocos2d::GridBase*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GridBase_set2DProjection'", nullptr);
         return 0;
@@ -60202,7 +56967,7 @@ int lua_cocos2dx_GridBase_set2DProjection(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -60241,7 +57006,7 @@ int lua_cocos2dx_GridBase_setStep(lua_State* tolua_S)
     cobj = (cocos2d::GridBase*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GridBase_setStep'", nullptr);
         return 0;
@@ -60249,7 +57014,7 @@ int lua_cocos2dx_GridBase_setStep(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Vec2 arg0;
 
@@ -60291,7 +57056,7 @@ int lua_cocos2dx_GridBase_setTextureFlipped(lua_State* tolua_S)
     cobj = (cocos2d::GridBase*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GridBase_setTextureFlipped'", nullptr);
         return 0;
@@ -60299,7 +57064,7 @@ int lua_cocos2dx_GridBase_setTextureFlipped(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -60341,7 +57106,7 @@ int lua_cocos2dx_GridBase_blit(lua_State* tolua_S)
     cobj = (cocos2d::GridBase*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GridBase_blit'", nullptr);
         return 0;
@@ -60349,7 +57114,7 @@ int lua_cocos2dx_GridBase_blit(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -60388,7 +57153,7 @@ int lua_cocos2dx_GridBase_setActive(lua_State* tolua_S)
     cobj = (cocos2d::GridBase*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GridBase_setActive'", nullptr);
         return 0;
@@ -60396,7 +57161,7 @@ int lua_cocos2dx_GridBase_setActive(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -60438,7 +57203,7 @@ int lua_cocos2dx_GridBase_getReuseGrid(lua_State* tolua_S)
     cobj = (cocos2d::GridBase*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GridBase_getReuseGrid'", nullptr);
         return 0;
@@ -60446,7 +57211,7 @@ int lua_cocos2dx_GridBase_getReuseGrid(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -60548,7 +57313,7 @@ int lua_cocos2dx_GridBase_beforeBlit(lua_State* tolua_S)
     cobj = (cocos2d::GridBase*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GridBase_beforeBlit'", nullptr);
         return 0;
@@ -60556,7 +57321,7 @@ int lua_cocos2dx_GridBase_beforeBlit(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -60595,7 +57360,7 @@ int lua_cocos2dx_GridBase_setReuseGrid(lua_State* tolua_S)
     cobj = (cocos2d::GridBase*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GridBase_setReuseGrid'", nullptr);
         return 0;
@@ -60603,7 +57368,7 @@ int lua_cocos2dx_GridBase_setReuseGrid(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         int arg0;
 
@@ -60645,7 +57410,7 @@ int lua_cocos2dx_GridBase_isActive(lua_State* tolua_S)
     cobj = (cocos2d::GridBase*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GridBase_isActive'", nullptr);
         return 0;
@@ -60653,7 +57418,7 @@ int lua_cocos2dx_GridBase_isActive(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -60692,7 +57457,7 @@ int lua_cocos2dx_GridBase_reuse(lua_State* tolua_S)
     cobj = (cocos2d::GridBase*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GridBase_reuse'", nullptr);
         return 0;
@@ -60700,7 +57465,7 @@ int lua_cocos2dx_GridBase_reuse(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -60735,7 +57500,7 @@ int lua_cocos2dx_GridBase_create(lua_State* tolua_S)
 
     argc = lua_gettop(tolua_S)-1;
 
-    do 
+    do
     {
         if (argc == 1)
         {
@@ -60748,7 +57513,7 @@ int lua_cocos2dx_GridBase_create(lua_State* tolua_S)
         }
     } while (0);
     ok  = true;
-    do 
+    do
     {
         if (argc == 3)
         {
@@ -60832,7 +57597,7 @@ int lua_cocos2dx_Grid3D_getNeedDepthTestForBlit(lua_State* tolua_S)
     cobj = (cocos2d::Grid3D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Grid3D_getNeedDepthTestForBlit'", nullptr);
         return 0;
@@ -60840,7 +57605,7 @@ int lua_cocos2dx_Grid3D_getNeedDepthTestForBlit(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -60879,7 +57644,7 @@ int lua_cocos2dx_Grid3D_setNeedDepthTestForBlit(lua_State* tolua_S)
     cobj = (cocos2d::Grid3D*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Grid3D_setNeedDepthTestForBlit'", nullptr);
         return 0;
@@ -60887,7 +57652,7 @@ int lua_cocos2dx_Grid3D_setNeedDepthTestForBlit(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -60925,7 +57690,7 @@ int lua_cocos2dx_Grid3D_create(lua_State* tolua_S)
 
     argc = lua_gettop(tolua_S)-1;
 
-    do 
+    do
     {
         if (argc == 1)
         {
@@ -60938,7 +57703,7 @@ int lua_cocos2dx_Grid3D_create(lua_State* tolua_S)
         }
     } while (0);
     ok  = true;
-    do 
+    do
     {
         if (argc == 3)
         {
@@ -60978,7 +57743,7 @@ int lua_cocos2dx_Grid3D_constructor(lua_State* tolua_S)
 
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -61039,7 +57804,7 @@ int lua_cocos2dx_TiledGrid3D_create(lua_State* tolua_S)
 
     argc = lua_gettop(tolua_S)-1;
 
-    do 
+    do
     {
         if (argc == 1)
         {
@@ -61052,7 +57817,7 @@ int lua_cocos2dx_TiledGrid3D_create(lua_State* tolua_S)
         }
     } while (0);
     ok  = true;
-    do 
+    do
     {
         if (argc == 3)
         {
@@ -61092,7 +57857,7 @@ int lua_cocos2dx_TiledGrid3D_constructor(lua_State* tolua_S)
 
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -61155,7 +57920,7 @@ int lua_cocos2dx_Camera_getProjectionMatrix(lua_State* tolua_S)
     cobj = (cocos2d::Camera*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Camera_getProjectionMatrix'", nullptr);
         return 0;
@@ -61163,7 +57928,7 @@ int lua_cocos2dx_Camera_getProjectionMatrix(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -61202,7 +57967,7 @@ int lua_cocos2dx_Camera_getViewProjectionMatrix(lua_State* tolua_S)
     cobj = (cocos2d::Camera*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Camera_getViewProjectionMatrix'", nullptr);
         return 0;
@@ -61210,7 +57975,7 @@ int lua_cocos2dx_Camera_getViewProjectionMatrix(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -61249,7 +58014,7 @@ int lua_cocos2dx_Camera_getViewMatrix(lua_State* tolua_S)
     cobj = (cocos2d::Camera*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Camera_getViewMatrix'", nullptr);
         return 0;
@@ -61257,7 +58022,7 @@ int lua_cocos2dx_Camera_getViewMatrix(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -61296,7 +58061,7 @@ int lua_cocos2dx_Camera_getCameraFlag(lua_State* tolua_S)
     cobj = (cocos2d::Camera*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Camera_getCameraFlag'", nullptr);
         return 0;
@@ -61304,7 +58069,7 @@ int lua_cocos2dx_Camera_getCameraFlag(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -61343,7 +58108,7 @@ int lua_cocos2dx_Camera_getType(lua_State* tolua_S)
     cobj = (cocos2d::Camera*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Camera_getType'", nullptr);
         return 0;
@@ -61351,7 +58116,7 @@ int lua_cocos2dx_Camera_getType(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -61390,7 +58155,7 @@ int lua_cocos2dx_Camera_lookAt(lua_State* tolua_S)
     cobj = (cocos2d::Camera*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Camera_lookAt'", nullptr);
         return 0;
@@ -61398,7 +58163,7 @@ int lua_cocos2dx_Camera_lookAt(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         cocos2d::Vec3 arg0;
         cocos2d::Vec3 arg1;
@@ -61443,7 +58208,7 @@ int lua_cocos2dx_Camera_setCameraFlag(lua_State* tolua_S)
     cobj = (cocos2d::Camera*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Camera_setCameraFlag'", nullptr);
         return 0;
@@ -61451,7 +58216,7 @@ int lua_cocos2dx_Camera_setCameraFlag(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::CameraFlag arg0;
 
@@ -61675,7 +58440,7 @@ int lua_cocos2dx_BaseLight_setEnabled(lua_State* tolua_S)
     cobj = (cocos2d::BaseLight*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_BaseLight_setEnabled'", nullptr);
         return 0;
@@ -61683,7 +58448,7 @@ int lua_cocos2dx_BaseLight_setEnabled(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -61725,7 +58490,7 @@ int lua_cocos2dx_BaseLight_getIntensity(lua_State* tolua_S)
     cobj = (cocos2d::BaseLight*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_BaseLight_getIntensity'", nullptr);
         return 0;
@@ -61733,7 +58498,7 @@ int lua_cocos2dx_BaseLight_getIntensity(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -61772,7 +58537,7 @@ int lua_cocos2dx_BaseLight_isEnabled(lua_State* tolua_S)
     cobj = (cocos2d::BaseLight*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_BaseLight_isEnabled'", nullptr);
         return 0;
@@ -61780,7 +58545,7 @@ int lua_cocos2dx_BaseLight_isEnabled(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -61819,7 +58584,7 @@ int lua_cocos2dx_BaseLight_getLightType(lua_State* tolua_S)
     cobj = (cocos2d::BaseLight*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_BaseLight_getLightType'", nullptr);
         return 0;
@@ -61827,7 +58592,7 @@ int lua_cocos2dx_BaseLight_getLightType(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -61866,7 +58631,7 @@ int lua_cocos2dx_BaseLight_setLightFlag(lua_State* tolua_S)
     cobj = (cocos2d::BaseLight*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_BaseLight_setLightFlag'", nullptr);
         return 0;
@@ -61874,7 +58639,7 @@ int lua_cocos2dx_BaseLight_setLightFlag(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::LightFlag arg0;
 
@@ -61916,7 +58681,7 @@ int lua_cocos2dx_BaseLight_setIntensity(lua_State* tolua_S)
     cobj = (cocos2d::BaseLight*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_BaseLight_setIntensity'", nullptr);
         return 0;
@@ -61924,7 +58689,7 @@ int lua_cocos2dx_BaseLight_setIntensity(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -61966,7 +58731,7 @@ int lua_cocos2dx_BaseLight_getLightFlag(lua_State* tolua_S)
     cobj = (cocos2d::BaseLight*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_BaseLight_getLightFlag'", nullptr);
         return 0;
@@ -61974,7 +58739,7 @@ int lua_cocos2dx_BaseLight_getLightFlag(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -62039,7 +58804,7 @@ int lua_cocos2dx_DirectionLight_getDirection(lua_State* tolua_S)
     cobj = (cocos2d::DirectionLight*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_DirectionLight_getDirection'", nullptr);
         return 0;
@@ -62047,7 +58812,7 @@ int lua_cocos2dx_DirectionLight_getDirection(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -62086,7 +58851,7 @@ int lua_cocos2dx_DirectionLight_getDirectionInWorld(lua_State* tolua_S)
     cobj = (cocos2d::DirectionLight*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_DirectionLight_getDirectionInWorld'", nullptr);
         return 0;
@@ -62094,7 +58859,7 @@ int lua_cocos2dx_DirectionLight_getDirectionInWorld(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -62133,7 +58898,7 @@ int lua_cocos2dx_DirectionLight_setDirection(lua_State* tolua_S)
     cobj = (cocos2d::DirectionLight*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_DirectionLight_setDirection'", nullptr);
         return 0;
@@ -62141,7 +58906,7 @@ int lua_cocos2dx_DirectionLight_setDirection(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Vec3 arg0;
 
@@ -62244,7 +59009,7 @@ int lua_cocos2dx_PointLight_getRange(lua_State* tolua_S)
     cobj = (cocos2d::PointLight*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_PointLight_getRange'", nullptr);
         return 0;
@@ -62252,7 +59017,7 @@ int lua_cocos2dx_PointLight_getRange(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -62291,7 +59056,7 @@ int lua_cocos2dx_PointLight_setRange(lua_State* tolua_S)
     cobj = (cocos2d::PointLight*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_PointLight_setRange'", nullptr);
         return 0;
@@ -62299,7 +59064,7 @@ int lua_cocos2dx_PointLight_setRange(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -62403,7 +59168,7 @@ int lua_cocos2dx_SpotLight_getRange(lua_State* tolua_S)
     cobj = (cocos2d::SpotLight*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpotLight_getRange'", nullptr);
         return 0;
@@ -62411,7 +59176,7 @@ int lua_cocos2dx_SpotLight_getRange(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -62450,7 +59215,7 @@ int lua_cocos2dx_SpotLight_setDirection(lua_State* tolua_S)
     cobj = (cocos2d::SpotLight*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpotLight_setDirection'", nullptr);
         return 0;
@@ -62458,7 +59223,7 @@ int lua_cocos2dx_SpotLight_setDirection(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Vec3 arg0;
 
@@ -62500,7 +59265,7 @@ int lua_cocos2dx_SpotLight_getCosInnerAngle(lua_State* tolua_S)
     cobj = (cocos2d::SpotLight*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpotLight_getCosInnerAngle'", nullptr);
         return 0;
@@ -62508,7 +59273,7 @@ int lua_cocos2dx_SpotLight_getCosInnerAngle(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -62547,7 +59312,7 @@ int lua_cocos2dx_SpotLight_getOuterAngle(lua_State* tolua_S)
     cobj = (cocos2d::SpotLight*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpotLight_getOuterAngle'", nullptr);
         return 0;
@@ -62555,7 +59320,7 @@ int lua_cocos2dx_SpotLight_getOuterAngle(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -62594,7 +59359,7 @@ int lua_cocos2dx_SpotLight_getInnerAngle(lua_State* tolua_S)
     cobj = (cocos2d::SpotLight*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpotLight_getInnerAngle'", nullptr);
         return 0;
@@ -62602,7 +59367,7 @@ int lua_cocos2dx_SpotLight_getInnerAngle(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -62641,7 +59406,7 @@ int lua_cocos2dx_SpotLight_getDirection(lua_State* tolua_S)
     cobj = (cocos2d::SpotLight*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpotLight_getDirection'", nullptr);
         return 0;
@@ -62649,7 +59414,7 @@ int lua_cocos2dx_SpotLight_getDirection(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -62688,7 +59453,7 @@ int lua_cocos2dx_SpotLight_getCosOuterAngle(lua_State* tolua_S)
     cobj = (cocos2d::SpotLight*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpotLight_getCosOuterAngle'", nullptr);
         return 0;
@@ -62696,7 +59461,7 @@ int lua_cocos2dx_SpotLight_getCosOuterAngle(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -62735,7 +59500,7 @@ int lua_cocos2dx_SpotLight_setOuterAngle(lua_State* tolua_S)
     cobj = (cocos2d::SpotLight*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpotLight_setOuterAngle'", nullptr);
         return 0;
@@ -62743,7 +59508,7 @@ int lua_cocos2dx_SpotLight_setOuterAngle(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -62785,7 +59550,7 @@ int lua_cocos2dx_SpotLight_setInnerAngle(lua_State* tolua_S)
     cobj = (cocos2d::SpotLight*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpotLight_setInnerAngle'", nullptr);
         return 0;
@@ -62793,7 +59558,7 @@ int lua_cocos2dx_SpotLight_setInnerAngle(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -62835,7 +59600,7 @@ int lua_cocos2dx_SpotLight_getDirectionInWorld(lua_State* tolua_S)
     cobj = (cocos2d::SpotLight*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpotLight_getDirectionInWorld'", nullptr);
         return 0;
@@ -62843,7 +59608,7 @@ int lua_cocos2dx_SpotLight_getDirectionInWorld(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -62882,7 +59647,7 @@ int lua_cocos2dx_SpotLight_setRange(lua_State* tolua_S)
     cobj = (cocos2d::SpotLight*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpotLight_setRange'", nullptr);
         return 0;
@@ -62890,7 +59655,7 @@ int lua_cocos2dx_SpotLight_setRange(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -63065,7 +59830,7 @@ int lua_cocos2dx_GLProgram_getFragmentShaderLog(lua_State* tolua_S)
     cobj = (cocos2d::GLProgram*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLProgram_getFragmentShaderLog'", nullptr);
         return 0;
@@ -63073,7 +59838,7 @@ int lua_cocos2dx_GLProgram_getFragmentShaderLog(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -63112,7 +59877,7 @@ int lua_cocos2dx_GLProgram_initWithByteArrays(lua_State* tolua_S)
     cobj = (cocos2d::GLProgram*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLProgram_initWithByteArrays'", nullptr);
         return 0;
@@ -63120,7 +59885,7 @@ int lua_cocos2dx_GLProgram_initWithByteArrays(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         const char* arg0;
         const char* arg1;
@@ -63165,7 +59930,7 @@ int lua_cocos2dx_GLProgram_initWithFilenames(lua_State* tolua_S)
     cobj = (cocos2d::GLProgram*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLProgram_initWithFilenames'", nullptr);
         return 0;
@@ -63173,7 +59938,7 @@ int lua_cocos2dx_GLProgram_initWithFilenames(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         std::string arg0;
         std::string arg1;
@@ -63218,7 +59983,7 @@ int lua_cocos2dx_GLProgram_use(lua_State* tolua_S)
     cobj = (cocos2d::GLProgram*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLProgram_use'", nullptr);
         return 0;
@@ -63226,7 +59991,7 @@ int lua_cocos2dx_GLProgram_use(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -63265,7 +60030,7 @@ int lua_cocos2dx_GLProgram_getVertexShaderLog(lua_State* tolua_S)
     cobj = (cocos2d::GLProgram*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLProgram_getVertexShaderLog'", nullptr);
         return 0;
@@ -63273,7 +60038,7 @@ int lua_cocos2dx_GLProgram_getVertexShaderLog(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -63363,7 +60128,7 @@ int lua_cocos2dx_GLProgram_updateUniforms(lua_State* tolua_S)
     cobj = (cocos2d::GLProgram*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLProgram_updateUniforms'", nullptr);
         return 0;
@@ -63371,7 +60136,7 @@ int lua_cocos2dx_GLProgram_updateUniforms(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -63410,7 +60175,7 @@ int lua_cocos2dx_GLProgram_setUniformLocationWith1i(lua_State* tolua_S)
     cobj = (cocos2d::GLProgram*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLProgram_setUniformLocationWith1i'", nullptr);
         return 0;
@@ -63418,7 +60183,7 @@ int lua_cocos2dx_GLProgram_setUniformLocationWith1i(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         int arg0;
         int arg1;
@@ -63463,7 +60228,7 @@ int lua_cocos2dx_GLProgram_reset(lua_State* tolua_S)
     cobj = (cocos2d::GLProgram*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLProgram_reset'", nullptr);
         return 0;
@@ -63471,7 +60236,7 @@ int lua_cocos2dx_GLProgram_reset(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -63510,7 +60275,7 @@ int lua_cocos2dx_GLProgram_bindAttribLocation(lua_State* tolua_S)
     cobj = (cocos2d::GLProgram*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLProgram_bindAttribLocation'", nullptr);
         return 0;
@@ -63518,7 +60283,7 @@ int lua_cocos2dx_GLProgram_bindAttribLocation(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         std::string arg0;
         unsigned int arg1;
@@ -63563,7 +60328,7 @@ int lua_cocos2dx_GLProgram_getAttribLocation(lua_State* tolua_S)
     cobj = (cocos2d::GLProgram*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLProgram_getAttribLocation'", nullptr);
         return 0;
@@ -63571,7 +60336,7 @@ int lua_cocos2dx_GLProgram_getAttribLocation(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -63613,7 +60378,7 @@ int lua_cocos2dx_GLProgram_link(lua_State* tolua_S)
     cobj = (cocos2d::GLProgram*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLProgram_link'", nullptr);
         return 0;
@@ -63621,7 +60386,7 @@ int lua_cocos2dx_GLProgram_link(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -63731,7 +60496,7 @@ int lua_cocos2dx_GLProgram_constructor(lua_State* tolua_S)
 
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -63807,7 +60572,7 @@ int lua_cocos2dx_GLProgramCache_addGLProgram(lua_State* tolua_S)
     cobj = (cocos2d::GLProgramCache*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLProgramCache_addGLProgram'", nullptr);
         return 0;
@@ -63815,7 +60580,7 @@ int lua_cocos2dx_GLProgramCache_addGLProgram(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         cocos2d::GLProgram* arg0;
         std::string arg1;
@@ -63860,7 +60625,7 @@ int lua_cocos2dx_GLProgramCache_getGLProgram(lua_State* tolua_S)
     cobj = (cocos2d::GLProgramCache*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLProgramCache_getGLProgram'", nullptr);
         return 0;
@@ -63868,7 +60633,7 @@ int lua_cocos2dx_GLProgramCache_getGLProgram(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -63910,7 +60675,7 @@ int lua_cocos2dx_GLProgramCache_reloadDefaultGLPrograms(lua_State* tolua_S)
     cobj = (cocos2d::GLProgramCache*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLProgramCache_reloadDefaultGLPrograms'", nullptr);
         return 0;
@@ -63918,7 +60683,7 @@ int lua_cocos2dx_GLProgramCache_reloadDefaultGLPrograms(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -63957,7 +60722,7 @@ int lua_cocos2dx_GLProgramCache_loadDefaultGLPrograms(lua_State* tolua_S)
     cobj = (cocos2d::GLProgramCache*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLProgramCache_loadDefaultGLPrograms'", nullptr);
         return 0;
@@ -63965,7 +60730,7 @@ int lua_cocos2dx_GLProgramCache_loadDefaultGLPrograms(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -64067,7 +60832,7 @@ int lua_cocos2dx_GLProgramCache_constructor(lua_State* tolua_S)
 
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -64135,7 +60900,7 @@ int lua_cocos2dx_TextureCache_reloadTexture(lua_State* tolua_S)
     cobj = (cocos2d::TextureCache*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TextureCache_reloadTexture'", nullptr);
         return 0;
@@ -64143,7 +60908,7 @@ int lua_cocos2dx_TextureCache_reloadTexture(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -64185,7 +60950,7 @@ int lua_cocos2dx_TextureCache_unbindAllImageAsync(lua_State* tolua_S)
     cobj = (cocos2d::TextureCache*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TextureCache_unbindAllImageAsync'", nullptr);
         return 0;
@@ -64193,7 +60958,7 @@ int lua_cocos2dx_TextureCache_unbindAllImageAsync(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -64232,7 +60997,7 @@ int lua_cocos2dx_TextureCache_removeTextureForKey(lua_State* tolua_S)
     cobj = (cocos2d::TextureCache*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TextureCache_removeTextureForKey'", nullptr);
         return 0;
@@ -64240,7 +61005,7 @@ int lua_cocos2dx_TextureCache_removeTextureForKey(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -64282,7 +61047,7 @@ int lua_cocos2dx_TextureCache_removeAllTextures(lua_State* tolua_S)
     cobj = (cocos2d::TextureCache*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TextureCache_removeAllTextures'", nullptr);
         return 0;
@@ -64290,7 +61055,7 @@ int lua_cocos2dx_TextureCache_removeAllTextures(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -64329,7 +61094,7 @@ int lua_cocos2dx_TextureCache_getDescription(lua_State* tolua_S)
     cobj = (cocos2d::TextureCache*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TextureCache_getDescription'", nullptr);
         return 0;
@@ -64337,7 +61102,7 @@ int lua_cocos2dx_TextureCache_getDescription(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -64376,7 +61141,7 @@ int lua_cocos2dx_TextureCache_getCachedTextureInfo(lua_State* tolua_S)
     cobj = (cocos2d::TextureCache*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TextureCache_getCachedTextureInfo'", nullptr);
         return 0;
@@ -64384,7 +61149,7 @@ int lua_cocos2dx_TextureCache_getCachedTextureInfo(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -64482,7 +61247,7 @@ int lua_cocos2dx_TextureCache_unbindImageAsync(lua_State* tolua_S)
     cobj = (cocos2d::TextureCache*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TextureCache_unbindImageAsync'", nullptr);
         return 0;
@@ -64490,7 +61255,7 @@ int lua_cocos2dx_TextureCache_unbindImageAsync(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -64532,7 +61297,7 @@ int lua_cocos2dx_TextureCache_getTextureForKey(lua_State* tolua_S)
     cobj = (cocos2d::TextureCache*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TextureCache_getTextureForKey'", nullptr);
         return 0;
@@ -64540,7 +61305,7 @@ int lua_cocos2dx_TextureCache_getTextureForKey(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -64582,7 +61347,7 @@ int lua_cocos2dx_TextureCache_removeUnusedTextures(lua_State* tolua_S)
     cobj = (cocos2d::TextureCache*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TextureCache_removeUnusedTextures'", nullptr);
         return 0;
@@ -64590,7 +61355,7 @@ int lua_cocos2dx_TextureCache_removeUnusedTextures(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -64629,7 +61394,7 @@ int lua_cocos2dx_TextureCache_removeTexture(lua_State* tolua_S)
     cobj = (cocos2d::TextureCache*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TextureCache_removeTexture'", nullptr);
         return 0;
@@ -64637,7 +61402,7 @@ int lua_cocos2dx_TextureCache_removeTexture(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Texture2D* arg0;
 
@@ -64679,7 +61444,7 @@ int lua_cocos2dx_TextureCache_waitForQuit(lua_State* tolua_S)
     cobj = (cocos2d::TextureCache*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TextureCache_waitForQuit'", nullptr);
         return 0;
@@ -64687,7 +61452,7 @@ int lua_cocos2dx_TextureCache_waitForQuit(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -64721,7 +61486,7 @@ int lua_cocos2dx_TextureCache_constructor(lua_State* tolua_S)
 
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -64960,7 +61725,7 @@ int lua_cocos2dx_Application_openURL(lua_State* tolua_S)
     cobj = (cocos2d::Application*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Application_openURL'", nullptr);
         return 0;
@@ -64968,7 +61733,7 @@ int lua_cocos2dx_Application_openURL(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -65010,7 +61775,7 @@ int lua_cocos2dx_Application_getTargetPlatform(lua_State* tolua_S)
     cobj = (cocos2d::Application*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Application_getTargetPlatform'", nullptr);
         return 0;
@@ -65018,7 +61783,7 @@ int lua_cocos2dx_Application_getTargetPlatform(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -65057,7 +61822,7 @@ int lua_cocos2dx_Application_getCurrentLanguage(lua_State* tolua_S)
     cobj = (cocos2d::Application*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Application_getCurrentLanguage'", nullptr);
         return 0;
@@ -65065,7 +61830,7 @@ int lua_cocos2dx_Application_getCurrentLanguage(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -65104,7 +61869,7 @@ int lua_cocos2dx_Application_getCurrentLanguageCode(lua_State* tolua_S)
     cobj = (cocos2d::Application*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Application_getCurrentLanguageCode'", nullptr);
         return 0;
@@ -65112,7 +61877,7 @@ int lua_cocos2dx_Application_getCurrentLanguageCode(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -65151,7 +61916,7 @@ int lua_cocos2dx_Application_setAnimationInterval(lua_State* tolua_S)
     cobj = (cocos2d::Application*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Application_setAnimationInterval'", nullptr);
         return 0;
@@ -65159,7 +61924,7 @@ int lua_cocos2dx_Application_setAnimationInterval(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -65409,7 +62174,7 @@ int lua_cocos2dx_AnimationCache_getAnimation(lua_State* tolua_S)
     cobj = (cocos2d::AnimationCache*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_AnimationCache_getAnimation'", nullptr);
         return 0;
@@ -65417,7 +62182,7 @@ int lua_cocos2dx_AnimationCache_getAnimation(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -65459,7 +62224,7 @@ int lua_cocos2dx_AnimationCache_addAnimation(lua_State* tolua_S)
     cobj = (cocos2d::AnimationCache*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_AnimationCache_addAnimation'", nullptr);
         return 0;
@@ -65467,7 +62232,7 @@ int lua_cocos2dx_AnimationCache_addAnimation(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         cocos2d::Animation* arg0;
         std::string arg1;
@@ -65512,7 +62277,7 @@ int lua_cocos2dx_AnimationCache_init(lua_State* tolua_S)
     cobj = (cocos2d::AnimationCache*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_AnimationCache_init'", nullptr);
         return 0;
@@ -65520,7 +62285,7 @@ int lua_cocos2dx_AnimationCache_init(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -65559,7 +62324,7 @@ int lua_cocos2dx_AnimationCache_addAnimationsWithDictionary(lua_State* tolua_S)
     cobj = (cocos2d::AnimationCache*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_AnimationCache_addAnimationsWithDictionary'", nullptr);
         return 0;
@@ -65567,7 +62332,7 @@ int lua_cocos2dx_AnimationCache_addAnimationsWithDictionary(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         cocos2d::ValueMap arg0;
         std::string arg1;
@@ -65612,7 +62377,7 @@ int lua_cocos2dx_AnimationCache_removeAnimation(lua_State* tolua_S)
     cobj = (cocos2d::AnimationCache*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_AnimationCache_removeAnimation'", nullptr);
         return 0;
@@ -65620,7 +62385,7 @@ int lua_cocos2dx_AnimationCache_removeAnimation(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -65662,7 +62427,7 @@ int lua_cocos2dx_AnimationCache_addAnimationsWithFile(lua_State* tolua_S)
     cobj = (cocos2d::AnimationCache*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_AnimationCache_addAnimationsWithFile'", nullptr);
         return 0;
@@ -65670,7 +62435,7 @@ int lua_cocos2dx_AnimationCache_addAnimationsWithFile(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -65775,7 +62540,7 @@ int lua_cocos2dx_AnimationCache_constructor(lua_State* tolua_S)
 
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -65845,7 +62610,7 @@ int lua_cocos2dx_SpriteFrameCache_addSpriteFramesWithFileContent(lua_State* tolu
     cobj = (cocos2d::SpriteFrameCache*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpriteFrameCache_addSpriteFramesWithFileContent'", nullptr);
         return 0;
@@ -65853,7 +62618,7 @@ int lua_cocos2dx_SpriteFrameCache_addSpriteFramesWithFileContent(lua_State* tolu
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         std::string arg0;
         cocos2d::Texture2D* arg1;
@@ -65973,7 +62738,7 @@ int lua_cocos2dx_SpriteFrameCache_addSpriteFrame(lua_State* tolua_S)
     cobj = (cocos2d::SpriteFrameCache*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpriteFrameCache_addSpriteFrame'", nullptr);
         return 0;
@@ -65981,7 +62746,7 @@ int lua_cocos2dx_SpriteFrameCache_addSpriteFrame(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         cocos2d::SpriteFrame* arg0;
         std::string arg1;
@@ -66026,7 +62791,7 @@ int lua_cocos2dx_SpriteFrameCache_removeUnusedSpriteFrames(lua_State* tolua_S)
     cobj = (cocos2d::SpriteFrameCache*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpriteFrameCache_removeUnusedSpriteFrames'", nullptr);
         return 0;
@@ -66034,7 +62799,7 @@ int lua_cocos2dx_SpriteFrameCache_removeUnusedSpriteFrames(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -66073,7 +62838,7 @@ int lua_cocos2dx_SpriteFrameCache_getSpriteFrameByName(lua_State* tolua_S)
     cobj = (cocos2d::SpriteFrameCache*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpriteFrameCache_getSpriteFrameByName'", nullptr);
         return 0;
@@ -66081,7 +62846,7 @@ int lua_cocos2dx_SpriteFrameCache_getSpriteFrameByName(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -66123,7 +62888,7 @@ int lua_cocos2dx_SpriteFrameCache_removeSpriteFramesFromFile(lua_State* tolua_S)
     cobj = (cocos2d::SpriteFrameCache*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpriteFrameCache_removeSpriteFramesFromFile'", nullptr);
         return 0;
@@ -66131,7 +62896,7 @@ int lua_cocos2dx_SpriteFrameCache_removeSpriteFramesFromFile(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -66173,7 +62938,7 @@ int lua_cocos2dx_SpriteFrameCache_init(lua_State* tolua_S)
     cobj = (cocos2d::SpriteFrameCache*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpriteFrameCache_init'", nullptr);
         return 0;
@@ -66181,7 +62946,7 @@ int lua_cocos2dx_SpriteFrameCache_init(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -66220,7 +62985,7 @@ int lua_cocos2dx_SpriteFrameCache_removeSpriteFrames(lua_State* tolua_S)
     cobj = (cocos2d::SpriteFrameCache*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpriteFrameCache_removeSpriteFrames'", nullptr);
         return 0;
@@ -66228,7 +62993,7 @@ int lua_cocos2dx_SpriteFrameCache_removeSpriteFrames(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -66267,7 +63032,7 @@ int lua_cocos2dx_SpriteFrameCache_removeSpriteFramesFromTexture(lua_State* tolua
     cobj = (cocos2d::SpriteFrameCache*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpriteFrameCache_removeSpriteFramesFromTexture'", nullptr);
         return 0;
@@ -66275,7 +63040,7 @@ int lua_cocos2dx_SpriteFrameCache_removeSpriteFramesFromTexture(lua_State* tolua
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Texture2D* arg0;
 
@@ -66317,7 +63082,7 @@ int lua_cocos2dx_SpriteFrameCache_removeSpriteFramesFromFileContent(lua_State* t
     cobj = (cocos2d::SpriteFrameCache*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpriteFrameCache_removeSpriteFramesFromFileContent'", nullptr);
         return 0;
@@ -66325,7 +63090,7 @@ int lua_cocos2dx_SpriteFrameCache_removeSpriteFramesFromFileContent(lua_State* t
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -66367,7 +63132,7 @@ int lua_cocos2dx_SpriteFrameCache_removeSpriteFrameByName(lua_State* tolua_S)
     cobj = (cocos2d::SpriteFrameCache*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_SpriteFrameCache_removeSpriteFrameByName'", nullptr);
         return 0;
@@ -66375,7 +63140,7 @@ int lua_cocos2dx_SpriteFrameCache_removeSpriteFrameByName(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -66499,6 +63264,7 @@ int lua_register_cocos2dx_SpriteFrameCache(lua_State* tolua_S)
     return 1;
 }
 
+#if CC_USE_TMX
 int lua_cocos2dx_ParallaxNode_addChild(lua_State* tolua_S)
 {
     int argc = 0;
@@ -66517,7 +63283,7 @@ int lua_cocos2dx_ParallaxNode_addChild(lua_State* tolua_S)
     cobj = (cocos2d::ParallaxNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParallaxNode_addChild'", nullptr);
         return 0;
@@ -66525,7 +63291,7 @@ int lua_cocos2dx_ParallaxNode_addChild(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 4) 
+    if (argc == 4)
     {
         cocos2d::Node* arg0;
         int arg1;
@@ -66576,7 +63342,7 @@ int lua_cocos2dx_ParallaxNode_removeAllChildrenWithCleanup(lua_State* tolua_S)
     cobj = (cocos2d::ParallaxNode*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParallaxNode_removeAllChildrenWithCleanup'", nullptr);
         return 0;
@@ -66584,7 +63350,7 @@ int lua_cocos2dx_ParallaxNode_removeAllChildrenWithCleanup(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -66682,7 +63448,7 @@ int lua_cocos2dx_TMXObjectGroup_setPositionOffset(lua_State* tolua_S)
     cobj = (cocos2d::TMXObjectGroup*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXObjectGroup_setPositionOffset'", nullptr);
         return 0;
@@ -66690,7 +63456,7 @@ int lua_cocos2dx_TMXObjectGroup_setPositionOffset(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Vec2 arg0;
 
@@ -66732,7 +63498,7 @@ int lua_cocos2dx_TMXObjectGroup_getProperty(lua_State* tolua_S)
     cobj = (cocos2d::TMXObjectGroup*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXObjectGroup_getProperty'", nullptr);
         return 0;
@@ -66740,7 +63506,7 @@ int lua_cocos2dx_TMXObjectGroup_getProperty(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -66782,7 +63548,7 @@ int lua_cocos2dx_TMXObjectGroup_getPositionOffset(lua_State* tolua_S)
     cobj = (cocos2d::TMXObjectGroup*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXObjectGroup_getPositionOffset'", nullptr);
         return 0;
@@ -66790,7 +63556,7 @@ int lua_cocos2dx_TMXObjectGroup_getPositionOffset(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -66829,7 +63595,7 @@ int lua_cocos2dx_TMXObjectGroup_getObject(lua_State* tolua_S)
     cobj = (cocos2d::TMXObjectGroup*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXObjectGroup_getObject'", nullptr);
         return 0;
@@ -66837,7 +63603,7 @@ int lua_cocos2dx_TMXObjectGroup_getObject(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -66926,7 +63692,7 @@ int lua_cocos2dx_TMXObjectGroup_setGroupName(lua_State* tolua_S)
     cobj = (cocos2d::TMXObjectGroup*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXObjectGroup_setGroupName'", nullptr);
         return 0;
@@ -66934,7 +63700,7 @@ int lua_cocos2dx_TMXObjectGroup_setGroupName(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -67023,7 +63789,7 @@ int lua_cocos2dx_TMXObjectGroup_getGroupName(lua_State* tolua_S)
     cobj = (cocos2d::TMXObjectGroup*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXObjectGroup_getGroupName'", nullptr);
         return 0;
@@ -67031,7 +63797,7 @@ int lua_cocos2dx_TMXObjectGroup_getGroupName(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -67070,7 +63836,7 @@ int lua_cocos2dx_TMXObjectGroup_setProperties(lua_State* tolua_S)
     cobj = (cocos2d::TMXObjectGroup*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXObjectGroup_setProperties'", nullptr);
         return 0;
@@ -67078,7 +63844,7 @@ int lua_cocos2dx_TMXObjectGroup_setProperties(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::ValueMap arg0;
 
@@ -67120,7 +63886,7 @@ int lua_cocos2dx_TMXObjectGroup_setObjects(lua_State* tolua_S)
     cobj = (cocos2d::TMXObjectGroup*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXObjectGroup_setObjects'", nullptr);
         return 0;
@@ -67128,7 +63894,7 @@ int lua_cocos2dx_TMXObjectGroup_setObjects(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::ValueVector arg0;
 
@@ -67165,7 +63931,7 @@ int lua_cocos2dx_TMXObjectGroup_constructor(lua_State* tolua_S)
 
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -67237,7 +64003,7 @@ int lua_cocos2dx_TMXLayerInfo_setProperties(lua_State* tolua_S)
     cobj = (cocos2d::TMXLayerInfo*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXLayerInfo_setProperties'", nullptr);
         return 0;
@@ -67245,7 +64011,7 @@ int lua_cocos2dx_TMXLayerInfo_setProperties(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::ValueMap arg0;
 
@@ -67287,7 +64053,7 @@ int lua_cocos2dx_TMXLayerInfo_getProperties(lua_State* tolua_S)
     cobj = (cocos2d::TMXLayerInfo*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXLayerInfo_getProperties'", nullptr);
         return 0;
@@ -67295,7 +64061,7 @@ int lua_cocos2dx_TMXLayerInfo_getProperties(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -67329,7 +64095,7 @@ int lua_cocos2dx_TMXLayerInfo_constructor(lua_State* tolua_S)
 
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -67393,7 +64159,7 @@ int lua_cocos2dx_TMXTilesetInfo_getRectForGID(lua_State* tolua_S)
     cobj = (cocos2d::TMXTilesetInfo*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXTilesetInfo_getRectForGID'", nullptr);
         return 0;
@@ -67401,7 +64167,7 @@ int lua_cocos2dx_TMXTilesetInfo_getRectForGID(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         unsigned int arg0;
 
@@ -67438,7 +64204,7 @@ int lua_cocos2dx_TMXTilesetInfo_constructor(lua_State* tolua_S)
 
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -67501,7 +64267,7 @@ int lua_cocos2dx_TMXMapInfo_setObjectGroups(lua_State* tolua_S)
     cobj = (cocos2d::TMXMapInfo*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXMapInfo_setObjectGroups'", nullptr);
         return 0;
@@ -67509,7 +64275,7 @@ int lua_cocos2dx_TMXMapInfo_setObjectGroups(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Vector<cocos2d::TMXObjectGroup *> arg0;
 
@@ -67551,7 +64317,7 @@ int lua_cocos2dx_TMXMapInfo_setTileSize(lua_State* tolua_S)
     cobj = (cocos2d::TMXMapInfo*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXMapInfo_setTileSize'", nullptr);
         return 0;
@@ -67559,7 +64325,7 @@ int lua_cocos2dx_TMXMapInfo_setTileSize(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Size arg0;
 
@@ -67601,7 +64367,7 @@ int lua_cocos2dx_TMXMapInfo_initWithTMXFile(lua_State* tolua_S)
     cobj = (cocos2d::TMXMapInfo*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXMapInfo_initWithTMXFile'", nullptr);
         return 0;
@@ -67609,7 +64375,7 @@ int lua_cocos2dx_TMXMapInfo_initWithTMXFile(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -67651,7 +64417,7 @@ int lua_cocos2dx_TMXMapInfo_getOrientation(lua_State* tolua_S)
     cobj = (cocos2d::TMXMapInfo*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXMapInfo_getOrientation'", nullptr);
         return 0;
@@ -67659,7 +64425,7 @@ int lua_cocos2dx_TMXMapInfo_getOrientation(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -67698,7 +64464,7 @@ int lua_cocos2dx_TMXMapInfo_isStoringCharacters(lua_State* tolua_S)
     cobj = (cocos2d::TMXMapInfo*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXMapInfo_isStoringCharacters'", nullptr);
         return 0;
@@ -67706,7 +64472,7 @@ int lua_cocos2dx_TMXMapInfo_isStoringCharacters(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -67745,7 +64511,7 @@ int lua_cocos2dx_TMXMapInfo_setLayers(lua_State* tolua_S)
     cobj = (cocos2d::TMXMapInfo*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXMapInfo_setLayers'", nullptr);
         return 0;
@@ -67753,7 +64519,7 @@ int lua_cocos2dx_TMXMapInfo_setLayers(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Vector<cocos2d::TMXLayerInfo *> arg0;
 
@@ -67795,7 +64561,7 @@ int lua_cocos2dx_TMXMapInfo_parseXMLFile(lua_State* tolua_S)
     cobj = (cocos2d::TMXMapInfo*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXMapInfo_parseXMLFile'", nullptr);
         return 0;
@@ -67803,7 +64569,7 @@ int lua_cocos2dx_TMXMapInfo_parseXMLFile(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -67845,7 +64611,7 @@ int lua_cocos2dx_TMXMapInfo_getParentElement(lua_State* tolua_S)
     cobj = (cocos2d::TMXMapInfo*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXMapInfo_getParentElement'", nullptr);
         return 0;
@@ -67853,7 +64619,7 @@ int lua_cocos2dx_TMXMapInfo_getParentElement(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -67892,7 +64658,7 @@ int lua_cocos2dx_TMXMapInfo_setTMXFileName(lua_State* tolua_S)
     cobj = (cocos2d::TMXMapInfo*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXMapInfo_setTMXFileName'", nullptr);
         return 0;
@@ -67900,7 +64666,7 @@ int lua_cocos2dx_TMXMapInfo_setTMXFileName(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -67942,7 +64708,7 @@ int lua_cocos2dx_TMXMapInfo_parseXMLString(lua_State* tolua_S)
     cobj = (cocos2d::TMXMapInfo*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXMapInfo_parseXMLString'", nullptr);
         return 0;
@@ -67950,7 +64716,7 @@ int lua_cocos2dx_TMXMapInfo_parseXMLString(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -68086,7 +64852,7 @@ int lua_cocos2dx_TMXMapInfo_getParentGID(lua_State* tolua_S)
     cobj = (cocos2d::TMXMapInfo*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXMapInfo_getParentGID'", nullptr);
         return 0;
@@ -68094,7 +64860,7 @@ int lua_cocos2dx_TMXMapInfo_getParentGID(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -68133,7 +64899,7 @@ int lua_cocos2dx_TMXMapInfo_setParentElement(lua_State* tolua_S)
     cobj = (cocos2d::TMXMapInfo*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXMapInfo_setParentElement'", nullptr);
         return 0;
@@ -68141,7 +64907,7 @@ int lua_cocos2dx_TMXMapInfo_setParentElement(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         int arg0;
 
@@ -68183,7 +64949,7 @@ int lua_cocos2dx_TMXMapInfo_initWithXML(lua_State* tolua_S)
     cobj = (cocos2d::TMXMapInfo*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXMapInfo_initWithXML'", nullptr);
         return 0;
@@ -68191,7 +64957,7 @@ int lua_cocos2dx_TMXMapInfo_initWithXML(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         std::string arg0;
         std::string arg1;
@@ -68236,7 +65002,7 @@ int lua_cocos2dx_TMXMapInfo_setParentGID(lua_State* tolua_S)
     cobj = (cocos2d::TMXMapInfo*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXMapInfo_setParentGID'", nullptr);
         return 0;
@@ -68244,7 +65010,7 @@ int lua_cocos2dx_TMXMapInfo_setParentGID(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         int arg0;
 
@@ -68286,7 +65052,7 @@ int lua_cocos2dx_TMXMapInfo_getLayerAttribs(lua_State* tolua_S)
     cobj = (cocos2d::TMXMapInfo*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXMapInfo_getLayerAttribs'", nullptr);
         return 0;
@@ -68294,7 +65060,7 @@ int lua_cocos2dx_TMXMapInfo_getLayerAttribs(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -68333,7 +65099,7 @@ int lua_cocos2dx_TMXMapInfo_getTileSize(lua_State* tolua_S)
     cobj = (cocos2d::TMXMapInfo*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXMapInfo_getTileSize'", nullptr);
         return 0;
@@ -68341,7 +65107,7 @@ int lua_cocos2dx_TMXMapInfo_getTileSize(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -68380,7 +65146,7 @@ int lua_cocos2dx_TMXMapInfo_getTileProperties(lua_State* tolua_S)
     cobj = (cocos2d::TMXMapInfo*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXMapInfo_getTileProperties'", nullptr);
         return 0;
@@ -68388,7 +65154,7 @@ int lua_cocos2dx_TMXMapInfo_getTileProperties(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -68474,7 +65240,7 @@ int lua_cocos2dx_TMXMapInfo_getTMXFileName(lua_State* tolua_S)
     cobj = (cocos2d::TMXMapInfo*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXMapInfo_getTMXFileName'", nullptr);
         return 0;
@@ -68482,7 +65248,7 @@ int lua_cocos2dx_TMXMapInfo_getTMXFileName(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -68521,7 +65287,7 @@ int lua_cocos2dx_TMXMapInfo_setCurrentString(lua_State* tolua_S)
     cobj = (cocos2d::TMXMapInfo*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXMapInfo_setCurrentString'", nullptr);
         return 0;
@@ -68529,7 +65295,7 @@ int lua_cocos2dx_TMXMapInfo_setCurrentString(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -68571,7 +65337,7 @@ int lua_cocos2dx_TMXMapInfo_setProperties(lua_State* tolua_S)
     cobj = (cocos2d::TMXMapInfo*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXMapInfo_setProperties'", nullptr);
         return 0;
@@ -68579,7 +65345,7 @@ int lua_cocos2dx_TMXMapInfo_setProperties(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::ValueMap arg0;
 
@@ -68621,7 +65387,7 @@ int lua_cocos2dx_TMXMapInfo_setOrientation(lua_State* tolua_S)
     cobj = (cocos2d::TMXMapInfo*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXMapInfo_setOrientation'", nullptr);
         return 0;
@@ -68629,7 +65395,7 @@ int lua_cocos2dx_TMXMapInfo_setOrientation(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         int arg0;
 
@@ -68671,7 +65437,7 @@ int lua_cocos2dx_TMXMapInfo_setTileProperties(lua_State* tolua_S)
     cobj = (cocos2d::TMXMapInfo*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXMapInfo_setTileProperties'", nullptr);
         return 0;
@@ -68679,7 +65445,7 @@ int lua_cocos2dx_TMXMapInfo_setTileProperties(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::ValueMapIntKey arg0;
 
@@ -68721,7 +65487,7 @@ int lua_cocos2dx_TMXMapInfo_setMapSize(lua_State* tolua_S)
     cobj = (cocos2d::TMXMapInfo*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXMapInfo_setMapSize'", nullptr);
         return 0;
@@ -68729,7 +65495,7 @@ int lua_cocos2dx_TMXMapInfo_setMapSize(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Size arg0;
 
@@ -68771,7 +65537,7 @@ int lua_cocos2dx_TMXMapInfo_setStoringCharacters(lua_State* tolua_S)
     cobj = (cocos2d::TMXMapInfo*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXMapInfo_setStoringCharacters'", nullptr);
         return 0;
@@ -68779,7 +65545,7 @@ int lua_cocos2dx_TMXMapInfo_setStoringCharacters(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -68821,7 +65587,7 @@ int lua_cocos2dx_TMXMapInfo_getMapSize(lua_State* tolua_S)
     cobj = (cocos2d::TMXMapInfo*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXMapInfo_getMapSize'", nullptr);
         return 0;
@@ -68829,7 +65595,7 @@ int lua_cocos2dx_TMXMapInfo_getMapSize(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -68868,7 +65634,7 @@ int lua_cocos2dx_TMXMapInfo_setTilesets(lua_State* tolua_S)
     cobj = (cocos2d::TMXMapInfo*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXMapInfo_setTilesets'", nullptr);
         return 0;
@@ -68876,7 +65642,7 @@ int lua_cocos2dx_TMXMapInfo_setTilesets(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Vector<cocos2d::TMXTilesetInfo *> arg0;
 
@@ -68965,7 +65731,7 @@ int lua_cocos2dx_TMXMapInfo_getCurrentString(lua_State* tolua_S)
     cobj = (cocos2d::TMXMapInfo*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXMapInfo_getCurrentString'", nullptr);
         return 0;
@@ -68973,7 +65739,7 @@ int lua_cocos2dx_TMXMapInfo_getCurrentString(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -69012,7 +65778,7 @@ int lua_cocos2dx_TMXMapInfo_setLayerAttribs(lua_State* tolua_S)
     cobj = (cocos2d::TMXMapInfo*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXMapInfo_setLayerAttribs'", nullptr);
         return 0;
@@ -69020,7 +65786,7 @@ int lua_cocos2dx_TMXMapInfo_setLayerAttribs(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         int arg0;
 
@@ -69131,7 +65897,7 @@ int lua_cocos2dx_TMXMapInfo_constructor(lua_State* tolua_S)
 
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -69227,7 +65993,7 @@ int lua_cocos2dx_TMXLayer_getPositionAt(lua_State* tolua_S)
     cobj = (cocos2d::TMXLayer*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXLayer_getPositionAt'", nullptr);
         return 0;
@@ -69235,7 +66001,7 @@ int lua_cocos2dx_TMXLayer_getPositionAt(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Vec2 arg0;
 
@@ -69277,7 +66043,7 @@ int lua_cocos2dx_TMXLayer_setLayerOrientation(lua_State* tolua_S)
     cobj = (cocos2d::TMXLayer*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXLayer_setLayerOrientation'", nullptr);
         return 0;
@@ -69285,7 +66051,7 @@ int lua_cocos2dx_TMXLayer_setLayerOrientation(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         int arg0;
 
@@ -69327,7 +66093,7 @@ int lua_cocos2dx_TMXLayer_releaseMap(lua_State* tolua_S)
     cobj = (cocos2d::TMXLayer*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXLayer_releaseMap'", nullptr);
         return 0;
@@ -69335,7 +66101,7 @@ int lua_cocos2dx_TMXLayer_releaseMap(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -69374,7 +66140,7 @@ int lua_cocos2dx_TMXLayer_getLayerSize(lua_State* tolua_S)
     cobj = (cocos2d::TMXLayer*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXLayer_getLayerSize'", nullptr);
         return 0;
@@ -69382,7 +66148,7 @@ int lua_cocos2dx_TMXLayer_getLayerSize(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -69421,7 +66187,7 @@ int lua_cocos2dx_TMXLayer_setMapTileSize(lua_State* tolua_S)
     cobj = (cocos2d::TMXLayer*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXLayer_setMapTileSize'", nullptr);
         return 0;
@@ -69429,7 +66195,7 @@ int lua_cocos2dx_TMXLayer_setMapTileSize(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Size arg0;
 
@@ -69471,7 +66237,7 @@ int lua_cocos2dx_TMXLayer_getLayerOrientation(lua_State* tolua_S)
     cobj = (cocos2d::TMXLayer*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXLayer_getLayerOrientation'", nullptr);
         return 0;
@@ -69479,7 +66245,7 @@ int lua_cocos2dx_TMXLayer_getLayerOrientation(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -69518,7 +66284,7 @@ int lua_cocos2dx_TMXLayer_setProperties(lua_State* tolua_S)
     cobj = (cocos2d::TMXLayer*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXLayer_setProperties'", nullptr);
         return 0;
@@ -69526,7 +66292,7 @@ int lua_cocos2dx_TMXLayer_setProperties(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::ValueMap arg0;
 
@@ -69568,7 +66334,7 @@ int lua_cocos2dx_TMXLayer_setLayerName(lua_State* tolua_S)
     cobj = (cocos2d::TMXLayer*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXLayer_setLayerName'", nullptr);
         return 0;
@@ -69576,7 +66342,7 @@ int lua_cocos2dx_TMXLayer_setLayerName(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -69618,7 +66384,7 @@ int lua_cocos2dx_TMXLayer_removeTileAt(lua_State* tolua_S)
     cobj = (cocos2d::TMXLayer*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXLayer_removeTileAt'", nullptr);
         return 0;
@@ -69626,7 +66392,7 @@ int lua_cocos2dx_TMXLayer_removeTileAt(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Vec2 arg0;
 
@@ -69668,7 +66434,7 @@ int lua_cocos2dx_TMXLayer_initWithTilesetInfo(lua_State* tolua_S)
     cobj = (cocos2d::TMXLayer*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXLayer_initWithTilesetInfo'", nullptr);
         return 0;
@@ -69676,7 +66442,7 @@ int lua_cocos2dx_TMXLayer_initWithTilesetInfo(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 3) 
+    if (argc == 3)
     {
         cocos2d::TMXTilesetInfo* arg0;
         cocos2d::TMXLayerInfo* arg1;
@@ -69724,7 +66490,7 @@ int lua_cocos2dx_TMXLayer_setupTiles(lua_State* tolua_S)
     cobj = (cocos2d::TMXLayer*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXLayer_setupTiles'", nullptr);
         return 0;
@@ -69732,7 +66498,7 @@ int lua_cocos2dx_TMXLayer_setupTiles(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -69838,7 +66604,7 @@ int lua_cocos2dx_TMXLayer_getMapTileSize(lua_State* tolua_S)
     cobj = (cocos2d::TMXLayer*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXLayer_getMapTileSize'", nullptr);
         return 0;
@@ -69846,7 +66612,7 @@ int lua_cocos2dx_TMXLayer_getMapTileSize(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -69885,7 +66651,7 @@ int lua_cocos2dx_TMXLayer_getProperty(lua_State* tolua_S)
     cobj = (cocos2d::TMXLayer*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXLayer_getProperty'", nullptr);
         return 0;
@@ -69893,7 +66659,7 @@ int lua_cocos2dx_TMXLayer_getProperty(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -69935,7 +66701,7 @@ int lua_cocos2dx_TMXLayer_setLayerSize(lua_State* tolua_S)
     cobj = (cocos2d::TMXLayer*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXLayer_setLayerSize'", nullptr);
         return 0;
@@ -69943,7 +66709,7 @@ int lua_cocos2dx_TMXLayer_setLayerSize(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Size arg0;
 
@@ -69985,7 +66751,7 @@ int lua_cocos2dx_TMXLayer_getLayerName(lua_State* tolua_S)
     cobj = (cocos2d::TMXLayer*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXLayer_getLayerName'", nullptr);
         return 0;
@@ -69993,7 +66759,7 @@ int lua_cocos2dx_TMXLayer_getLayerName(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -70032,7 +66798,7 @@ int lua_cocos2dx_TMXLayer_setTileSet(lua_State* tolua_S)
     cobj = (cocos2d::TMXLayer*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXLayer_setTileSet'", nullptr);
         return 0;
@@ -70040,7 +66806,7 @@ int lua_cocos2dx_TMXLayer_setTileSet(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::TMXTilesetInfo* arg0;
 
@@ -70082,7 +66848,7 @@ int lua_cocos2dx_TMXLayer_getTileSet(lua_State* tolua_S)
     cobj = (cocos2d::TMXLayer*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXLayer_getTileSet'", nullptr);
         return 0;
@@ -70090,7 +66856,7 @@ int lua_cocos2dx_TMXLayer_getTileSet(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -70176,7 +66942,7 @@ int lua_cocos2dx_TMXLayer_getTileAt(lua_State* tolua_S)
     cobj = (cocos2d::TMXLayer*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXLayer_getTileAt'", nullptr);
         return 0;
@@ -70184,7 +66950,7 @@ int lua_cocos2dx_TMXLayer_getTileAt(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Vec2 arg0;
 
@@ -70261,7 +67027,7 @@ int lua_cocos2dx_TMXLayer_constructor(lua_State* tolua_S)
 
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -70344,7 +67110,7 @@ int lua_cocos2dx_TMXTiledMap_setObjectGroups(lua_State* tolua_S)
     cobj = (cocos2d::TMXTiledMap*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXTiledMap_setObjectGroups'", nullptr);
         return 0;
@@ -70352,7 +67118,7 @@ int lua_cocos2dx_TMXTiledMap_setObjectGroups(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Vector<cocos2d::TMXObjectGroup *> arg0;
 
@@ -70394,7 +67160,7 @@ int lua_cocos2dx_TMXTiledMap_getProperty(lua_State* tolua_S)
     cobj = (cocos2d::TMXTiledMap*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXTiledMap_getProperty'", nullptr);
         return 0;
@@ -70402,7 +67168,7 @@ int lua_cocos2dx_TMXTiledMap_getProperty(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -70444,7 +67210,7 @@ int lua_cocos2dx_TMXTiledMap_setMapSize(lua_State* tolua_S)
     cobj = (cocos2d::TMXTiledMap*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXTiledMap_setMapSize'", nullptr);
         return 0;
@@ -70452,7 +67218,7 @@ int lua_cocos2dx_TMXTiledMap_setMapSize(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Size arg0;
 
@@ -70494,7 +67260,7 @@ int lua_cocos2dx_TMXTiledMap_getObjectGroup(lua_State* tolua_S)
     cobj = (cocos2d::TMXTiledMap*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXTiledMap_getObjectGroup'", nullptr);
         return 0;
@@ -70502,7 +67268,7 @@ int lua_cocos2dx_TMXTiledMap_getObjectGroup(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -70591,7 +67357,7 @@ int lua_cocos2dx_TMXTiledMap_getTileSize(lua_State* tolua_S)
     cobj = (cocos2d::TMXTiledMap*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXTiledMap_getTileSize'", nullptr);
         return 0;
@@ -70599,7 +67365,7 @@ int lua_cocos2dx_TMXTiledMap_getTileSize(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -70638,7 +67404,7 @@ int lua_cocos2dx_TMXTiledMap_getMapSize(lua_State* tolua_S)
     cobj = (cocos2d::TMXTiledMap*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXTiledMap_getMapSize'", nullptr);
         return 0;
@@ -70646,7 +67412,7 @@ int lua_cocos2dx_TMXTiledMap_getMapSize(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -70685,7 +67451,7 @@ int lua_cocos2dx_TMXTiledMap_getProperties(lua_State* tolua_S)
     cobj = (cocos2d::TMXTiledMap*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXTiledMap_getProperties'", nullptr);
         return 0;
@@ -70693,7 +67459,7 @@ int lua_cocos2dx_TMXTiledMap_getProperties(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -70732,7 +67498,7 @@ int lua_cocos2dx_TMXTiledMap_setTileSize(lua_State* tolua_S)
     cobj = (cocos2d::TMXTiledMap*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXTiledMap_setTileSize'", nullptr);
         return 0;
@@ -70740,7 +67506,7 @@ int lua_cocos2dx_TMXTiledMap_setTileSize(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Size arg0;
 
@@ -70782,7 +67548,7 @@ int lua_cocos2dx_TMXTiledMap_setProperties(lua_State* tolua_S)
     cobj = (cocos2d::TMXTiledMap*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXTiledMap_setProperties'", nullptr);
         return 0;
@@ -70790,7 +67556,7 @@ int lua_cocos2dx_TMXTiledMap_setProperties(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::ValueMap arg0;
 
@@ -70832,7 +67598,7 @@ int lua_cocos2dx_TMXTiledMap_getLayer(lua_State* tolua_S)
     cobj = (cocos2d::TMXTiledMap*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXTiledMap_getLayer'", nullptr);
         return 0;
@@ -70840,7 +67606,7 @@ int lua_cocos2dx_TMXTiledMap_getLayer(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -70882,7 +67648,7 @@ int lua_cocos2dx_TMXTiledMap_getMapOrientation(lua_State* tolua_S)
     cobj = (cocos2d::TMXTiledMap*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXTiledMap_getMapOrientation'", nullptr);
         return 0;
@@ -70890,7 +67656,7 @@ int lua_cocos2dx_TMXTiledMap_getMapOrientation(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -70929,7 +67695,7 @@ int lua_cocos2dx_TMXTiledMap_setMapOrientation(lua_State* tolua_S)
     cobj = (cocos2d::TMXTiledMap*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXTiledMap_setMapOrientation'", nullptr);
         return 0;
@@ -70937,7 +67703,7 @@ int lua_cocos2dx_TMXTiledMap_setMapOrientation(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         int arg0;
 
@@ -71087,7 +67853,7 @@ int lua_cocos2dx_TileMapAtlas_initWithTileFile(lua_State* tolua_S)
     cobj = (cocos2d::TileMapAtlas*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TileMapAtlas_initWithTileFile'", nullptr);
         return 0;
@@ -71095,7 +67861,7 @@ int lua_cocos2dx_TileMapAtlas_initWithTileFile(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 4) 
+    if (argc == 4)
     {
         std::string arg0;
         std::string arg1;
@@ -71146,7 +67912,7 @@ int lua_cocos2dx_TileMapAtlas_releaseMap(lua_State* tolua_S)
     cobj = (cocos2d::TileMapAtlas*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TileMapAtlas_releaseMap'", nullptr);
         return 0;
@@ -71154,7 +67920,7 @@ int lua_cocos2dx_TileMapAtlas_releaseMap(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -71193,7 +67959,7 @@ int lua_cocos2dx_TileMapAtlas_getTileAt(lua_State* tolua_S)
     cobj = (cocos2d::TileMapAtlas*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TileMapAtlas_getTileAt'", nullptr);
         return 0;
@@ -71201,7 +67967,7 @@ int lua_cocos2dx_TileMapAtlas_getTileAt(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Vec2 arg0;
 
@@ -71243,7 +68009,7 @@ int lua_cocos2dx_TileMapAtlas_setTile(lua_State* tolua_S)
     cobj = (cocos2d::TileMapAtlas*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TileMapAtlas_setTile'", nullptr);
         return 0;
@@ -71251,7 +68017,7 @@ int lua_cocos2dx_TileMapAtlas_setTile(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 2)
     {
         cocos2d::Color3B arg0;
         cocos2d::Vec2 arg1;
@@ -71333,7 +68099,7 @@ int lua_cocos2dx_TileMapAtlas_constructor(lua_State* tolua_S)
 
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -71381,6 +68147,7 @@ int lua_register_cocos2dx_TileMapAtlas(lua_State* tolua_S)
     g_typeCast["TileMapAtlas"] = "cc.TileMapAtlas";
     return 1;
 }
+#endif  //CC_USE_TMX
 
 int lua_cocos2dx_Component_setEnabled(lua_State* tolua_S)
 {
@@ -71400,7 +68167,7 @@ int lua_cocos2dx_Component_setEnabled(lua_State* tolua_S)
     cobj = (cocos2d::Component*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Component_setEnabled'", nullptr);
         return 0;
@@ -71408,7 +68175,7 @@ int lua_cocos2dx_Component_setEnabled(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         bool arg0;
 
@@ -71450,7 +68217,7 @@ int lua_cocos2dx_Component_setName(lua_State* tolua_S)
     cobj = (cocos2d::Component*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Component_setName'", nullptr);
         return 0;
@@ -71458,7 +68225,7 @@ int lua_cocos2dx_Component_setName(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         std::string arg0;
 
@@ -71500,7 +68267,7 @@ int lua_cocos2dx_Component_isEnabled(lua_State* tolua_S)
     cobj = (cocos2d::Component*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Component_isEnabled'", nullptr);
         return 0;
@@ -71508,7 +68275,7 @@ int lua_cocos2dx_Component_isEnabled(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -71547,7 +68314,7 @@ int lua_cocos2dx_Component_update(lua_State* tolua_S)
     cobj = (cocos2d::Component*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Component_update'", nullptr);
         return 0;
@@ -71555,7 +68322,7 @@ int lua_cocos2dx_Component_update(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         double arg0;
 
@@ -71597,7 +68364,7 @@ int lua_cocos2dx_Component_getOwner(lua_State* tolua_S)
     cobj = (cocos2d::Component*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Component_getOwner'", nullptr);
         return 0;
@@ -71605,7 +68372,7 @@ int lua_cocos2dx_Component_getOwner(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -71644,7 +68411,7 @@ int lua_cocos2dx_Component_init(lua_State* tolua_S)
     cobj = (cocos2d::Component*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Component_init'", nullptr);
         return 0;
@@ -71652,7 +68419,7 @@ int lua_cocos2dx_Component_init(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -71691,7 +68458,7 @@ int lua_cocos2dx_Component_setOwner(lua_State* tolua_S)
     cobj = (cocos2d::Component*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Component_setOwner'", nullptr);
         return 0;
@@ -71699,7 +68466,7 @@ int lua_cocos2dx_Component_setOwner(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 1)
     {
         cocos2d::Node* arg0;
 
@@ -71741,7 +68508,7 @@ int lua_cocos2dx_Component_getName(lua_State* tolua_S)
     cobj = (cocos2d::Component*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Component_getName'", nullptr);
         return 0;
@@ -71749,7 +68516,7 @@ int lua_cocos2dx_Component_getName(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 0)
     {
         if(!ok)
         {
@@ -71834,259 +68601,260 @@ int lua_register_cocos2dx_Component(lua_State* tolua_S)
 TOLUA_API int register_all_cocos2dx(lua_State* tolua_S)
 {
 	tolua_open(tolua_S);
-	
+
 	tolua_module(tolua_S,"cc",0);
 	tolua_beginmodule(tolua_S,"cc");
 
-	lua_register_cocos2dx_Ref(tolua_S);
-	lua_register_cocos2dx_Console(tolua_S);
-	lua_register_cocos2dx_Node(tolua_S);
-	lua_register_cocos2dx_Scene(tolua_S);
-	lua_register_cocos2dx_TransitionScene(tolua_S);
-	lua_register_cocos2dx_TransitionEaseScene(tolua_S);
-	lua_register_cocos2dx_TransitionMoveInL(tolua_S);
-	lua_register_cocos2dx_TransitionMoveInB(tolua_S);
-	lua_register_cocos2dx_AtlasNode(tolua_S);
-	lua_register_cocos2dx_TileMapAtlas(tolua_S);
-	lua_register_cocos2dx_TransitionMoveInT(tolua_S);
-	lua_register_cocos2dx_TMXTilesetInfo(tolua_S);
-	lua_register_cocos2dx_TransitionMoveInR(tolua_S);
-	lua_register_cocos2dx_Action(tolua_S);
-	lua_register_cocos2dx_FiniteTimeAction(tolua_S);
-	lua_register_cocos2dx_ActionInstant(tolua_S);
-	lua_register_cocos2dx_Hide(tolua_S);
-	lua_register_cocos2dx_ParticleSystem(tolua_S);
-	lua_register_cocos2dx_ParticleSystemQuad(tolua_S);
-	lua_register_cocos2dx_ParticleSpiral(tolua_S);
-	lua_register_cocos2dx_GridBase(tolua_S);
-	lua_register_cocos2dx_AnimationCache(tolua_S);
-	lua_register_cocos2dx_ActionInterval(tolua_S);
-	lua_register_cocos2dx_ActionCamera(tolua_S);
-	lua_register_cocos2dx_ProgressFromTo(tolua_S);
-	lua_register_cocos2dx_MoveBy(tolua_S);
-	lua_register_cocos2dx_MoveTo(tolua_S);
-	lua_register_cocos2dx_JumpBy(tolua_S);
-	lua_register_cocos2dx_EventListener(tolua_S);
-	lua_register_cocos2dx_EventListenerKeyboard(tolua_S);
-	lua_register_cocos2dx_EventListenerMouse(tolua_S);
-	lua_register_cocos2dx_TransitionRotoZoom(tolua_S);
-	lua_register_cocos2dx_Director(tolua_S);
-	lua_register_cocos2dx_Scheduler(tolua_S);
-	lua_register_cocos2dx_ActionEase(tolua_S);
-	lua_register_cocos2dx_EaseElastic(tolua_S);
-	lua_register_cocos2dx_EaseElasticOut(tolua_S);
-	lua_register_cocos2dx_EaseQuadraticActionInOut(tolua_S);
-	lua_register_cocos2dx_EaseBackOut(tolua_S);
-	lua_register_cocos2dx_Texture2D(tolua_S);
-	lua_register_cocos2dx_TransitionSceneOriented(tolua_S);
-	lua_register_cocos2dx_TransitionFlipX(tolua_S);
-	lua_register_cocos2dx_GridAction(tolua_S);
-	lua_register_cocos2dx_TiledGrid3DAction(tolua_S);
-	lua_register_cocos2dx_FadeOutTRTiles(tolua_S);
-	lua_register_cocos2dx_FadeOutUpTiles(tolua_S);
-	lua_register_cocos2dx_FadeOutDownTiles(tolua_S);
-	lua_register_cocos2dx_StopGrid(tolua_S);
-	lua_register_cocos2dx_ParticleBatchNode(tolua_S);
-	lua_register_cocos2dx_SkewTo(tolua_S);
-	lua_register_cocos2dx_SkewBy(tolua_S);
-	lua_register_cocos2dx_EaseQuadraticActionOut(tolua_S);
-	lua_register_cocos2dx_TransitionProgress(tolua_S);
-	lua_register_cocos2dx_TransitionProgressVertical(tolua_S);
-	lua_register_cocos2dx_Layer(tolua_S);
-	lua_register_cocos2dx_TMXTiledMap(tolua_S);
-	lua_register_cocos2dx_Grid3DAction(tolua_S);
-	lua_register_cocos2dx_BaseLight(tolua_S);
-	lua_register_cocos2dx_SpotLight(tolua_S);
-	lua_register_cocos2dx_FadeTo(tolua_S);
-	lua_register_cocos2dx_FadeIn(tolua_S);
-	lua_register_cocos2dx_DirectionLight(tolua_S);
-	lua_register_cocos2dx_GLProgramState(tolua_S);
-	lua_register_cocos2dx_EventListenerCustom(tolua_S);
-	lua_register_cocos2dx_FlipX3D(tolua_S);
-	lua_register_cocos2dx_FlipY3D(tolua_S);
-	lua_register_cocos2dx_EaseSineInOut(tolua_S);
-	lua_register_cocos2dx_TransitionFlipAngular(tolua_S);
-	lua_register_cocos2dx_EaseElasticInOut(tolua_S);
-	lua_register_cocos2dx_EaseBounce(tolua_S);
-	lua_register_cocos2dx_Show(tolua_S);
-	lua_register_cocos2dx_FadeOut(tolua_S);
-	lua_register_cocos2dx_CallFunc(tolua_S);
-	lua_register_cocos2dx_Event(tolua_S);
-	lua_register_cocos2dx_EventMouse(tolua_S);
-	lua_register_cocos2dx_GLView(tolua_S);
-	lua_register_cocos2dx_EaseBezierAction(tolua_S);
-	lua_register_cocos2dx_ParticleFireworks(tolua_S);
-	lua_register_cocos2dx_MenuItem(tolua_S);
-	lua_register_cocos2dx_MenuItemSprite(tolua_S);
-	lua_register_cocos2dx_MenuItemImage(tolua_S);
-	lua_register_cocos2dx_ParticleFire(tolua_S);
-	lua_register_cocos2dx_TransitionZoomFlipAngular(tolua_S);
-	lua_register_cocos2dx_EaseRateAction(tolua_S);
-	lua_register_cocos2dx_EaseIn(tolua_S);
-	lua_register_cocos2dx_EaseExponentialInOut(tolua_S);
-	lua_register_cocos2dx_EaseBackInOut(tolua_S);
-	lua_register_cocos2dx_Waves3D(tolua_S);
-	lua_register_cocos2dx_EaseExponentialOut(tolua_S);
-	lua_register_cocos2dx_SpriteBatchNode(tolua_S);
-	lua_register_cocos2dx_Label(tolua_S);
-	lua_register_cocos2dx_Application(tolua_S);
-	lua_register_cocos2dx_DelayTime(tolua_S);
-	lua_register_cocos2dx_LabelAtlas(tolua_S);
-	lua_register_cocos2dx_ParticleSnow(tolua_S);
-	lua_register_cocos2dx_EaseElasticIn(tolua_S);
-	lua_register_cocos2dx_EaseCircleActionInOut(tolua_S);
-	lua_register_cocos2dx_EaseQuarticActionOut(tolua_S);
-	lua_register_cocos2dx_EventAcceleration(tolua_S);
-	lua_register_cocos2dx_EaseCubicActionIn(tolua_S);
-	lua_register_cocos2dx_TextureCache(tolua_S);
-	lua_register_cocos2dx_ActionTween(tolua_S);
-	lua_register_cocos2dx_TransitionFadeTR(tolua_S);
-	lua_register_cocos2dx_TransitionFadeDown(tolua_S);
-	lua_register_cocos2dx_ParticleSun(tolua_S);
-	lua_register_cocos2dx_TransitionProgressHorizontal(tolua_S);
-	lua_register_cocos2dx_TMXObjectGroup(tolua_S);
-	lua_register_cocos2dx_TMXLayer(tolua_S);
-	lua_register_cocos2dx_FlipX(tolua_S);
-	lua_register_cocos2dx_FlipY(tolua_S);
-	lua_register_cocos2dx_EventKeyboard(tolua_S);
-	lua_register_cocos2dx_TransitionSplitCols(tolua_S);
-	lua_register_cocos2dx_Timer(tolua_S);
-	lua_register_cocos2dx_RepeatForever(tolua_S);
-	lua_register_cocos2dx_Place(tolua_S);
-	lua_register_cocos2dx_EventListenerAcceleration(tolua_S);
-	lua_register_cocos2dx_TiledGrid3D(tolua_S);
-	lua_register_cocos2dx_EaseBounceOut(tolua_S);
-	lua_register_cocos2dx_RenderTexture(tolua_S);
-	lua_register_cocos2dx_TintBy(tolua_S);
-	lua_register_cocos2dx_TransitionShrinkGrow(tolua_S);
-	lua_register_cocos2dx_ClippingNode(tolua_S);
-	lua_register_cocos2dx_ParticleFlower(tolua_S);
-	lua_register_cocos2dx_EaseCircleActionIn(tolua_S);
-	lua_register_cocos2dx_ParticleSmoke(tolua_S);
-	lua_register_cocos2dx_Image(tolua_S);
-	lua_register_cocos2dx_LayerMultiplex(tolua_S);
-	lua_register_cocos2dx_Blink(tolua_S);
-	lua_register_cocos2dx_JumpTo(tolua_S);
-	lua_register_cocos2dx_ParticleExplosion(tolua_S);
-	lua_register_cocos2dx_TransitionJumpZoom(tolua_S);
-	lua_register_cocos2dx_Touch(tolua_S);
-	lua_register_cocos2dx_AnimationFrame(tolua_S);
-	lua_register_cocos2dx_NodeGrid(tolua_S);
-	lua_register_cocos2dx_TMXLayerInfo(tolua_S);
-	lua_register_cocos2dx_EaseSineIn(tolua_S);
-	lua_register_cocos2dx_EaseBounceIn(tolua_S);
-	lua_register_cocos2dx_Camera(tolua_S);
-	lua_register_cocos2dx_GLProgram(tolua_S);
-	lua_register_cocos2dx_ParticleGalaxy(tolua_S);
-	lua_register_cocos2dx_Twirl(tolua_S);
-	lua_register_cocos2dx_MenuItemLabel(tolua_S);
-	lua_register_cocos2dx_EaseQuinticActionIn(tolua_S);
-	lua_register_cocos2dx_LayerColor(tolua_S);
-	lua_register_cocos2dx_FadeOutBLTiles(tolua_S);
-	lua_register_cocos2dx_LayerGradient(tolua_S);
-	lua_register_cocos2dx_EventListenerTouchAllAtOnce(tolua_S);
-	lua_register_cocos2dx_GLViewImpl(tolua_S);
-	lua_register_cocos2dx_ToggleVisibility(tolua_S);
-	lua_register_cocos2dx_Repeat(tolua_S);
-	lua_register_cocos2dx_CardinalSplineTo(tolua_S);
-	lua_register_cocos2dx_CardinalSplineBy(tolua_S);
-	lua_register_cocos2dx_TransitionFlipY(tolua_S);
-	lua_register_cocos2dx_TurnOffTiles(tolua_S);
-	lua_register_cocos2dx_TintTo(tolua_S);
-	lua_register_cocos2dx_CatmullRomTo(tolua_S);
-	lua_register_cocos2dx_TransitionFadeBL(tolua_S);
-	lua_register_cocos2dx_TargetedAction(tolua_S);
-	lua_register_cocos2dx_DrawNode(tolua_S);
-	lua_register_cocos2dx_TransitionTurnOffTiles(tolua_S);
-	lua_register_cocos2dx_RotateTo(tolua_S);
-	lua_register_cocos2dx_TransitionSplitRows(tolua_S);
-	lua_register_cocos2dx_Device(tolua_S);
-	lua_register_cocos2dx_TransitionProgressRadialCCW(tolua_S);
-	lua_register_cocos2dx_EventListenerFocus(tolua_S);
-	lua_register_cocos2dx_TransitionPageTurn(tolua_S);
-	lua_register_cocos2dx_BezierBy(tolua_S);
-	lua_register_cocos2dx_BezierTo(tolua_S);
-	lua_register_cocos2dx_Menu(tolua_S);
-	lua_register_cocos2dx_SpriteFrame(tolua_S);
-	lua_register_cocos2dx_ActionManager(tolua_S);
-	lua_register_cocos2dx_UserDefault(tolua_S);
-	lua_register_cocos2dx_TransitionZoomFlipX(tolua_S);
-	lua_register_cocos2dx_EventFocus(tolua_S);
-	lua_register_cocos2dx_EaseQuinticActionInOut(tolua_S);
-	lua_register_cocos2dx_SpriteFrameCache(tolua_S);
-	lua_register_cocos2dx_PointLight(tolua_S);
-	lua_register_cocos2dx_TransitionCrossFade(tolua_S);
-	lua_register_cocos2dx_Ripple3D(tolua_S);
-	lua_register_cocos2dx_Lens3D(tolua_S);
-	lua_register_cocos2dx_ScaleTo(tolua_S);
-	lua_register_cocos2dx_Spawn(tolua_S);
-	lua_register_cocos2dx_EaseQuarticActionInOut(tolua_S);
-	lua_register_cocos2dx_ShakyTiles3D(tolua_S);
-	lua_register_cocos2dx_PageTurn3D(tolua_S);
-	lua_register_cocos2dx_TransitionSlideInL(tolua_S);
-	lua_register_cocos2dx_TransitionSlideInT(tolua_S);
-	lua_register_cocos2dx_Grid3D(tolua_S);
-	lua_register_cocos2dx_EaseCircleActionOut(tolua_S);
-	lua_register_cocos2dx_TransitionProgressInOut(tolua_S);
-	lua_register_cocos2dx_EaseCubicActionInOut(tolua_S);
-	lua_register_cocos2dx_EaseBackIn(tolua_S);
-	lua_register_cocos2dx_SplitRows(tolua_S);
-	lua_register_cocos2dx_Follow(tolua_S);
-	lua_register_cocos2dx_Animate(tolua_S);
-	lua_register_cocos2dx_ShuffleTiles(tolua_S);
-	lua_register_cocos2dx_ProgressTimer(tolua_S);
-	lua_register_cocos2dx_ParticleMeteor(tolua_S);
-	lua_register_cocos2dx_EaseQuarticActionIn(tolua_S);
-	lua_register_cocos2dx_EaseInOut(tolua_S);
-	lua_register_cocos2dx_TransitionZoomFlipY(tolua_S);
-	lua_register_cocos2dx_ScaleBy(tolua_S);
-	lua_register_cocos2dx_EventTouch(tolua_S);
-	lua_register_cocos2dx_Animation(tolua_S);
-	lua_register_cocos2dx_TMXMapInfo(tolua_S);
-	lua_register_cocos2dx_EaseExponentialIn(tolua_S);
-	lua_register_cocos2dx_ReuseGrid(tolua_S);
-	lua_register_cocos2dx_EaseQuinticActionOut(tolua_S);
-	lua_register_cocos2dx_EventDispatcher(tolua_S);
-	lua_register_cocos2dx_MenuItemAtlasFont(tolua_S);
-	lua_register_cocos2dx_Liquid(tolua_S);
-	lua_register_cocos2dx_OrbitCamera(tolua_S);
-	lua_register_cocos2dx_ParallaxNode(tolua_S);
-	lua_register_cocos2dx_ClippingRectangleNode(tolua_S);
-	lua_register_cocos2dx_EventCustom(tolua_S);
-	lua_register_cocos2dx_TransitionFade(tolua_S);
-	lua_register_cocos2dx_Component(tolua_S);
-	lua_register_cocos2dx_EaseCubicActionOut(tolua_S);
-	lua_register_cocos2dx_EventListenerTouchOneByOne(tolua_S);
-	lua_register_cocos2dx_ParticleRain(tolua_S);
-	lua_register_cocos2dx_Waves(tolua_S);
-	lua_register_cocos2dx_EaseOut(tolua_S);
-	lua_register_cocos2dx_MenuItemFont(tolua_S);
-	lua_register_cocos2dx_TransitionFadeUp(tolua_S);
-	lua_register_cocos2dx_EaseSineOut(tolua_S);
-	lua_register_cocos2dx_JumpTiles3D(tolua_S);
-	lua_register_cocos2dx_MenuItemToggle(tolua_S);
-	lua_register_cocos2dx_RemoveSelf(tolua_S);
-	lua_register_cocos2dx_SplitCols(tolua_S);
-	lua_register_cocos2dx_ProtectedNode(tolua_S);
-	lua_register_cocos2dx_MotionStreak(tolua_S);
-	lua_register_cocos2dx_RotateBy(tolua_S);
-	lua_register_cocos2dx_FileUtils(tolua_S);
-	lua_register_cocos2dx_Sprite(tolua_S);
-	lua_register_cocos2dx_ProgressTo(tolua_S);
-	lua_register_cocos2dx_TransitionProgressOutIn(tolua_S);
-	lua_register_cocos2dx_CatmullRomBy(tolua_S);
-	lua_register_cocos2dx_Sequence(tolua_S);
-	lua_register_cocos2dx_Shaky3D(tolua_S);
-	lua_register_cocos2dx_TransitionProgressRadialCW(tolua_S);
-	lua_register_cocos2dx_EaseBounceInOut(tolua_S);
-	lua_register_cocos2dx_TransitionSlideInR(tolua_S);
-	lua_register_cocos2dx_AmbientLight(tolua_S);
-	lua_register_cocos2dx_GLProgramCache(tolua_S);
-	lua_register_cocos2dx_EaseQuadraticActionIn(tolua_S);
-	lua_register_cocos2dx_WavesTiles3D(tolua_S);
-	lua_register_cocos2dx_TransitionSlideInB(tolua_S);
-	lua_register_cocos2dx_Speed(tolua_S);
-	lua_register_cocos2dx_ShatteredTiles3D(tolua_S);
+    lua_register_cocos2dx_Ref(tolua_S);
+    lua_register_cocos2dx_Application(tolua_S);
+    lua_register_cocos2dx_Camera(tolua_S);
+    lua_register_cocos2dx_Device(tolua_S);
+    lua_register_cocos2dx_Director(tolua_S);
+    lua_register_cocos2dx_Scheduler(tolua_S);
+    lua_register_cocos2dx_Scene(tolua_S);
+    lua_register_cocos2dx_Node(tolua_S);
+    lua_register_cocos2dx_NodeGrid(tolua_S);
+    lua_register_cocos2dx_AtlasNode(tolua_S);
+    lua_register_cocos2dx_ClippingNode(tolua_S);
+    lua_register_cocos2dx_ClippingRectangleNode(tolua_S);
+    lua_register_cocos2dx_DrawNode(tolua_S);
+    lua_register_cocos2dx_ProtectedNode(tolua_S);
+    lua_register_cocos2dx_Sprite(tolua_S);
+    lua_register_cocos2dx_SpriteBatchNode(tolua_S);
+    lua_register_cocos2dx_SpriteFrame(tolua_S);
+    lua_register_cocos2dx_SpriteFrameCache(tolua_S);
+    lua_register_cocos2dx_GLProgramState(tolua_S);
+    lua_register_cocos2dx_GLProgramCache(tolua_S);
+    lua_register_cocos2dx_GLProgram(tolua_S);
+    lua_register_cocos2dx_GLView(tolua_S);
+    lua_register_cocos2dx_GLViewImpl(tolua_S);
+    lua_register_cocos2dx_RenderTexture(tolua_S);
+    lua_register_cocos2dx_Texture2D(tolua_S);
+    lua_register_cocos2dx_TextureCache(tolua_S);
+    lua_register_cocos2dx_Image(tolua_S);
+    lua_register_cocos2dx_Animation(tolua_S);
+    lua_register_cocos2dx_AnimationFrame(tolua_S);
+    lua_register_cocos2dx_AnimationCache(tolua_S);
+    lua_register_cocos2dx_Layer(tolua_S);
+    lua_register_cocos2dx_LayerColor(tolua_S);
+    lua_register_cocos2dx_LayerGradient(tolua_S);
+    lua_register_cocos2dx_LayerMultiplex(tolua_S);
+    lua_register_cocos2dx_Label(tolua_S);
+    lua_register_cocos2dx_LabelAtlas(tolua_S);
+    lua_register_cocos2dx_Timer(tolua_S);
+    lua_register_cocos2dx_Touch(tolua_S);
+    lua_register_cocos2dx_ActionManager(tolua_S);
+    lua_register_cocos2dx_MotionStreak(tolua_S);
+    lua_register_cocos2dx_ProgressTimer(tolua_S);
+    lua_register_cocos2dx_Component(tolua_S);
+    lua_register_cocos2dx_FileUtils(tolua_S);
+
+    lua_register_cocos2dx_EventDispatcher(tolua_S);
+    lua_register_cocos2dx_Event(tolua_S);
+    lua_register_cocos2dx_EventTouch(tolua_S);
+    lua_register_cocos2dx_EventMouse(tolua_S);
+    lua_register_cocos2dx_EventKeyboard(tolua_S);
+    lua_register_cocos2dx_EventAcceleration(tolua_S);
+    lua_register_cocos2dx_EventFocus(tolua_S);
+    lua_register_cocos2dx_EventCustom(tolua_S);
+    lua_register_cocos2dx_EventListener(tolua_S);
+    lua_register_cocos2dx_EventListenerTouchOneByOne(tolua_S);
+    lua_register_cocos2dx_EventListenerTouchAllAtOnce(tolua_S);
+    lua_register_cocos2dx_EventListenerMouse(tolua_S);
+    lua_register_cocos2dx_EventListenerKeyboard(tolua_S);
+    lua_register_cocos2dx_EventListenerAcceleration(tolua_S);
+    lua_register_cocos2dx_EventListenerFocus(tolua_S);
+    lua_register_cocos2dx_EventListenerCustom(tolua_S);
+
+    lua_register_cocos2dx_BaseLight(tolua_S);
+    lua_register_cocos2dx_SpotLight(tolua_S);
+    lua_register_cocos2dx_DirectionLight(tolua_S);
+    lua_register_cocos2dx_PointLight(tolua_S);
+    lua_register_cocos2dx_AmbientLight(tolua_S);
+
+    lua_register_cocos2dx_Action(tolua_S);
+    lua_register_cocos2dx_FiniteTimeAction(tolua_S);
+    lua_register_cocos2dx_Speed(tolua_S);
+    lua_register_cocos2dx_Follow(tolua_S);
+    lua_register_cocos2dx_ActionCamera(tolua_S);
+    lua_register_cocos2dx_OrbitCamera(tolua_S);
+    lua_register_cocos2dx_CardinalSplineTo(tolua_S);
+    lua_register_cocos2dx_CardinalSplineBy(tolua_S);
+    lua_register_cocos2dx_CatmullRomTo(tolua_S);
+    lua_register_cocos2dx_CatmullRomBy(tolua_S);
+    lua_register_cocos2dx_ActionInstant(tolua_S);
+    lua_register_cocos2dx_Show(tolua_S);
+    lua_register_cocos2dx_Hide(tolua_S);
+    lua_register_cocos2dx_ToggleVisibility(tolua_S);
+    lua_register_cocos2dx_RemoveSelf(tolua_S);
+    lua_register_cocos2dx_FlipX(tolua_S);
+    lua_register_cocos2dx_FlipY(tolua_S);
+    lua_register_cocos2dx_Place(tolua_S);
+    lua_register_cocos2dx_CallFunc(tolua_S);
+    lua_register_cocos2dx_ActionInterval(tolua_S);
+    lua_register_cocos2dx_Sequence(tolua_S);
+    lua_register_cocos2dx_Repeat(tolua_S);
+    lua_register_cocos2dx_RepeatForever(tolua_S);
+    lua_register_cocos2dx_Spawn(tolua_S);
+    lua_register_cocos2dx_RotateTo(tolua_S);
+    lua_register_cocos2dx_RotateBy(tolua_S);
+    lua_register_cocos2dx_MoveTo(tolua_S);
+    lua_register_cocos2dx_MoveBy(tolua_S);
+    lua_register_cocos2dx_SkewTo(tolua_S);
+    lua_register_cocos2dx_SkewBy(tolua_S);
+    lua_register_cocos2dx_JumpTo(tolua_S);
+    lua_register_cocos2dx_JumpBy(tolua_S);
+    lua_register_cocos2dx_BezierTo(tolua_S);
+    lua_register_cocos2dx_BezierBy(tolua_S);
+    lua_register_cocos2dx_ScaleTo(tolua_S);
+    lua_register_cocos2dx_ScaleBy(tolua_S);
+    lua_register_cocos2dx_Blink(tolua_S);
+    lua_register_cocos2dx_FadeTo(tolua_S);
+    lua_register_cocos2dx_FadeIn(tolua_S);
+    lua_register_cocos2dx_FadeOut(tolua_S);
+    lua_register_cocos2dx_TintTo(tolua_S);
+    lua_register_cocos2dx_TintBy(tolua_S);
+    lua_register_cocos2dx_DelayTime(tolua_S);
+    lua_register_cocos2dx_Animate(tolua_S);
+    lua_register_cocos2dx_TargetedAction(tolua_S);
+    lua_register_cocos2dx_ProgressFromTo(tolua_S);
+    lua_register_cocos2dx_ProgressTo(tolua_S);
+    lua_register_cocos2dx_ActionTween(tolua_S);
+
+    lua_register_cocos2dx_GridAction(tolua_S);
+    lua_register_cocos2dx_Grid3DAction(tolua_S);
+    lua_register_cocos2dx_TiledGrid3DAction(tolua_S);
+    lua_register_cocos2dx_StopGrid(tolua_S);
+    lua_register_cocos2dx_ReuseGrid(tolua_S);
+    lua_register_cocos2dx_Waves3D(tolua_S);
+    lua_register_cocos2dx_FlipX3D(tolua_S);
+    lua_register_cocos2dx_FlipY3D(tolua_S);
+    lua_register_cocos2dx_Lens3D(tolua_S);
+    lua_register_cocos2dx_Ripple3D(tolua_S);
+    lua_register_cocos2dx_Shaky3D(tolua_S);
+    lua_register_cocos2dx_Liquid(tolua_S);
+    lua_register_cocos2dx_Waves(tolua_S);
+    lua_register_cocos2dx_Twirl(tolua_S);
+    lua_register_cocos2dx_PageTurn3D(tolua_S);
+    lua_register_cocos2dx_ShakyTiles3D(tolua_S);
+    lua_register_cocos2dx_ShatteredTiles3D(tolua_S);
+    lua_register_cocos2dx_ShuffleTiles(tolua_S);
+    lua_register_cocos2dx_FadeOutTRTiles(tolua_S);
+    lua_register_cocos2dx_FadeOutBLTiles(tolua_S);
+    lua_register_cocos2dx_FadeOutUpTiles(tolua_S);
+    lua_register_cocos2dx_FadeOutDownTiles(tolua_S);
+    lua_register_cocos2dx_TurnOffTiles(tolua_S);
+    lua_register_cocos2dx_WavesTiles3D(tolua_S);
+    lua_register_cocos2dx_JumpTiles3D(tolua_S);
+    lua_register_cocos2dx_SplitRows(tolua_S);
+    lua_register_cocos2dx_SplitCols(tolua_S);
+
+    lua_register_cocos2dx_GridBase(tolua_S);
+    lua_register_cocos2dx_Grid3D(tolua_S);
+    lua_register_cocos2dx_TiledGrid3D(tolua_S);
+
+    lua_register_cocos2dx_ActionEase(tolua_S);
+    lua_register_cocos2dx_EaseIn(tolua_S);
+    lua_register_cocos2dx_EaseInOut(tolua_S);
+    lua_register_cocos2dx_EaseOut(tolua_S);
+    lua_register_cocos2dx_EaseBackIn(tolua_S);
+    lua_register_cocos2dx_EaseBackInOut(tolua_S);
+    lua_register_cocos2dx_EaseBackOut(tolua_S);
+    lua_register_cocos2dx_EaseBounce(tolua_S);
+    lua_register_cocos2dx_EaseBounceIn(tolua_S);
+    lua_register_cocos2dx_EaseBounceInOut(tolua_S);
+    lua_register_cocos2dx_EaseBounceOut(tolua_S);
+    lua_register_cocos2dx_EaseCircleActionIn(tolua_S);
+    lua_register_cocos2dx_EaseCircleActionInOut(tolua_S);
+    lua_register_cocos2dx_EaseCircleActionOut(tolua_S);
+    lua_register_cocos2dx_EaseCubicActionIn(tolua_S);
+    lua_register_cocos2dx_EaseCubicActionInOut(tolua_S);
+    lua_register_cocos2dx_EaseCubicActionOut(tolua_S);
+    lua_register_cocos2dx_EaseElastic(tolua_S);
+    lua_register_cocos2dx_EaseElasticIn(tolua_S);
+    lua_register_cocos2dx_EaseElasticInOut(tolua_S);
+    lua_register_cocos2dx_EaseElasticOut(tolua_S);
+    lua_register_cocos2dx_EaseExponentialIn(tolua_S);
+    lua_register_cocos2dx_EaseExponentialInOut(tolua_S);
+    lua_register_cocos2dx_EaseExponentialOut(tolua_S);
+    lua_register_cocos2dx_EaseQuadraticActionIn(tolua_S);
+    lua_register_cocos2dx_EaseQuadraticActionInOut(tolua_S);
+    lua_register_cocos2dx_EaseQuadraticActionOut(tolua_S);
+    lua_register_cocos2dx_EaseQuarticActionIn(tolua_S);
+    lua_register_cocos2dx_EaseQuarticActionInOut(tolua_S);
+    lua_register_cocos2dx_EaseQuarticActionOut(tolua_S);
+    lua_register_cocos2dx_EaseQuinticActionIn(tolua_S);
+    lua_register_cocos2dx_EaseQuinticActionInOut(tolua_S);
+    lua_register_cocos2dx_EaseQuinticActionOut(tolua_S);
+    lua_register_cocos2dx_EaseSineIn(tolua_S);
+    lua_register_cocos2dx_EaseSineInOut(tolua_S);
+    lua_register_cocos2dx_EaseSineOut(tolua_S);
+    lua_register_cocos2dx_EaseBezierAction(tolua_S);
+    lua_register_cocos2dx_EaseRateAction(tolua_S);
+
+    lua_register_cocos2dx_ParticleBatchNode(tolua_S);
+    lua_register_cocos2dx_ParticleSystem(tolua_S);
+    lua_register_cocos2dx_ParticleSystemQuad(tolua_S);
+    lua_register_cocos2dx_ParticleExplosion(tolua_S);
+    lua_register_cocos2dx_ParticleFire(tolua_S);
+    lua_register_cocos2dx_ParticleFireworks(tolua_S);
+    lua_register_cocos2dx_ParticleFlower(tolua_S);
+    lua_register_cocos2dx_ParticleGalaxy(tolua_S);
+    lua_register_cocos2dx_ParticleMeteor(tolua_S);
+    lua_register_cocos2dx_ParticleRain(tolua_S);
+    lua_register_cocos2dx_ParticleSmoke(tolua_S);
+    lua_register_cocos2dx_ParticleSnow(tolua_S);
+    lua_register_cocos2dx_ParticleSpiral(tolua_S);
+    lua_register_cocos2dx_ParticleSun(tolua_S);
+
+    lua_register_cocos2dx_TransitionEaseScene(tolua_S);
+    lua_register_cocos2dx_TransitionScene(tolua_S);
+    lua_register_cocos2dx_TransitionSceneOriented(tolua_S);
+    lua_register_cocos2dx_TransitionMoveInL(tolua_S);
+    lua_register_cocos2dx_TransitionMoveInR(tolua_S);
+    lua_register_cocos2dx_TransitionMoveInT(tolua_S);
+    lua_register_cocos2dx_TransitionMoveInB(tolua_S);
+    lua_register_cocos2dx_TransitionFlipX(tolua_S);
+    lua_register_cocos2dx_TransitionFlipY(tolua_S);
+    lua_register_cocos2dx_TransitionFlipAngular(tolua_S);
+    lua_register_cocos2dx_TransitionFade(tolua_S);
+    lua_register_cocos2dx_TransitionCrossFade(tolua_S);
+    lua_register_cocos2dx_TransitionFadeUp(tolua_S);
+    lua_register_cocos2dx_TransitionFadeDown(tolua_S);
+    lua_register_cocos2dx_TransitionFadeTR(tolua_S);
+    lua_register_cocos2dx_TransitionFadeBL(tolua_S);
+    lua_register_cocos2dx_TransitionProgress(tolua_S);
+    lua_register_cocos2dx_TransitionProgressInOut(tolua_S);
+    lua_register_cocos2dx_TransitionProgressOutIn(tolua_S);
+    lua_register_cocos2dx_TransitionProgressRadialCCW(tolua_S);
+    lua_register_cocos2dx_TransitionProgressRadialCW(tolua_S);
+    lua_register_cocos2dx_TransitionProgressHorizontal(tolua_S);
+    lua_register_cocos2dx_TransitionProgressVertical(tolua_S);
+    lua_register_cocos2dx_TransitionSlideInL(tolua_S);
+    lua_register_cocos2dx_TransitionSlideInR(tolua_S);
+    lua_register_cocos2dx_TransitionSlideInT(tolua_S);
+    lua_register_cocos2dx_TransitionSlideInB(tolua_S);
+    lua_register_cocos2dx_TransitionSplitCols(tolua_S);
+    lua_register_cocos2dx_TransitionSplitRows(tolua_S);
+    lua_register_cocos2dx_TransitionZoomFlipX(tolua_S);
+    lua_register_cocos2dx_TransitionZoomFlipY(tolua_S);
+    lua_register_cocos2dx_TransitionZoomFlipAngular(tolua_S);
+    lua_register_cocos2dx_TransitionJumpZoom(tolua_S);
+    lua_register_cocos2dx_TransitionRotoZoom(tolua_S);
+    lua_register_cocos2dx_TransitionShrinkGrow(tolua_S);
+    lua_register_cocos2dx_TransitionTurnOffTiles(tolua_S);
+    lua_register_cocos2dx_TransitionPageTurn(tolua_S);
+
+#if CC_USE_TMX
+    lua_register_cocos2dx_ParallaxNode(tolua_S);
+    lua_register_cocos2dx_TileMapAtlas(tolua_S);
+    lua_register_cocos2dx_TMXLayer(tolua_S);
+    lua_register_cocos2dx_TMXObjectGroup(tolua_S);
+    lua_register_cocos2dx_TMXTiledMap(tolua_S);
+    lua_register_cocos2dx_TMXLayerInfo(tolua_S);
+    lua_register_cocos2dx_TMXTilesetInfo(tolua_S);
+    lua_register_cocos2dx_TMXMapInfo(tolua_S);
+#endif  //CC_USE_TMX
 
 	tolua_endmodule(tolua_S);
 	return 1;
