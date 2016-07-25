@@ -28,7 +28,6 @@ THE SOFTWARE.
 #include "cocostudio/CCArmatureDefine.h"
 #include "cocostudio/CCDatas.h"
 #include "cocostudio/CocosStudioExport.h"
-#include "cocostudio/CocosStudioExport.h"
 
 namespace cocostudio {
 

@@ -99,9 +99,6 @@ endif
 
 ifeq ($(CC_USE_CCSTUDIO), 1)
 LOCAL_SRC_FILES += ../manual/cocostudio/lua_cocos2dx_coco_studio_manual.cpp \
-                   ../manual/cocostudio/CustomGUIReader.cpp \
-                   ../manual/cocostudio/lua_cocos2dx_csloader_manual.cpp \
-                   ../auto/lua_cocos2dx_csloader_auto.cpp \
                    ../auto/lua_cocos2dx_studio_auto.cpp
 
 LOCAL_EXPORT_C_INCLUDES += $(LOCAL_PATH)/../manual/cocostudio

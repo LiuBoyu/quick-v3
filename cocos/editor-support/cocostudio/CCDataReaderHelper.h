@@ -28,11 +28,7 @@ THE SOFTWARE.
 #include "cocostudio/CCArmatureDefine.h"
 #include "cocostudio/CCDatas.h"
 #include "cocostudio/CCArmature.h"
-#include "cocostudio/DictionaryHelper.h"
 #include "cocostudio/CocosStudioExport.h"
-
-#include "json/document.h"
-#include "DictionaryHelper.h"
 
 #include <string>
 #include <queue>
@@ -45,9 +41,10 @@ namespace tinyxml2
     class XMLElement;
 }
 
-namespace cocostudio {
-    class CocoLoader;
+namespace cocostudio
+{
     struct stExpCocoNode;
+
 /**
  *  @js NA
  *  @lua NA
@@ -59,8 +56,6 @@ protected:
 	enum ConfigType
 	{
 		DragonBone_XML,
-		CocoStudio_JSON,
-        CocoStudio_Binary
 	};
 
 	typedef struct _AsyncStruct
@@ -103,11 +98,14 @@ public:
     static float getPositionReadScale();
 
     static void purge();
+
 public:
+
 	/**
      * @js ctor
      */
 	DataReaderHelper();
+
     /**
      * @js NA
      * @lua NA
@@ -116,10 +114,10 @@ public:
 
     void addDataFromFile(const std::string& filePath);
     void addDataFromFileAsync(const std::string& imagePath, const std::string& plistPath, const std::string& filePath, cocos2d::Ref *target, cocos2d::SEL_SCHEDULE selector);
-
     void addDataAsyncCallBack(float dt);
 
     void removeConfigFile(const std::string& configFile);
+
 public:
 
     /**
@@ -130,15 +128,12 @@ public:
      */
     static void addDataFromCache(const std::string& pFileContent, DataInfo *dataInfo = nullptr);
 
-
-
     /**
      * Decode Armature Datas from xml export from Dragon Bone flash tool
      */
     static ArmatureData *decodeArmature(tinyxml2::XMLElement *armatureXML, DataInfo *dataInfo);
     static BoneData *decodeBone(tinyxml2::XMLElement *boneXML, tinyxml2::XMLElement *parentXML, DataInfo *dataInfo);
     static DisplayData *decodeBoneDisplay(tinyxml2::XMLElement *displayXML, DataInfo *dataInfo);
-
 
     /**
      * Decode ArmatureAnimation Datas from xml export from Dragon Bone flash tool
@@ -147,7 +142,6 @@ public:
     static MovementData *decodeMovement(tinyxml2::XMLElement *movementXML, ArmatureData *armatureData, DataInfo *dataInfo);
     static MovementBoneData *decodeMovementBone(tinyxml2::XMLElement *movBoneXml, tinyxml2::XMLElement *parentXml, BoneData *boneData, DataInfo *dataInfo);
     static FrameData *decodeFrame(tinyxml2::XMLElement *frameXML, tinyxml2::XMLElement *parentFrameXml, BoneData *boneData, DataInfo *dataInfo);
-
 
     /**
      * Decode Texture Datas from xml export from Dragon Bone flash tool
@@ -159,46 +153,9 @@ public:
      */
     static ContourData *decodeContour(tinyxml2::XMLElement *contourXML, DataInfo *dataInfo);
 
-public:
-    static void addDataFromJsonCache(const std::string& fileContent, DataInfo *dataInfo = nullptr);
-
-    static ArmatureData *decodeArmature(const rapidjson::Value& json, DataInfo *dataInfo);
-    static BoneData *decodeBone(const rapidjson::Value& json, DataInfo *dataInfo);
-    static DisplayData *decodeBoneDisplay(const rapidjson::Value& json, DataInfo *dataInfo);
-
-    static AnimationData *decodeAnimation(const rapidjson::Value& json, DataInfo *dataInfo);
-    static MovementData *decodeMovement(const rapidjson::Value& json, DataInfo *dataInfo);
-    static MovementBoneData *decodeMovementBone(const rapidjson::Value& json, DataInfo *dataInfo);
-    static FrameData *decodeFrame(const rapidjson::Value& json, DataInfo *dataInfo);
-
-    static TextureData *decodeTexture(const rapidjson::Value& json);
-
-    static ContourData *decodeContour(const rapidjson::Value& json);
-
-    static void decodeNode(BaseData *node, const rapidjson::Value& json, DataInfo *dataInfo);
-    
-// for binary decode
-public:
-	static void addDataFromBinaryCache(const char *fileContent, DataInfo *dataInfo = nullptr);
-	static ArmatureData *decodeArmature(CocoLoader *cocoLoader, stExpCocoNode *pCocoNode, DataInfo *dataInfo);
-	static BoneData *decodeBone(CocoLoader *cocoLoader, stExpCocoNode *pCocoNode, DataInfo *dataInfo);
-	static DisplayData *decodeBoneDisplay(CocoLoader *cocoLoader, stExpCocoNode *pCocoNode, DataInfo *dataInfo);
-	static AnimationData *decodeAnimation(CocoLoader *cocoLoader, stExpCocoNode *pCocoNode, DataInfo *dataInfo);
-	static MovementData *decodeMovement(CocoLoader *cocoLoader, stExpCocoNode *pCocoNode, DataInfo *dataInfo);
-    
-	static MovementBoneData *decodeMovementBone(CocoLoader *cocoLoader, stExpCocoNode *pCocoNode, DataInfo *dataInfo);
-	static FrameData *decodeFrame(CocoLoader *cocoLoader, stExpCocoNode *pCocoNode, DataInfo *dataInfo);
-    
-	static TextureData *decodeTexture(CocoLoader *cocoLoader, stExpCocoNode *pCocoNode);
-	static ContourData *decodeContour(CocoLoader *cocoLoader, stExpCocoNode *pCocoNode);
-    
-	static void decodeNode(BaseData *node, CocoLoader *cocoLoader, stExpCocoNode *pCocoNode, DataInfo *dataInfo);
-    
 protected:
+
 	void loadData();
-
-
-
 
 	std::condition_variable		_sleepCondition;
 
@@ -210,10 +167,8 @@ protected:
 	std::mutex      _dataInfoMutex;
 
 	std::mutex      _addDataMutex;
-
     std::mutex      _getFileMutex;
 
-	  
 	unsigned long _asyncRefCount;
 	unsigned long _asyncRefTotalCount;
 
