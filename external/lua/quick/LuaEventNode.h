@@ -33,9 +33,8 @@ NS_CC_BEGIN
 #define NODE_ENTER_FRAME_EVENT      1
 #define NODE_TOUCH_EVENT            2
 #define NODE_TOUCH_CAPTURE_EVENT    3
-#define MENU_ITEM_CLICKED_EVENT     4
-#define ACCELERATE_EVENT            5
-#define KEYPAD_EVENT                6
+#define ACCELERATE_EVENT            4
+#define KEYPAD_EVENT                5
 
 #define NODE_TOUCH_CAPTURING_PHASE  0
 #define NODE_TOUCH_TARGETING_PHASE  1
@@ -50,7 +49,7 @@ class LuaEventNode : public Ref
 public:
     static const int modeTouchesOneByOne = (int)Touch::DispatchMode::ONE_BY_ONE;
     static const int modeTouchesAllAtOnce = (int)Touch::DispatchMode::ALL_AT_ONCE;
-    
+
     static LuaEventNode *create(Node *node);
 
     ~LuaEventNode();
@@ -60,41 +59,41 @@ public:
     void detachNode();
 
     virtual LuaEventNode* getParent();
-    
+
     virtual bool isVisible() const;
     virtual bool isRunning() const;
-    
+
     virtual void registerWithTouchDispatcher(void);
     virtual void unregisterWithTouchDispatcher(void);
-    
+
     virtual bool isTouchCaptureEnabled();
     virtual void setTouchCaptureEnabled(bool value);
     virtual bool isTouchSwallowEnabled();
     virtual void setTouchSwallowEnabled(bool value);
-    
+
     virtual bool ccTouchCaptureBegan(Touch *pTouch, LuaEventNode *pTarget);
     virtual bool ccTouchCaptureMoved(Touch *pTouch, LuaEventNode *pTarget);
     virtual void ccTouchCaptureEnded(Touch *pTouch, LuaEventNode *pTarget);
     virtual void ccTouchCaptureCancelled(Touch *pTouch, LuaEventNode *pTarget);
-    
+
     virtual void ccTouchesCaptureBegan(const std::vector<Touch*>& touches, LuaEventNode *pTarget);
     virtual void ccTouchesCaptureMoved(const std::vector<Touch*>& touches, LuaEventNode *pTarget);
     virtual void ccTouchesCaptureEnded(const std::vector<Touch*>& touches, LuaEventNode *pTarget);
     virtual void ccTouchesCaptureCancelled(const std::vector<Touch*>& touches, LuaEventNode *pTarget);
     virtual void ccTouchesCaptureAdded(const std::vector<Touch*>& touches, LuaEventNode *pTarget);
     virtual void ccTouchesCaptureRemoved(const std::vector<Touch*>& touches, LuaEventNode *pTarget);
-    
+
     virtual bool isTouchEnabled();
     virtual void setLuaTouchEnabled(bool value);
-    
+
     virtual void setTouchMode(int mode);
     virtual int getTouchMode();
-    
+
     virtual bool ccTouchBegan(Touch *pTouch, Event *pEvent);
     virtual void ccTouchMoved(Touch *pTouch, Event *pEvent);
     virtual void ccTouchEnded(Touch *pTouch, Event *pEvent);
     virtual void ccTouchCancelled(Touch *pTouch, Event *pEvent);
-    
+
     virtual void ccTouchesBegan(const std::vector<Touch*>& touches, Event *pEvent);
     virtual void ccTouchesMoved(const std::vector<Touch*>& touches, Event *pEvent);
     virtual void ccTouchesEnded(const std::vector<Touch*>& touches, Event *pEvent);
@@ -107,7 +106,7 @@ private:
 
     Node *_node;
     unsigned int _nodeID;
-    
+
     // touch events
     bool _bTouchCaptureEnabled;
     bool _bTouchSwallowEnabled;
@@ -116,7 +115,7 @@ private:
 
     virtual int executeScriptTouchHandler(int nEventType, Touch *pTouch, int phase = 1);
     virtual int executeScriptTouchHandler(int nEventType, const std::vector<Touch*>& touches, int phase = 1);
-    
+
 };
 
 NS_CC_END
