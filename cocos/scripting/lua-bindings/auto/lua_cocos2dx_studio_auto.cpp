@@ -9211,12 +9211,6 @@ TOLUA_API int register_all_cocos2dx_studio(lua_State* tolua_S)
 	tolua_module(tolua_S,"ccs",0);
 	tolua_beginmodule(tolua_S,"ccs");
 
-    lua_register_cocos2dx_studio_Armature(tolua_S);
-    lua_register_cocos2dx_studio_ArmatureAnimation(tolua_S);
-    lua_register_cocos2dx_studio_ArmatureDataManager(tolua_S);
-    lua_register_cocos2dx_studio_BatchNode(tolua_S);
-    lua_register_cocos2dx_studio_Bone(tolua_S);
-
     lua_register_cocos2dx_studio_BaseData(tolua_S);
     lua_register_cocos2dx_studio_DisplayData(tolua_S);
     lua_register_cocos2dx_studio_SpriteDisplayData(tolua_S);
@@ -9231,9 +9225,16 @@ TOLUA_API int register_all_cocos2dx_studio(lua_State* tolua_S)
     lua_register_cocos2dx_studio_ContourData(tolua_S);
     lua_register_cocos2dx_studio_TextureData(tolua_S);
 
+    lua_register_cocos2dx_studio_Tween(tolua_S);
+    lua_register_cocos2dx_studio_ArmatureAnimation(tolua_S);
+
     lua_register_cocos2dx_studio_DisplayManager(tolua_S);
+    lua_register_cocos2dx_studio_ArmatureDataManager(tolua_S);
+
+    lua_register_cocos2dx_studio_Bone(tolua_S);
+    lua_register_cocos2dx_studio_BatchNode(tolua_S);
+    lua_register_cocos2dx_studio_Armature(tolua_S);
     lua_register_cocos2dx_studio_Skin(tolua_S);
-	lua_register_cocos2dx_studio_Tween(tolua_S);
 
 	tolua_endmodule(tolua_S);
 	return 1;
