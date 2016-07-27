@@ -513,34 +513,6 @@ static int tolua_cocos2dx_extra_luabinding_Native_cancelAlert00(lua_State* tolua
 }
 #endif //#ifndef TOLUA_DISABLE
 
-/* method: getOpenUDID of class  Native */
-#ifndef TOLUA_DISABLE_tolua_cocos2dx_extra_luabinding_Native_getOpenUDID00
-static int tolua_cocos2dx_extra_luabinding_Native_getOpenUDID00(lua_State* tolua_S)
-{
-#if COCOS2D_DEBUG >= 1
- tolua_Error tolua_err;
- if (
-     !tolua_isusertable(tolua_S,1,"Native",0,&tolua_err) ||
-     !tolua_isnoobj(tolua_S,2,&tolua_err)
- )
-  goto tolua_lerror;
- else
-#endif
- {
-  {
-   string tolua_ret = (string)  Native::getOpenUDID();
-   tolua_pushcppstring(tolua_S,(const char*)tolua_ret);
-  }
- }
- return 1;
-#if COCOS2D_DEBUG >= 1
- tolua_lerror:
- tolua_error(tolua_S,"#ferror in function 'getOpenUDID'.",&tolua_err);
- return 0;
-#endif
-}
-#endif //#ifndef TOLUA_DISABLE
-
 /* method: openURL of class  Native */
 #ifndef TOLUA_DISABLE_tolua_cocos2dx_extra_luabinding_Native_openURL00
 static int tolua_cocos2dx_extra_luabinding_Native_openURL00(lua_State* tolua_S)
@@ -1560,7 +1532,6 @@ TOLUA_API int tolua_cocos2dx_extra_luabinding_open (lua_State* tolua_S)
    tolua_function(tolua_S,"addAlertButton",tolua_cocos2dx_extra_luabinding_Native_addAlertButton00);
    tolua_function(tolua_S,"showAlert",tolua_cocos2dx_extra_luabinding_Native_showAlert00);
    tolua_function(tolua_S,"cancelAlert",tolua_cocos2dx_extra_luabinding_Native_cancelAlert00);
-   tolua_function(tolua_S,"getOpenUDID",tolua_cocos2dx_extra_luabinding_Native_getOpenUDID00);
    tolua_function(tolua_S,"openURL",tolua_cocos2dx_extra_luabinding_Native_openURL00);
    tolua_function(tolua_S,"getInputText",tolua_cocos2dx_extra_luabinding_Native_getInputText00);
    tolua_function(tolua_S,"getDeviceName",tolua_cocos2dx_extra_luabinding_Native_getDeviceName00);
