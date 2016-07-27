@@ -3,7 +3,6 @@
 #import "platform/mac/CCNativeMac.h"
 
 #include "native/CCNative.h"
-#import "platform/mac/openudid/OpenUDIDMac.h"
 
 NS_CC_EXTRA_BEGIN
 
@@ -85,15 +84,6 @@ const string Native::getInputText(const char* title, const char* message, const 
                                                            message:message_
                                                       defaultValue:defaultValue_];
     return string([input cStringUsingEncoding:NSUTF8StringEncoding]);
-}
-
-
-#pragma mark -
-#pragma mark OpenUDID
-
-const string Native::getOpenUDID(void)
-{
-    return string([[OpenUDIDMac value] cStringUsingEncoding:NSUTF8StringEncoding]);
 }
 
 const string Native::getDeviceName(void)

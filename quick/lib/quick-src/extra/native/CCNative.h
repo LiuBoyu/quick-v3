@@ -34,17 +34,11 @@ public:
     
     /** @brief Add button to alert view, return button index */
     static int addAlertButton(const char* buttonTitle);
-
+    
     /** @brief Show alert view */
     static void showAlert(AlertViewDelegate* delegate = NULL);
     /** @brief Hide and remove alert view */
     static void cancelAlert(void);
-    
-#pragma mark -
-#pragma mark OpenUDID
-    
-    /** @brief Get OpenUDID value */
-    static const std::string getOpenUDID(void);
     
 #pragma mark -
 #pragma mark misc
@@ -52,7 +46,7 @@ public:
     /** @brief Open a web page in the browser; create an email; or call a phone number. */
     static void openURL(const char* url);
     
-	/** @brief Show alert view, and get user input */
+    /** @brief Show alert view, and get user input */
     static const std::string getInputText(const char* title, const char* message, const char* defaultValue);
     
 #pragma mark -
@@ -69,7 +63,7 @@ public:
     static int addAlertButtonLua(const char* buttonTitle);
     static void showAlertLua(LUA_FUNCTION listener);
 #endif
-
+    
 private:
     Native(void) {}
 };
