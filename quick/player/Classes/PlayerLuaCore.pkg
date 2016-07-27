@@ -30,7 +30,6 @@ class ProjectConfig
 
     bool isWelcome();
     void resetToWelcome();
-    void resetToCreator();
 
     string getProjectDir() const;
     void setProjectDir(const string &projectDir);
@@ -175,7 +174,7 @@ class PlayerMenuServiceProtocol
                                     const std::string &title);
     virtual PlayerMenuItem *getItem(const std::string &menuId);
     virtual bool removeItem(const std::string &menuId);
-    
+
 };
 
 class PlayerMessageBoxServiceProtocol : public PlayerServiceProtocol

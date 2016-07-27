@@ -10,9 +10,7 @@ using namespace std;
 #include "cocos2d.h"
 #include "CCLuaStack.h"
 
-#define kCCLuaDebuggerNone      0
-#define kCCLuaDebuggerLDT       1
-#define kCCLuaDebuggerCodeIDE   2
+#define kCCLuaDebuggerNone                      0
 
 #define kProjectConfigQuickRootPath             1       // -quick "PATH"
 #define kProjectConfigProjectDir                2       // -workdir "PATH"
@@ -25,7 +23,7 @@ using namespace std;
 #define kProjectConfigLoadPrecompiledFramework  256     // -load-framework, -disable-load-framework
 #define kProjectConfigWriteDebugLogToFile       512     // -write-debug-log, -disable-write-debug-log
 #define kProjectConfigWindowOffset              1024    // -offset {0,0}
-#define kProjectConfigDebugger                  2048    // -debugger-ldt, -debugger-codeide, -disable-debugger
+#define kProjectConfigDebugger                  2048    // -disable-debugger
 
 #define kProjectConfigOpenRecent (kProjectConfigProjectDir | kProjectConfigScriptFile | kProjectConfigPackagePath | kProjectConfigWritablePath | kProjectConfigFrameSize | kProjectConfigFrameScale | kProjectConfigShowConsole | kProjectConfigLoadPrecompiledFramework | kProjectConfigWriteDebugLogToFile)
 
@@ -42,7 +40,6 @@ public:
 
     bool isWelcome() const;
     void resetToWelcome();
-    void resetToCreator();
 
     string getProjectDir() const;
     void setProjectDir(const string &projectDir);

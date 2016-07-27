@@ -56,7 +56,7 @@ static int tolua_collect_std__vector_std__string_ (lua_State* tolua_S)
 /* function to register type */
 static void tolua_reg_types (lua_State* tolua_S)
 {
- 
+
  tolua_usertype(tolua_S,"PlayerEditBoxServiceProtocol");
  tolua_usertype(tolua_S,"cocos2d::Ref");
  tolua_usertype(tolua_S,"PlayerSettings");
@@ -466,37 +466,6 @@ static int tolua_PlayerLuaCore_ProjectConfig_resetToWelcome00(lua_State* tolua_S
 #if COCOS2D_DEBUG >= 1
  tolua_lerror:
  tolua_error(tolua_S,"#ferror in function 'resetToWelcome'.",&tolua_err);
- return 0;
-#endif
-}
-#endif //#ifndef TOLUA_DISABLE
-
-/* method: resetToCreator of class  ProjectConfig */
-#ifndef TOLUA_DISABLE_tolua_PlayerLuaCore_ProjectConfig_resetToCreator00
-static int tolua_PlayerLuaCore_ProjectConfig_resetToCreator00(lua_State* tolua_S)
-{
-#if COCOS2D_DEBUG >= 1
- tolua_Error tolua_err;
- if (
-     !tolua_isusertype(tolua_S,1,"ProjectConfig",0,&tolua_err) ||
-     !tolua_isnoobj(tolua_S,2,&tolua_err)
- )
-  goto tolua_lerror;
- else
-#endif
- {
-  ProjectConfig* self = (ProjectConfig*)  tolua_tousertype(tolua_S,1,0);
-#if COCOS2D_DEBUG >= 1
-  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'resetToCreator'", NULL);
-#endif
-  {
-   self->resetToCreator();
-  }
- }
- return 0;
-#if COCOS2D_DEBUG >= 1
- tolua_lerror:
- tolua_error(tolua_S,"#ferror in function 'resetToCreator'.",&tolua_err);
  return 0;
 #endif
 }
@@ -3890,7 +3859,6 @@ TOLUA_API int tolua_PlayerLuaCore_open (lua_State* tolua_S)
    tolua_function(tolua_S,".call",tolua_PlayerLuaCore_ProjectConfig_new00_local);
    tolua_function(tolua_S,"isWelcome",tolua_PlayerLuaCore_ProjectConfig_isWelcome00);
    tolua_function(tolua_S,"resetToWelcome",tolua_PlayerLuaCore_ProjectConfig_resetToWelcome00);
-   tolua_function(tolua_S,"resetToCreator",tolua_PlayerLuaCore_ProjectConfig_resetToCreator00);
    tolua_function(tolua_S,"getProjectDir",tolua_PlayerLuaCore_ProjectConfig_getProjectDir00);
    tolua_function(tolua_S,"setProjectDir",tolua_PlayerLuaCore_ProjectConfig_setProjectDir00);
    tolua_function(tolua_S,"getScriptFile",tolua_PlayerLuaCore_ProjectConfig_getScriptFile00);

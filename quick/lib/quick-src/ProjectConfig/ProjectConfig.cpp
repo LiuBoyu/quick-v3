@@ -61,27 +61,6 @@ void ProjectConfig::resetToWelcome()
     _isRetinaDisplay = true;
 }
 
-void ProjectConfig::resetToCreator()
-{
-    _isWelcome = true;
-    auto path = SimulatorConfig::getInstance()->getQuickCocos2dxRootPath();
-    path.append("quick/creator");
-    SimulatorConfig::makeNormalizePath(&path);
-    setProjectDir(path);
-    setWritablePath(path);
-    setScriptFile("$(PROJDIR)/src/main.lua");
-    setFrameSize(cocos2d::Size(960, 640));
-    setFrameScale(1.0f);
-    setLoadPrecompiledFramework(false);
-    setPackagePath("");
-    setShowConsole(false);
-    setWindowOffset(cocos2d::Vec2::ZERO);
-    setWriteDebugLogToFile(false);
-    _isAppMenu = true;
-    _isResizeWindow = true;
-    _isRetinaDisplay = true;
-}
-
 string ProjectConfig::getProjectDir() const
 {
     return _projectDir;
@@ -395,14 +374,6 @@ void ProjectConfig::parseCommandLine(const vector<string> &args)
             if (it == args.end()) break;
             setWindowOffset(cocos2d::PointFromString((*it).c_str()));
         }
-        else if (arg.compare("-debugger-ldt") == 0)
-        {
-            setDebuggerType(kCCLuaDebuggerLDT);
-        }
-        else if (arg.compare("-debugger-codeide") == 0)
-        {
-            setDebuggerType(kCCLuaDebuggerCodeIDE);
-        }
         else if (arg.compare("-disable-debugger") == 0)
         {
             setDebuggerType(kCCLuaDebuggerNone);
@@ -548,14 +519,8 @@ string ProjectConfig::makeCommandLine(unsigned int mask /* = kProjectConfigAll *
     {
         switch (getDebuggerType())
         {
-        case kCCLuaDebuggerLDT:
-            buff << " -debugger-ldt";
-            break;
-        case kCCLuaDebuggerCodeIDE:
-            buff << " -debugger-codeide";
-            break;
-        default:
-            buff << " -disable-debugger";
+            default:
+                buff << " -disable-debugger";
         }
     }
 
@@ -604,15 +569,7 @@ void ProjectConfig::dump()
     CCLOG("    frame scale: %0.2f", _frameScale);
     CCLOG("    show console: %s", _showConsole ? "YES" : "NO");
     CCLOG("    write debug log: %s", _writeDebugLogToFile ? "YES" : "NO");
-    if (_debuggerType == kCCLuaDebuggerLDT)
-    {
-        CCLOG("    debugger: Eclipse LDT");
-    }
-    else if (_debuggerType == kCCLuaDebuggerCodeIDE)
-    {
-        CCLOG("    debugger: Cocos Code IDE");
-    }
-    else
+    if (_debuggerType == kCCLuaDebuggerNone)
     {
         CCLOG("    debugger: none");
     }
