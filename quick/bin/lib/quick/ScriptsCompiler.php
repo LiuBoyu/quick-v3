@@ -196,7 +196,14 @@ class ScriptsCompiler
             printf("Compile Lua source files in path %s\n", $this->config['srcpath']);
         }
         $files = array();
-        findFiles($this->config['srcpath'], $files);
+        if (!$this->config['recurse'])
+        {
+            findFiles($this->config['srcpath'], $files, false);
+        }
+        else
+        {
+            findFiles($this->config['srcpath'], $files);
+        }
         return $files;
     }
 

@@ -120,7 +120,7 @@ function dumpConfig($config, $options)
     print("\n");
 }
 
-function findFiles($dir, array & $files)
+function findFiles($dir, array & $files, $recurse=true)
 {
     $dir = rtrim($dir, "/\\") . DS;
     $dh = opendir($dir);
@@ -133,7 +133,10 @@ function findFiles($dir, array & $files)
         $path = $dir . $file;
         if (is_dir($path))
         {
-            findFiles($path, $files);
+            if ($recurse)
+            {
+                findFiles($path, $files);
+            }
         }
         elseif (is_file($path))
         {
@@ -168,7 +171,7 @@ function getScriptFileBytecodes($path, $tmpfile, $usingluajit = 0)
     }
     else
     {
-        $command = sprintf('%s -o "%s" "%s"', LUA_BIN, $tmpfile, $path); 
+        $command = sprintf('%s -o "%s" "%s"', LUA_BIN, $tmpfile, $path);
     }
     passthru($command);
 
