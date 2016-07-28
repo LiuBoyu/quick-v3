@@ -36,28 +36,28 @@ int lua_module_register(lua_State* L)
     //Dont' change the module register order unless you know what your are doing
     register_ui_moudle(L);
     register_cocosdenshion_module(L);
-    
+
 #if CC_USE_WEBSOCKET
     register_network_module(L);
 #endif
-    
+
 #if CC_USE_CCSTUDIO
     register_cocostudio_module(L);
 #endif
-    
+
 #if CC_USE_SPINE
     register_spine_module(L);
 #endif
-    
+
     luaopen_lua_extensions_more(L);
-    
+
     lua_getglobal(L, "_G");
     if (lua_istable(L, -1))//stack:...,_G,
     {
         register_all_quick_manual(L);
-        
+
         luaopen_cocos2dx_extra_luabinding(L);
-        
+
 #if CC_USE_FILTER
         register_all_cocos2dx_filter(L);
 #endif
@@ -65,11 +65,11 @@ int lua_module_register(lua_State* L)
         register_all_cocos2dx_nanovg(L);
         register_all_cocos2dx_nanovg_manual(L);
 #endif
-        
+
         luaopen_HelperFunc_luabinding(L);
     }
     lua_pop(L, 1);
-    
+
     return 1;
 }
 

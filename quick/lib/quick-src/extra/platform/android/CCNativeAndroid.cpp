@@ -31,7 +31,7 @@ void Native::createAlert(const char* title,
                            const char* cancelButtonTitle)
 {
 	JniMethodInfo methodInfo;
-    if (JniHelper::getStaticMethodInfo(methodInfo, "org/cocos2dx/utils/PSNative", "createAlert", 
+    if (JniHelper::getStaticMethodInfo(methodInfo, "org/cocos2dx/utils/PSNative", "createAlert",
         "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V"))
     {
 		jstring jtitle = methodInfo.env->NewStringUTF(title);
@@ -48,14 +48,14 @@ void Native::createAlert(const char* title,
 int Native::addAlertButton(const char* buttonTitle)
 {
 	JniMethodInfo methodInfo;
-    if (JniHelper::getStaticMethodInfo(methodInfo, "org/cocos2dx/utils/PSNative", "addAlertButton", 
+    if (JniHelper::getStaticMethodInfo(methodInfo, "org/cocos2dx/utils/PSNative", "addAlertButton",
         "(Ljava/lang/String;)I"))
     {
 		jstring jbuttonTitle = methodInfo.env->NewStringUTF(buttonTitle);
         jint ret = methodInfo.env->CallStaticIntMethod(methodInfo.classID, methodInfo.methodID, jbuttonTitle);
 		methodInfo.env->DeleteLocalRef(jbuttonTitle);
 		methodInfo.env->DeleteLocalRef(methodInfo.classID);
-		
+
 		return ret;
     }
 	return 0;
@@ -71,7 +71,7 @@ int Native::addAlertButtonLua(const char* buttonTitle)
 void Native::showAlert(AlertViewDelegate* delegate)
 {
 	JniMethodInfo methodInfo;
-    if (JniHelper::getStaticMethodInfo(methodInfo, "org/cocos2dx/utils/PSNative", "showAlert", 
+    if (JniHelper::getStaticMethodInfo(methodInfo, "org/cocos2dx/utils/PSNative", "showAlert",
         "()V"))
     {
         methodInfo.env->CallStaticVoidMethod(methodInfo.classID, methodInfo.methodID);
@@ -89,7 +89,7 @@ void Native::showAlertLua(LUA_FUNCTION listener)
 void Native::cancelAlert(void)
 {
 	JniMethodInfo methodInfo;
-    if (JniHelper::getStaticMethodInfo(methodInfo, "org/cocos2dx/utils/PSNative", "cancelAlert", 
+    if (JniHelper::getStaticMethodInfo(methodInfo, "org/cocos2dx/utils/PSNative", "cancelAlert",
         "()V"))
     {
         methodInfo.env->CallStaticVoidMethod(methodInfo.classID, methodInfo.methodID);
@@ -103,7 +103,7 @@ void Native::cancelAlert(void)
 void Native::openURL(const char* url)
 {
 	JniMethodInfo methodInfo;
-    if (JniHelper::getStaticMethodInfo(methodInfo, "org/cocos2dx/utils/PSNative", "openURL", 
+    if (JniHelper::getStaticMethodInfo(methodInfo, "org/cocos2dx/utils/PSNative", "openURL",
         "(Ljava/lang/String;)V"))
     {
 		jstring jurl = methodInfo.env->NewStringUTF(url);
@@ -119,29 +119,10 @@ const string Native::getInputText(const char* title, const char* message, const 
     return string("");
 }
 
-
-//  OpenUDID
-
-const string Native::getOpenUDID(void)
-{
-	JniMethodInfo methodInfo;
-    if (JniHelper::getStaticMethodInfo(methodInfo, "org/cocos2dx/utils/PSNative", "getOpenUDID", 
-        "()Ljava/lang/String;"))
-    {
-        jstring judid = (jstring)methodInfo.env->CallStaticObjectMethod(methodInfo.classID, methodInfo.methodID);
-		char* udid = (char*)methodInfo.env->GetStringUTFChars(judid, 0);
-		string ret = udid;
-		methodInfo.env->ReleaseStringUTFChars(judid, udid);
-		methodInfo.env->DeleteLocalRef(methodInfo.classID);
-		return ret;
-    }
-    return string("");
-}
-
 const string Native::getDeviceName(void)
 {
 	JniMethodInfo methodInfo;
-    if (JniHelper::getStaticMethodInfo(methodInfo, "org/cocos2dx/utils/PSNative", "getDeviceName", 
+    if (JniHelper::getStaticMethodInfo(methodInfo, "org/cocos2dx/utils/PSNative", "getDeviceName",
         "()Ljava/lang/String;"))
     {
         jstring jdevice = (jstring)methodInfo.env->CallStaticObjectMethod(methodInfo.classID, methodInfo.methodID);
@@ -157,7 +138,7 @@ const string Native::getDeviceName(void)
 void Native::vibrate()
 {
 	JniMethodInfo methodInfo;
-    if (JniHelper::getStaticMethodInfo(methodInfo, "org/cocos2dx/utils/PSNative", "vibrate", 
+    if (JniHelper::getStaticMethodInfo(methodInfo, "org/cocos2dx/utils/PSNative", "vibrate",
         "(J)V"))
     {
 		methodInfo.env->CallStaticVoidMethod(methodInfo.classID, methodInfo.methodID, (jlong)2000);
