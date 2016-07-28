@@ -6,8 +6,9 @@
 #include "cocos2d.h"
 #include "json/document.h"
 #include "ProjectConfig/SimulatorConfig.h"
-using namespace std;
+
 USING_NS_CC;
+using namespace std;
 
 // ConfigParser
 //typedef struct _SimulatorScreenSize {
@@ -37,8 +38,6 @@ public:
     string getEntryFile();
     rapidjson::Document& getConfigJsonRoot();
     const SimulatorScreenSize getScreenSize(int index);
-    int getConsolePort();
-    int getUploadPort();
     bool isLanscape();
     bool isWindowTop();
     
@@ -51,8 +50,6 @@ private:
     string _entryfile;
     bool _isLandscape;
     bool _isWindowTop;
-    int _consolePort;
-    int _uploadPort;
     
     rapidjson::Document _docRootjson;
 };

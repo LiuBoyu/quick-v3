@@ -6,8 +6,6 @@
 #include "ConfigParser.h"
 
 #define CONFIG_FILE "config.json"
-#define CONSOLE_PORT 6010
-#define UPLOAD_PORT 6020
 #define WIN_WIDTH   960
 #define WIN_HEIGHT  640
 
@@ -27,7 +25,7 @@ void ConfigParser::readConfig()
 {
     string fullPathFile = FileUtils::getInstance()->fullPathForFilename(CONFIG_FILE);
     string fileContent = FileUtils::getInstance()->getStringFromFile(fullPathFile);
-
+    
     if(fileContent.empty())
         return;
     
@@ -49,7 +47,7 @@ void ConfigParser::readConfig()
                 {
                     float tmpvalue = _initViewSize.height;
                     _initViewSize.height = _initViewSize.width;
-                     _initViewSize.width = tmpvalue;
+                    _initViewSize.width = tmpvalue;
                 }
                 
             }
@@ -64,18 +62,6 @@ void ConfigParser::readConfig()
             if (objectInitView.HasMember("entry") && objectInitView["entry"].IsString())
             {
                 _entryfile = objectInitView["entry"].GetString();
-            }
-            if (objectInitView.HasMember("consolePort"))
-            {
-                _consolePort = objectInitView["consolePort"].GetUint();
-                if(_consolePort <= 0)
-                    _consolePort = CONSOLE_PORT;
-            }
-            if (objectInitView.HasMember("uploadPort"))
-            {
-                _uploadPort = objectInitView["uploadPort"].GetUint();
-                if(_uploadPort <= 0)
-                    _uploadPort = UPLOAD_PORT;
             }
             if (objectInitView.HasMember("isWindowTop") && objectInitView["isWindowTop"].IsBool())
             {
@@ -103,8 +89,6 @@ void ConfigParser::readConfig()
 ConfigParser::ConfigParser(void) :
 _isLandscape(true),
 _isWindowTop(false),
-_consolePort(CONSOLE_PORT),
-_uploadPort(UPLOAD_PORT),
 _viewName("player"),
 _entryfile("src/main.lua"),
 _initViewSize(WIN_WIDTH, WIN_HEIGHT)
@@ -140,14 +124,7 @@ bool ConfigParser::isWindowTop()
 {
     return _isWindowTop;
 }
-int ConfigParser::getConsolePort()
-{
-    return _consolePort;
-}
-int ConfigParser::getUploadPort()
-{
-    return _uploadPort;
-}
+
 int ConfigParser::getScreenSizeCount(void)
 {
     return (int)_screenSizeArray.size();
@@ -157,3 +134,4 @@ const SimulatorScreenSize ConfigParser::getScreenSize(int index)
 {
     return _screenSizeArray.at(index);
 }
+
