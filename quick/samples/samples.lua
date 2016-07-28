@@ -23,13 +23,6 @@ local data =
     },
 
     {
-        title       = "CCS UI Importer Test",
-        description = "CCS UI Importer演示",
-        path        = "samples/ccsloader",
-        image       = "ccsloader_ss.png"
-    },
-
-    {
         title       = "Armature Test",
         description = "ccs骨骼动画演示",
         path        = "samples/armature",
@@ -48,13 +41,6 @@ local data =
         description = "MVC演示",
         path        = "samples/mvc",
         image       = "mvc_ss.png"
-    },
-
-    {
-        title       = "sprite 3D",
-        description = "3D 精灵演示",
-        path        = "samples/sprite3d",
-        image       = "sprite3d_ss.png"
     },
 
     {

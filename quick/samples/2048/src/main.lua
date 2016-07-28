@@ -1,12 +1,14 @@
 
-function __G__TRACKBACK__(errorMessage)
+function __G__TRACKBACK__(msg)
     print("----------------------------------------")
-    print("LUA ERROR: " .. tostring(errorMessage) .. "\n")
-    print(debug.traceback("", 2))
+    print(debug.traceback(tostring(msg), 2))
     print("----------------------------------------")
 end
 
-package.path = package.path .. ";src/"
+-- 脚本路径
+package.path = "src/?.lua;../../?.lua"
+
+-- 启动函数
 cc.FileUtils:getInstance():setPopupNotify(false)
 -- require "update"
 require("appentry")
