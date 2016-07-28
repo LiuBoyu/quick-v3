@@ -267,6 +267,11 @@ public:
     void setSearchRootPath(const char* path);
     
     /**
+     * Get search root path.
+     */
+    std::string getSearchRootPath();
+    
+    /**
       * Add search path.
       *
       * @since v2.1

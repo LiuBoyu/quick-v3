@@ -872,6 +872,11 @@ void FileUtils::setSearchRootPath(const char* path)
     _defaultResRootPath = path ? path : "";
 }
 
+std::string FileUtils::getSearchRootPath()
+{
+    return _defaultResRootPath;
+}
+
 void FileUtils::addSearchPath(const std::string &searchpath,const bool front)
 {
     std::string prefix;
