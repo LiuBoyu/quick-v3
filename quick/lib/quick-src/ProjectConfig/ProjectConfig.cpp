@@ -17,20 +17,20 @@
 #endif
 
 ProjectConfig::ProjectConfig()
-    : _isWelcome(false)
-    , _scriptFile("$(PROJDIR)/src/main.lua")
-    , _writablePath("")
-    , _packagePath("")
-    , _frameSize(960, 640)
-    , _frameScale(1.0f)
-    , _showConsole(true)
-    , _loadPrecompiledFramework(false)
-    , _writeDebugLogToFile(true)
-    , _windowOffset(0, 0)
-    , _debuggerType(kCCLuaDebuggerNone)
-    , _isAppMenu(true)
-    , _isResizeWindow(false)
-    , _isRetinaDisplay(false)
+: _isWelcome(false)
+, _scriptFile("$(PROJDIR)/src/main.lua")
+, _writablePath("")
+, _packagePath("")
+, _frameSize(960, 640)
+, _frameScale(1.0f)
+, _showConsole(true)
+, _loadPrecompiledFramework(false)
+, _writeDebugLogToFile(true)
+, _windowOffset(0, 0)
+, _debuggerType(kCCLuaDebuggerNone)
+, _isAppMenu(true)
+, _isResizeWindow(false)
+, _isRetinaDisplay(false)
 {
     normalize();
 }
@@ -59,6 +59,12 @@ void ProjectConfig::resetToWelcome()
     _isAppMenu = false;
     _isResizeWindow = false;
     _isRetinaDisplay = true;
+}
+
+void ProjectConfig::resetToProject(const string &projectDir)
+{
+    setProjectDir(projectDir);
+    setWritablePath(projectDir);
 }
 
 string ProjectConfig::getProjectDir() const
@@ -149,7 +155,7 @@ void ProjectConfig::addPackagePath(const string &packagePath)
 vector<string> ProjectConfig::getPackagePathArray() const
 {
     vector<string> arr;
-
+    
     size_t pos = string::npos;
     size_t prev = 0;
     while ((pos = _packagePath.find_first_of(";", pos + 1)) != string::npos)
@@ -279,7 +285,7 @@ void ProjectConfig::parseCommandLine(const vector<string> &args)
     while (it != args.end())
     {
         string arg = *it;
-
+        
         if (arg.compare("-quick") == 0)
         {
             ++it;
@@ -390,7 +396,7 @@ void ProjectConfig::parseCommandLine(const vector<string> &args)
         {
             _isRetinaDisplay = true;
         }
-
+        
         ++it;
     }
 }
@@ -398,7 +404,7 @@ void ProjectConfig::parseCommandLine(const vector<string> &args)
 string ProjectConfig::makeCommandLine(unsigned int mask /* = kProjectConfigAll */) const
 {
     stringstream buff;
-
+    
     if (mask & kProjectConfigQuickRootPath)
     {
         auto path = SimulatorConfig::getInstance()->getQuickCocos2dxRootPath();
@@ -408,7 +414,7 @@ string ProjectConfig::makeCommandLine(unsigned int mask /* = kProjectConfigAll *
             buff << path;
         }
     }
-
+    
     if (mask & kProjectConfigProjectDir)
     {
         auto path = getProjectDir();
@@ -418,7 +424,7 @@ string ProjectConfig::makeCommandLine(unsigned int mask /* = kProjectConfigAll *
             buff << path;
         }
     }
-
+    
     if (mask & kProjectConfigScriptFile)
     {
         auto path = getScriptFileRealPath();
@@ -428,7 +434,7 @@ string ProjectConfig::makeCommandLine(unsigned int mask /* = kProjectConfigAll *
             buff << path;
         }
     }
-
+    
     if (mask & kProjectConfigWritablePath)
     {
         auto path = getWritableRealPath();
@@ -438,7 +444,7 @@ string ProjectConfig::makeCommandLine(unsigned int mask /* = kProjectConfigAll *
             buff << path;
         }
     }
-
+    
     if (mask & kProjectConfigPackagePath)
     {
         auto packagePath = getPackagePath();
@@ -448,7 +454,7 @@ string ProjectConfig::makeCommandLine(unsigned int mask /* = kProjectConfigAll *
             buff << packagePath;
         }
     }
-
+    
     if (mask & kProjectConfigFrameSize)
     {
         buff << " -size ";
@@ -456,7 +462,7 @@ string ProjectConfig::makeCommandLine(unsigned int mask /* = kProjectConfigAll *
         buff << "x";
         buff << (int)getFrameSize().height;
     }
-
+    
     if (mask & kProjectConfigFrameScale)
     {
         if (getFrameScale() < 1.0f)
@@ -466,7 +472,7 @@ string ProjectConfig::makeCommandLine(unsigned int mask /* = kProjectConfigAll *
             buff << getFrameScale();
         }
     }
-
+    
     if (mask & kProjectConfigWriteDebugLogToFile)
     {
         if (isWriteDebugLogToFile())
@@ -478,7 +484,7 @@ string ProjectConfig::makeCommandLine(unsigned int mask /* = kProjectConfigAll *
             buff << " -disable-write-debug-log";
         }
     }
-
+    
     if (mask & kProjectConfigShowConsole)
     {
         if (isShowConsole())
@@ -490,7 +496,7 @@ string ProjectConfig::makeCommandLine(unsigned int mask /* = kProjectConfigAll *
             buff << " -disable-console";
         }
     }
-
+    
     if (mask & kProjectConfigLoadPrecompiledFramework)
     {
         if (isLoadPrecompiledFramework())
@@ -502,7 +508,7 @@ string ProjectConfig::makeCommandLine(unsigned int mask /* = kProjectConfigAll *
             buff << " -disable-load-framework";
         }
     }
-
+    
     if (mask & kProjectConfigWindowOffset)
     {
         if (_windowOffset.x != 0 && _windowOffset.y != 0)
@@ -514,7 +520,7 @@ string ProjectConfig::makeCommandLine(unsigned int mask /* = kProjectConfigAll *
             buff << "}";
         }
     }
-
+    
     if (mask & kProjectConfigDebugger)
     {
         switch (getDebuggerType())
@@ -523,13 +529,13 @@ string ProjectConfig::makeCommandLine(unsigned int mask /* = kProjectConfigAll *
                 buff << " -disable-debugger";
         }
     }
-
+    
     string result = buff.str();
     while (result.at(0) == ' ')
     {
         result = result.assign(result, 1, result.length());
     }
-
+    
     return result;
 }
 
@@ -582,7 +588,7 @@ void ProjectConfig::normalize()
     SimulatorConfig::makeNormalizePath(&_scriptFile);
     SimulatorConfig::makeNormalizePath(&_writablePath);
     SimulatorConfig::makeNormalizePath(&_packagePath);
-
+    
     // projectDir
     size_t len = _projectDir.length();
     if (len > 0 && _projectDir[len - 1] != DIRECTORY_SEPARATOR_CHAR)
@@ -590,7 +596,7 @@ void ProjectConfig::normalize()
         _projectDir.append(DIRECTORY_SEPARATOR);
         len++;
     }
-
+    
     // writablePath
     if (len > 0 && _writablePath.length() == 0)
     {
@@ -602,10 +608,10 @@ void ProjectConfig::normalize()
         _writablePath.append(DIRECTORY_SEPARATOR);
     }
     _writablePath = replaceProjectDirToMacro(_writablePath);
-
+    
     // scriptFile
     _scriptFile = replaceProjectDirToMacro(_scriptFile);
-
+    
     // package.path
     vector<string> arr = getPackagePathArray();
     _packagePath = string("");
@@ -631,7 +637,7 @@ string ProjectConfig::replaceProjectDirToMacro(const string &path) const
         result.append(path);
         return result;
     }
-
+    
     string result = path;
     size_t len = _projectDir.length();
     if (len > 0 && result.compare(0, len, _projectDir) == 0)
@@ -646,9 +652,9 @@ string ProjectConfig::replaceProjectDirToMacro(const string &path) const
 string ProjectConfig::replaceProjectDirToFullPath(const string &path) const
 {
     if (isAbsolutePath(path)) return path;
-
+    
     if (path.length() == 0) return _projectDir;
-
+    
     string result = path;
     if (path.compare(0, 10, "$(PROJDIR)") == 0)
     {

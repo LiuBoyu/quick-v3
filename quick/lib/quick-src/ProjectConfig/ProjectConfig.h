@@ -40,6 +40,7 @@ public:
 
     bool isWelcome() const;
     void resetToWelcome();
+    void resetToProject(const string &projectDir);
 
     string getProjectDir() const;
     void setProjectDir(const string &projectDir);
