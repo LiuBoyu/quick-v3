@@ -24,7 +24,7 @@ std::string getCurAppName(void)
     int found = appName.find(" ");
     if (found!=std::string::npos)
         appName = appName.substr(0,found);
-    
+
     return appName;
 }
 
@@ -54,16 +54,16 @@ void createSimulator(const char* viewName, float width, float height,bool isLand
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     [self installUncaughtExceptionHandler];
-    
+
     auto player = player::PlayerMac::create();
     player->setController(self);
-    
+
     _isAlwaysOnTop = NO;
     _debugLogFile = 0;
-    
+
     _buildTask = nil;
     _isBuildingFinished = YES;
-    
+
     // load QUICK_V3_ROOT from ~/.QUICK_V3_ROOT
     NSMutableString *path = [NSMutableString stringWithString:NSHomeDirectory()];
     [path appendString:@"/.QUICK_V3_ROOT"];
@@ -77,10 +77,10 @@ void createSimulator(const char* viewName, float width, float height,bool isLand
                           withTitle:@"quick player error"];
         [[NSApplication sharedApplication] terminate:self];
     }
-    
+
     env = [env stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
     SimulatorConfig::getInstance()->setQuickCocos2dxRootPath([env cStringUsingEncoding:NSUTF8StringEncoding]);
-    
+
     [self updateProjectFromCommandLineArgs:&_project];
     [self createWindowAndGLView];
     [self registerEventsHandler];
@@ -127,7 +127,7 @@ void createSimulator(const char* viewName, float width, float height,bool isLand
             string arg = [[nsargs objectAtIndex:i] cStringUsingEncoding:NSUTF8StringEncoding];
             if (arg.length()) args.push_back(arg);
         }
-        
+
         if (args.size() && args.at(1).at(0) == '/')
         {
             // for Code IDE before RC2
@@ -135,10 +135,11 @@ void createSimulator(const char* viewName, float width, float height,bool isLand
         }
         config->parseCommandLine(args);
     }
-    
+
     if (config->getProjectDir().length() == 0)
     {
         config->resetToWelcome();
+        // config->resetToProject("/Users/LiuBoyu/Coconut/Project/teenpatti");
     }
 }
 
@@ -177,31 +178,31 @@ void createSimulator(const char* viewName, float width, float height,bool isLand
 {
     LuaEngine* pEngine = LuaEngine::getInstance();
     ScriptEngineManager::getInstance()->setScriptEngine(pEngine);
-    
+
     luaopen_PlayerLuaCore(pEngine->getLuaStack()->getLuaState());
     luaopen_PlayerLuaCore_Manual(pEngine->getLuaStack()->getLuaState());
-    
-    
+
+
     NSMutableString *path = [NSMutableString stringWithString:NSHomeDirectory()];
     [path appendString:@"/"];
-    
-    
+
+
     //
     // set user home dir
     //
     lua_pushstring(pEngine->getLuaStack()->getLuaState(), path.UTF8String);
     lua_setglobal(pEngine->getLuaStack()->getLuaState(), "__USER_HOME__");
-    
-    
+
+
     //
     // ugly: Add the opening project to the "Open Recents" list
     //
     lua_pushstring(pEngine->getLuaStack()->getLuaState(), _project.getProjectDir().c_str());
     lua_setglobal(pEngine->getLuaStack()->getLuaState(), "__PLAYER_OPEN_TITLE__");
-    
+
     lua_pushstring(pEngine->getLuaStack()->getLuaState(), _project.makeCommandLine().c_str());
     lua_setglobal(pEngine->getLuaStack()->getLuaState(), "__PLAYER_OPEN_COMMAND__");
-    
+
     //
     // load player.lua file
     //
@@ -213,7 +214,7 @@ void createSimulator(const char* viewName, float width, float height,bool isLand
 {
     NSApplication *thisApp = [NSApplication sharedApplication];
     NSMenu *mainMenu = [thisApp mainMenu];
-    
+
     NSMenuItem *editMenuItem = [mainMenu itemWithTitle:@"Edit"];
     if (editMenuItem)
     {
@@ -232,22 +233,22 @@ void createSimulator(const char* viewName, float width, float height,bool isLand
 {
     GLContextAttrs glContextAttrs = {8, 8, 8, 8, 24, 8};
     GLView::setGLContextAttrs(glContextAttrs);
-    
+
     float frameScale = _project.getFrameScale();
-    
+
     // create opengl view
     cocos2d::Size frameSize = _project.getFrameSize();
-    
+
     const cocos2d::Rect frameRect = cocos2d::Rect(0, 0, frameSize.width, frameSize.height);
     GLViewImpl *eglView = GLViewImpl::createWithRect("player", frameRect, frameScale, _project.isResizeWindow());
-    
+
     auto director = Director::getInstance();
     director->setOpenGLView(eglView);
-    
+
     _window = eglView->getCocoaWindow();
     [NSApp setDelegate:self];
     [_window center];
-    
+
     if (_project.getProjectDir().length())
     {
         [self setZoom:_project.getFrameScale()];
@@ -289,7 +290,7 @@ void createSimulator(const char* viewName, float width, float height,bool isLand
                                                     glfwSetWindowShouldClose(glview->getWindow(), 1);
                                                 }
                                             });
-    
+
     ProjectConfig& lambdaProject = _project;
     eventDispatcher->addCustomEventListener("APP.VIEW_SCALE", [&](EventCustom* event)
                                             {
@@ -309,14 +310,14 @@ void createSimulator(const char* viewName, float width, float height,bool isLand
         event.setDataString(data.str());
         Director::getInstance()->getEventDispatcher()->dispatchEvent(&event);
     };
-    
+
     cocos2d::Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(keyEvent, 1);
 }
 
 - (void) startup
 {
     FileUtils::getInstance()->setPopupNotify(false);
-    
+
     std::string path = SimulatorConfig::getInstance()->getQuickCocos2dxRootPath();
     const string projectDir = _project.getProjectDir();
     if (projectDir.length())
@@ -327,20 +328,20 @@ void createSimulator(const char* viewName, float width, float height,bool isLand
             [self writeDebugLogToFile:_project.getDebugLogFilePath()];
         }
     }
-    
+
     const string writablePath = _project.getWritableRealPath();
     if (writablePath.length())
     {
         FileUtils::getInstance()->setWritablePath(writablePath.c_str());
     }
-    
+
     if (_project.isShowConsole())
     {
         [self openConsoleWindow];
         CCLOG("%s\n",Configuration::getInstance()->getInfo().c_str());
     }
-    
-    [self loadLuaConfig];
+
+        [self loadLuaConfig];
     [self adjustEditMenuIndex];
     if (!_project.isAppMenu())
     {
@@ -352,7 +353,7 @@ void createSimulator(const char* viewName, float width, float height,bool isLand
             [mainMenu removeItem:onemenu];
         }
     }
-    
+
     // app
     _app = new AppDelegate();
     _app->setProjectConfig(_project);
@@ -368,16 +369,16 @@ void createSimulator(const char* viewName, float width, float height,bool isLand
         _consoleController = [[ConsoleWindowController alloc] initWithWindowNibName:@"ConsoleWindow"];
     }
     [_consoleController.window orderFrontRegardless];
-    
+
     //set console pipe
     _pipe = [NSPipe pipe] ;
     _pipeReadHandle = [_pipe fileHandleForReading] ;
-    
+
     int outfd = [[_pipe fileHandleForWriting] fileDescriptor];
     if (dup2(outfd, fileno(stderr)) != fileno(stderr) || dup2(outfd, fileno(stdout)) != fileno(stdout))
     {
         perror("Unable to redirect output");
-        //        [self showAlert:@"Unable to redirect output to console!" withTitle:@"player error"];
+        // [self showAlert:@"Unable to redirect output to console!" withTitle:@"player error"];
     }
     else
     {
@@ -404,13 +405,13 @@ void createSimulator(const char* viewName, float width, float height,bool isLand
     [_pipeReadHandle readInBackgroundAndNotify] ;
     NSData *data = [[note userInfo] objectForKey:NSFileHandleNotificationDataItem];
     NSString *str = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
-    
+
     //show log to console
     [_consoleController trace:str];
     if(_fileHandle!=nil){
         [_fileHandle writeData:[str dataUsingEncoding:NSUTF8StringEncoding]];
     }
-    
+
 }
 
 - (void) close_debugLogFile
