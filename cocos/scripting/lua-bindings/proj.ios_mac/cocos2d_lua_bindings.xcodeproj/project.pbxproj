@@ -1034,6 +1034,7 @@
 					"COCOS2D_DEBUG=1",
 					"CC_LUA_ENGINE_ENABLED=1",
 					"CC_USE_CURL=1",
+					"CC_USE_SFS2XAPI=1",
 					"CC_USE_SQLITE=1",
 					"CC_USE_FILTER=1",
 				);
@@ -1071,6 +1072,7 @@
 					NDEBUG,
 					"CC_LUA_ENGINE_ENABLED=1",
 					"CC_USE_CURL=1",
+					"CC_USE_SFS2XAPI=1",
 					"CC_USE_SQLITE=1",
 					"CC_USE_FILTER=1",
 				);

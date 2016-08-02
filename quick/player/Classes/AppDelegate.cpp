@@ -119,6 +119,9 @@ void StartupCall::startup()
 #if CC_USE_WEBSOCKET
     env.append("CC_USE_WEBSOCKET = 1                                                            \n");
 #endif
+#if CC_USE_SFS2XAPI
+    env.append("CC_USE_SFS2XAPI  = 1                                                            \n");
+#endif
 #if CC_USE_SQLITE
     env.append("CC_USE_SQLITE    = 1                                                            \n");
 #endif

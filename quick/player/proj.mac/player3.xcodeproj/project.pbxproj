@@ -21,6 +21,12 @@
 		0F67480F1D49140C00DF6B8C /* nanovg.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F6748071D49140C00DF6B8C /* nanovg.c */; };
 		0F6748141D49142900DF6B8C /* lua_cocos2dx_nanovg_auto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0F6748101D49142900DF6B8C /* lua_cocos2dx_nanovg_auto.cpp */; };
 		0F6748151D49142900DF6B8C /* lua_cocos2dx_nanovg_manual.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0F6748121D49142900DF6B8C /* lua_cocos2dx_nanovg_manual.cpp */; };
+		0FC4AD881D4A7CFC008F2412 /* SFClientSDK.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0FC4AD841D4A7CFC008F2412 /* SFClientSDK.mm */; };
+		0FC4AD8A1D4A7CFC008F2412 /* SFS2XAPIOSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC4AD861D4A7CFC008F2412 /* SFS2XAPIOSX.framework */; };
+		0FC4AD8C1D4A7D4D008F2412 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC4AD8B1D4A7D4D008F2412 /* Security.framework */; };
+		0FC4AD8E1D4A7D54008F2412 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC4AD8D1D4A7D54008F2412 /* CFNetwork.framework */; };
+		0FC4AD901D4A7F26008F2412 /* SFS2XAPIOSX.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC4AD861D4A7CFC008F2412 /* SFS2XAPIOSX.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0FC4AE141D4B0935008F2412 /* SDKUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0FC4AE131D4B0935008F2412 /* SDKUtils.mm */; };
 		0FD4A8741BAB4C930007AB29 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FD4A8731BAB4C930007AB29 /* libz.tbd */; };
 		0FD4A87E1BAB556B0007AB29 /* libcurl.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FD4A87D1BAB556B0007AB29 /* libcurl.tbd */; };
 		15427CEC198F24A600DC375D /* libluacocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15427CC2198F220600DC375D /* libluacocos2d Mac.a */; };
@@ -149,6 +155,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		0FC4AD911D4A7F26008F2412 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0FC4AD901D4A7F26008F2412 /* SFS2XAPIOSX.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0F47A9071C2B9DA400D094D8 /* lsproto.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lsproto.c; sourceTree = "<group>"; };
 		0F47A9081C2B9DA400D094D8 /* msvcint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = msvcint.h; sourceTree = "<group>"; };
@@ -186,6 +206,13 @@
 		0F6748111D49142900DF6B8C /* lua_cocos2dx_nanovg_auto.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = lua_cocos2dx_nanovg_auto.hpp; sourceTree = "<group>"; };
 		0F6748121D49142900DF6B8C /* lua_cocos2dx_nanovg_manual.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_cocos2dx_nanovg_manual.cpp; sourceTree = "<group>"; };
 		0F6748131D49142900DF6B8C /* lua_cocos2dx_nanovg_manual.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = lua_cocos2dx_nanovg_manual.hpp; sourceTree = "<group>"; };
+		0FC4AD831D4A7CFC008F2412 /* SFClientSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFClientSDK.h; sourceTree = "<group>"; };
+		0FC4AD841D4A7CFC008F2412 /* SFClientSDK.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SFClientSDK.mm; sourceTree = "<group>"; };
+		0FC4AD861D4A7CFC008F2412 /* SFS2XAPIOSX.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SFS2XAPIOSX.framework; sourceTree = "<group>"; };
+		0FC4AD8B1D4A7D4D008F2412 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		0FC4AD8D1D4A7D54008F2412 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		0FC4AE121D4B0935008F2412 /* SDKUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDKUtils.h; sourceTree = "<group>"; };
+		0FC4AE131D4B0935008F2412 /* SDKUtils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SDKUtils.mm; sourceTree = "<group>"; };
 		0FD4A8731BAB4C930007AB29 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		0FD4A87D1BAB556B0007AB29 /* libcurl.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcurl.tbd; path = usr/lib/libcurl.tbd; sourceTree = SDKROOT; };
 		15427CE2198F237300DC375D /* lua_module_register.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lua_module_register.h; path = ../Classes/lua_module_register.h; sourceTree = "<group>"; };
@@ -412,6 +439,9 @@
 				9FD01B0D19F8C58C005E0C49 /* SystemConfiguration.framework in Frameworks */,
 				50D7C96E17EBBEE6005D0B91 /* AppKit.framework in Frameworks */,
 				50D7C97017EBBEEC005D0B91 /* IOKit.framework in Frameworks */,
+				0FC4AD8E1D4A7D54008F2412 /* CFNetwork.framework in Frameworks */,
+				0FC4AD8C1D4A7D4D008F2412 /* Security.framework in Frameworks */,
+				0FC4AD8A1D4A7CFC008F2412 /* SFS2XAPIOSX.framework in Frameworks */,
 				0FD4A87E1BAB556B0007AB29 /* libcurl.tbd in Frameworks */,
 				0FD4A8741BAB4C930007AB29 /* libz.tbd in Frameworks */,
 				15427CEE198F24AF00DC375D /* libcocos2d Mac.a in Frameworks */,
@@ -494,6 +524,36 @@
 				0F67480C1D49140C00DF6B8C /* stb_truetype.h */,
 			);
 			path = nanovg;
+			sourceTree = "<group>";
+		};
+		0FC4AD7E1D4A7CE0008F2412 /* sdk */ = {
+			isa = PBXGroup;
+			children = (
+				0FC4AE111D4B0935008F2412 /* libcocos2dx */,
+				0FC4AD811D4A7CFC008F2412 /* SFClientSDK */,
+			);
+			name = sdk;
+			sourceTree = "<group>";
+		};
+		0FC4AD811D4A7CFC008F2412 /* SFClientSDK */ = {
+			isa = PBXGroup;
+			children = (
+				0FC4AD861D4A7CFC008F2412 /* SFS2XAPIOSX.framework */,
+				0FC4AD831D4A7CFC008F2412 /* SFClientSDK.h */,
+				0FC4AD841D4A7CFC008F2412 /* SFClientSDK.mm */,
+			);
+			name = SFClientSDK;
+			path = ../../../../../../Coconut/Project/teenpatti/proj/proj.ios/libs/SFClientSDK;
+			sourceTree = "<group>";
+		};
+		0FC4AE111D4B0935008F2412 /* libcocos2dx */ = {
+			isa = PBXGroup;
+			children = (
+				0FC4AE121D4B0935008F2412 /* SDKUtils.h */,
+				0FC4AE131D4B0935008F2412 /* SDKUtils.mm */,
+			);
+			name = libcocos2dx;
+			path = ../../../../../../Coconut/Project/teenpatti/proj/proj.ios/libs/libcocos2dx;
 			sourceTree = "<group>";
 		};
 		15A8A4041834BDA200142BE0 /* Products */ = {
@@ -918,6 +978,7 @@
 				C03781AE18BF654500FE4F13 /* cocos2d_lua_bindings.xcodeproj */,
 				15A8A4031834BDA200142BE0 /* cocos2d_libs.xcodeproj */,
 				5023817117EBBE3400990C9B /* mac */,
+				0FC4AD7E1D4A7CE0008F2412 /* sdk */,
 				F293BB7C15EB830F00256477 /* Classes */,
 				F293B3CB15EB7BE500256477 /* Frameworks */,
 				F293B3C915EB7BE500256477 /* Products */,
@@ -945,6 +1006,8 @@
 				9FD01B0C19F8C58C005E0C49 /* SystemConfiguration.framework */,
 				50D7C96D17EBBEE6005D0B91 /* AppKit.framework */,
 				50D7C96F17EBBEEC005D0B91 /* IOKit.framework */,
+				0FC4AD8D1D4A7D54008F2412 /* CFNetwork.framework */,
+				0FC4AD8B1D4A7D4D008F2412 /* Security.framework */,
 				0FD4A87D1BAB556B0007AB29 /* libcurl.tbd */,
 				0FD4A8731BAB4C930007AB29 /* libz.tbd */,
 			);
@@ -984,6 +1047,8 @@
 				5023813117EBBCE400990C9B /* Sources */,
 				5023813617EBBCE400990C9B /* Frameworks */,
 				5023814617EBBCE400990C9B /* Resources */,
+				0FC4AD911D4A7F26008F2412 /* Embed Frameworks */,
+				0FC4AD921D4A8099008F2412 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1075,6 +1140,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0FC4AD921D4A8099008F2412 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "install_name_tool -change /Library/Frameworks/SFS2XAPIOSX.framework/Versions/A/SFS2XAPIOSX @executable_path/../Frameworks/SFS2XAPIOSX.framework/Versions/A/SFS2XAPIOSX $BUILT_PRODUCTS_DIR/$EXECUTABLE_PATH";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5023813117EBBCE400990C9B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -1155,6 +1236,8 @@
 				9F7289401A24957700EE0234 /* CCTestFilter.cpp in Sources */,
 				9F7289591A24957700EE0234 /* FilterShaders.cpp in Sources */,
 				9F7289331A24957700EE0234 /* CCCustomFilter.cpp in Sources */,
+				0FC4AD881D4A7CFC008F2412 /* SFClientSDK.mm in Sources */,
+				0FC4AE141D4B0935008F2412 /* SDKUtils.mm in Sources */,
 				9FD01B2619F8C6A3005E0C49 /* PlayerFileDialogServiceMac.mm in Sources */,
 				9F7289891A24957700EE0234 /* fpconv.c in Sources */,
 				9F72898F1A24957700EE0234 /* lpack.c in Sources */,
@@ -1196,6 +1279,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				FRAMEWORK_SEARCH_PATHS = ../../../../../../Coconut/Project/teenpatti/proj/proj.ios/libs/SFClientSDK;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = mac/Prefix.pch;
@@ -1207,9 +1291,12 @@
 				);
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = mac/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lz",
 					"-image_base",
 					100000000,
 					"-pagezero_size",
@@ -1227,6 +1314,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				FRAMEWORK_SEARCH_PATHS = ../../../../../../Coconut/Project/teenpatti/proj/proj.ios/libs/SFClientSDK;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = mac/Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1237,9 +1325,12 @@
 				);
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = mac/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lz",
 					"-image_base",
 					100000000,
 					"-pagezero_size",
@@ -1265,6 +1356,7 @@
 					"COCOS2D_DEBUG=1",
 					"CC_LUA_ENGINE_ENABLED=1",
 					"CC_USE_CURL=1",
+					"CC_USE_SFS2XAPI=1",
 					"CC_USE_SQLITE=1",
 					"CC_USE_FILTER=1",
 				);
@@ -1290,6 +1382,7 @@
 					NDEBUG,
 					"CC_LUA_ENGINE_ENABLED=1",
 					"CC_USE_CURL=1",
+					"CC_USE_SFS2XAPI=1",
 					"CC_USE_SQLITE=1",
 					"CC_USE_FILTER=1",
 				);
