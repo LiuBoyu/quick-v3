@@ -1,19 +1,19 @@
 /****************************************************************************
  Copyright (c) 2011-2012 cocos2d-x.org
  Copyright (c) 2013-2014 Chukong Technologies Inc.
- 
+
  http://www.cocos2d-x.org
- 
+
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
  in the Software without restriction, including without limitation the rights
  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  copies of the Software, and to permit persons to whom the Software is
  furnished to do so, subject to the following conditions:
- 
+
  The above copyright notice and this permission notice shall be included in
  all copies or substantial portions of the Software.
- 
+
  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -42,9 +42,9 @@ class LuaStack : public Ref
 public:
     static LuaStack *create(void);
     static LuaStack *attach(lua_State *L);
-    
+
     virtual ~LuaStack();
-    
+
     /**
      @brief Method used to get a pointer to the lua_State that the script module is attached to.
      @return A pointer to the lua_State that the script module is attached to.
@@ -52,18 +52,18 @@ public:
     lua_State* getLuaState(void) {
         return _state;
     }
-    
+
     /**
      @brief Add a path to find lua files in
      @param path to be added to the Lua path
      */
     virtual void addSearchPath(const char* path);
-    
+
     /**
      @brief Add lua loader, now it is used on android
      */
     virtual void addLuaLoader(lua_CFunction func);
-    
+
     /**
      @brief reload script code contained in the given string.
      @param moduleFileName String object holding the filename of the script file that is to be executed
@@ -71,23 +71,23 @@ public:
      @return other if the string is excuted wrongly.
      */
     virtual int reload(const char* moduleFileName);
-    
+
     /**
      @brief Remove Object from lua state
      @param object The object to be removed.
      */
     virtual void removeScriptObjectByObject(Ref* object);
-    
+
     /**
      @brief Remove Lua function reference
      */
     virtual void removeScriptHandler(int nHandler);
-    
+
     /**
      @brief Remove Lua function reference
      */
     virtual int reallocateScriptHandler(int nHandler);
-    
+
     /**
      @brief Execute script code contained in the given string.
      @param codes holding the valid script code that should be executed.
@@ -95,7 +95,7 @@ public:
      @return other if the string is excuted wrongly.
      */
     virtual int executeString(const char* codes);
-    
+
     /**
      @brief Execute a script file.
      @param filename String object holding the filename of the script file that is to be executed
@@ -114,6 +114,7 @@ public:
     virtual void pushInt(int intValue);
     virtual void pushFloat(float floatValue);
     virtual void pushLong(long longValue);
+    virtual void pushDouble(double doubleValue);
     virtual void pushBoolean(bool boolValue);
     virtual void pushString(const char* stringValue);
     virtual void pushString(const char* stringValue, int length);
@@ -121,26 +122,26 @@ public:
     virtual void pushObject(Ref* objectValue, const char* typeName);
     virtual void pushLuaValue(const LuaValue& value);
     virtual void pushLuaValueDict(const LuaValueDict& dict);
-    virtual void pushLuaValueArray(const LuaValueArray& array);    
+    virtual void pushLuaValueArray(const LuaValueArray& array);
     virtual bool pushFunctionByHandler(int nHandler);
     virtual int executeFunction(int numArgs);
-    
+
     virtual int executeFunctionByHandler(int nHandler, int numArgs);
     virtual int executeFunctionReturnArray(int handler,int numArgs,int numResults,__Array& resultArray);
     virtual int executeFunction(int handler, int numArgs, int numResults, const std::function<void(lua_State*,int)>& func);
 
 	virtual bool handleAssert(const char *msg, const char *cond, const char *file, int line);
-    
+
     virtual void setXXTEAKeyAndSign(const char *key, int keyLen, const char *sign, int signLen);
     virtual void cleanupXXTEAKeyAndSign();
-    
+
     virtual const char *getXXTEAKey(int *len);
     virtual const char *getXXTEASign(int *len);
-    
+
     int luaLoadBuffer(lua_State *L, const char *chunk, int chunkSize, const char *chunkName);
     int loadChunksFromZIP(const char *zipFilePath);
     int luaLoadChunksFromZIP(lua_State *L);
-    
+
 protected:
     LuaStack(void)
     : _state(nullptr)
@@ -152,10 +153,10 @@ protected:
     , _xxteaSignLen(0)
     {
     }
-    
+
     bool init(void);
     bool initWithLuaState(lua_State *L);
-    
+
     lua_State *_state;
     int _callFromLua;
     bool  _xxteaEnabled;

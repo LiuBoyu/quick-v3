@@ -329,6 +329,11 @@ void LuaStack::pushLong(long longValue)
     lua_pushnumber(_state, longValue);
 }
 
+void LuaStack::pushDouble(double doubleValue)
+{
+    lua_pushnumber(_state, doubleValue);
+}
+
 void LuaStack::pushBoolean(bool boolValue)
 {
     lua_pushboolean(_state, boolValue);
@@ -361,9 +366,17 @@ void LuaStack::pushLuaValue(const LuaValue& value)
     {
         return pushInt(value.intValue());
     }
+    else if (type == LuaValueTypeLong)
+    {
+        return pushLong(value.longValue());
+    }
     else if (type == LuaValueTypeFloat)
     {
         return pushFloat(value.floatValue());
+    }
+    else if (type == LuaValueTypeDouble)
+    {
+        return pushDouble(value.doubleValue());
     }
     else if (type == LuaValueTypeBoolean)
     {
