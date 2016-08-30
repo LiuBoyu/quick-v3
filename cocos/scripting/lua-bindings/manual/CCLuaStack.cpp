@@ -59,6 +59,13 @@ extern "C" {
 #include "lua_cocos2dx_experimental_manual.hpp"
 #endif
 
+#ifdef _WIN32
+#include <windows.h>
+#else
+#include <time.h>
+#include <sys/time.h>
+#endif
+
 
 namespace {
 int lua_print(lua_State * luastate)
@@ -144,6 +151,29 @@ int lua_release_print(lua_State * L)
 
     return 0;
 }
+
+int lua_gettime(lua_State * L)
+{
+    double tt;
+
+    #ifdef _WIN32
+        FILETIME ft;
+        double t;
+        GetSystemTimeAsFileTime(&ft);
+        /* Windows file time (time since January 1, 1601 (UTC)) */
+        t  = ft.dwLowDateTime/1.0e7 + ft.dwHighDateTime*(4294967296.0/1.0e7);
+        /* convert to Unix Epoch time (time since January 1, 1970 (UTC)) */
+        tt = (t - 11644473600.0);
+    #else
+        struct timeval v;
+        gettimeofday(&v, (struct timezone *) NULL);
+        /* Unix Epoch time (time since January 1, 1970 (UTC)) */
+        tt = v.tv_sec + v.tv_usec/1.0e6;
+    #endif
+
+    lua_pushnumber(L, tt);
+    return 1;
+}
 }
 
 NS_CC_BEGIN
@@ -181,7 +211,8 @@ bool LuaStack::init(void)
     // Register our version of the global "print" function
     const luaL_reg global_functions [] = {
         {"print", lua_print},
-        {"release_print",lua_release_print},
+        {"release_print", lua_release_print},
+        {"gettime", lua_gettime},
         {nullptr, nullptr}
     };
     luaL_register(_state, "_G", global_functions);
