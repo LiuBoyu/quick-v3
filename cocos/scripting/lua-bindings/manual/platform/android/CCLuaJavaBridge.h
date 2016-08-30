@@ -36,7 +36,7 @@ public:
 
     static int callLuaFunctionById(int functionId, const char *arg);
     static int callLuaGlobalFunction(const char *functionName, const char *arg);
-    
+
     // added by guorui.chen
     static jobject checkHashMap(lua_State *L);
     static jobject checkArrayList(lua_State *L);
@@ -56,6 +56,8 @@ private:
         TypeFunction= 6,
         TypeMap     = 7,
         TypeArrayList = 8,
+        TypeLong    = 9,
+        TypeDouble  = 10,
     } ValueType;
 
     typedef vector<ValueType> ValueTypes;
@@ -65,6 +67,8 @@ private:
         int     intValue;
         float   floatValue;
         int     boolValue;
+        long    longValue;
+        double  doubleValue;
         string *stringValue;
         jobject objectValue;
     } ReturnValue;
@@ -142,17 +146,17 @@ private:
 
     static lua_State *s_luaState;
     static int        s_newFunctionId;
-    
+
     class PSJNIHelper{
     public:
         static void createHashMap();
         static jobject getHashMap();
         static void pushHashMapElement(string key, string value);
-        
+
         static void createVector();
         static jobject getVector();
         static void pushVectorElement(string value);
-        
+
         static void createArrayList();
         static jobject getArrayList();
         static void pushArrayListElement(string value);
