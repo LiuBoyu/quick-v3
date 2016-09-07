@@ -67,22 +67,30 @@ static bool _initWithString(const char * text, Device::TextAlign align, const ch
 	CCASSERT(info, "Invalid pInfo");
 	
 	do {
-		NSString * string  = [NSString stringWithUTF8String:text];
+        NSString * string  = [NSString stringWithUTF8String:text];
         NSString * fntName = [NSString stringWithUTF8String:fontName];
         
         fntName = [[fntName lastPathComponent] stringByDeletingPathExtension];
-		
-		// font
+        
+        NSFontTraitMask traits = NSUnboldFontMask | NSUnitalicFontMask;
+        
+        if ([fntName hasSuffix:@"@Bold"])
+        {
+            fntName = [fntName substringToIndex:(fntName.length - 5)];
+            traits = NSBoldFontMask | NSUnitalicFontMask;
+        }
+        
+        // font
 		NSFont *font = [[NSFontManager sharedFontManager]
                         fontWithFamily:fntName
-						traits:NSUnboldFontMask | NSUnitalicFontMask
+						traits:traits
                         weight:0
                         size:size];
 		
 		if (font == nil) {
 			font = [[NSFontManager sharedFontManager]
 					fontWithFamily:@"Arial"
-					traits:NSUnboldFontMask | NSUnitalicFontMask
+					traits:traits
 					weight:0
 					size:size];
 		}
@@ -95,7 +103,6 @@ static bool _initWithString(const char * text, Device::TextAlign align, const ch
 		} else {
 			foregroundColor = [NSColor whiteColor];
 		}
-		
 		
 		// alignment, linebreak
 		unsigned horiFlag = (int)align & 0x0f;
