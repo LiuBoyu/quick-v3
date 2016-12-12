@@ -6,7 +6,7 @@
 #include "cocosdenshion/lua_cocos2dx_cocosdenshion_manual.h"
 #include "lua/quick/lua_cocos2dx_quick_manual.hpp"
 
-#if CC_USE_WEBSOCKET
+#if CC_USE_SOCKET || CC_USE_WEBSOCKET
 #include "network/lua_cocos2dx_network_manual.h"
 #endif
 
@@ -37,7 +37,7 @@ int lua_module_register(lua_State* L)
     register_ui_moudle(L);
     register_cocosdenshion_module(L);
 
-#if CC_USE_WEBSOCKET
+#if CC_USE_SOCKET || CC_USE_WEBSOCKET
     register_network_module(L);
 #endif
 

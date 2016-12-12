@@ -116,6 +116,9 @@ void StartupCall::startup()
 #if CC_USE_CURL
     env.append("CC_USE_CURL      = 1                                                            \n");
 #endif
+#if CC_USE_SOCKET
+    env.append("CC_USE_SOCKET    = 1                                                            \n");
+#endif
 #if CC_USE_WEBSOCKET
     env.append("CC_USE_WEBSOCKET = 1                                                            \n");
 #endif
@@ -147,25 +150,7 @@ void StartupCall::startup()
     engine->executeString(env.c_str());
     
     // load script
-    string bootstrap_u = FileUtils::getInstance()->getWritablePath() + "var/update/res/bootstrap.zip";
-    string bootstrap_o = FileUtils::getInstance()->getSearchRootPath()          + "res/bootstrap.zip";
-    
-    if      (FileUtils::getInstance()->isFileExist(bootstrap_u))
-    {
-        engine->executeString(("print 'loading " + bootstrap_u + "'").c_str());
-        engine->getLuaStack()->loadChunksFromZIP(FileUtils::getInstance()->fullPathForFilename(bootstrap_u).c_str());
-        engine->executeString("require 'main'");
-    }
-    else if (FileUtils::getInstance()->isFileExist(bootstrap_o))
-    {
-        engine->executeString(("print 'loading " + bootstrap_o + "'").c_str());
-        engine->getLuaStack()->loadChunksFromZIP(FileUtils::getInstance()->fullPathForFilename(bootstrap_o).c_str());
-        engine->executeString("require 'main'");
-    }
-    else
-    {
-        engine->executeString("print 'loading src/main.lua'");
-        engine->executeScriptFile("src/main.lua");
-    }
+    engine->executeString("print 'loading src/main.lua'");
+    engine->executeScriptFile("src/main.lua");
 }
 

@@ -24,6 +24,9 @@
 #include "lua_cocos2dx_network_manual.h"
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_WIN32 || CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
+#if (CC_USE_SOCKET)
+#include "lua_extensions.h"
+#endif
 #if (CC_USE_WEBSOCKET)
 #include "Lua_web_socket.h"
 #endif
@@ -38,6 +41,9 @@ int register_network_module(lua_State* L)
     if (lua_istable(L,-1))//stack:...,_G,
     {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_WIN32 || CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
+#if (CC_USE_SOCKET)
+        luaopen_lua_extensions(L);
+#endif
 #if (CC_USE_WEBSOCKET)
         tolua_web_socket_open(L);
         register_web_socket_manual(L);

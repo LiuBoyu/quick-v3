@@ -130,7 +130,6 @@ void createSimulator(const char* viewName, float width, float height,bool isLand
 
         if (args.size() && args.at(1).at(0) == '/')
         {
-            // for Code IDE before RC2
             config->setProjectDir(args.at(1));
         }
         config->parseCommandLine(args);
@@ -139,7 +138,7 @@ void createSimulator(const char* viewName, float width, float height,bool isLand
     if (config->getProjectDir().length() == 0)
     {
         config->resetToWelcome();
-        // config->resetToProject("/Users/LiuBoyu/Coconut/Project/teenpatti");
+        // config->resetToProject("/Users/LiuBoyu/Ironfire/Project/quick-v6");
     }
 }
 
