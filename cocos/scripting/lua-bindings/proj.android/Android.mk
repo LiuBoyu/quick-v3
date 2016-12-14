@@ -87,14 +87,35 @@ LOCAL_C_INCLUDES        := $(LOCAL_PATH)/../../../../external/lua/luajit/include
                            $(LOCAL_PATH)/../manual \
                            $(LOCAL_PATH)/../auto
 
-ifeq ($(CC_USE_WEBSOCKET), 1)
-LOCAL_SRC_FILES += ../manual/network/lua_cocos2dx_network_manual.cpp \
-                   ../manual/network/Lua_web_socket.cpp
+LOCAL_SRC_FILES += ../manual/network/lua_cocos2dx_network_manual.cpp
 
 LOCAL_EXPORT_C_INCLUDES += $(LOCAL_PATH)/../manual/network
 
 LOCAL_C_INCLUDES        += $(LOCAL_PATH)/../manual/network \
                            $(LOCAL_PATH)/../../../network
+
+ifeq ($(CC_USE_WEBSOCKET), 1)
+LOCAL_SRC_FILES += ../manual/network/Lua_web_socket.cpp
+endif
+
+ifeq ($(CC_USE_SOCKET), 1)
+LOCAL_SRC_FILES += ../manual/network/lua_extensions.c \
+                   ../../../../external/lua/luasocket/auxiliar.c \
+                   ../../../../external/lua/luasocket/buffer.c \
+                   ../../../../external/lua/luasocket/except.c \
+                   ../../../../external/lua/luasocket/inet.c \
+                   ../../../../external/lua/luasocket/io.c \
+                   ../../../../external/lua/luasocket/luasocket.c \
+                   ../../../../external/lua/luasocket/luasocket_scripts.c \
+                   ../../../../external/lua/luasocket/mime.c \
+                   ../../../../external/lua/luasocket/options.c \
+                   ../../../../external/lua/luasocket/select.c \
+                   ../../../../external/lua/luasocket/serial.c \
+                   ../../../../external/lua/luasocket/tcp.c \
+                   ../../../../external/lua/luasocket/timeout.c \
+                   ../../../../external/lua/luasocket/udp.c \
+                   ../../../../external/lua/luasocket/unix.c \
+                   ../../../../external/lua/luasocket/usocket.c
 endif
 
 ifeq ($(CC_USE_CCSTUDIO), 1)
