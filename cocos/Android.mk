@@ -226,6 +226,10 @@ ifeq ($(CC_USE_CCSTUDIO), 1)
 LOCAL_STATIC_LIBRARIES += cocostudio_static
 endif
 
+ifeq ($(CC_USE_PHYSICS), 1)
+LOCAL_STATIC_LIBRARIES += cocos_chipmunk_static
+endif
+
 LOCAL_WHOLE_STATIC_LIBRARIES := cocos2dxandroid_static
 LOCAL_WHOLE_STATIC_LIBRARIES += cpufeatures
 
@@ -259,9 +263,6 @@ LOCAL_STATIC_LIBRARIES += cocostudio_static
 endif
 ifeq ($(CC_USE_SPINE), 1)
 LOCAL_STATIC_LIBRARIES += spine_static
-endif
-ifeq ($(CC_USE_PHYSICS), 1)
-LOCAL_STATIC_LIBRARIES += cocos_chipmunk_static
 endif
 
 LOCAL_STATIC_LIBRARIES += cocos2dx_internal_static
