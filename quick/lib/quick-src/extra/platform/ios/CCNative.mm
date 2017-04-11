@@ -67,10 +67,10 @@ const string Native::getInputText(const char* title, const char* message, const 
 #pragma mark -
 #pragma mark OpenUDID
 
-const string Native::getOpenUDID(void)
-{
-    return string([[OpenUDIDIOS value] cStringUsingEncoding:NSUTF8StringEncoding]);
-}
+// const string Native::getOpenUDID(void)
+// {
+//     return string([[OpenUDIDIOS value] cStringUsingEncoding:NSUTF8StringEncoding]);
+// }
 
 const string Native::getDeviceName(void)
 {
